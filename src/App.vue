@@ -4,7 +4,7 @@
       <div class="logo">
        
       </div>
-      <!-- <Burger :isOpen ="SideBarOpen" @click="toggleBar()"></Burger> -->
+      <Burger :isOpen ="SideBarOpen" @click="toggleBar()"></Burger>
 
     </nav>
     <h1> <center>{{ SideBarOpen }}</center></h1>
@@ -22,11 +22,10 @@ export default {
   components: {
     Burger,
     Sidebar,
-    ButtonMenu
   }, 
   data() {
     return { 
-      SideBarOpen : true
+      SideBarOpen : false
     }
   }, 
    methods: {

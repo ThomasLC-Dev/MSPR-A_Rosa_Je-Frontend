@@ -1,18 +1,19 @@
 <template>
     <div class="ButtonMenu">
-    <!-- <button>Test</button> -->
-    <div class="ButtonBackg">Test</div>
-    
+        <!-- <button>Test</button> -->
+        <div class="ButtonBackg">Test</div>
+
     </div>
 </template>
 <script>
-    export default {
-       
-    }
+
+export default {
+
+}
 
 </script>
 <style>
-.ButtonBackg{
+.ButtonBackg {
     background-color: aqua;
 }
 </style>
