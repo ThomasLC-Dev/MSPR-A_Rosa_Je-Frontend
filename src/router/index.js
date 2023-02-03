@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import SidebarMenu from '../components/Menu/SidebarMenu.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    //component: HomeView
+    component : SidebarMenu
   },
   {
     path: '/about',
