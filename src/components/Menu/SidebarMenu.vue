@@ -12,18 +12,22 @@
         </div>
         <div class="ButtonsMenu">
           <ButtonMenu :name="About" :imgLink="ImgAbout"></ButtonMenu>
-          <ButtonMenu :name="Profile" :imgLink="ImgMyPlants"></ButtonMenu>
-          <ButtonMenu :name="MyPlants" :imgLink="ImgAbout"></ButtonMenu>
-          <ButtonMenu :name="PlantKeeper" :imgLink="ImgAbout"></ButtonMenu>
-          <ButtonMenu :name="Botanist" :imgLink="ImgAbout"></ButtonMenu>
-          <ButtonMenu :name="LogOut" :imgLink="ImgAbout"></ButtonMenu>
+          <ButtonMenu :name="Profile" :imgLink="ImgProfile"></ButtonMenu>
+          <ButtonMenu :name="MyPlants" :imgLink="ImgMyPlants"></ButtonMenu>
+          <ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper"></ButtonMenu>
+          <ButtonMenu :name="Botanist" :imgLink="ImgBotanist"></ButtonMenu>
+          <ButtonMenu :name="LogOut" :imgLink="ImgLogOut"></ButtonMenu>
         </div>
       </div>
     </transition>
   </div>
 </template>
+
 <script>
-import ButtonMenu from "./Composants/ButtonMenu.vue"
+import ButtonMenu from "./ButtonMenu.vue";
+
+export default {
+  name: 'SidebarMenu',
   components: {
     ButtonMenu,
   },
@@ -40,11 +44,11 @@ import ButtonMenu from "./Composants/ButtonMenu.vue"
 
     ImgAbout: `Logo/Logo_1.png`,
 
-    ImgProfile: "Mon profil",
+    ImgProfile: "Logo/Logo_1.png",
     ImgMyPlants: "Plante/Plante_7.png",
-    ImgPlantKeeper: "Gardien",
-    ImgBotanist: "Botaniste",
-    ImgLogOut: "Deconnexion",
+    ImgPlantKeeper: "Plante/Plante_5.png",
+    ImgBotanist: "Logo/advice.png",
+    ImgLogOut: "Logo/ConnexionLogo.png",
   }),
   methods: {
     closeOpenSidebarPanel() {
@@ -55,7 +59,7 @@ import ButtonMenu from "./Composants/ButtonMenu.vue"
 </script>
 <style>
 .sidebar-panel {
-  overflow-y: auto;
+
   background-color: var(--menu-background);
   position: fixed;
   left: 0;
@@ -92,10 +96,14 @@ import ButtonMenu from "./Composants/ButtonMenu.vue"
 }
 
 .ButtonsMenu {
+  overflow-y: auto;
+  gap: 5px;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: space-evenly;
   align-content: center;
+  color: var(----menu-background);
 }
 
 /* Transitions menu */

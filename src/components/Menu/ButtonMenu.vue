@@ -1,17 +1,16 @@
 <template>
-  <div class="ButtonMenuClass">
+  <a href="#" type = "button" class="ButtonMenuClass">
 
     <div class="imgClass">
-      <img :src="require(`@/assets/` + imgLink)" class="imgButton">
+      <img :src="require(`@/assets/` + imgLink)" class="imgButton" alt="">
     </div>
 
     <div class="Title">
       <p>{{ name }}</p>
     </div>
 
-    <img src="../../assets/Logo/Barre.png" alt="" class="imgBarre" />
+  </a>
 
-  </div>
 </template>
 <script>
 export default {
@@ -26,35 +25,44 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .ButtonMenuClass {
+  flex: 1;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
-  justify-content: center;
+  background-color: var(--menu-button-selected-title);
+  gap: 50px;
+  border: 0ch;
+  text-decoration: none;
+}
+
+.ButtonMenuClass:hover {
+  background: var(--menu-button-selected-background);
 }
 
 .Title {
   color: var(--menu-button-diselected-title);
   align-self: center;
-  text-align: justify;
-  width: 500px;
 }
 
-.ButtonBackg {
-  margin: 0%;
-  background-color: var(--menu-button-diselected-background);
+.ButtonMenuClass:hover .Title {
+  color: var(--menu-button-selected-title);
+  align-self: center;
+}
 
+.imgClass {
+  width: 40px;
+  align-self: center;
 }
 
 .imgButton {
-  max-width: 20%;
+  width: 40px;
   height: auto;
+  padding: 20px;
+  border-right: 3px solid;
+  border-color: var(--menu-button-pipe);
 }
 
-.imgBarre {
-  width: 5px;
-  height: 50px;
-}
 </style>
