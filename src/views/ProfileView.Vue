@@ -3,6 +3,7 @@
         <SidebarMenu />
         <!-- <ProfilePage /> -->
         <h1>TEST</h1>
+        <h2>test</h2>
     </div>
 </template>
 <script>
