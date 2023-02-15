@@ -7,7 +7,7 @@
       <Burger :isOpen ="SideBarOpen" @click="toggleBar()"></Burger>
 
     </nav>
-    <h1> <center>{{ SideBarOpen }}</center></h1>
+    
 
  
     <Sidebar :isPanelOpen="SideBarOpen"></Sidebar>

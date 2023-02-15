@@ -1,0 +1,21 @@
+:root{
+  --main-bg-color: #DBEFE6;
+  --menu-logo-background: #427556;
+  --menu-background: #BAD9CB;
+  --menu-button-diselected-background: #EDFFF7;
+  --menu-button-selected-background: #416640;
+  --menu-button-selected-title: #FFFFFF;
+  --menu-button-diselected-title: #416640;
+  --menu-button-pipe: #A5D8C1;
+  --main-title-h1: #166434;
+  --main-title-h2: #226D3F;
+  --main-text: #427556;
+  --main-text-about: #000000;
+
+}
+
+/* exemple utilisation :
+body {
+  background-color: var(--main-bg-color);
+}
+*/
