@@ -23,9 +23,9 @@
   </div>
 </template>
 
+
 <script>
 import ButtonMenu from "./ButtonMenu.vue";
-
 export default {
   name: 'SidebarMenu',
   components: {
@@ -57,6 +57,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .sidebar-panel {
 

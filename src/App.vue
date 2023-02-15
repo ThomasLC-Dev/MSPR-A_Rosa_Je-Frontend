@@ -8,7 +8,7 @@
 
     </nav>
     
-
+  <router-view></router-view>
  
     <Sidebar :isPanelOpen="SideBarOpen"></Sidebar>
   </div>
