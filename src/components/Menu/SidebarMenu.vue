@@ -44,11 +44,11 @@ export default {
 
     ImgAbout: `Logo/Logo_1.png`,
 
-    ImgProfile: "Logo/Logo_1.png",
+    ImgProfile: "Logo/ConnexionLogo.png",
     ImgMyPlants: "Plante/Plante_7.png",
     ImgPlantKeeper: "Plante/Plante_5.png",
     ImgBotanist: "Logo/advice.png",
-    ImgLogOut: "Logo/ConnexionLogo.png",
+    ImgLogOut: "Logo/ConnexionLogout.png",
   }),
   methods: {
     closeOpenSidebarPanel() {
