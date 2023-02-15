@@ -22,8 +22,11 @@
     </transition>
   </div>
 </template>
+
 <script>
-import ButtonMenu from "./Composants/ButtonMenu.vue"
+import ButtonMenu from "./ButtonMenu.vue";
+export default {
+  name: 'SidebarMenu',
   components: {
     ButtonMenu,
   },
@@ -53,6 +56,7 @@ import ButtonMenu from "./Composants/ButtonMenu.vue"
   },
 };
 </script>
+
 <style>
 .sidebar-panel {
   overflow-y: auto;
