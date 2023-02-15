@@ -23,7 +23,6 @@
   </div>
 </template>
 
-
 <script>
 import ButtonMenu from "./ButtonMenu.vue";
 export default {
