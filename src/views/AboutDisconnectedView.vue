@@ -54,16 +54,10 @@ export default {
 </script>
 
 <style>
+/* main-container */
 .fullPage {
     align-self: center;
     background-color: var(--menu-button-pipe);
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -83,7 +77,6 @@ export default {
     bottom: 0px;
     left: 0px;
     float: left;
-
     margin: 0 0 0 15px;
 
 }

@@ -75,6 +75,7 @@ ul.sidebar-panel-nav > li > a {
 	height: 100vh;
 	margin-left: 300px;
 	overflow-x: hidden;
+  padding: 20px;
 }
 
 .background-plant{
