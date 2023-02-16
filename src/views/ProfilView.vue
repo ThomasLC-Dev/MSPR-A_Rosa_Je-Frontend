@@ -19,8 +19,5 @@ import SidebarMenu from '@/components/Menu/SidebarMenu.vue'
 
 </script>
 <style>
-body{
-    color :red
-}
 
 </style>

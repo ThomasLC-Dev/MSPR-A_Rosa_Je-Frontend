@@ -7,7 +7,6 @@
                 <span class="burger-bar burger-bar--2"></span>
                 <span class="burger-bar burger-bar--3"></span>
             </button>
-            <h1> {{ isOpen }}</h1>
         </slot>
     </div>
 </template>

@@ -39,11 +39,7 @@ export default {
 }
  </script>
  <style>
- html {
-    height: 100%;
-    overflow:hidden;
-  } 
- 
+
   .logo {
     align-self: center;
     color: #fff;
