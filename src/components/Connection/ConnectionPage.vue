@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <div class="container-connection">
-        <h1>Connexion</h1>
+        <h1>CONNEXION</h1>
 
         <form id="formConnection">
           <div class="form-field">
@@ -19,12 +19,11 @@
           <div>
             <button class="btn-Connection" id="submit">Connexion</button>
           </div>
+          
+          <div>
+            <a class="notRegistered" href="mailto:admin@arosaje.fr" id="notYetRegistered">Pas encore membre ? Inscris-toi !</a>
+          </div>
         </form>
-        
-        <div>
-          <a class="notRegistered" href="mailto:admin@arosaje.fr" id="notYetRegistered">Pas encore membre ? Inscris-toi !</a>
-        </div>
-
       </div>
     </div>
   </template>
@@ -40,6 +39,16 @@
       margin-bottom: 10px;
     }
 
+    label {
+      margin-bottom: 2px;
+      font-size: large;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 10px;
+    }
+
     .container {
       height: auto;
       margin: 0 auto;
@@ -52,6 +61,7 @@
       background-color: var(--main-bg-color);
       border-radius: 10px;
       border: 2px solid var(--main-container-border);
+      margin: 50% 0 0 0;
     }
 
     .form-field {
@@ -65,7 +75,7 @@
     }
 
     .btn-Connection { /* CSS Global -> btn-validate */
-      margin-bottom: 10px;
+      margin-bottom: 25px;
       width: 200px;
       border-radius: 20px;
       color: #fff;
@@ -86,12 +96,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin: 10px;
     }
   
     #forgotPassword {
       display: flex;
       justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 25px;
       font-size: large;
     }
   </style>
