@@ -46,6 +46,7 @@
 
     .notRegistered {
       margin-bottom: 10px;
+      font-size: large;
     }
 
     .btn-Connection { /* CSS Global -> btn-validate */
@@ -67,11 +68,14 @@
       display: flex;
       justify-content: center;
       margin-bottom: 10px;
+      font-size: large;
     }
   
     #mailAddress, #password{
       margin-bottom: 10px;
       border-radius: 10px;
       border: 1px solid #519069;
+      width: 300px;
+      font-size: large;
     }
   </style>
