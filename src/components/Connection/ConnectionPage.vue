@@ -19,7 +19,7 @@
       <a href="mailto:admin@arosaje.fr" id="forgotPassword">Mot de passe oublié</a>
       
       <div>
-        <button class="btn-Connection" id="submit" @click="goToView(routeLogin)">Connexion</button>
+        <button class="btn-validate" id="submit" @click="goToView(routeLogin)">Connexion</button>
       </div>
       
       <div>
@@ -48,61 +48,13 @@
 </script>
 <style>
 
-  /* h1 {  
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  hr {  
-    background-color: var(--main-title-underline);
-    border-top: 3px solid var(--main-title-underline);
-  }
-
-  label { 
-    margin-bottom: 2px;
-    font-size: large;
-    font-weight: bold;
-  }
-
-  input { 
-    padding: 10px;
-  } */
-
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--main-bg-color);
-    border-radius: 10px;
-    border: 2px solid var(--main-container-border);
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-  }
-
   .notRegistered {
     margin-bottom: 10px;
     font-size: large;
   }
 
-  .btn-Connection { /* CSS Global -> btn-validate */
-    margin-bottom: 25px;
-    width: 200px;
-    border-radius: 20px;
-    color: #fff;
-    border: 1px solid #bad9cb;
-    background-color: var(--btn-validate-color);
-    font-size: 30px;
-  }
-
-  #mailAddress, #password{
-    margin-bottom: 10px;
-    border-radius: 10px;
-    border: 1px solid #519069;
+  input {
     width: 300px;
-    font-size: large;
   }
 
   #formConnection {
