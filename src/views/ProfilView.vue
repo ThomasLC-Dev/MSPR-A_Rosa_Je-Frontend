@@ -7,15 +7,20 @@
     </div>
 </template>
 <script>
+import profilView from '@/components/ProfilView/ProfilePage.vue'
+import SidebarMenu from '@/components/Menu/SidebarMenu.vue'
     export default {
         name: 'profile',
         components: {
-            ProfilePage,
+            profilView,
             SidebarMenu
         }
     }
 
 </script>
 <style>
+body{
+    color :red
+}
 
 </style>
