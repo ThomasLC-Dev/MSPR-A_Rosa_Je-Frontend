@@ -1,6 +1,6 @@
 <template>
   <a href="#" type = "button" class="ButtonMenuClass">
-
+    
     <div class="imgClass">
       <img :src="require(`@/assets/` + imgLink)" class="imgButton" alt="">
     </div>
