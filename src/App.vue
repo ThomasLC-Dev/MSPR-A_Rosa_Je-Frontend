@@ -1,71 +1,92 @@
 <template>
-  <div id="app">
+  <div class="main-content">
     <nav class="main-nav">
-      <div class="logo">
-       
-      </div>
+      <div class="logo"></div>
       <Burger :isOpen ="SideBarOpen" @click="toggleBar()"></Burger>
-
+	  	<Sidebar :isPanelOpen="SideBarOpen || width > 1300"></Sidebar>
     </nav>
-    
-  <router-view></router-view>
- 
-    <Sidebar :isPanelOpen="SideBarOpen"></Sidebar>
+    <router-view class="page"></router-view>
   </div>
- </template>
+</template>
  
- <script>
- import Burger from './components/Menu/Burger.vue';
- import Sidebar from './components/Menu/SidebarMenu.vue';
+<script>
+import Burger from './components/Menu/Burger.vue';
+import Sidebar from './components/Menu/SidebarMenu.vue';
+
 export default {
   name: 'app',
   components: {
     Burger,
-    Sidebar,
-  }, 
+    Sidebar
+  },
   data() {
-    return { 
-      SideBarOpen : false
+    return {
+			SideBarOpen: false,
+			width: window.innerWidth
     }
-  }, 
-   methods: {
-          toggleBar() {
-                
-              this.SideBarOpen = !this.SideBarOpen
-              
-                
-            }
- } 
+  },
+  methods: {
+    toggleBar() {
+      this.SideBarOpen = !this.SideBarOpen
+		}
+	},
+	created() {
+		window.addEventListener("resize", () => { this.width = window.innerWidth })
+	},
+	destroyed() {
+		window.removeEventListener("resize", () => { this.width = window.innerWidth })
+	},
 }
- </script>
- <style>
- html {
-    height: 100%;
-    overflow:hidden;
-  } 
- 
-  .logo {
-    align-self: center;
-    color: #fff;
-    font-weight: bold;
-    font-family: 'Lato'
-  }
- 
-  .main-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0.8rem;
-  }
- 
-  ul.sidebar-panel-nav {
-    list-style-type: none;
-  }
- 
-  ul.sidebar-panel-nav > li > a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5rem;
-    display: block;
-    padding-bottom: 0.5em;
-  }
- </style>
+</script>
+
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+  align-self: center;
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Lato'
+}
+
+ul.sidebar-panel-nav {
+  list-style-type: none;
+}
+
+ul.sidebar-panel-nav > li > a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: block;
+  padding-bottom: 0.5em;
+}
+
+.main-content{
+	display: flex;
+	flex-direction: row;
+}
+
+.page{
+	background-color: var(--main-bg-color);
+	width: calc(100% - 300px);
+	height: 100vh;
+	margin-left: 300px;
+	overflow-x: hidden;
+}
+
+.background-plant{
+	background-image: url("@/assets/Plante/background-plant.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+@media(max-width: 1300px){
+  .page{
+		width: 100%;
+		margin-left: 0px;
+	}
+}
+</style>

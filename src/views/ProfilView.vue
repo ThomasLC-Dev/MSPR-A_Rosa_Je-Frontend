@@ -6,16 +6,17 @@
         <h2>test</h2>
     </div>
 </template>
-<script>
-    export default {
-        name: 'profile',
-        components: {
-            ProfilePage,
-            SidebarMenu
-        }
-    }
 
+<script>
+import profilView from '@/components/ProfilView/ProfilePage.vue';
+export default {
+  name: 'profile',
+  components: {
+    ProfilePage,
+  }
+}
 </script>
+
 <style>
 
 </style>
