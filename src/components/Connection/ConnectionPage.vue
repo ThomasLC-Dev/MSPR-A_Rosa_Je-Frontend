@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <div class="container-connection">
-        <h2>Connexion</h2>
+        <h1>Connexion</h1>
         <form id="formConnection">
           <label for="mailAddress">Adresse mail : </label>
           <input type="text" id="mailAddress" placeholder="Entrez votre adresse mail">
@@ -9,11 +9,11 @@
           <input type="password" id="password" placeholder="Entrez votre mot de passe">
           <a href="mailto:admin@arosaje.fr" id="forgotPassword">Mot de passe oublié</a>
         </form>
-        <div class="btn-Connection">
-          <button id="submit">Connexion</button>
+        <div>
+          <button class="btn-Connection" id="submit">Connexion</button>
         </div>
-        <div class="notRegistered">
-          <a href="mailto:admin@arosaje.fr" id="notYetRegistered">Pas encore membre ? Inscris-toi !</a>
+        <div>
+          <a class="notRegistered" href="mailto:admin@arosaje.fr" id="notYetRegistered">Pas encore membre ? Inscris-toi !</a>
         </div>
       </div>
     </div>
@@ -25,6 +25,11 @@
   
   </script>
   <style>
+    h1 {  /* CSS Global */
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
     .container {
       height: auto;
       margin: 0 auto;
@@ -36,14 +41,23 @@
       align-items: center;
       background: #f1fff8;
       border-radius: 10px;
-      border: 1px solid #519069;
+      border: 2px solid #519069;
     }
-  
-    h2 {
-      text-align: center;
+
+    .notRegistered {
       margin-bottom: 10px;
     }
-  
+
+    .btn-Connection { /* CSS Global -> btn-validate */
+      margin-bottom: 10px;
+      width: 200px;
+      border-radius: 20px;
+      color: #fff;
+      border: 1px solid #bad9cb;
+      background-color: #519069;
+      font-size: 30px;
+    }
+    
     #formConnection {
       display: flex;
       flex-direction: column;
@@ -55,19 +69,9 @@
       margin-bottom: 10px;
     }
   
-    .btn-Connection {
-      margin-bottom: 10px;
-    }
-
     #mailAddress, #password{
+      margin-bottom: 10px;
       border-radius: 10px;
       border: 1px solid #519069;
-    }
-
-    #submit {
-      border-radius: 10px;
-      color: #fff;
-      border: 1px solid #bad9cb;
-      background-color: #519069;
     }
   </style>
