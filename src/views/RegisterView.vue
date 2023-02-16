@@ -20,4 +20,5 @@ import RegisterPage from '@/components/Register/RegisterPage.vue';
 </script>
 <style>
 
+
 </style>
