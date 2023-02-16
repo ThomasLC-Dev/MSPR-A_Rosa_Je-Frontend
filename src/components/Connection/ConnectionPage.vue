@@ -3,9 +3,9 @@
       <div class="container-connection">
         <h1>Connexion</h1>
         <form id="formConnection">
-          <label for="mailAddress">Adresse mail : </label>
+          <label id="mailAddressLabel" for="mailAddress">Adresse mail : </label>
           <input type="text" id="mailAddress" placeholder="Entrez votre adresse mail">
-          <label for="password">Mot de passe : </label>
+          <label id="passwordLabel" for="password">Mot de passe : </label>
           <input type="password" id="password" placeholder="Entrez votre mot de passe">
           <a href="mailto:admin@arosaje.fr" id="forgotPassword">Mot de passe oublié</a>
         </form>
@@ -39,9 +39,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #f1fff8;
+      background-color: var(--main-bg-color);
       border-radius: 10px;
-      border: 2px solid #519069;
+      border: 2px solid var(--main-container-border);
     }
 
     .notRegistered {
@@ -58,7 +58,20 @@
       background-color: #519069;
       font-size: 30px;
     }
-    
+
+    #mailAddressLabel, #passwordLabel {
+      font-size: large;
+      margin-bottom: 5px;
+    }
+
+    #mailAddress, #password{
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border: 1px solid #519069;
+      width: 300px;
+      font-size: large;
+    }
+
     #formConnection {
       display: flex;
       flex-direction: column;
@@ -68,14 +81,6 @@
       display: flex;
       justify-content: center;
       margin-bottom: 10px;
-      font-size: large;
-    }
-  
-    #mailAddress, #password{
-      margin-bottom: 10px;
-      border-radius: 10px;
-      border: 1px solid #519069;
-      width: 300px;
       font-size: large;
     }
   </style>
