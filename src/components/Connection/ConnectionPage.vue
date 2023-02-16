@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <div class="container-connection">
-      <h1>CONNEXION</h1>
-
+      <div>
+        <h1>CONNEXION</h1>
+        <hr>
+      </div>
+      
       <form id="formConnection">
         <div class="form-field">
           <label for="mailAddress">Adresse mail : </label>
@@ -49,6 +52,11 @@
   h1 {  /* CSS Global */
     text-align: center;
     margin-bottom: 10px;
+  }
+
+  hr {
+    background-color: var(--main-title-underline);
+    border-top: 3px solid var(--main-title-underline);
   }
 
   label {
