@@ -58,4 +58,9 @@
     .btn-Connection {
       margin-bottom: 10px;
     }
+
+    #mailAddress, #password, #submit{
+      border-radius: 10px;
+      border: 1px solid #519069;
+    }
   </style>
