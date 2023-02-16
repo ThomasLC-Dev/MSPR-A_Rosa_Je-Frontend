@@ -14,7 +14,6 @@
                 <br>• En prodiguant des conseils d’entretien afin que les propriétaires s’occupent de mieux en
                 mieux
                 de leurs plantes.
-
             </p>
         </div>
 
@@ -28,14 +27,14 @@
                 <textImg :number="3" :textStep="textStep3"> </textImg>
                 <textImg :number="4" :textStep="textStep4"> </textImg>
                 <textImg :number="5" :textStep="textStep5"> </textImg>
-
             </ul>
             <img src="@/assets/Plante/Plante_3.jpeg" alt="" class="imgPlantExplanation_2">
         </div>
     </div>
 </template>
+
 <script>
-import textImg from "../components/TextImgDisconnectedView/disconnectedViewTextImg.vue"
+import textImg from "../components/TextImgDisconnectedView/disconnectedViewTextImg.vue";
 export default {
     name: 'AboutView',
     components: {
@@ -53,6 +52,7 @@ export default {
 }
 
 </script>
+
 <style>
 .fullPage {
     align-self: center;
@@ -120,9 +120,6 @@ export default {
     }
     .steps{
         flex-direction: column;
-    }
-
-    
+    }  
 }
-
 </style>
