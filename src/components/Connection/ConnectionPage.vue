@@ -19,7 +19,6 @@
     </div>
   </template>
   <script>
-  //import SidebarMenuVue from '@/components/Menu/SidebarMenu.vue';
     export default {
       name: 'ConnectionView'
     }
