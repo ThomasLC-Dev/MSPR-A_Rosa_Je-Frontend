@@ -2,24 +2,29 @@
     <div class="container">
       <div class="container-connection">
         <h1>Connexion</h1>
+
         <form id="formConnection">
           <div class="form-field">
-            <label id="mailAddressLabel" for="mailAddress">Adresse mail : </label>
+            <label for="mailAddress">Adresse mail : </label>
             <input type="text" id="mailAddress" placeholder="Entrez votre adresse mail">
           </div>
           
-          <div>
-            <label id="passwordLabel" for="password">Mot de passe : </label>
+          <div class="form-field">
+            <label for="password">Mot de passe : </label>
             <input type="password" id="password" placeholder="Entrez votre mot de passe">
           </div>
+
           <a href="mailto:admin@arosaje.fr" id="forgotPassword">Mot de passe oublié</a>
+          
+          <div>
+            <button class="btn-Connection" id="submit">Connexion</button>
+          </div>
         </form>
-        <div>
-          <button class="btn-Connection" id="submit">Connexion</button>
-        </div>
+        
         <div>
           <a class="notRegistered" href="mailto:admin@arosaje.fr" id="notYetRegistered">Pas encore membre ? Inscris-toi !</a>
         </div>
+
       </div>
     </div>
   </template>
@@ -49,6 +54,11 @@
       border: 2px solid var(--main-container-border);
     }
 
+    .form-field {
+      display: flex;
+      flex-direction: column;
+    }
+
     .notRegistered {
       margin-bottom: 10px;
       font-size: large;
@@ -64,11 +74,6 @@
       font-size: 30px;
     }
 
-    #mailAddressLabel, #passwordLabel {
-      font-size: large;
-      margin-bottom: 5px;
-    }
-
     #mailAddress, #password{
       margin-bottom: 10px;
       border-radius: 10px;
@@ -80,6 +85,7 @@
     #formConnection {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
   
     #forgotPassword {
