@@ -1,12 +1,18 @@
 <template>
-   
+  <div class="background-plant">
+    <ConnectionPage />
+  </div>
 </template>
 <script>
-    export default {
-        name: 'ConnectionView'
-    }
+import ConnectionPage from '@/components/Connection/ConnectionPage.vue';
+  export default {
+    name: 'ConnectionView',
+    components: {
+      ConnectionPage
+    },
+  }
 
 </script>
 <style>
-
+  
 </style>
