@@ -59,8 +59,15 @@
       margin-bottom: 10px;
     }
 
-    #mailAddress, #password, #submit{
+    #mailAddress, #password{
       border-radius: 10px;
       border: 1px solid #519069;
+    }
+
+    #submit {
+      border-radius: 10px;
+      color: #fff;
+      border: 1px solid #bad9cb;
+      background-color: #519069;
     }
   </style>
