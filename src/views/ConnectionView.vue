@@ -1,5 +1,7 @@
 <template>
-  <ConnectionPage />
+  <div class="background-plant">
+    <ConnectionPage />
+  </div>
 </template>
 <script>
 import ConnectionPage from '@/components/Connection/ConnectionPage.vue';
