@@ -3,10 +3,15 @@
       <div class="container-connection">
         <h1>Connexion</h1>
         <form id="formConnection">
-          <label id="mailAddressLabel" for="mailAddress">Adresse mail : </label>
-          <input type="text" id="mailAddress" placeholder="Entrez votre adresse mail">
-          <label id="passwordLabel" for="password">Mot de passe : </label>
-          <input type="password" id="password" placeholder="Entrez votre mot de passe">
+          <div class="form-field">
+            <label id="mailAddressLabel" for="mailAddress">Adresse mail : </label>
+            <input type="text" id="mailAddress" placeholder="Entrez votre adresse mail">
+          </div>
+          
+          <div>
+            <label id="passwordLabel" for="password">Mot de passe : </label>
+            <input type="password" id="password" placeholder="Entrez votre mot de passe">
+          </div>
           <a href="mailto:admin@arosaje.fr" id="forgotPassword">Mot de passe oublié</a>
         </form>
         <div>
@@ -55,7 +60,7 @@
       border-radius: 20px;
       color: #fff;
       border: 1px solid #bad9cb;
-      background-color: #519069;
+      background-color: var(--btn-validate-color);
       font-size: 30px;
     }
 
