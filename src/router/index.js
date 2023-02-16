@@ -1,9 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import about from "@/views/AboutDisconnectedView.vue";
-import profilView from "@/views/ProfilView.vue";
-import myplants from '@/views/PlantsView.vue';
-import botanist from "@/views/BotanistView.vue";
-import keeper from "@/views/KeeperView.vue";
 
 const routes = [
   {
