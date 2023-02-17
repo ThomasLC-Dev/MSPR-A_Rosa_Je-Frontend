@@ -1,31 +1,49 @@
 <template>
-	<div class="main_container">
-		<div class="text">
-			<p>Ceci est un test</p>
+	<div class="container-reverse">
+		<div class="textReverse">
+			<div class="titleReverse">
+				<h1>{{ titre }}</h1>
+			</div>
+			<div class="textInsideReverse">
+				{{ text }}
+			</div>
+
 		</div>
-		<img src="@/assets/Plante/Plante_6.jpg" alt="" class="img">
+		<img src="@/assets/Plante/Plante_6.jpg" alt="" class="imgReverse">
+
+
 	</div>
 </template>
 
 <script>
 export default {
 	name: "TextAndImg",
+	props: {
+		imgLink: String,
+		text: String,
+		titre: String
+	},
 	data: () => ({}),
+
 }
 </script>
 
 <style>
-.main_container {
+.container-reverse {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin: 2%;
-	margin-left: -10%;
+	flex: 1;
+	
 }
-.img{
-	width: 20%;
+
+.imgReverse {
+	width: 10rem;
 }
-.text{
-	margin: 5%;
+
+.textReverse {
+	margin-right: 10px;
+	flex: 1;
+
 }
 </style>

@@ -11,6 +11,3 @@ import AboutConnectedPage from "@/components/AboutConnectedView/AboutConnectedPa
     }
 
 </script>
-<style>
-
-</style>

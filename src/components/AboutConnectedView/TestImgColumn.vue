@@ -1,11 +1,11 @@
 <template>
-	<div class="container">
-		<img :src="require(`@/assets/` + imgLink)" alt="" class="img">
-		<div class="explanation">
-			<div class="title">
+	<div class=".container-column">
+		<img :src="require(`@/assets/` + imgLink)" alt="" class="img-column">
+		<div class="explanation-column">
+			<div class="title-column">
 				<h1>{{ titre }}</h1>
 			</div>
-			<div class="textInside">
+			<div class="textInside-column">
 				{{ text }}
 			</div>
 		</div>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-	name: "TextAndImg",
+	name: "TextAndImgColumn",
 	data: () => ({}),
 	props: {
 		imgLink: String,
@@ -25,19 +25,20 @@ export default {
 </script>
 
 <style>
-.container {
+.container-column {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
 	word-wrap: break-word;
 	flex: 1;
 }
-.explanation{
+.explanation-column{
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 }
-.img {
+.img-column{
 	width: 10rem;
+    margin: 5%;
 }
 </style>
