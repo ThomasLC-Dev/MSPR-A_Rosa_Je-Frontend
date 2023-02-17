@@ -48,10 +48,10 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/RGPDView.vue"),
   },
   {
-    path: "/users",
-    name: "users",
+    path: "/legals",
+    name: "legals",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/UsersView.vue"),
+      import(/* webpackChunkName: "about" */ "../views/LegalsView.vue"),
   }
 ];
 
