@@ -60,9 +60,13 @@
 
 <style>
 
+  p {
+    margin-bottom: 5px;
+  }
+
   .legals-text {
     word-wrap: break-word;
-    width: -webkit-fill-available;
+    width: fill-available;
   }
 
 </style>
