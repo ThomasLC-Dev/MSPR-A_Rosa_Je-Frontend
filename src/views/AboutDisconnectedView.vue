@@ -1,13 +1,13 @@
 <template>
-	<page/>
+	<AboutDisconnectedPage/>
 </template>
 
 <script>
-import page from "../components/DisconnectedView/DisconnectedPage.vue";
+import AboutDisconnectedPage from "../components/AboutDisconnected/AboutDisconnectedPage.vue";
 export default {
 	name: 'AboutView',
 	components: {
-		page,
+		AboutDisconnectedPage,
 	}
 }
 

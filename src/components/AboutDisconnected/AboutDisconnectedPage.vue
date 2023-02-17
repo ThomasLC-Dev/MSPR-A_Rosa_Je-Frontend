@@ -44,10 +44,11 @@
     </div>
 </div>
 </template>
+
 <script>
-import textImg from "./disconnectedViewTextImg.vue";
+import textImg from "./DetailStep.vue";
 export default {
-	name: 'AboutView',
+	name: 'AboutDisconnectedPage',
 	components: {
 		textImg,
 	},

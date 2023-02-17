@@ -22,6 +22,7 @@ export default {
     }
 };
 </script>
+
 <style>
 .global {
     padding: 5px;
