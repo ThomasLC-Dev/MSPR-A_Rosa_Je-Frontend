@@ -1,12 +1,13 @@
 <template>
-   
+   <AboutConnectedPage/>
 </template>
 <script>
+import AboutConnectedPage from "@/components/AboutConnectedView/AboutConnectedPage.vue"
     export default {
-        name: 'AboutView'
+        name: 'AboutConnectedView', 
+        components:{
+            AboutConnectedPage
+        }
     }
 
 </script>
-<style>
-
-</style>
