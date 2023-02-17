@@ -2,7 +2,13 @@ export const config = {
   apiBase: 'https://a-rosa-je.herokuapp.com/',
   endpoints: {
     loginPath: 'login',
-    registerPath: 'auth/register'
+    registerPath: 'auth/register',
+    addressesPath: 'addresses',
+    attachmentFilesPath: 'attachment-files',
+    plantsPath: 'plants',
+    slotsPath: 'slots',
+    usersPath: 'users',
+    userRolesPath: 'user-roles'
   }
 }
 
