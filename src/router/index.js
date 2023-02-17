@@ -7,6 +7,11 @@ const routes = [
     component: () => import("@/views/AboutDisconnectedView.vue")
   },
   {
+    path: "/ok",
+    name: "homeConnected",
+    component: () => import("@/views/AboutConnectedView.vue")
+  },
+  {
     path: "/profil",
     name: "profil",
     component: () => import("@/views/ProfilView.vue")
