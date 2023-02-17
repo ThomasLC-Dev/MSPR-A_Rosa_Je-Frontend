@@ -36,10 +36,10 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(242, 210, 126);
+    border: 2px solid var(--main-detail-steep-color);
     border-radius: 100%;
     padding: 5px 12px;
-    background-color: rgb(242, 210, 126);
+    background-color: var(--main-detail-steep-color);
     margin-left: auto;
     margin-right: auto;
     font-size: 1.8em;

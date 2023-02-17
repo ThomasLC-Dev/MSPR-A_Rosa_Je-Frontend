@@ -3,7 +3,7 @@
     <nav class="main-nav">
       <div class="logo"></div>
       <Burger :isOpen ="SideBarOpen" @click="toggleBar()"></Burger>
-	  	<Sidebar :isPanelOpen="SideBarOpen || width > 1300"></Sidebar>
+	  	<Sidebar :isPanelOpen="SideBarOpen || width > 1000"></Sidebar>
     </nav>
     <router-view class="page"></router-view>
   </div>
@@ -84,7 +84,7 @@ ul.sidebar-panel-nav > li > a {
 	background-size: cover;
 }
 
-@media(max-width: 1300px){
+@media(max-width: 1000px){
   .page{
 		width: 100%;
 		margin-left: 0px;

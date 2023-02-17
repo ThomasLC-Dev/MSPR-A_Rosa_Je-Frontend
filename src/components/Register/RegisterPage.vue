@@ -20,54 +20,54 @@
                 <div class="form-field-direction">
                     <div class="form-field">
                         <label for="phone">Nº de mobile:</label>
-                        <input id="phone" v-model="phone">
+                        <input type="text" id="phone" v-model="phone">
                     </div>
                     <div class="form-field">
                         <label for="email">Email:</label>
-                        <input id="email" v-model="email">
+                        <input type="text" id="email" v-model="email">
                     </div>
                 </div>
 
-                <div class="form-field-direction">
+                <div class="form-field-direction-gp">
                     <div class="address-road">
                         <div class="form-field">
                             <label for="roadNumber">Nº de rue:</label>
-                            <input id="roadNumber" v-model="roadNumber">
+                            <input type="text" id="roadNumber" v-model="roadNumber">
                         </div>
                         <div class="form-field">
                             <label for="roadType">Type de rue:</label>
-                            <input id="roadType" v-model="roadType">
+                            <input type="text" id="roadType" v-model="roadType">
                         </div>
                     </div>
                     <div class="form-field">
                         <label for="road">Nom de rue :</label>
-                        <input id="road" v-model="road">
+                        <input type="text" id="road" v-model="road">
                     </div>
                 </div>
-                <div class="form-field-direction">
+                <div class="form-field-direction-gp">
                     <div class="form-field">
                         <label for="addtionalAddress">Adresse complémentaire :</label>
-                        <input id="addtionalAddress" v-model="addtionalAddress">
+                        <input type="text" id="addtionalAddress" v-model="addtionalAddress">
                     </div>
                     <div class="address-zip">
                         <div class="form-field">
-                            <label for="postalCode">Nº de rue:</label>
-                            <input id="postalCode" v-model="postalCode">
+                            <label for="postalCode">Code postal :</label>
+                            <input type="text" id="postalCode" v-model="postalCode">
                         </div>
                         <div class="form-field">
-                            <label for="city">Type de rue:</label>
-                            <input id="city" v-model="city">
+                            <label for="city">Nom de ville :</label>
+                            <input type="text" id="city" v-model="city">
                         </div>
                     </div>
                 </div>
                 <div class="form-field-direction">
                     <div class="form-field">
                         <label for="password">Mot de passe :</label>
-                        <input id="password" v-model="password">
+                        <input type="password" id="password" v-model="password">
                     </div>
                     <div class="form-field">
                         <label for="passwordConfirmation">Confirmation :</label>
-                        <input id="passwordConfirmation" v-model="passwordConfirmation">
+                        <input type="password" id="passwordConfirmation" v-model="passwordConfirmation">
                     </div>
                 </div>
             </div>
@@ -89,8 +89,8 @@
             </div>
 
             <div class="button-group">
-                <input class="button" type="reset" value="Annuler">
-                <input class="button" type="submit" value="S'inscrire">
+                <input class="btn-reset" type="reset" value="Annuler">
+                <input class="btn-validate" type="submit" value="S'inscrire">
             </div> 
         </form>
     </div>
@@ -153,22 +153,6 @@ export default {
 </script>
 
 <style scoped>
-.main-container {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    background-color: var(--main-bg-color);
-    border: 2px solid #519069;
-    /* var(--main-container-border) */
-}
-
-h1 {
-    color: var(--main-title-h1);
-    text-align: center;
-    margin-bottom: 10px;
-}
-
 .form-register {
     display: flex;
     flex-direction: column;
@@ -186,7 +170,7 @@ h1 {
     /* flex-direction: column; pour la version mobile */
 }
 
-.form-field {
+.form-field-direction-gp{
     display: flex;
     flex-direction: column;
 }
@@ -202,12 +186,6 @@ h1 {
 
 .address-road, .address-zip {
     display: flex;
-    flex-direction: column;
-}
-
-.button-group {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
 }
 </style>

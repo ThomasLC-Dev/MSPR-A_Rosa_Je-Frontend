@@ -103,7 +103,7 @@ button:focus {
 	transform: rotate(-45deg)
 }
 
-@media(max-width: 1300px){
+@media(max-width: 1000px){
   #burger{
 		display: block;
 	}
