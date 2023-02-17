@@ -1,16 +1,16 @@
 <template>
-   <div class="background-plant">
+  <div class="background-plant">
     <LegalsPage />
-   </div>
+  </div>
 </template>
 <script>
 import LegalsPage from "@/components/Legals/LegalsPage.vue";
-    export default {
-        name: 'LegalsView',
-        components: {
-            LegalsPage
-        },
-    }
+  export default {
+    name: 'LegalsView',
+    components: {
+      LegalsPage
+    },
+  }
 
 </script>
 <style>
