@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 * {
   font-family: 'Inter', sans-serif;
@@ -41,12 +41,14 @@ input {
 .form-field {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .button-group {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
   padding-top: 20px;
 }
 

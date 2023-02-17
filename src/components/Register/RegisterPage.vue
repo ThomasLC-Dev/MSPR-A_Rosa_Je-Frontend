@@ -157,22 +157,28 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 90%;
 }
 
 .form-fields {
     display: flex;
     flex-direction: column;
+    
 }
 
 .form-field-direction {
     display: flex;
     flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
     /* flex-direction: column; pour la version mobile */
 }
 
 .form-field-direction-gp{
     display: flex;
     flex-direction: column;
+
+    flex-wrap: wrap;
 }
 
 .form-checkbox {
@@ -187,5 +193,7 @@ export default {
 .address-road, .address-zip {
     display: flex;
     flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 </style>
