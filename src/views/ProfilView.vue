@@ -12,7 +12,7 @@ import profilView from '@/components/ProfilView/ProfilePage.vue';
 export default {
   name: 'profile',
   components: {
-    ProfilePage,
+    profilView,
   }
 }
 </script>

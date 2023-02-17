@@ -42,11 +42,6 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/RegisterView.vue"),
   },
   {
-    path: '/profile',
-    name: 'profile',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ProfilView.vue')
-  },
-  {
     path: "/rgpd",
     name: "rgpd",
     component: () =>

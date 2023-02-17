@@ -25,7 +25,7 @@ export default {
 <style>
 .global {
     padding: 5px;
-    margin-left: -15px;
+    margin-left: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;

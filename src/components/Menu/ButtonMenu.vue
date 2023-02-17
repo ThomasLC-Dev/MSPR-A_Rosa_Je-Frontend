@@ -45,6 +45,8 @@ export default {
 .Title {
   color: var(--menu-button-diselected-title);
   align-self: center;
+  padding: auto;
+  margin: auto;
 }
 
 .ButtonMenuClass:hover .Title {
