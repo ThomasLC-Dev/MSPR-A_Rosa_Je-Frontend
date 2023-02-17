@@ -3,7 +3,7 @@
 </template>
 <script>
     export default {
-        name: 'UsersView'
+        name: 'LegalsView'
     }
 
 </script>
