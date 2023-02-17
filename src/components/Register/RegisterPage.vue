@@ -18,11 +18,11 @@
                 </div>
 
                 <div class="form-field-direction">
-                    <div class="form-field">
+                    <div class="form-field  field-3">
                         <label for="phone">Nº de mobile:</label>
                         <input type="text" id="phone" v-model="phone">
                     </div>
-                    <div class="form-field">
+                    <div class="form-field  field-7">
                         <label for="email">Email:</label>
                         <input type="text" id="email" v-model="email">
                     </div>
@@ -30,11 +30,11 @@
 
                 <div class="form-field-direction-gp">
                     <div class="address-road">
-                        <div class="form-field">
+                        <div class="form-field field-3">
                             <label for="roadNumber">Nº de rue:</label>
                             <input type="text" id="roadNumber" v-model="roadNumber">
                         </div>
-                        <div class="form-field">
+                        <div class="form-field field-7">
                             <label for="roadType">Type de rue:</label>
                             <input type="text" id="roadType" v-model="roadType">
                         </div>
@@ -50,11 +50,11 @@
                         <input type="text" id="addtionalAddress" v-model="addtionalAddress">
                     </div>
                     <div class="address-zip">
-                        <div class="form-field">
+                        <div class="form-field field-3">
                             <label for="postalCode">Code postal :</label>
                             <input type="text" id="postalCode" v-model="postalCode">
                         </div>
-                        <div class="form-field">
+                        <div class="form-field field-7">
                             <label for="city">Nom de ville :</label>
                             <input type="text" id="city" v-model="city">
                         </div>
@@ -73,17 +73,17 @@
             </div>
             <div class="group-checkbox">
                 <div class="form-checkbox">
-                    <input type="checkbox" id="customer" value="1" v-model="userRoles">
+                    <input type="checkbox" class="checkbox-position" id="customer" value="1" v-model="userRoles">
                     <label for="customer" class="register-checkbox">Avez-vous besoin de faire garder vos plantes ?</label>
                 </div>
 
                 <div class="form-checkbox">
-                    <input type="checkbox" id="keeper" value="2" v-model="userRoles">
+                    <input type="checkbox" class="checkbox-position" id="keeper" value="2" v-model="userRoles">
                     <label for="keeper" class="register-checkbox">Voulez-vous être gardien de plantes ?</label>
                 </div>
 
                 <div class="form-checkbox">
-                    <input type="checkbox" id="botanist" value="3" v-model="userRoles">
+                    <input type="checkbox" class="checkbox-position" id="botanist" value="3" v-model="userRoles">
                     <label for="botanist" class="register-checkbox">Souhaitez-vous apporter des conseils spécialisés ?</label>
                 </div>
             </div>
@@ -157,13 +157,21 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 90%;
+    width: 80%;
 }
 
 .form-fields {
     display: flex;
     flex-direction: column;
     
+}
+
+.field-3 {
+    flex: 3;
+}
+
+.field-7 {
+    flex: 7;
 }
 
 .form-field-direction {
@@ -177,17 +185,26 @@ export default {
 .form-field-direction-gp{
     display: flex;
     flex-direction: column;
-
     flex-wrap: wrap;
 }
 
 .form-checkbox {
     display: flex;
     flex-direction: row;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.checkbox-position {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    position: relative;
+    top: -1px;
 }
 
 .register-checkbox {
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 .address-road, .address-zip {
@@ -195,5 +212,30 @@ export default {
     flex-direction: row;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+@media (max-width : 1000px) {
+    .form-register {
+        width: 90%;
+    }
+    .form-field-direction-gp {
+        flex-direction: column;
+    }
+
+    .address-road, .address-zip {
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 15px;
+    }
+    
+    .field-3 {
+        flex: 0.1;
+        width: 35%;
+    }
+
+    .field-7 {
+        flex: 0.3;
+        width: 60%;
+    }
 }
 </style>
