@@ -4,7 +4,7 @@
         <div class="title">
             <h1>A’Rosa-je, c’est quoi ?</h1>
         </div>
-        <section>
+        <section class="section">
             <div class="left">
                 <img src="@/assets/Plante/Plante_8.webp" alt="" class="imgPlantExplanation">
             </div>
@@ -149,17 +149,44 @@ section {
 	flex-direction: row;
 }
 
-@media (max-width : 1000px) {
+@media (max-width : 1300px) {
+  
+    .Title{
+        margin: auto;
+        padding: auto;
+        align-self: center;
+    }
+    .left{
+        float:none;
+    }
+    .right{
+        float:none;
+    }
 	.imgPlantExplanation {
-		float: none;
+        float: none;
+        margin-left: 20%;
+
+        
+	}
+    .imgPlantExplanation_2 {
+		display: none;
 	}
 
+    .imgPlantExplanation_3 {
+		width: 300px;
+	}
 	.steps {
 		flex-direction: column;
 	}
+    .stepList{
+        height: 380px;
+    }
 
 	.explanationContent {
 		display: flex;
+        flex-direction: column;
+        margin-top: 10%;
+
 	}
 
 
