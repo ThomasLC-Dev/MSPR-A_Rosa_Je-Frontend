@@ -14,6 +14,12 @@
   --menu-button-diselected-title: #416640;
   --menu-button-pipe: #A5D8C1;
   --btn-validate-color: #519069;
+  --btn-validate-text-color: #FFFFFF;
+  --btn-validate-border-color: #bad9cb;
+  --btn-reset-color: #bad9cb;
+  --btn-reset-text-color: #519069;
+  --btn-reset-border-color: #519069;
+  --main-detail-steep-color: rgb(242, 210, 126);
 }
 
 /* exemple utilisation :

@@ -150,7 +150,7 @@ section {
 	flex-direction: row;
 }
 
-@media (max-width : 1300px) {
+@media (max-width : 1000px) {
   
     .Title{
         margin: auto;

@@ -132,7 +132,7 @@ export default {
 	transform: translateX(-100%);
 }
 
-@media(max-width: 1300px){
+@media(max-width: 1000px){
     .sidebar-panel{
         display: none;
     }
