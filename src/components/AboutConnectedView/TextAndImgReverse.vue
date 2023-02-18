@@ -34,16 +34,23 @@ export default {
 	flex-direction: row;
 	align-items: center;
 	flex: 1;
-	
+
 }
 
 .imgReverse {
-	width: 10rem;
+	width: 15rem;
 }
 
 .textReverse {
 	margin-right: 10px;
 	flex: 1;
 
+}
+
+@media (max-width : 1000px) {
+	.container-reverse {
+		display: flex;
+		flex-direction: column;
+	}
 }
 </style>

@@ -40,4 +40,10 @@ export default {
 .img {
 	width: 10rem;
 }
+@media (max-width : 1000px) {
+	.container {
+	display: flex;
+	flex-direction: column;
+}
+}
 </style>

@@ -31,6 +31,7 @@ export default {
 	align-items: center;
 	word-wrap: break-word;
 	flex: 1;
+	margin-top: -60%;
 }
 .explanation-column{
 	display: flex;
@@ -38,7 +39,7 @@ export default {
 	align-items: flex-start;
 }
 .img-column{
-	width: 10rem;
+	width: 15rem;
     margin: 5%;
 }
 </style>
