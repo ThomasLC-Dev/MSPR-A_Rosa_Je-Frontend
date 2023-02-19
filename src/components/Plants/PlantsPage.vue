@@ -5,6 +5,9 @@
     <div class="add-button">
       <img src="../../assets/Logo/add-button.png" alt="ajouter une plante">
     </div>
+    <!-- Prevoir un container vide si pas de plantes enregistrées -->
+
+    <!-- Sinon v-for sur une grosse Card qui affiche toutes les plantes -->
   </div>
 </template>
 
