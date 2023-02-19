@@ -1,6 +1,7 @@
 <template>
   <div class="main-container">
     <h1>MES PLANTES</h1>
+    <!-- Bouton pour accès vers MODALE ou NOUVELLE PAGE !!! -->
     <div class="add-button">
       <img src="../../assets/Logo/add-button.png" alt="ajouter une plante">
     </div>
