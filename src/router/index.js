@@ -19,8 +19,8 @@ const routes = [
 		}
 	},
   {
-    path: "/ok",
-    name: "homeConnected",
+    path: "/connection",
+    name: "connection",
     component: () => import("@/views/AboutConnectedView.vue")
   },
   {

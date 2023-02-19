@@ -11,12 +11,17 @@
 					</div>
 				</div>
 				<div class="ButtonsMenu">
-					<ButtonMenu :name="About" :imgLink="ImgAbout" @click="goToView(routeHome)"></ButtonMenu>
+					<!-- Disconnected Buttons -->
+					<ButtonMenu :name="AboutDisco" :imgLink="ImgAboutDisco" @click="goToView(routeHomeDisco)"></ButtonMenu>
+					<ButtonMenu :name="Connection" :imgLink="ImgConnection" @click="goToView(routeConnection)"></ButtonMenu>
+					<ButtonMenu :name="Register" :imgLink="ImgRegister" @click="goToView(routeRegister)"></ButtonMenu>
+					<!-- Connected Buttons -->
+					<ButtonMenu :name="AboutCo" :imgLink="ImgAboutCo" @click="goToView(routeHomeCo)"></ButtonMenu>
 					<ButtonMenu :name="Profile" :imgLink="ImgProfile"  @click="goToView(routeProfil)"></ButtonMenu>
 					<ButtonMenu :name="MyPlants" :imgLink="ImgMyPlants"  @click="goToView(routeMyPlants)"></ButtonMenu>
 					<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper"  @click="goToView(routePlantKeeper)"></ButtonMenu>
 					<ButtonMenu :name="Botanist" :imgLink="ImgBotanist"  @click="goToView(routeBotanist)"></ButtonMenu>
-					<ButtonMenu :name="LogOut" :imgLink="ImgLogOut"  @click="goToView(routeHome)"></ButtonMenu>
+					<ButtonMenu :name="LogOut" :imgLink="ImgLogOut"  @click="goToView(routeHomeDisco)"></ButtonMenu>
 				</div>
 			</div>
 		</transition>
@@ -34,26 +39,35 @@ export default {
 		isPanelOpen: Boolean,
 	},
 	data: () => ({
-		About: "A propos",
+		AboutDisco: "Accueil",
+		Connection: "Connexion",
+		Register: "Inscription",
+		AboutCo: "A propos",
 		Profile: "Mon profil",
 		MyPlants: "Mes plantes",
 		PlantKeeper: "Gardien",
 		Botanist: "Botaniste",
 		LogOut: "Deconnexion",
 
-		ImgAbout: `Logo/Logo_1.png`,
-		ImgProfile: "Logo/ConnexionLogo.png",
+		ImgAboutDisco: `Logo/Logo_1.png`,
+		ImgConnection: `Logo/connection2.png`,
+		ImgRegister: `Logo/logo-register2.png`,
+		ImgAboutCo: `Logo/Logo_1.png`,
+		ImgProfile: "Logo/profil.png",
 		ImgMyPlants: "Plante/Plante_7.png",
-		ImgPlantKeeper: "Plante/Plante_5.png",
-		ImgBotanist: "Logo/advice.png",
+		ImgPlantKeeper: "Logo/keeper2.png",
+		ImgBotanist: "Logo/botanist2.png",
 		ImgLogOut: "Logo/ConnexionLogout.png",
 
-		routeHome: "home",
-		routeProfil:"profil", 
-		routeMyPlants:"plants",
-		routePlantKeeper:"keeper", 
-		routeBotanist:"botanist", 
-		routeLogOut:""
+		routeHomeDisco: "home",
+		routeConnection: "connection",
+		routeRegister: "register",
+		routeHomeCo: "about",
+		routeProfil: "profil", 
+		routeMyPlants: "plants",
+		routePlantKeeper: "keeper", 
+		routeBotanist: "botanist", 
+		routeLogOut: ""
 	}),
 	methods: {
 		closeOpenSidebarPanel() {
@@ -68,7 +82,7 @@ export default {
 
 <style>
 .sidebar-panel {
-    display: block;
+  display: block;
 	background-color: var(--menu-background);
 	position: fixed;
 	left: 0;
@@ -125,7 +139,7 @@ export default {
 }
 
 .slide-enter-from{
-    transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .slide-leave-to {
@@ -133,8 +147,8 @@ export default {
 }
 
 @media(max-width: 1000px){
-    .sidebar-panel{
-        display: none;
-    }
+	.sidebar-panel{
+			display: none;
+	}
 }
 </style>
