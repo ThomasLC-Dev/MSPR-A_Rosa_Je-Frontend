@@ -1,21 +1,21 @@
 <template>
-    <div class="background-plant">
-        <RegisterPage />
-    </div>
+  <div class="background-plant">
+    <RegisterPage />
+  </div>
 </template>
 
 <script>
+import RegisterPage from "@/components/Register/RegisterPage.vue";
 
-import RegisterPage from '@/components/Register/RegisterPage.vue';
-
-    export default {
-        name: 'RegisterView',
-        components: {
-            RegisterPage
-        }
-    }
+export default {
+  name: 'RegisterView',
+  components: {
+    RegisterPage
+  }
+}
 
 </script>
+
 <style>
 
 
