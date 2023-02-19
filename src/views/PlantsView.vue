@@ -1,12 +1,18 @@
 <template>
-   
+   <PlantsPage />
 </template>
 <script>
+import PlantsPage from "@/components/Plants/PlantsPage.vue"
+
     export default {
-        name: 'PlantsView'
+        name: 'PlantsView',
+        components: {
+            PlantsPage
+        }
     }
 
-</script>
+<
+                PlantsPage/script>
 <style>
 
 </style>
