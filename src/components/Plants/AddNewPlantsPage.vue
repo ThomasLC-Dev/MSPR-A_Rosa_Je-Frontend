@@ -48,6 +48,17 @@
       <label for="plantLight">Consignes d'entretien : </label>
       <input type="text" id="maintenanceInstructions">
     </div>
+
+    <!-- <div class="buttongroup">
+      POUR ÉCRANS PC
+    </div> -->
+    <div>
+      <button class="btn-validate">Enregistrer</button>
+    </div>
+
+    <div>
+      <button class="btn-reset">Annuler</button>
+    </div>
     
   </div>
 </template>
