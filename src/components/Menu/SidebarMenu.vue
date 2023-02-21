@@ -21,6 +21,7 @@
 					<ButtonMenu :name="MyPlants" :imgLink="ImgMyPlants"  @click="goToView(routeMyPlants)"></ButtonMenu>
 					<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper"  @click="goToView(routePlantKeeper)"></ButtonMenu>
 					<ButtonMenu :name="Botanist" :imgLink="ImgBotanist"  @click="goToView(routeBotanist)"></ButtonMenu>
+					<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 					<ButtonMenu :name="LogOut" :imgLink="ImgLogOut"  @click="goToView(routeHomeDisco)"></ButtonMenu>
 				</div>
 			</div>
@@ -47,17 +48,19 @@ export default {
 		MyPlants: "Mes plantes",
 		PlantKeeper: "Gardien",
 		Botanist: "Botaniste",
+		Legals: "Mentions",
 		LogOut: "Deconnexion",
 
 		ImgAboutDisco: `Logo/about.png`,
 		ImgConnection: `Logo/connection.png`,
 		ImgRegister: `Logo/register.png`,
 		ImgAboutCo: `Logo/about.png`,
-		ImgProfile: "Logo/profil.png",
-		ImgMyPlants: "Plante/Plante_7.png",
-		ImgPlantKeeper: "Logo/keeper.png",
-		ImgBotanist: "Logo/botanist.png",
-		ImgLogOut: "Logo/disconnected.png",
+		ImgProfile: `Logo/profil.png`,
+		ImgMyPlants: `Plante/Plante_7.png`,
+		ImgPlantKeeper: `Logo/keeper.png`,
+		ImgBotanist: `Logo/botanist.png`,
+		ImgLegals: `Logo/about.png`,
+		ImgLogOut: `Logo/disconnected.png`,
 
 		routeHomeDisco: "home",
 		routeConnection: "connection",
@@ -66,7 +69,8 @@ export default {
 		routeProfil: "profil", 
 		routeMyPlants: "plants",
 		routePlantKeeper: "keeper", 
-		routeBotanist: "botanist", 
+		routeBotanist: "botanist",
+		routeLegals: "legals", 
 		routeLogOut: ""
 	}),
 	methods: {
