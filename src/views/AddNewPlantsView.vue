@@ -8,7 +8,7 @@
 import AddNewPlantsPage from "@/components/Plants/AddNewPlantsPage.vue";
 
 export default {
-  name: 'AddNewPlantsPage',
+  name: 'AddNewPlantsView',
   components: {
     AddNewPlantsPage,
   }
