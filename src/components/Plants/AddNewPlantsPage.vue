@@ -19,17 +19,17 @@
     
     <div class="form-field">
       <label for="plantMinTemp">T°C minimale : </label>
-      <input type="text" placeholder="Valeur">
+      <input type="number" placeholder="Valeur">
     </div>
 
     <div class="form-field">
       <label for="plantMaxTemp">T°C maximale : </label>
-      <input type="text" placeholder="Valeur">
+      <input type="number" placeholder="Valeur">
     </div>
 
     <div class="form-field">
       <label for="plantWaterQuantity">Quantité d'eau : </label>
-      <input type="text" placeholder="Volume d'eau à verser">
+      <input type="number" placeholder="Volume d'eau à verser">
     </div>
 
     <div class="form-field">
@@ -45,13 +45,21 @@
     </div>
 
     <div class="form-field">
+      <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
+      <input type="image">
+    </div>
+
+    <div class="form-field">
       <label for="plantLight">Consignes d'entretien : </label>
       <input type="text" id="maintenanceInstructions">
     </div>
 
-    <!-- <div class="buttongroup">
-      POUR ÉCRANS PC
-    </div> -->
+    <!-- TODO 
+      <div class="buttongroup">
+      POUR ÉCRANS PC → media queries
+      </div>
+    -->
+
     <div>
       <button class="btn-validate">Enregistrer</button>
     </div>
