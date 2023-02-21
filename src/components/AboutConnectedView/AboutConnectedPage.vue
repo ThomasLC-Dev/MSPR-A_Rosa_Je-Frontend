@@ -2,7 +2,7 @@
 	<div class="main-container">
 		<div class="header">
 			<div class="title">
-				<img src="@/assets/Logo/Logo_1.png" alt="" class="imgLogo">
+				<img src="@/assets/Logo/about.png" alt="" class="imgLogo">
 				<h1> Comment ça marche ? </h1>
 			</div>
 			<TextAndImg :img-link="lingImg_1" :titre="titreimg_1" :text="textimg_1" class="firstSection" />

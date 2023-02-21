@@ -3,7 +3,9 @@
     <h1>MES PLANTES</h1>
     <!-- Bouton pour accès vers MODALE ou NOUVELLE PAGE !!! -->
     <div class="add-button">
-      <img src="../../assets/Logo/add-button.png" alt="ajouter une plante">
+      <a href="/src/components/Plants/AddNewPlantsPage.vue">
+        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante">
+      </a>
     </div>
     <!-- Prevoir un container vide si pas de plantes enregistrées -->
 
@@ -12,8 +14,11 @@
 </template>
 
 <script>
+import AddNewPlantsPage from '/src/components/Plants/AddNewPlantsPage';
 export default {
     name:'PlantsPage',
+    components: 
+      AddNewPlantsPage,
 }
 
 </script>
