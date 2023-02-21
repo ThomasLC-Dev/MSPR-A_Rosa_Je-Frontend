@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name:'AddNewKeeperingModal',
+    name:'AddNewKeeperingPage',
 }
 
 </script>

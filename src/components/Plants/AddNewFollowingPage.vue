@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name:'AddNewFollowingModal',
+    name:'AddNewFollowingPage',
 }
 
 </script>
