@@ -40,6 +40,14 @@ const routes = [
     }
   },
   {
+    path: "/addplants",
+    name: "addnewplants",
+    component: () => import("@/views/AddNewPlantsView.vue"),
+    meta: {
+      requiredAuth: true
+    }
+  },
+  {
     path: "/botanist",
     name: "botanist",
     component: () => import("@/views/BotanistView.vue"),
