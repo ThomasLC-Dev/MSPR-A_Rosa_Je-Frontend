@@ -47,6 +47,10 @@
     <div class="form-field">
       <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
       <input type="image">
+      <img src="../../assets/Logo/add-button.png" alt="ajouter une plante">
+      <div class="delete-button">
+        <i class="material-icons">delete</i>
+      </div>
     </div>
 
     <div class="form-field">
@@ -79,5 +83,6 @@ export default {
 </script>
 
 <style scoped>
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 </style>
