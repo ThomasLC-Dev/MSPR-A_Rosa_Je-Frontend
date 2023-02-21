@@ -58,8 +58,7 @@ const routes = [
   {
     path: "/connection",
     name: "connection",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/ConnectionView.vue"),
+    component: () => import("@/views/ConnectionView.vue"),
     meta: {
       requiredAuth: false
     }
@@ -67,11 +66,7 @@ const routes = [
   {
     path: "/register",
     name: "register",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/RegisterView.vue"),
+    component: () => import("@/views/RegisterView.vue"),
     meta: {
       requiredAuth: false
     }
@@ -79,8 +74,7 @@ const routes = [
   {
     path: "/rgpd",
     name: "rgpd",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/RGPDView.vue"),
+    component: () => import("@/views/RGPDView.vue"),
     meta: {
       requiredAuth: false
     }
@@ -88,8 +82,7 @@ const routes = [
   {
     path: "/legals",
     name: "legals",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/LegalsView.vue"),
+    component: () => import("@/views/LegalsView.vue"),
     meta: {
       requiredAuth: true
     }
