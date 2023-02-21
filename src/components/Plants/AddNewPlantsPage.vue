@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name:'AddNewPlantsPage',
+  name:'AddNewPlantsPage',
 }
 
 </script>
