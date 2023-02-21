@@ -43,6 +43,11 @@
       <label for="plantWateringType">Type arrosage : </label>
       <input type="text" placeholder="Contenant à utiliser">
     </div>
+
+    <div class="form-field">
+      <label for="plantLight">Consignes d'entretien : </label>
+      <input type="text" id="maintenanceInstructions">
+    </div>
     
   </div>
 </template>
