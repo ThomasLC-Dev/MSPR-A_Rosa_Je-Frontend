@@ -50,22 +50,22 @@
         <img src="../../assets/Logo/add-button.png" alt="ajouter une plante"/>
         <br />
         <div class="addPhotos">
-          <input type="image" />
+          <input type="file" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input type="image" />
+          <input type="file" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input type="image" />
+          <input type="file" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input type="image" />
+          <input type="file" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
@@ -113,7 +113,7 @@ input::placeholder {
   font-size: small;
 }
 
-input[type="image"] {
+input[type="file"] {
   display: flex;
   width: 50px;
   height: 90px;
