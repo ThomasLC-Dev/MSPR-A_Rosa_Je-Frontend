@@ -100,10 +100,6 @@ export default {
 <style scoped>
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-h1 {
-  text-align: center;
-}
-
 label {
   font-weight: lighter;
   color: var(--main-title-h1);
