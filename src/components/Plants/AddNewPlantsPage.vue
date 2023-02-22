@@ -108,6 +108,10 @@ label {
   color: var(--main-title-h1);
 }
 
+label[for="plantWateringType"], label[for="plantMinTemp"] {
+  margin-top: 10px;
+}
+
 input,
 input::placeholder {
   font-size: small;
