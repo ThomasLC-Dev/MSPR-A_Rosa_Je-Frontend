@@ -7,66 +7,66 @@
       <div class="form-fields">
         <div class="form-field-direction">
           <div class="form-field">
-            <label for="lastname">Nom:</label>
-            <input id="lastname" v-model="lastname">
+            <label for="lastname">Nom :</label>
+            <input id="lastname" placeholder="Votre nom" v-model="lastname">
           </div>
           <div class="form-field">
-            <label for="firstname">Prénom:</label>
-            <input id="firstname" v-model="firstname">
+            <label for="firstname">Prénom :</label>
+            <input id="firstname" placeholder="Votre prénom" v-model="firstname">
           </div>
         </div>
 
         <div class="form-field-direction">
           <div class="form-field  field-3">
-            <label for="phone">Nº de mobile:</label>
-            <input type="text" id="phone" v-model="phone">
+            <label for="phone">Nº de mobile :</label>
+            <input type="text" id="phone" placeholder="Votre numéro" v-model="phone">
           </div>
           <div class="form-field  field-7">
-            <label for="email">Email:</label>
-            <input type="text" id="email" v-model="email">
+            <label for="email">Email :</label>
+            <input type="text" id="email" placeholder="Votre email" v-model="email">
           </div>
         </div>
 
         <div class="form-field-direction-gp">
           <div class="address-road">
             <div class="form-field field-3">
-              <label for="roadNumber">Nº de rue:</label>
-              <input type="text" id="roadNumber" v-model="roadNumber">
+              <label for="roadNumber">Nº de rue :</label>
+              <input type="text" id="roadNumber" placeholder="Numéro de rue" v-model="roadNumber">
             </div>
             <div class="form-field field-7">
-              <label for="roadType">Type de rue:</label>
-              <input type="text" id="roadType" v-model="roadType">
+              <label for="roadType">Type de voie :</label>
+              <input type="text" id="roadType" placeholder="Type de voie" v-model="roadType">
             </div>
           </div>
           <div class="form-field">
             <label for="road">Nom de rue :</label>
-            <input type="text" id="road" v-model="road">
+            <input type="text" id="road" placeholder="Nom de la rue" v-model="road">
           </div>
         </div>
         <div class="form-field-direction-gp">
           <div class="form-field">
             <label for="addtionalAddress">Adresse complémentaire :</label>
-            <input type="text" id="addtionalAddress" v-model="addtionalAddress">
+            <input type="text" id="addtionalAddress" placeholder="Complément d'adresse" v-model="addtionalAddress">
           </div>
           <div class="address-zip">
             <div class="form-field field-3">
               <label for="postalCode">Code postal :</label>
-              <input type="text" id="postalCode" v-model="postalCode">
+              <input type="text" id="postalCode" placeholder="COde postal" v-model="postalCode">
             </div>
             <div class="form-field field-7">
               <label for="city">Nom de ville :</label>
-              <input type="text" id="city" v-model="city">
+              <input type="text" id="city" placeholder="Nom de la ville" v-model="city">
             </div>
           </div>
         </div>
         <div class="form-field-direction">
           <div class="form-field">
             <label for="password">Mot de passe :</label>
-            <input type="password" id="password" v-model="password">
+            <input type="password" id="password" placeholder="Votre mot de passe" v-model="password">
           </div>
           <div class="form-field">
             <label for="passwordConfirmation">Confirmation :</label>
-            <input type="password" id="passwordConfirmation" v-model="passwordConfirmation">
+            <input type="password" id="passwordConfirmation" placeholder="Confirmation du mot de passe" v-model="passwordConfirmation">
           </div>
         </div>
       </div>

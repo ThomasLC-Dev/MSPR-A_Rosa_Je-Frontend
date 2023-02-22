@@ -1,20 +1,23 @@
 <template>
   <div class="main-container">
-    <h1>MES PLANTES</h1>
-    <!-- Bouton pour accès versNOUVELLE PAGE !!! -->
+    <div>
+      <h1>MES PLANTES</h1>
+    </div>
+
     <div class="add-button">
       <a href="/src/components/Plants/AddNewPlantsPage.vue">
         <img src="../../assets/Logo/add-button.png" alt="ajouter une plante">
       </a>
     </div>
-    <!-- Prevoir un container vide si pas de plantes enregistrées -->
-    <div v-if="show">
-      <EmptyPlant />
-    </div>
 
-    <!-- Sinon v-for sur une grosse Card qui affiche toutes les plantes -->
-    <div v-else>
-      <PlantCard />
+    <div>
+      <div v-if="show" class="emptyPosition">
+        <EmptyPlant />
+      </div>
+
+      <div v-else>
+        <PlantCard />
+      </div>
     </div>
   </div>
 </template>
@@ -29,8 +32,10 @@ export default {
       EmptyPlant,
       PlantCard
     },
-    data: {
-      show: true,
+    data() {
+      return {
+        show: false,
+      }
     }
 }
 
@@ -43,5 +48,17 @@ img{
   height: auto;
   top: 20px;
   right: 20px;
+}
+
+.main-container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  ;
+}
+
+.emptyPosition{
+  display: inline-block;
+  margin-top: 100px;
 }
 </style>
