@@ -94,6 +94,14 @@ const routes = [
       requiredAuth: true
     }
   },
+  {
+		path: "/addnewplant",
+		name: "AddNewPlant",
+		component: () => import("@/views/BotanistView.vue"),
+		meta: {
+			requiredAuth: true
+		}
+	},
 ];
 
 const router = createRouter({
