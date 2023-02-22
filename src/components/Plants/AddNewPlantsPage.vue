@@ -47,25 +47,28 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <input type="image" />
-        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
-        <div class="delete-button">
-          <i class="material-icons">delete</i>
-        </div>
-        <input type="image" />
-        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
-        <div class="delete-button">
-          <i class="material-icons">delete</i>
-        </div>
-        <input type="image" />
-        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
-        <div class="delete-button">
-          <i class="material-icons">delete</i>
-        </div>
-        <input type="image" />
-        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
-        <div class="delete-button">
-          <i class="material-icons">delete</i>
+        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante"/>
+        <br />
+        <div class="addPhotos">
+          <input type="image" />
+          <div class="delete-button">
+            <i class="material-icons">delete</i>
+          </div>
+
+          <input type="image" />
+          <div class="delete-button">
+            <i class="material-icons">delete</i>
+          </div>
+
+          <input type="image" />
+          <div class="delete-button">
+            <i class="material-icons">delete</i>
+          </div>
+
+          <input type="image" />
+          <div class="delete-button">
+            <i class="material-icons">delete</i>
+          </div>
         </div>
       </div>
 
@@ -126,12 +129,17 @@ img {
   align-items: start;
 }
 
+.addPhotos {
+  display: flex;
+  flex-direction: row;
+}
+
 #formAddPlant {
   display: flex;
   flex-direction: column;
   align-items: start;
   margin: 10px;
-  }
+}
 
 #minTemp,
 #maxTemp {
