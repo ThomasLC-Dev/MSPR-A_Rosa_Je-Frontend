@@ -52,6 +52,21 @@
         <div class="delete-button">
           <i class="material-icons">delete</i>
         </div>
+        <input type="image" />
+        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
+        <div class="delete-button">
+          <i class="material-icons">delete</i>
+        </div>
+        <input type="image" />
+        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
+        <div class="delete-button">
+          <i class="material-icons">delete</i>
+        </div>
+        <input type="image" />
+        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
+        <div class="delete-button">
+          <i class="material-icons">delete</i>
+        </div>
       </div>
 
       <div class="form-field">
@@ -85,6 +100,10 @@ export default {
 <style scoped>
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+h1 {
+  text-align: center;
+}
+
 label {
   font-weight: lighter;
   color: var(--main-title-h1);
@@ -95,10 +114,20 @@ input::placeholder {
   font-size: small;
 }
 
+input[type="image"] {
+  display: flex;
+  width: 50px;
+  height: 90px;
+}
+
 img {
   display: flex;
   width: 20px;
   height: 20px;
+}
+
+.main-container {
+  align-items: start;
 }
 
 #formAddPlant {
