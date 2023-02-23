@@ -184,6 +184,11 @@ img {
     align-items: center;
   }
 
+  .form-field {
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+
   .form-field label {
     display: inline-block;
     width: 200px;
