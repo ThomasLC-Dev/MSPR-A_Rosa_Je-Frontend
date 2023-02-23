@@ -90,6 +90,20 @@
 <script>
 export default {
   name: "AddNewPlantsView",
+  data() {
+    return {
+      latinOrVerna: '',
+      sunLight: '',
+      lowerTemp: '',
+      higherTemp: '',
+      wateringQuantity: '',
+      wateringFrequency: '',
+      wateringContainer: '',
+      customerAdvice: '',
+      botanistAdvice: '',
+      plantsPhoto: [],
+    }
+  },
 };
 </script>
 
