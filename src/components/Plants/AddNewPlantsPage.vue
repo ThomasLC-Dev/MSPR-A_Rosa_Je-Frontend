@@ -181,6 +181,13 @@ img {
     top: 20px;
   }
 
+  button {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 75%;
+  }
+
   .main-container {
     align-items: center;
   }
