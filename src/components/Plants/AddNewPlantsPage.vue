@@ -73,7 +73,7 @@
 
       <div class="form-field">
         <label for="plantLight">Consignes d'entretien : </label>
-        <input v-model="customerAdvice" type="text" id="maintenanceInstructions" />
+        <textarea v-model="customerAdvice" type="text" id="maintenanceInstructions"> </textarea>
       </div>
 
       <!-- TODO 
@@ -114,6 +114,14 @@ label[for="plantWateringType"], label[for="plantMinTemp"] {
 input,
 input::placeholder {
   font-size: small;
+}
+
+textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #519069;
+  font-size: large;
 }
 
 input[type="image"] {
