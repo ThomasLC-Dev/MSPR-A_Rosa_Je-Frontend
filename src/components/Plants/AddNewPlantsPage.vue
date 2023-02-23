@@ -177,7 +177,8 @@ img {
 @media screen and (min-width: 1000px) {
 
   img {
-    left: 25%;
+    left: -20%;
+    top: 20px;
   }
 
   .main-container {
