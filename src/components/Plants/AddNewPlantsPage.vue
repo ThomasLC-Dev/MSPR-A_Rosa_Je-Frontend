@@ -50,22 +50,22 @@
         <img src="../../assets/Logo/add-button.png" alt="ajouter une plante"/>
         <br />
         <div class="addPhotos">
-          <input type="file"/>
+          <input v-model="plantsPhoto" type="image"/>
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input type="file"/>
+          <input v-model="plantsPhoto" type="image"/>
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input type="file"/>
+          <input v-model="plantsPhoto" type="image"/>
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input type="file"/>
+          <input v-model="plantsPhoto" type="image"/>
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
