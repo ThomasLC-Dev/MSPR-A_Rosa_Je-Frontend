@@ -128,7 +128,7 @@ input[type="image"] {
 img {
   display: flex;
   position: relative;
-  left: 60%;
+  left: 72%;
   bottom: 22px;
   width: 20px;
   height: 20px;
