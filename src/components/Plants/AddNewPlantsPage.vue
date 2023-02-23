@@ -76,12 +76,6 @@
         <textarea v-model="customerAdvice" type="text" id="maintenanceInstructions"> </textarea>
       </div>
 
-      <!-- TODO 
-      <div class="buttongroup">
-      POUR ÉCRANS PC → media queries
-      </div>
-    -->
-
       <div>
         <button class="btn-validate">Enregistrer</button>
       </div>
@@ -178,5 +172,18 @@ img {
   padding: 0.4em;
   padding-bottom: 190px;
   width: 250px;
+}
+
+@media screen and (min-width: 1000px) {
+
+  .main-container {
+    align-items: center;
+  }
+
+  .form-field label {
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+  }
 }
 </style>
