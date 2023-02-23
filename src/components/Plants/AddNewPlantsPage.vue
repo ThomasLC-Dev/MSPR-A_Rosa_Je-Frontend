@@ -149,6 +149,7 @@ img {
 .delete-button {
   display: flex;
   position: relative;
+  height: 24px;
   top: 90px;
 }
 
