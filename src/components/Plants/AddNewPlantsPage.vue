@@ -176,6 +176,10 @@ img {
 
 @media screen and (min-width: 1000px) {
 
+  img {
+    left: 25%;
+  }
+
   .main-container {
     align-items: center;
   }
