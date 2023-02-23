@@ -100,7 +100,7 @@ export default {
       wateringFrequency: '',
       wateringContainer: '',
       customerAdvice: '',
-      botanistAdvice: '',
+      botanistAdvice: null,
       plantsPhoto: [],
     }
   },
