@@ -118,9 +118,11 @@ input::placeholder {
 
 input[type="image"] {
   display: flex;
+  padding: 0;
   width: 50px;
   height: 90px;
   margin-left: 10px;
+  border-radius: 30px;
 }
 
 img {
@@ -138,6 +140,9 @@ img {
 
 .addPhotos {
   display: flex;
+  position: relative;
+  bottom: 10px;
+  right: 7px;
   flex-direction: row;
 }
 
