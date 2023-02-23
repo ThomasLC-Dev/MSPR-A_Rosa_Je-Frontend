@@ -48,7 +48,6 @@
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
         <img src="../../assets/Logo/add-button.png" alt="ajouter une plante"/>
-        <br />
         <div class="addPhotos">
           <input v-model="plantsPhoto" type="image"/>
           <div class="delete-button">
@@ -117,14 +116,18 @@ input::placeholder {
   font-size: small;
 }
 
-input[type="file"] {
+input[type="image"] {
   display: flex;
   width: 50px;
   height: 90px;
+  margin-left: 10px;
 }
 
 img {
   display: flex;
+  position: relative;
+  left: 60%;
+  bottom: 22px;
   width: 20px;
   height: 20px;
 }
@@ -136,6 +139,12 @@ img {
 .addPhotos {
   display: flex;
   flex-direction: row;
+}
+
+.delete-button {
+  display: flex;
+  position: relative;
+  top: 90px;
 }
 
 #formAddPlant {
