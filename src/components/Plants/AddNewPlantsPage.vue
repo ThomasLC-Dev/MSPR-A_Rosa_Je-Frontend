@@ -166,7 +166,9 @@ img {
 }
 
 #maintenanceInstructions {
-  width: 200px;
-  height: 150px;
+  text-align: left;
+  padding: 0.4em;
+  padding-bottom: 190px;
+  width: 250px;
 }
 </style>
