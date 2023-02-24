@@ -1,13 +1,21 @@
 <template>
   <div class="main-container">
     <div>
-      <h1>MES PLANTES</h1>
-    </div>
+      <div>
+        <h1>MES PLANTES</h1>
+      </div>
 
-    <div class="add-button">
-      <a href="/src/components/Plants/AddNewPlantsPage.vue">
-        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
-      </a>
+      <div class="follow-button">
+        <a href="/src/components/Plants/AddNewKeeperingPage.vue">
+          <img src="../../assets/Logo/following-plant.jpeg" alt="Proposer un créneau de gardiennage" />
+        </a>
+      </div>
+
+      <div class="add-button">
+        <a href="/src/components/Plants/AddNewPlantsPage.vue">
+          <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
+        </a>
+      </div>
     </div>
 
     <div>
@@ -32,7 +40,7 @@ export default {
     EmptyPlant,
     PlantCard
   },
-  data () {
+  data() {
     return {
       show: false
     }

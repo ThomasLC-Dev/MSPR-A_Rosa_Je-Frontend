@@ -1,51 +1,7 @@
 <template>
-  <div class="main-container">
-    <div class="photo-part">
-
-    </div>
-    <div class="info-part">
-      <div class="form-field">
-        <label for="plantName">Nom de plante : </label>
-        <input type="text" v-model="latinOrVerna" disabled />
-      </div>
-
-      <div class="form-field">
-        <label for="plantLight">Ensoleillement : </label>
-        <select id="lightSelect" v-model="sunlight" disabled>
-          <option value="">Choix</option>
-          <option value="sun">Soleil</option>
-          <option value="midShadow">Mi-Ombre</option>
-          <option value="fullShadow">Ombre</option>
-        </select>
-      </div>
-
-      <div class="form-field">
-        <label for="plantMinTemp">T°C minimale : </label>
-        <input type="number" class="minTemp" v-model="lowerTemp" disabled />
-      </div>
-
-      <div class="form-field">
-        <label for="plantMaxTemp">T°C maximale : </label>
-        <input type="number" class="maxTemp" v-model="higherTemp" disabled />
-      </div>
-
-      <div class="form-field">
-        <label for="plantWaterQuantity">Quantité d'eau : </label>
-        <input type="number" v-model="wateringQuantity" disabled />
-      </div>
-
-      <div class="form-field">
-        <label for="plantWateringFrequency">Fréquence arrosage : </label>
-        <input type="number" v-model="wateringFrequency" disabled />
-      </div>
-
-      <div class="form-field">
-        <label for="plantWateringType">Type arrosage : </label>
-        <input type="text" v-model="wateringContainer" disabled />
-      </div>
-
-      <div class="form-field">
-        <!-- TODO : faire un v-for de photo a afficher. Prevoir un component viewPhoto.vue -->
+  <div class="card-plant">
+    <div>
+      <div class="photo-part">
         <div class="viewPhotos">
           <img src="../../assets/Plante/Plante_2.jpg" />
           <img src="../../assets/Plante/Plante_3.jpeg" />
@@ -54,38 +10,74 @@
         </div>
       </div>
 
-      <div class="group-advice">
-        <div class="form-field">
-          <label for="plantLight">Consignes d'entretien : </label>
-          <input
-            type="text"
-            class="maintenanceInstructions"
-            v-model="customerAdvice"
-            disabled
-          />
+      <div class="info-part">
+        <div class="row1">
+          <p type="text">Orchidée Phalaenopsis</p>
+          <img src="@/assets/Logo/delete-button.png">
         </div>
-        <div class="form-field">
-          <label for="plantLight">Conseil d'un Botaniste : </label>
-          <input
-            type="text"
-            class="botanistAdvice"
-            v-model="botanistAdvice"
-            disabled
-          />
+
+        <div class="row2">
+          <div class="row2-1">
+            <div class="logo-field">
+              <img src="@/assets/Logo/Ombre.png">
+              <select id="lightSelect" v-model="sunlight" disabled>
+                <option value="fullShadow">Ombre</option>
+                <option value="sun">Soleil</option>
+                <option value="midShadow">Mi-Ombre</option>
+              </select>
+            </div>
+            <div class="logo-field"></div>
+            <img src="@/assets/Logo/Ombre.png">
+            <input type="text" class="minTemp" disabled />
+          </div>
         </div>
+
+        <div class="row2-2">
+          <div class="logo-field"></div>
+          <img src="@/assets/Logo/TemperatureBasse.png">
+          <input type="text" class="minTemp" disabled />
+        </div>
+        <div class="logo-field"></div>
+        <img src="@/assets/Logo/TemperatureHaute.png">
+        <input type="text" class="maxTemp" disabled />
       </div>
     </div>
-    <div class="button-group">
-      <input class="btn-reset" type="reset" value="Supprimer" />
-      <input class="btn-validate" type="submit" value="Modifier" />
+
+    <div class="row2-3">
+      <div class="logo-field"></div>
+      <img src="@/assets/Logo/TemperatureBasse.png">
+      <input type="text" class="minTemp" disabled />
+    </div>
+    <div class="logo-field"></div>
+    <img src="@/assets/Logo/TemperatureHaute.png">
+    <input type="text" class="maxTemp" disabled />
+  </div>
+  </div>
+  </div>
+
+  <div class="row3">
+    <div class="form-field">
+      <label for="plantLight">Consignes d'entretien : </label>
+      <input type="text" class="maintenanceInstructions" v-model="customerAdvice" disabled />
+    </div>
+    <div class="form-field">
+      <label for="plantLight">Conseil d'un Botaniste : </label>
+      <input type="text" class="botanistAdvice" v-model="botanistAdvice" disabled />
     </div>
   </div>
-</template>
+  </div>
+  </div>
+
+  <div class="button-group">
+    <input class="btn-reset" type="reset" value="Supprimer" />
+    <input class="btn-validate" type="submit" value="Modifier" />
+  </div>
+</div></template>
 
 <script>
 export default {
   name: 'PlantCard',
-  data () {
+  data() {
     return {
       latinOrVerna: '',
       sunlight: '',
@@ -103,61 +95,23 @@ export default {
 </script>
 
 <style scoped>
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons"
 
-.main-container {
-  align-items: start;
+.card-plant {
+  display: flex;
+  align-items: flex-start;
 }
 
 h2 {
   color: var(--main-title-h2);
 }
 
-label {
-  font-weight: lighter;
-  color: var(--main-title-h1);
-}
-
-label[for="plantWateringType"],
-label[for="plantMinTemp"] {
-  margin-top: 10px;
-}
-
-input,
-input::placeholder {
-  font-size: small;
-}
-
-input[type="file"] {
-  display: flex;
-  width: 50px;
-  height: 90px;
-}
-
-img {
-  display: flex;
-  width: 20px;
-  height: 20px;
-}
-
-.viewPhotos {
+.info-part {
   display: flex;
   flex-direction: row;
 }
 
-#formAddPlant {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  margin: 10px;
-}
-
-.minTemp,
-.maxTemp {
-  width: 40px;
-}
-
-.group-advice {
+.row3 {
   display: flex;
   flex-direction: row;
   align-content: space-between;
