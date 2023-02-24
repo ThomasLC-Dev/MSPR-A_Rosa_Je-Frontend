@@ -47,7 +47,7 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <button class="addPlant">Prendre une photo</button>
+        <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
         <div class="addPhotos">
           <input v-model="plantsPhoto" type="image"/>
           <div class="delete-button">
@@ -102,8 +102,14 @@ export default {
       customerAdvice: '',
       botanistAdvice: null,
       plantsPhoto: [],
+      routePhotoPage: "camera",
     }
   },
+  methods: {
+		goToView(path){
+			this.$router.push({name:path})
+		}
+	},
 };
 </script>
 
