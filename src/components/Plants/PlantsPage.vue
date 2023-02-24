@@ -6,7 +6,7 @@
 
     <div class="add-button">
       <a href="/src/components/Plants/AddNewPlantsPage.vue">
-        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante">
+        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante" />
       </a>
     </div>
 
@@ -23,26 +23,25 @@
 </template>
 
 <script>
-import EmptyPlant from '@/components/Plants/EmptyPlant.vue';
-import PlantCard from '@/components/Plants/PlantCard.vue';
+import EmptyPlant from '@/components/Plants/EmptyPlant.vue'
+import PlantCard from '@/components/Plants/PlantCard.vue'
 
 export default {
-    name:'PlantsPage',
-    components: {
-      EmptyPlant,
-      PlantCard
-    },
-    data() {
-      return {
-        show: false,
-      }
+  name: 'PlantsPage',
+  components: {
+    EmptyPlant,
+    PlantCard
+  },
+  data () {
+    return {
+      show: false
     }
+  }
 }
-
 </script>
 
 <style scoped>
-img{
+img {
   position: absolute;
   width: 50px;
   height: auto;
@@ -54,10 +53,9 @@ img{
   justify-content: center;
   align-items: center;
   height: 100%;
-  ;
 }
 
-.emptyPosition{
+.emptyPosition {
   display: inline-block;
   margin-top: 100px;
 }

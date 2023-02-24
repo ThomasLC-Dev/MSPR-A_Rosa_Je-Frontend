@@ -1,8 +1,12 @@
 <template>
-  <div >
+  <div class="main-container">
+    <div class="photo-part">
+
+    </div>
+    <div class="info-part">
       <div class="form-field">
         <label for="plantName">Nom de plante : </label>
-        <input type="text" v-model="latinOrVerna" disabled/>
+        <input type="text" v-model="latinOrVerna" disabled />
       </div>
 
       <div class="form-field">
@@ -17,27 +21,27 @@
 
       <div class="form-field">
         <label for="plantMinTemp">T°C minimale : </label>
-        <input type="number" class="minTemp" v-model="lowerTemp" disabled/>
+        <input type="number" class="minTemp" v-model="lowerTemp" disabled />
       </div>
 
       <div class="form-field">
         <label for="plantMaxTemp">T°C maximale : </label>
-        <input type="number" class="maxTemp" v-model="higherTemp" disabled/>
+        <input type="number" class="maxTemp" v-model="higherTemp" disabled />
       </div>
 
       <div class="form-field">
         <label for="plantWaterQuantity">Quantité d'eau : </label>
-        <input type="number" v-model="wateringQuantity" disabled/>
+        <input type="number" v-model="wateringQuantity" disabled />
       </div>
 
       <div class="form-field">
         <label for="plantWateringFrequency">Fréquence arrosage : </label>
-        <input type="number" v-model="wateringFrequency" disabled/>
+        <input type="number" v-model="wateringFrequency" disabled />
       </div>
 
       <div class="form-field">
         <label for="plantWateringType">Type arrosage : </label>
-        <input type="text" v-model="wateringContainer" disabled/>
+        <input type="text" v-model="wateringContainer" disabled />
       </div>
 
       <div class="form-field">
@@ -47,45 +51,54 @@
           <img src="../../assets/Plante/Plante_3.jpeg" />
           <img src="../../assets/Plante/Plante_4.png" />
           <img src="../../assets/Plante/Plante_5.png" />
-
         </div>
       </div>
 
-    <div class="group-advice">
-      <div class="form-field">
-        <label for="plantLight">Consignes d'entretien : </label>
-        <input type="text" class="maintenanceInstructions" v-model="customerAdvice" disabled/>
-      </div>
-      <div class="form-field">
-        <label for="plantLight">Conseil d'un Botaniste : </label>
-        <input type="text" class="botanistAdvice" v-model="botanistAdvice" disabled/>
+      <div class="group-advice">
+        <div class="form-field">
+          <label for="plantLight">Consignes d'entretien : </label>
+          <input
+            type="text"
+            class="maintenanceInstructions"
+            v-model="customerAdvice"
+            disabled
+          />
+        </div>
+        <div class="form-field">
+          <label for="plantLight">Conseil d'un Botaniste : </label>
+          <input
+            type="text"
+            class="botanistAdvice"
+            v-model="botanistAdvice"
+            disabled
+          />
+        </div>
       </div>
     </div>
-
     <div class="button-group">
-      <input class="btn-reset" type="reset" value="Supprimer">
-      <input class="btn-validate" type="submit" value="Modifier">
-    </div> 
+      <input class="btn-reset" type="reset" value="Supprimer" />
+      <input class="btn-validate" type="submit" value="Modifier" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'PlantCard',
-  data() {
-      return {
-          latinOrVerna: '',
-          sunlight: '',
-          lowerTemp: '',
-          higherTemp: '',
-          wateringQuantity: '',
-          wateringFrequency: '',
-          wateringContainer: '',
-          customerAdvice: '',
-          botanistAdvice: '',
-          plantsPhoto: []
-      }
-  },
+  data () {
+    return {
+      latinOrVerna: '',
+      sunlight: '',
+      lowerTemp: '',
+      higherTemp: '',
+      wateringQuantity: '',
+      wateringFrequency: '',
+      wateringContainer: '',
+      customerAdvice: '',
+      botanistAdvice: '',
+      plantsPhoto: []
+    }
+  }
 }
 </script>
 
@@ -105,7 +118,8 @@ label {
   color: var(--main-title-h1);
 }
 
-label[for="plantWateringType"], label[for="plantMinTemp"] {
+label[for="plantWateringType"],
+label[for="plantMinTemp"] {
   margin-top: 10px;
 }
 
@@ -143,13 +157,14 @@ img {
   width: 40px;
 }
 
-.group-advice{
+.group-advice {
   display: flex;
   flex-direction: row;
   align-content: space-between;
 }
 
-.maintenanceInstructions, .botanistAdvice {
+.maintenanceInstructions,
+.botanistAdvice {
   width: 200px;
   height: 150px;
 }
