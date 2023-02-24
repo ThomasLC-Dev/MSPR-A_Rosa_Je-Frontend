@@ -7,7 +7,7 @@
 
       <div class="follow-button">
         <a href="/src/components/Plants/AddNewKeeperingPage.vue">
-          <img src="../../assets/Logo/following-plant.jpeg" alt="Proposer un créneau de gardiennage" />
+          <img src="../../assets/Logo/following-plant.png" alt="Proposer un créneau de gardiennage" />
         </a>
       </div>
 
@@ -49,12 +49,20 @@ export default {
 </script>
 
 <style scoped>
-img {
+.add-button>a>img {
   position: absolute;
   width: 50px;
   height: auto;
-  top: 20px;
-  right: 20px;
+  top: 25px;
+  right: 25px;
+}
+
+.follow-button>a>img {
+  position: absolute;
+  width: auto;
+  height: 50px;
+  top: 25px;
+  right: 95px;
 }
 
 .main-container {
