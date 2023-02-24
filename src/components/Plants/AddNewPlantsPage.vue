@@ -102,8 +102,6 @@ export default {
       customerAdvice: '',
       botanistAdvice: null,
       plantsPhoto: [],
-      camera,
-      snapshot,
     }
   },
 };
