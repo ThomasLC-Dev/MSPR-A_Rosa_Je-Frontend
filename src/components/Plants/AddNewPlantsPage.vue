@@ -47,7 +47,7 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <button class="addPlant">Ajouter une plante</button>
+        <button class="addPlant">Prendre une photo</button>
         <div class="addPhotos">
           <input v-model="plantsPhoto" type="image"/>
           <div class="delete-button">
@@ -150,6 +150,7 @@ input[type="image"] {
   position: relative;
   left: 72%;
   bottom: 22px;
+  width: 80px;
 }
 
 .addPhotos {
@@ -188,18 +189,6 @@ input[type="image"] {
 
 @media screen and (min-width: 1000px) {
 
-  img {
-    left: -20%;
-    top: 20px;
-  }
-
-  button {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    left: 75%;
-  }
-
   .main-container {
     align-items: center;
   }
@@ -213,6 +202,13 @@ input[type="image"] {
     display: inline-block;
     width: 200px;
     text-align: left;
+  }
+
+  .btn-vaildate, .btn-reset {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 75%;
   }
 }
 </style>
