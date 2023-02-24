@@ -47,7 +47,7 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <img src="../../assets/Logo/add-button.png" alt="ajouter une plante"/>
+        <button class="addPlant">Ajouter une plante</button>
         <div class="addPhotos">
           <input v-model="plantsPhoto" type="image"/>
           <div class="delete-button">
@@ -141,17 +141,15 @@ input[type="image"] {
   border-radius: 30px;
 }
 
-img {
+.main-container {
+  align-items: start;
+}
+
+.addPlant {
   display: flex;
   position: relative;
   left: 72%;
   bottom: 22px;
-  width: 20px;
-  height: 20px;
-}
-
-.main-container {
-  align-items: start;
 }
 
 .addPhotos {
