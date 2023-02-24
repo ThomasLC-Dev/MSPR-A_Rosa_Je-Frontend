@@ -40,6 +40,14 @@ const routes = [
     }
   },
   {
+    path: "/addplants",
+    name: "addnewplants",
+    component: () => import("@/views/AddNewPlantsView.vue"),
+    meta: {
+      requiredAuth: true
+    }
+  },
+  {
     path: "/botanist",
     name: "botanist",
     component: () => import("@/views/BotanistView.vue"),
@@ -83,6 +91,14 @@ const routes = [
     path: "/legals",
     name: "legals",
     component: () => import("@/views/LegalsView.vue"),
+    meta: {
+      requiredAuth: true
+    }
+  },
+  {
+    path: "/camera",
+    name: "camera",
+    component: () => import("@/views/CameraView.vue"),
     meta: {
       requiredAuth: true
     }
