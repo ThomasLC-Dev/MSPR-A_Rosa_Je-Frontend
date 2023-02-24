@@ -212,6 +212,9 @@ input[type="image"] {
   }
 
   .addPlant{
+    display: flex;
+    left: -25px;
+    top: 0px;
     height: 40px;
   }
 }
