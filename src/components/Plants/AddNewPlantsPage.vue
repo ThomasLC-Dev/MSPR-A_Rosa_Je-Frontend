@@ -88,7 +88,6 @@
 </template>
 
 <script>
-import Camera from "simple-vue-camera";
 export default {
   name: "AddNewPlantsView",
   data() {
@@ -103,11 +102,10 @@ export default {
       customerAdvice: '',
       botanistAdvice: null,
       plantsPhoto: [],
+      camera,
+      snapshot,
     }
   },
-  components: {
-    Camera,
-  }
 };
 </script>
 
