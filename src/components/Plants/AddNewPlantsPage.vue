@@ -204,7 +204,7 @@ input[type="image"] {
     text-align: left;
   }
 
-  .btn-vaildate, .btn-reset {
+  .btn-validate, .btn-reset {
     display: flex;
     justify-content: center;
     position: relative;
