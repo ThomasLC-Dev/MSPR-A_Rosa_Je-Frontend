@@ -210,6 +210,10 @@ input[type="image"] {
     position: relative;
     left: 75%;
   }
+
+  .addPlant{
+    height: 40px;
+  }
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1200px) {
@@ -220,6 +224,7 @@ input[type="image"] {
   .addPlant {
     display: flex;
     left: 350px;
+    top: 15px;
   }
 }
 </style>
