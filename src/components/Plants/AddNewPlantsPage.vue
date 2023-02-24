@@ -211,4 +211,15 @@ input[type="image"] {
     left: 75%;
   }
 }
+
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+  .addPhotos {
+    right: 100px;
+  }
+
+  .addPlant {
+    display: flex;
+    left: 350px;
+  }
+}
 </style>
