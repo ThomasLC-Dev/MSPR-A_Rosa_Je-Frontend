@@ -5,9 +5,15 @@
 }
 
 h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--main-title-h1);
   text-align: center;
   margin-bottom: 10px;
+  width: 80%;
+  padding-bottom: 20px;
+  /* border-bottom: 3px solid var(--main-title-h1); */
 }
 
 hr {

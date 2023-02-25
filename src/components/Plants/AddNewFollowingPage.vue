@@ -1,17 +1,15 @@
 <template>
   <div class="main-container">
-    <h1>add new following modal</h1>
-    
+    <h1>Page pour demander un creneau de gardiennage</h1>
+
   </div>
 </template>
 
 <script>
 export default {
-    name:'AddNewFollowingPage',
+  name: 'AddNewFollowingPage'
 }
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
