@@ -43,7 +43,8 @@ const routes = [
     }
   },
   {
-    path: '/add-a-new-plant',
+    /** Ajouter une plante */
+    path: '/plants/add-a-new-plant',
     name: 'addnewplants',
     component: () => import('@/views/AddNewPlantsView.vue'),
     meta: {
@@ -51,7 +52,8 @@ const routes = [
     }
   },
   {
-    path: '/proposition-de-creneau',
+    /** Suivi du gardien */
+    path: '/plants/guardian-tracking',
     name: 'addnewkeepering',
     component: () => import('@/views/AddNewKeeperingView.vue'),
     meta: {
@@ -59,7 +61,8 @@ const routes = [
     }
   },
   {
-    path: '/suivi-de-la-plante',
+    /** Demander un creneau de garde */
+    path: '/plants/request-guard-slot',
     name: 'addnewfollowing',
     component: () => import('@/views/AddNewFollowingView.vue'),
     meta: {
