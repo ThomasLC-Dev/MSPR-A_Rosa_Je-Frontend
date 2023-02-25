@@ -17,6 +17,14 @@
         <label for="">Numéro de contact : </label>
         <input type="text" id="phoneNumberInput">
       </div>
+
+      <h1 id="day">Jour 1 : </h1>
+      <label for="">Plante 1 : </label>
+      <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
+      <label for="">Plante 2 : </label>
+      <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
+      <label for="">Plante 3 : </label>
+      <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
     </form>
     
   </div>
