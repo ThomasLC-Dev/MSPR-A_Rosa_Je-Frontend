@@ -128,4 +128,6 @@ export default {
   margin-top: 40px;
   height: 80%;
 }
+
+@media (max-width: 1000px) {}
 </style>
