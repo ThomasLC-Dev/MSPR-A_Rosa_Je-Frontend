@@ -15,7 +15,7 @@
 
       <div class="form-field">
         <label for="">Numéro de contact : </label>
-        <input type="text">
+        <input type="text" id="phoneNumberInput">
       </div>
     </form>
     
@@ -35,6 +35,10 @@ label {
   color: var(--main-title-h1);
 }
 
+input {
+  font-size: medium;
+}
+
 .form-field {
   flex-direction: row;
   margin-bottom: 10px;
@@ -42,7 +46,7 @@ label {
 
 .form-field label {
   display: inline-block;
-  width: 200px;
+  width: 135px;
   text-align: left;
 }
 
@@ -51,6 +55,10 @@ label {
   flex-direction: column;
   align-items: start;
   margin: 10px;
+}
+
+#phoneNumberInput {
+  width: 130px;
 }
 
 </style>
