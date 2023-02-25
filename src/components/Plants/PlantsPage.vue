@@ -6,22 +6,18 @@
       </div>
       <div class="group-button-menu">
         <div class="keeper-button">
-          <a href="/src/components/Plants/AddNewKeeperingView.vue">
-            <img src="@/assets/Logo/keeper.png" alt="Réaliser le suivi" />
-          </a>
+          <img src="@/assets/Logo/keeper.png" @click="goToView(routeFollowing)" alt="Réaliser le suivi" />
         </div>
 
         <div class="follow-button">
-          <a href="/src/components/Plants/AddFollowingView.vue">
-            <img src="@/assets/Logo/following-plant.png" alt="Proposer un créneau de gardiennage" />
-          </a>
+          <img src="@/assets/Logo/following-plant.png" @click="goToView(routeKeepering)"
+            alt="Proposer un créneau de gardiennage" />
         </div>
 
         <div class="add-button">
-          <a href="/src/components/Plants/AddNewPlantsView.vue">
-            <img src="@/assets/Logo/add-button.png" alt="Ajouter une plante" />
-          </a>
+          <img src="@/assets/Logo/add-button.png" @click="goToView(routeAddNewPlant)" alt="Ajouter une plante" />
         </div>
+
       </div>
     </div>
 
@@ -47,9 +43,16 @@ export default {
     EmptyPlant,
     PlantCard
   },
-  data() {
-    return {
-      show: false
+  data: () => ({
+    show: false,
+    routeFollowing: 'addnewfollowing',
+    routeKeepering: 'addnewkeepering',
+    routeAddNewPlant: 'addnewplants',
+
+  }),
+  methods: {
+    goToView(path) {
+      this.$router.push({ name: path })
     }
   }
 }
@@ -85,19 +88,22 @@ export default {
 
 }
 
-.add-button>a>img {
+.add-button>img {
   width: 50px;
   height: auto;
+  cursor: pointer;
 }
 
-.follow-button>a>img {
+.follow-button>img {
   width: auto;
   height: 50px;
+  cursor: pointer;
 }
 
-.keeper-button>a>img {
+.keeper-button>img {
   width: auto;
   height: 50px;
+  cursor: pointer;
 }
 
 .main-container {
