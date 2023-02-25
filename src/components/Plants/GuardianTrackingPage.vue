@@ -2,7 +2,7 @@
   <div class="main-container">
     <h1>Suivis</h1>
 
-    <form id="formDateAndNumber">
+    <form id="formGuardianTracking">
       <div class="form-field">
         <label for="">Date de début : </label>
         <input type="date">
@@ -50,7 +50,7 @@ input {
   text-align: left;
 }
 
-#formDateAndNumber {
+#formGuardianTracking {
   display: flex;
   flex-direction: column;
   align-items: start;
