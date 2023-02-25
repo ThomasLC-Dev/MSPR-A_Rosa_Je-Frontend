@@ -20,24 +20,12 @@
 
       <h1 id="day">Jour 1 :</h1>
 
-      <div v-for="plant in plants.slice(0, 1)" :key="plant.name">
-        <label for="" >Plante 1 : {{ plant.name }}</label>
-        <button class="addPlant" @click="goToView(routePhotoPage)">
-          Prendre une photo
-        </button>
+      <div v-for="plant in plants" :key="plant.id">
+        <label for="" >Plante : {{ plant.name }}</label>
+        <div class="add-button">
+          <img src="@/assets/Logo/add-button.png" @click="goToView(routePhotoPage)" alt="Ajouter une plante" />
+        </div>
       </div>
-
-      <div v-for="plant in plants.slice(1, 2)" :key="plant.name">
-        <label for="" >Plante 2 : {{ plant.name }}</label>
-        <button class="addPlant" @click="goToView(routePhotoPage)">
-          Prendre une photo
-        </button>
-      </div>
-
-      <label for="">Plante 3 : </label>
-      <button class="addPlant" @click="goToView(routePhotoPage)">
-        Prendre une photo
-      </button>
     </form>
   </div>
 </template>
@@ -53,14 +41,14 @@ export default {
     };
   },
   mounted() {
-    console.log(fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user=",
+    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user=",
     {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     })
       .then((res) => res.json())
-      .then((data) => (this.plants = data)));
+      .then((data) => (this.plants = data));
   },
   methods: {
     goToView(path) {
@@ -89,6 +77,12 @@ input {
   display: inline-block;
   width: 135px;
   text-align: left;
+}
+
+.add-button>img {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
 }
 
 #formGuardianTracking {
