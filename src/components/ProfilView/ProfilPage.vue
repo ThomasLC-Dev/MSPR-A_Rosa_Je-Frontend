@@ -5,96 +5,102 @@
                 <img :src="require(`@/assets/` + imgPath)" class="imgProfil" alt="">
             </div>
 
-            <div class="nameProfil">
+            <div class="nameProfil" label="Name Profil">
                 <h1 id="lastname">{{ firstname }}</h1>
                 <h1 id="firstname">{{ lastname }}</h1>
             </div>
         </div>
-        <div class="contentProfil">
-            <div class="Presentation">
-                <div class="titlePresentation">
+        <div class="contentProfil" label="Content Profil">
+            <div class="Presentation" label="Presentation">
+                <div class="titlePresentation" label="Title Presentation">
                     <h1>Qui suis-je ?</h1>
                 </div>
-                <div class="contentPresentation">
-                    <div class="namePresentation">
-                        <div class="textPresName">
-                            <div class="litteTextPres">
+                <div class="contentPresentation" label="Content Presentation">
+                    <div class="namePresentation" label=" Name Presentation">
+                        <div class="textPresName" label="Name Text Presentation">
+                            <div class="litteTextPres" label="Libelle">
                                 <p>Nom :</p>
                             </div>
-                            <div class="framedText">
-                                <p id="lastname">{{ lastname }}</p>
+                            <div class="InputPresentation" label=" Input Presentation">
+                                <input type="text" :value="lastname" />
                             </div>
                         </div>
-                        <div class="textPresName">
-                            <div class="litteTextPres">
+                        <div class="textPresName" label="FirstName Text Presentation">
+                            <div class="litteTextPres" label="Libelle">
                                 <p>Prénom :</p>
                             </div>
-                            <div class="framedText">
-                                <p id="firstname">{{ firstname }}</p>
+                            <div class="InputPresentation" label=" Input Presentation">
+                                <input type="text" :value="firstname" />
                             </div>
                         </div>
                     </div>
-                    <div class="photoPresentation">
-                        <div class="litteTextPhoto">
+                    <div class="photoPresentation" label="Photo presentation">
+                        <div class="litteTextPhoto" label="Libelle photo">
                             <p>Modifier la photo :</p>
                         </div>
-                        <button class="buttonPhoto"> Choisissez un fichier...</button>
+                        <button class="buttonPhoto" label="Button Photo"> Choisissez un fichier...</button>
                     </div>
                 </div>
             </div>
 
-            <div class="contact">
-                <div class="titleContact">
+            <div class="contact" label="Contact">
+                <div class="titleContact" label="Title contact">
                     <h1>Me contacter ?</h1>
                 </div>
-                <div class="address">
-                    <div class="textaddress">
+                <div class="address" label="Address">
+                    <div class="textaddress" label="Text Address">
                         <p>Adresse :</p>
                     </div>
-                    <div class="framedTextAddress">
-                        <p id="roadNumber"> {{ roadNumber }}</p>
+                    <div class="InputAddress" label="Input Address">
+                        <input type="number" :value="roadNumber" />
                     </div>
-                    <div class="framedTextAddress">
-                        <p id="roadType">{{ roadType }}</p>
+                    <div class="InputAddress" label="Input Address">
+                        <input type="text" :value="roadType" />
+
                     </div>
-                    <div class="framedTextAddress">
-                        <p id="road"> {{ road }} </p>
-                    </div>
-                    <div class="framedTextAddress">
-                        <p id="addtionalAddress">{{ addtionalAddress }}</p>
-                    </div>
-                    <div class="framedTextAddress">
-                        <p id="postalCode"> {{ postalCode }}</p>
-                    </div>
-                    <div class="framedTextAddress">
-                        <p id="city">{{ city }}</p>
+                    <div class="InputAddress" label="Input Address">
+                        <input type="text" :value="road" />
                     </div>
                 </div>
 
-                <div class="internetContact">
-                    <div class="email">
-                        <div class="textemail">
+                <div class="secondPartAddress">
+                    <div class="InputAddress" label="Input Address">
+                        <input type="text" :value="addtionalAddress" />
+                    </div>
+                    <div class="InputAddress" label="Input Address">
+                        <input type="text" :value="postalCode" />
+                    </div>
+                    <div class="InputAddress" label="Input Address">
+                        <input type="text" :value="city" />
+
+                    </div>
+                </div>
+
+                <div class="internetContact" label="Internet Contact">
+                    <div class="email" label="email">
+                        <div class="textemail" label="Text E-mail">
                             <p>E-mail : </p>
                         </div>
-                        <div class="framedTextAddress">
-                            <p id="email">{{ email }}</p>
+                        <div class="InputAddress" label="Input Address">
+                            <input type="text" :value="email" />
                         </div>
                     </div>
 
-                    <div class="numeroTel">
-                        <div class="textNum">
+                    <div class="numeroTel" label="Numero Tel">
+                        <div class="textNum" label="Text Number">
                             <p>Numéro : </p>
                         </div>
-                        <div class="framedTextAddress">
-                            <p id="phone">{{ phone }}</p>
+                        <div class="InputAddress" label="Input Address">
+                            <input type="text" :value="phone" />
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modifButton">
-                <button><img src="../../assets/Logo/LogoModif.png" alt="Modifier" class="modifButtonImg"></button>
-            </div>
+                <div class="modifButton" label="Modification Button">
+                    <button><img src="../../assets/Logo/LogoModif.png" alt="Modifier" class="modifButtonImg"
+                            label="Button Modification"></button>
+                </div>
 
+            </div>
         </div>
     </div>
 </template>
@@ -117,6 +123,7 @@ export default {
         }
     }
 };
+
 </script>
 
 <style>
@@ -149,11 +156,11 @@ export default {
 }
 
 .contentProfil {
-    width: 100vh;
-    height: 65vh;
+    width: 150vh;
+    height: 90vh;
     border: 2px solid var(--main-text);
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 20px;
     background-color: var(--menu-button-diselected-background);
 }
@@ -165,7 +172,7 @@ export default {
     width: 100vh;
     white-space: nowrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 50px;
     padding: auto;
     align-content: center;
@@ -191,26 +198,17 @@ export default {
     display: flex;
     flex-direction: row;
     margin: 5%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
-.framedText {
-    margin: auto;
-    padding: 8px;
-    border: 2px solid var(--main-text);
-    border-radius: 10%;
-    background-color: white;
-    margin-left: 5%;
-
+.litteTextPres {
+    margin-right: 5%;
 }
 
-.framedTextAddress {
-    padding: 8px;
-    border: 2px solid var(--main-text);
-    border-radius: 10%;
-    background-color: white;
-    margin-left: 2%;
+input {
+    padding: 5%;
+    width: fit-content;
 }
 
 .photoPresentation {
@@ -231,7 +229,6 @@ export default {
 
 .contact {
     margin-top: 5%;
-    display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
 }
@@ -248,13 +245,28 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-wrap: nowrap;
     color: var(--main-text);
+    justify-content: space-around;
+    align-content: stretch;
+}
+
+.secondPartAddress {
+    padding-left: 15px;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--main-text);
+    justify-content: space-around;
+    margin-left: 15%;
+
 }
 
 .textaddress {
     flex-wrap: nowrap;
     color: var(--main-text);
+    margin-right: 2%;
+
 }
 
 .internetContact {
@@ -262,6 +274,7 @@ export default {
     flex-direction: column;
     margin: 2%;
     gap: 10px;
+    justify-content: flex-start;
 
 }
 
@@ -270,6 +283,14 @@ export default {
     flex-direction: row;
     color: var(--main-text);
     align-items: center;
+}
+
+.textemail {
+    margin-right: 14%;
+}
+
+.textNum {
+    margin-right: 13%;
 }
 
 .numeroTel {
@@ -296,9 +317,16 @@ export default {
         width: 40vh;
     }
 
+    input {
+        display: block;
+        padding: 5%;
+        width: 90%;
+        flex-wrap: wrap;
+    }
+
     .contentProfil {
         width: 40vh;
-        height: 110vh;
+        height: 120vh;
     }
 
     .contentPresentation {
@@ -307,23 +335,18 @@ export default {
         gap: 10px;
     }
 
-
-    .textPresName {
-        display: flex;
-        flex-direction: row;
-        margin: 5%;
-        margin-top: 0%;
-
+    .secondPartAddress {
+        flex-direction: column;
+        margin-left: 0%;
     }
 
     .framedText {
         padding: 0px;
         margin-left: 5%;
-
     }
 
     .framedTextAddress {
-      margin-top: 5%;
+        margin-top: 5%;
     }
 
     .photoPresentation {
@@ -336,30 +359,16 @@ export default {
         flex-direction: column;
     }
 
-    .internetContact {
-        display: flex;
-        flex-direction: column;
-        margin: 2%;
-        gap: 10px;
-
-    }
-
     .email {
-        display: flex;
-        flex-direction: row;
-        color: var(--main-text);
-        align-items: center;
+        flex-direction: column;
     }
 
     .numeroTel {
-        display: flex;
-        flex-direction: row;
-        color: var(--main-text);
-        align-items: center;
+        flex-direction: column;
     }
 
     .modifButton {
-        width: 50px;
+        width: 25px;
         float: right;
         margin-right: 5%;
         margin-bottom: 0%;
