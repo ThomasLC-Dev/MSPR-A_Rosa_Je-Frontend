@@ -19,7 +19,9 @@
       </div>
 
       <h1 id="day">Jour 1 :</h1>
-      <label for="">Plante 1 : {{ plants.name }}</label>
+      <label for="" v-for="plant in plants" :key="plant.name">
+        Plante 1 : {{ plant.name }}
+      </label>
       <button class="addPlant" @click="goToView(routePhotoPage)">
         Prendre une photo
       </button>
@@ -46,8 +48,8 @@ export default {
     };
   },
   mounted() {
-    // const token = localStorage.getItem('token');
-    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user=",{
+    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user=",
+    {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
