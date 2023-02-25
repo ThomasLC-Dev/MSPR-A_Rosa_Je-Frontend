@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import RegisterPage from "@/components/Register/RegisterPage.vue";
+import RegisterPage from '@/components/Register/RegisterPage.vue'
 
 export default {
   name: 'RegisterView',
@@ -16,7 +16,4 @@ export default {
 
 </script>
 
-<style>
-
-
-</style>
+<style scoped></style>

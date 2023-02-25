@@ -49,22 +49,22 @@
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
         <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
         <div class="addPhotos">
-          <input v-model="plantsPhoto" type="image"/>
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input v-model="plantsPhoto" type="image"/>
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input v-model="plantsPhoto" type="image"/>
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input v-model="plantsPhoto" type="image"/>
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
@@ -89,7 +89,7 @@
 
 <script>
 export default {
-  name: "AddNewPlantsView",
+  name: 'AddNewPlantsPage',
   data() {
     return {
       latinOrVerna: '',
@@ -102,15 +102,15 @@ export default {
       customerAdvice: '',
       botanistAdvice: null,
       plantsPhoto: [],
-      routePhotoPage: "camera",
+      routePhotoPage: 'camera'
     }
   },
   methods: {
-		goToView(path){
-			this.$router.push({name:path})
-		}
-	},
-};
+    goToView(path) {
+      this.$router.push({ name: path })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -121,7 +121,8 @@ label {
   color: var(--main-title-h1);
 }
 
-label[for="plantWateringType"], label[for="plantMinTemp"] {
+label[for="plantWateringType"],
+label[for="plantMinTemp"] {
   margin-top: 10px;
 }
 
@@ -210,14 +211,15 @@ input[type="image"] {
     text-align: left;
   }
 
-  .btn-validate, .btn-reset {
+  .btn-validate,
+  .btn-reset {
     display: flex;
     justify-content: center;
     position: relative;
     left: 75%;
   }
 
-  .addPlant{
+  .addPlant {
     display: flex;
     left: -25px;
     top: 0px;

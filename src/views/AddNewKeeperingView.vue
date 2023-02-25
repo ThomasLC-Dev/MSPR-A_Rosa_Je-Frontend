@@ -1,16 +1,16 @@
 <template>
   <div>
-    <AddNewPlantsPage />
+    <AddNewKeeperingPage />
   </div>
 </template>
 
 <script>
-import AddNewPlantsPage from '@/components/Plants/AddNewPlantsPage.vue'
+import AddNewKeeperingPage from '@/components/Plants/AddNewKeeperingPage.vue'
 
 export default {
   name: 'AddNewPlantsView',
   components: {
-    AddNewPlantsPage
+    AddNewKeeperingPage
   }
 }
 </script>

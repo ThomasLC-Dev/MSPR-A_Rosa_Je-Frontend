@@ -6,19 +6,19 @@
       </div>
       <div class="group-button-menu">
         <div class="keeper-button">
-          <a href="/src/components/Plants/AddNewKeeperingPage.vue">
+          <a href="/src/components/Plants/AddNewKeeperingView.vue">
             <img src="@/assets/Logo/keeper.png" alt="Réaliser le suivi" />
           </a>
         </div>
 
         <div class="follow-button">
-          <a href="/src/components/Plants/AddFollowingPage.vue">
+          <a href="/src/components/Plants/AddFollowingView.vue">
             <img src="@/assets/Logo/following-plant.png" alt="Proposer un créneau de gardiennage" />
           </a>
         </div>
 
         <div class="add-button">
-          <a href="/src/components/Plants/AddNewPlantsPage.vue">
+          <a href="/src/components/Plants/AddNewPlantsView.vue">
             <img src="@/assets/Logo/add-button.png" alt="Ajouter une plante" />
           </a>
         </div>

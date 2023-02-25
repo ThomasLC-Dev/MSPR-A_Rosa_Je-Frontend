@@ -1,15 +1,17 @@
 <template>
-	<AboutDisconnectedPage/>
+	<AboutDisconnectedPage />
 </template>
 
 <script>
-import AboutDisconnectedPage from "../components/AboutDisconnected/AboutDisconnectedPage.vue";
+import AboutDisconnectedPage from '../components/AboutDisconnected/AboutDisconnectedPage.vue'
+
 export default {
 	name: 'AboutView',
 	components: {
-		AboutDisconnectedPage,
+		AboutDisconnectedPage
 	}
 }
 
 </script>
 
+<style scoped></style>
