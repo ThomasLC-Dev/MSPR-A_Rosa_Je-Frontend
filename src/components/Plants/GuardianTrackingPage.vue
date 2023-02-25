@@ -33,6 +33,16 @@
 <script>
 export default {
   name: "GuardianTrackingPage",
+  data() {
+    return {
+      routePhotoPage: 'camera'
+    }
+  },
+  methods: {
+    goToView(path) {
+      this.$router.push({ name: path })
+    }
+  }
 };
 </script>
 
