@@ -19,11 +19,11 @@
       </div>
 
       <h1 id="day">Jour 1 : </h1>
-      <label for="">Plante 1 : </label>
+      <label for="">Plante 1 : {{ plantsName1 }}</label>
       <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
-      <label for="">Plante 2 : </label>
+      <label for="">Plante 2 : {{ plantsName2 }}</label>
       <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
-      <label for="">Plante 3 : </label>
+      <label for="">Plante 3 : {{ plantsName3 }}</label>
       <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
     </form>
     
@@ -35,6 +35,9 @@ export default {
   name: "GuardianTrackingPage",
   data() {
     return {
+      plantsName1: "",
+      plantsName2: "",
+      plantsName3: "",
       routePhotoPage: 'camera'
     }
   },
