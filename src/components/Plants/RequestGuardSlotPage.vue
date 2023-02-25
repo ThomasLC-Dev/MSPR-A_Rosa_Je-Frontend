@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'AddNewFollowingPage'
+  name: 'RequestGuardSlotPage'
 }
 
 </script>

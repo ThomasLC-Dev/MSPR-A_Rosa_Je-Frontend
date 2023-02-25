@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "AddNewKeeperingPage",
+  name: "GuardianTrackingPage",
 };
 </script>
 
