@@ -23,6 +23,7 @@
       <div v-for="plant in plants" :key="plant.id">
         <label for="" >Plante : {{ plant.name }}</label>
         <div class="add-button">
+          <label class="takePicture">Prendre une photo : </label>
           <img src="@/assets/Logo/add-button.png" @click="goToView(routePhotoPage)" alt="Ajouter une plante" />
         </div>
       </div>
@@ -79,7 +80,18 @@ input {
   text-align: left;
 }
 
+.takePicture {
+  display: flex;
+  position: relative;
+  top: 30px;
+  font-weight: bold;
+}
+
 .add-button>img {
+  display: flex;
+  position: relative;
+  left: 200px;
+  bottom: 10px;
   width: 50px;
   height: auto;
   cursor: pointer;
