@@ -6,11 +6,11 @@
       </div>
       <div class="group-button-menu">
         <div class="keeper-button">
-          <img src="@/assets/Logo/keeper.png" @click="goToView(routeFollowing)" alt="Réaliser le suivi" />
+          <img src="@/assets/Logo/keeper.png" v-if="!show" @click="goToView(routeFollowing)" alt="Réaliser le suivi" />
         </div>
 
         <div class="follow-button">
-          <img src="@/assets/Logo/following-plant.png" @click="goToView(routeKeepering)"
+          <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeKeepering)"
             alt="Proposer un créneau de gardiennage" />
         </div>
 
@@ -47,7 +47,7 @@ export default {
     show: false,
     routeFollowing: 'addnewfollowing',
     routeKeepering: 'addnewkeepering',
-    routeAddNewPlant: 'addnewplants',
+    routeAddNewPlant: 'addnewplants'
 
   }),
   methods: {
@@ -129,5 +129,10 @@ export default {
   height: 80%;
 }
 
-@media (max-width: 1000px) {}
+@media (max-width: 1000px) {
+  .main-title {
+    flex: 1;
+    font-size: large;
+  }
+}
 </style>
