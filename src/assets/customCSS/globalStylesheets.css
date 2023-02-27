@@ -77,3 +77,12 @@ input {
   background-color: var(--btn-reset-color);
   font-size: 30px;
 }
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: x-large;
+    margin-bottom: 5px;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+ }
