@@ -83,6 +83,13 @@ export default {
 </script>
 
 <style>
+
+button {
+  border: solid 1px rgb(223, 114, 250);
+  font-size: 25px;
+  cursor: pointer;
+}
+
 .camera {
   position: fixed;
   top: 0;
@@ -95,6 +102,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
 .wrapper {
   position: relative;
   display: flex;
@@ -106,11 +114,7 @@ export default {
   background-color: white;
   border: solid 2px rgb(223, 114, 250);
 }
-button {
-  border: solid 1px rgb(223, 114, 250);
-  font-size: 25px;
-  cursor: pointer;
-}
+
 .button-close {
   position: absolute;
   top: 50px;
@@ -118,10 +122,12 @@ button {
   width: 25px;
   height: 30px;
 }
+
 .button-snap {
   width: 140px;
   height: 40px;
 }
+
 .video-container {
   display: flex;
   flex-direction: column;
