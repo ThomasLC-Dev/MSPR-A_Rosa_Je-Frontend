@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container">
+    <div class="maincontainer">
         <div class="header">
             <div class="imgProfilContainer">
                 <img :src="require(`@/assets/` + imgPath)" class="imgProfil" alt="">
@@ -22,7 +22,7 @@
                                 <p>Nom :</p>
                             </div>
                             <div class="InputPresentation" label=" Input Presentation">
-                                <input type="text" :value="lastname" />
+                                <input type="text" :disabled="modificationAllowed == 1" v-model="lastname" />
                             </div>
                         </div>
                         <div class="textPresName" label="FirstName Text Presentation">
@@ -30,7 +30,7 @@
                                 <p>Prénom :</p>
                             </div>
                             <div class="InputPresentation" label=" Input Presentation">
-                                <input type="text" :value="firstname" />
+                                <input type="text"  :disabled="modificationAllowed == 1" v-model="firstname"/>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,8 @@
                         <div class="litteTextPhoto" label="Libelle photo">
                             <p>Modifier la photo :</p>
                         </div>
-                        <button class="buttonPhoto" label="Button Photo"> Choisissez un fichier...</button>
+                        <!-- <button class="buttonPhoto" label="Button Photo"  @click="onPickFile"> Choisissez un fichier...</button> -->
+                        <input class="buttonPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" :disabled="modificationAllowed == 1" />
                     </div>
                 </div>
             </div>
@@ -52,26 +53,26 @@
                         <p>Adresse :</p>
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="number" :value="roadNumber" />
+                        <input type="number"  :disabled="modificationAllowed == 1" v-model="roadNumber" />
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :value="roadType" />
+                        <input type="text"  :disabled="modificationAllowed == 1" v-model="roadType"/>
 
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :value="road" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="road"/>
                     </div>
                 </div>
 
                 <div class="secondPartAddress">
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :value="addtionalAddress" />
+                        <input type="text"  :disabled="modificationAllowed == 1" v-model="addtionalAddress" />
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :value="postalCode" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="postalCode"/>
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :value="city" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="city" />
 
                     </div>
                 </div>
@@ -82,7 +83,7 @@
                             <p>E-mail : </p>
                         </div>
                         <div class="InputAddress" label="Input Address">
-                            <input type="text" :value="email" />
+                            <input type="text" :disabled="modificationAllowed == 1" v-model="email" />
                         </div>
                     </div>
 
@@ -91,13 +92,13 @@
                             <p>Numéro : </p>
                         </div>
                         <div class="InputAddress" label="Input Address">
-                            <input type="text" :value="phone" />
+                            <input type="text"  :disabled="modificationAllowed == 1" v-model="phone"/>
                         </div>
                     </div>
                 </div>
                 <div class="modifButton" label="Modification Button">
-                    <button><img src="../../assets/Logo/LogoModif.png" alt="Modifier" class="modifButtonImg"
-                            label="Button Modification"></button>
+                    <input class="btn-validate" type="submit" value="Modifier"  @click="ModificationAllowed" v-show="modificationAllowed ==1">
+                    <input class="btn-validate" type="submit" value="Terminer"  @click="ModificationFinish" v-show="modificationAllowed ==0">
                 </div>
 
             </div>
@@ -120,8 +121,33 @@ export default {
             road: 'Fernand Robert',
             postalCode: '35000',
             city: 'Rennes',
+            modificationAllowed : 1
         }
-    }
+    },
+    methods:{
+        
+        onPickFile() {
+            this.$refs.fileInput.click()
+        },
+        onFilePicked(event) {
+            const files = event.target.files
+            let filename = files[0].name
+            const fileReader = new FileReader()
+            fileReader.addEventListener('load', () => {
+                this.imageUrl = fileReader.result
+            })
+            fileReader.readAsDataURL(files[0])
+            this.image = files[0]
+        }, 
+        ModificationAllowed() {
+            this.modificationAllowed = 0
+           
+        },
+        ModificationFinish() {
+            this.modificationAllowed = 1
+        }
+    }, 
+ 
 };
 
 </script>
@@ -134,6 +160,10 @@ export default {
     width: 100vh;
     align-items: center;
     padding-bottom: 2%;
+}
+
+.maincontainer {
+    margin-left: 5%;
 }
 
 .imgProfilContainer {
@@ -167,16 +197,15 @@ export default {
 
 .contentPresentation {
     display: flex;
-    margin: auto;
     padding: auto;
     width: 100vh;
     white-space: nowrap;
     align-items: center;
     justify-content: flex-start;
     gap: 50px;
-    padding: auto;
     align-content: center;
     flex-wrap: nowrap;
+    margin-left: 180px;
 
 }
 
@@ -225,6 +254,8 @@ input {
 
 .buttonPhoto {
     margin-left: 5%;
+    border: none;
+    padding: 0%;
 }
 
 .contact {
@@ -240,7 +271,7 @@ input {
 }
 
 .address {
-    padding-left: 15px;
+    padding-left: 12px;
     margin-top: 2%;
     display: flex;
     flex-direction: row;
@@ -302,14 +333,15 @@ input {
 
 .modifButton {
     width: 50px;
-    float: right;
-    margin-right: 5%;
-    margin-bottom: 0%;
+    margin: auto;
+    padding: auto;
+    margin-left: 40%;
 }
 
-.modifButtonImg {
-    width: 100%;
-    margin: 0%;
+
+
+button {
+    border: none;
 }
 
 @media(max-width: 1000px) {
@@ -368,15 +400,12 @@ input {
     }
 
     .modifButton {
-        width: 25px;
-        float: right;
-        margin-right: 5%;
-        margin-bottom: 0%;
+        width: 50px;
+        margin: auto;
+        padding: auto;
+        margin-left: 10%;
     }
 
-    .modifButtonImg {
-        width: 100%;
-        margin: 0%;
-    }
+
 }
 </style>
