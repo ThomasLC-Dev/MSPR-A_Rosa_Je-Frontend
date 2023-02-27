@@ -1,19 +1,23 @@
 <template>
   <div class="camera">
-    <div class="wrapper">
-      <button @click="this.$parent.showCamera = false" class="button-close">x</button>
-       <button class="button-snap" @click="toggleCamera()">
+    <div class="main-container">
+
+      <button @click="this.$parent.showCamera = false" class="btn-reset">x</button>
+       <button class="btn-validate" @click="toggleCamera()">
         <span v-if="!isCameraOpen">Open Camera</span>
         <span v-else>Close Camera</span>
       </button>
-       <div class="video-container">
-        <video v-show="isCameraOpen" class="camera-video" ref="camera" :width="450" :height="337" autoplay playsinline ></video>
+
+      <div class="video-container">
+        <video v-show="isCameraOpen" class="camera-video" ref="camera" :width="330" :height="330" autoplay playsinline ></video>
         <canvas id="photoTaken" v-show="isPhotoTaken" class="canvas-photo" ref="canvas" :width="450" :height="337"></canvas>
       </div>
-       <button v-if="!isPhotoTaken && isCameraOpen" class="button-snap" @click="takePhoto">
+
+       <button v-if="!isPhotoTaken && isCameraOpen" class="btn-validate" @click="takePhoto">
         <span>Snap!</span>
       </button>
-      <button v-show="isPhotoTaken && isCameraOpen" class="camera-download">
+
+      <button v-show="isPhotoTaken && isCameraOpen" class="btn-validate">
         <a id="downloadPhoto" download="VueRocksPhoto.jpg" class="button" role="button" @click="downloadImage">
           Download
         </a>
@@ -84,13 +88,7 @@ export default {
 
 <style>
 
-button {
-  border: solid 1px rgb(223, 114, 250);
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.camera {
+/* .main-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -101,9 +99,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.wrapper {
+/* .wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -113,14 +111,16 @@ button {
   height: 90%;
   background-color: white;
   border: solid 2px rgb(223, 114, 250);
-}
+} */
 
-.button-close {
+.btn-reset {
   position: absolute;
-  top: 50px;
-  right: 50px;
-  width: 25px;
-  height: 30px;
+  box-sizing: content-box;
+  line-height: 35px;
+  top: 25px;
+  right: 325px; /*50px pour ordis*/
+  width: 35px;
+  height: 35px;
 }
 
 .button-snap {
@@ -131,5 +131,7 @@ button {
 .video-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
