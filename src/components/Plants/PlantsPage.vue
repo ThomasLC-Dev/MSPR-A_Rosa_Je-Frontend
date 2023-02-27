@@ -8,16 +8,13 @@
         <div class="keeper-button">
           <img src="@/assets/Logo/keeper.png" v-if="!show" @click="goToView(routeFollowing)" alt="Réaliser le suivi" />
         </div>
-
         <div class="follow-button">
           <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeKeepering)"
             alt="Proposer un créneau de gardiennage" />
         </div>
-
         <div class="add-button">
           <img src="@/assets/Logo/add-button.png" @click="goToView(routeAddNewPlant)" alt="Ajouter une plante" />
         </div>
-
       </div>
     </div>
 
@@ -26,28 +23,26 @@
     </div>
 
     <div v-else class="plant-card">
-      <!-- In serer ici un v-for pour boucler sur les plantes et
-      les champs correspondant remplis par plant.value -->
       <PlantCard />
     </div>
   </div>
 </template>
 
 <script>
-import EmptyPlant from '@/components/Plants/EmptyPlant.vue'
-import PlantCard from '@/components/Plants/PlantCard.vue'
+import EmptyPlant from '@/components/Plants/EmptyPlant.vue';
+import PlantCard from '@/components/Plants/PlantCard.vue';
 
 export default {
   name: 'PlantsPage',
   components: {
     EmptyPlant,
-    PlantCard
+    PlantCard,
   },
   data: () => ({
     show: false,
     routeFollowing: 'addnewfollowing',
     routeKeepering: 'addnewkeepering',
-    routeAddNewPlant: 'addnewplants'
+    routeAddNewPlant: 'addnewplants',
 
   }),
   methods: {
@@ -85,25 +80,16 @@ export default {
   align-content: center;
   align-items: center;
   text-align: center;
-
 }
 
-.add-button>img {
-  width: 50px;
-  height: auto;
-  cursor: pointer;
-}
-
-.follow-button>img {
-  width: auto;
-  height: 50px;
-  cursor: pointer;
-}
-
+.add-button>img,
+.follow-button>img,
 .keeper-button>img {
   width: auto;
   height: 50px;
   cursor: pointer;
+  border: 1px solid var(--main-container-border);
+  box-shadow: 5px 5px 6px 1px var(--main-container-border);
 }
 
 .main-container {
@@ -131,8 +117,23 @@ export default {
 
 @media (max-width: 1000px) {
   .main-title {
-    flex: 1;
+    flex: 9;
     font-size: large;
+  }
+
+  .group-button-menu {
+    flex: 1;
+    gap: 2px;
+  }
+
+  .add-button>img,
+  .follow-button>img,
+  .keeper-button>img {
+    width: auto;
+    height: 35px;
+    cursor: pointer;
+    border: 1px solid var(--main-container-border);
+    box-shadow: 5px 5px 5px -1px var(--main-container-border);
   }
 }
 </style>
