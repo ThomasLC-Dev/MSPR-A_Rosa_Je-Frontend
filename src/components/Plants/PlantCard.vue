@@ -28,7 +28,7 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/quantite-eau.png">
               </div>
-              <input type="text" class="waterQuantity logo-field-plant" disabled />
+              <input type="text" v-model="wateringQuantity" class="waterQuantity logo-field-plant" disabled />
             </div>
           </div>
           <div class="row2-2">
@@ -36,13 +36,13 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureBasse.png">
               </div>
-              <input type="text" class="minTemp logo-field-plant" disabled />
+              <input type="text" v-model="lowerTemp" class="minTemp logo-field-plant" disabled />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureHaute.png">
               </div>
-              <input type="text" class="maxTemp logo-field-plant" disabled />
+              <input type="text" v-model="higherTemp" class="maxTemp logo-field-plant" disabled />
             </div>
           </div>
 
@@ -51,13 +51,13 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/watering-frequency.png">
               </div>
-              <input type="text" class="waterFrequency logo-field-plant" disabled />
+              <input type="text" v-model="wateringFrequency" class="waterFrequency logo-field-plant" disabled />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/arrosage.png">
               </div>
-              <input type="text" class="waterType logo-field-plant" disabled />
+              <input type="text" v-model="wateringContainer" class="waterType logo-field-plant" disabled />
             </div>
           </div>
         </div>
