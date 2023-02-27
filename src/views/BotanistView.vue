@@ -1,4 +1,4 @@
-</template>
+<template></template>
 
 <script>
 import BotanistPage from '@/components/Botanist/BotanistPage.vue'

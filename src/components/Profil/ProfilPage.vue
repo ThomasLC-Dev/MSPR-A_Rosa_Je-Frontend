@@ -1,5 +1,5 @@
 <template>
-    <div class="maincontainer">
+    <div class="main-container">
         <div class="header">
             <div class="imgProfilContainer">
                 <img :src="require(`@/assets/` + imgPath)" class="imgProfil" alt="">
@@ -30,7 +30,7 @@
                                 <p>Prénom :</p>
                             </div>
                             <div class="InputPresentation" label=" Input Presentation">
-                                <input type="text"  :disabled="modificationAllowed == 1" v-model="firstname"/>
+                                <input type="text" :disabled="modificationAllowed == 1" v-model="firstname" />
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,8 @@
                             <p>Modifier la photo :</p>
                         </div>
                         <!-- <button class="buttonPhoto" label="Button Photo"  @click="onPickFile"> Choisissez un fichier...</button> -->
-                        <input class="buttonPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" :disabled="modificationAllowed == 1" />
+                        <input class="buttonPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked"
+                            :disabled="modificationAllowed == 1" />
                     </div>
                 </div>
             </div>
@@ -53,23 +54,23 @@
                         <p>Adresse :</p>
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="number"  :disabled="modificationAllowed == 1" v-model="roadNumber" />
+                        <input type="number" :disabled="modificationAllowed == 1" v-model="roadNumber" />
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text"  :disabled="modificationAllowed == 1" v-model="roadType"/>
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="roadType" />
 
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="road"/>
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="road" />
                     </div>
                 </div>
 
                 <div class="secondPartAddress">
                     <div class="InputAddress" label="Input Address">
-                        <input type="text"  :disabled="modificationAllowed == 1" v-model="addtionalAddress" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="addtionalAddress" />
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="postalCode"/>
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="postalCode" />
                     </div>
                     <div class="InputAddress" label="Input Address">
                         <input type="text" :disabled="modificationAllowed == 1" v-model="city" />
@@ -92,19 +93,22 @@
                             <p>Numéro : </p>
                         </div>
                         <div class="InputAddress" label="Input Address">
-                            <input type="text"  :disabled="modificationAllowed == 1" v-model="phone"/>
+                            <input type="text" :disabled="modificationAllowed == 1" v-model="phone" />
                         </div>
                     </div>
                 </div>
                 <div class="modifButton" label="Modification Button">
-                    <input class="btn-validate" type="submit" value="Modifier"  @click="ModificationAllowed" v-show="modificationAllowed ==1">
-                    <input class="btn-validate" type="submit" value="Terminer"  @click="ModificationFinish" v-show="modificationAllowed ==0">
+                    <input class="btn-validate" type="submit" value="Modifier" @click="ModificationAllowed"
+                        v-show="modificationAllowed == 1">
+                    <input class="btn-validate" type="submit" value="Terminer" @click="ModificationFinish"
+                        v-show="modificationAllowed == 0">
                 </div>
 
             </div>
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: "ProfilPage",
@@ -121,11 +125,11 @@ export default {
             road: 'Fernand Robert',
             postalCode: '35000',
             city: 'Rennes',
-            modificationAllowed : 1
+            modificationAllowed: 1
         }
     },
-    methods:{
-        
+    methods: {
+
         onPickFile() {
             this.$refs.fileInput.click()
         },
@@ -138,16 +142,16 @@ export default {
             })
             fileReader.readAsDataURL(files[0])
             this.image = files[0]
-        }, 
+        },
         ModificationAllowed() {
             this.modificationAllowed = 0
-           
+
         },
         ModificationFinish() {
             this.modificationAllowed = 1
         }
-    }, 
- 
+    },
+
 };
 
 </script>
@@ -162,8 +166,9 @@ export default {
     padding-bottom: 2%;
 }
 
-.maincontainer {
+.main-container {
     margin-left: 5%;
+    border: none;
 }
 
 .imgProfilContainer {
