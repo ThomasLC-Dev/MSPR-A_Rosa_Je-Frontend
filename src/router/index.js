@@ -54,8 +54,8 @@ const routes = [
   {
     /** Suivi du gardien */
     path: '/plants/guardian-tracking',
-    name: 'addnewkeepering',
-    component: () => import('@/views/AddNewKeeperingView.vue'),
+    name: 'addnewguardiantracking',
+    component: () => import('@/views/GuardianTrackingView.vue'),
     meta: {
       requiredAuth: true
     }
@@ -63,8 +63,8 @@ const routes = [
   {
     /** Demander un creneau de garde */
     path: '/plants/request-guard-slot',
-    name: 'addnewfollowing',
-    component: () => import('@/views/AddNewFollowingView.vue'),
+    name: 'requestguardslot',
+    component: () => import('@/views/RequestGuardSlotView.vue'),
     meta: {
       requiredAuth: true
     }
