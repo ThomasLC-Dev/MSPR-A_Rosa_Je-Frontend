@@ -1,17 +1,19 @@
 <template>
   <div>
     <SidebarMenu />
+    <profilView />
+
     <!-- <ProfilePage /> -->
-    <h1>TEST</h1>
-    <h2>test</h2>
+
   </div>
 </template>
 
 <script>
-import ProfilPage from '@/components/ProfilView/ProfilePage.vue'
+import ProfilView from '@/components/ProfilView/ProfileView.vue';
+import ProfilPage from '@/components/Profil/ProfilePage.vue';
 
 export default {
-  name: 'profile',
+  name: 'profil',
   components: {
     ProfilPage
   }
