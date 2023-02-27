@@ -1,7 +1,7 @@
 <template>
   <div class="group-plant">
     <div class="photo-part">
-      <CarousselPlant />
+      <CarousselPlant :slides="slides" :interval="3000" controls indicators />
     </div>
 
     <div class="info-part">
@@ -81,26 +81,31 @@
 </template>
 
 <script>
-import CarousselPlant from './CarousselPlant.vue'
+import CarousselPlant from './Carousel/CarousselPlant.vue';
+
 export default {
   name: 'PlantCard',
   components: {
     CarousselPlant
   },
-  data() {
-    return {
-      latinOrVerna: '',
-      sunlight: '',
-      lowerTemp: '',
-      higherTemp: '',
-      wateringQuantity: '',
-      wateringFrequency: '',
-      wateringContainer: '',
-      customerAdvice: '',
-      botanistAdvice: '',
-      plantsPhoto: []
-    }
-  }
+  data: () => ({
+    latinOrVerna: '',
+    sunlight: '',
+    lowerTemp: '',
+    higherTemp: '',
+    wateringQuantity: '',
+    wateringFrequency: '',
+    wateringContainer: '',
+    customerAdvice: '',
+    botanistAdvice: '',
+    slides: [
+      "https://picsum.photos/id/1032/400/500",
+      "https://picsum.photos/id/1033/400/500",
+      "https://picsum.photos/id/1037/400/500",
+      "https://picsum.photos/id/1035/400/500",
+      "https://picsum.photos/id/1036/400/500",
+    ],
+  }),
 }
 </script>
 
@@ -113,7 +118,6 @@ export default {
 }
 
 .photo-part {
-  display: flex;
   width: 35%;
 }
 
