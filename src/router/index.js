@@ -86,14 +86,6 @@ const routes = [
     }
   },
   {
-    path: '/keeper',
-    name: 'keeper',
-    component: () => import('@/views/KeeperView.vue'),
-    meta: {
-      requiredAuth: true
-    }
-  },
-  {
     path: '/register',
     name: 'register',
     component: () => import('@/views/RegisterView.vue'),
