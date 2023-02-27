@@ -10,7 +10,7 @@
 
       <div class="video-container">
         <video v-show="isCameraOpen" class="camera-video" ref="camera" :width="330" :height="330" autoplay playsinline ></video>
-        <canvas id="photoTaken" v-show="isPhotoTaken" class="canvas-photo" ref="canvas" :width="450" :height="337"></canvas>
+        <canvas id="photoTaken" v-show="isPhotoTaken" class="canvas-photo" ref="canvas" :width="330" :height="330"></canvas>
       </div>
 
        <button v-if="!isPhotoTaken && isCameraOpen" class="btn-validate" @click="takePhoto">
@@ -74,7 +74,7 @@ export default {
       this.isPhotoTaken = !this.isPhotoTaken
       const context = this.$refs.canvas.getContext('2d')
       const photoFromVideo = this.$refs.camera
-      context.drawImage(photoFromVideo, 0, 0, 450, 337)
+      context.drawImage(photoFromVideo, 0, 0, 330, 330)
     },
     downloadImage() {
     const download = document.getElementById("downloadPhoto");
