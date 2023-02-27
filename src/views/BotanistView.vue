@@ -1,12 +1,15 @@
-<template>
-   <h1>TEST</h1>
 </template>
+
 <script>
-    export default {
-        name: 'BotanistView'
-    }
+import BotanistPage from '@/components/Botanist/BotanistPage.vue'
+
+export default {
+  name: 'BotanistView',
+  components: {
+    BotanistPage
+  }
+}
 
 </script>
-<style>
 
-</style>
+<style></style>

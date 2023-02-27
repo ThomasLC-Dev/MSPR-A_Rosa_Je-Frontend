@@ -1,7 +1,7 @@
 <template>
 	<div class="navbar">
 		<transition name="slide">
-			<div v-if="isPanelOpen" class="sidebar-panel" :style="{display: isPanelOpen ? 'block' : 'none'}">
+			<div v-if="isPanelOpen" class="sidebar-panel" :style="{ display: isPanelOpen ? 'block' : 'none' }">
 				<div class="LogoAccueil">
 					<div class="ImgLogo">
 						<img src="../../assets/Logo/LOGOAPP.png" alt="" class="imgSideBar" />
@@ -11,12 +11,18 @@
 					</div>
 				</div>
 				<div class="ButtonsMenu">
-					<ButtonMenu :name="About" :imgLink="ImgAbout" @click="goToView(routeHome)"></ButtonMenu>
-					<ButtonMenu :name="Profile" :imgLink="ImgProfile"  @click="goToView(routeProfil)"></ButtonMenu>
-					<ButtonMenu :name="MyPlants" :imgLink="ImgMyPlants"  @click="goToView(routeMyPlants)"></ButtonMenu>
-					<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper"  @click="goToView(routePlantKeeper)"></ButtonMenu>
-					<ButtonMenu :name="Botanist" :imgLink="ImgBotanist"  @click="goToView(routeBotanist)"></ButtonMenu>
-					<ButtonMenu :name="LogOut" :imgLink="ImgLogOut"  @click="goToView(routeHome)"></ButtonMenu>
+					<!-- Disconnected Buttons -->
+					<ButtonMenu :name="AboutDisco" :imgLink="ImgAboutDisco" @click="goToView(routeHomeDisco)"></ButtonMenu>
+					<ButtonMenu :name="Connection" :imgLink="ImgConnection" @click="goToView(routeConnection)"></ButtonMenu>
+					<ButtonMenu :name="Register" :imgLink="ImgRegister" @click="goToView(routeRegister)"></ButtonMenu>
+					<!-- Connected Buttons -->
+					<ButtonMenu :name="AboutCo" :imgLink="ImgAboutCo" @click="goToView(routeHomeCo)"></ButtonMenu>
+					<ButtonMenu :name="Profile" :imgLink="ImgProfile" @click="goToView(routeProfil)"></ButtonMenu>
+					<ButtonMenu :name="MyPlants" :imgLink="ImgMyPlants" @click="goToView(routeMyPlants)"></ButtonMenu>
+					<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)"></ButtonMenu>
+					<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
+					<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
+					<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
 				</div>
 			</div>
 		</transition>
@@ -24,51 +30,63 @@
 </template>
 
 <script>
-import ButtonMenu from "./ButtonMenu.vue";
+import ButtonMenu from './ButtonMenu.vue'
 export default {
 	name: 'SidebarMenu',
 	components: {
-		ButtonMenu,
+		ButtonMenu
 	},
 	props: {
-		isPanelOpen: Boolean,
+		isPanelOpen: Boolean
 	},
 	data: () => ({
-		About: "A propos",
-		Profile: "Mon profil",
-		MyPlants: "Mes plantes",
-		PlantKeeper: "Gardien",
-		Botanist: "Botaniste",
-		LogOut: "Deconnexion",
+		AboutDisco: 'Accueil',
+		Connection: 'Connexion',
+		Register: 'Inscription',
+		AboutCo: 'A propos',
+		Profile: 'Mon profil',
+		MyPlants: 'Mes plantes',
+		PlantKeeper: 'Gardien',
+		Botanist: 'Botaniste',
+		Legals: 'Mentions',
+		LogOut: 'Deconnexion',
 
-		ImgAbout: `Logo/Logo_1.png`,
-		ImgProfile: "Logo/ConnexionLogo.png",
-		ImgMyPlants: "Plante/Plante_7.png",
-		ImgPlantKeeper: "Plante/Plante_5.png",
-		ImgBotanist: "Logo/advice.png",
-		ImgLogOut: "Logo/ConnexionLogout.png",
+		ImgAboutDisco: 'Logo/about.png',
+		ImgConnection: 'Logo/connection.png',
+		ImgRegister: 'Logo/register.png',
+		ImgAboutCo: 'Logo/about.png',
+		ImgProfile: 'Logo/profil.png',
+		ImgMyPlants: 'Plante/Plante_7.png',
+		ImgPlantKeeper: 'Logo/keeper.png',
+		ImgBotanist: 'Logo/botanist.png',
+		ImgLegals: 'Logo/about.png',
+		ImgLogOut: 'Logo/disconnected.png',
 
-		routeHome: "home",
-		routeProfil:"profil", 
-		routeMyPlants:"plants",
-		routePlantKeeper:"keeper", 
-		routeBotanist:"botanist", 
-		routeLogOut:""
+		routeHomeDisco: 'home',
+		routeConnection: 'connection',
+		routeRegister: 'register',
+		routeHomeCo: 'about',
+		routeProfil: 'profil',
+		routeMyPlants: 'plants',
+		routePlantKeeper: 'keeper',
+		routeBotanist: 'botanist',
+		routeLegals: 'legals',
+		routeLogOut: ''
 	}),
 	methods: {
 		closeOpenSidebarPanel() {
-			this.isPanelOpen = !this.isPanelOpen;
+			this.isPanelOpen = !this.isPanelOpen
 		},
-		goToView(path){
-			this.$router.push({name:path})
+		goToView(path) {
+			this.$router.push({ name: path })
 		}
-	},
-};
+	}
+}
 </script>
 
 <style>
 .sidebar-panel {
-    display: block;
+	display: block;
 	background-color: var(--menu-background);
 	position: fixed;
 	left: 0;
@@ -124,17 +142,17 @@ export default {
 	transition: transform 0.2s ease;
 }
 
-.slide-enter-from{
-    transform: translateX(-100%);
+.slide-enter-from {
+	transform: translateX(-100%);
 }
 
 .slide-leave-to {
 	transform: translateX(-100%);
 }
 
-@media(max-width: 1000px){
-    .sidebar-panel{
-        display: none;
-    }
+@media(max-width: 1000px) {
+	.sidebar-panel {
+		display: none;
+	}
 }
 </style>
