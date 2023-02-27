@@ -49,7 +49,7 @@
           <div class="row2-3">
             <div class="logo-field">
               <div class="logo-img-plant">
-                <img src="@/assets/Logo/quantite-eau.png">
+                <img src="@/assets/Logo/watering-frequency.png">
               </div>
               <input type="text" class="waterFrequency logo-field-plant" disabled />
             </div>
@@ -278,6 +278,10 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+
+  .logo-field-plant {
+    width: 90%
   }
 
   .maintenanceInstructions,
