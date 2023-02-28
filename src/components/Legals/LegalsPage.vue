@@ -19,7 +19,7 @@
       <p>Hébergeur : OVH SAS - 2 rue Kellermann - BP 80157 - 59053 Roubaix Cedex 1 - Téléphone : 0615487529</p>
       <p>Délégué à la protection des données : Thomas Le Corvec - ThomasLeCorvec@Epsi.fr</p>
       <p>Autres contributeurs : Timothée Garot, Thomas Le Corvec, Charlène D'hon, Thomas Girardet</p>
-
+      <br>
       <p><strong>2 - Propriété intellectuelle et contrefaçons.</strong></p>
 
       <p>Les 4 bota’clic est propriétaire des droits de propriété intellectuelle et détient les droits d’usage sur tous
@@ -31,7 +31,7 @@
       <p>Toute exploitation non autorisée du site ou de l’un quelconque des éléments qu’il contient sera considérée comme
         constitutive d’une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du
         Code de Propriété Intellectuelle.</p>
-
+      <br>
       <p><strong>3 - Limitations de responsabilité.</strong></p>
 
       <p>Les 4 bota’clic ne pourront être tenu pour responsable des dommages directs et indirects causés au matériel de
@@ -47,7 +47,7 @@
       <p>Le cas échéant, Les 4 bota’clic se réservent également la possibilité de mettre en cause la responsabilité civile
         et/ou pénale de l’utilisateur, notamment en cas de message à caractère raciste, injurieux, diffamant, ou
         pornographique, quel que soit le support utilisé (texte, photographie …).</p>
-
+      <br>
       <p><strong>4 - CNIL et gestion des données personnelles.</strong></p>
 
       <p>Conformément aux dispositions de la loi 78-17 du 6 janvier 1978 modifiée, l’utilisateur du site
@@ -57,7 +57,7 @@
       <p>Pour plus d'informations sur la façon dont nous traitons vos données (type de données, finalité,
         destinataire...), lisez notre https://www.arosaje.fr/mentions-legales/.
         https://www.arosaje.fr/PolitiqueDeConfidentialité/</p>
-
+      <br>
       <p><strong>5 - Liens hypertextes et cookies</strong></p>
 
       <p>Le site https://www.arosaje.fr/ contient des liens hypertextes vers d’autres sites et dégage toute responsabilité
@@ -71,16 +71,17 @@
         Aucun cookie ne sera déposé sans votre consentement.</p>
       <p>Les cookies sont enregistrés pour une durée maximale de 13 mois.</p>
       <p>Pour plus d'informations sur la façon dont nous faisons usage des cookies, lisez notre
-      https://www.arosaje.fr/mentions-legales/. https://www.arosaje.fr/PolitiqueDeConfidentialité/</p>
+        https://www.arosaje.fr/mentions-legales/. https://www.arosaje.fr/PolitiqueDeConfidentialité/</p>
+      <br>
+      <p><strong>6 - Droit applicable et attribution de juridiction.</strong></p>
 
-    <p><strong>6 - Droit applicable et attribution de juridiction.</strong></p>
+      <p>Tout litige en relation avec l’utilisation du site https://www.epsi.fr/ est soumis au droit français. En dehors
+        des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de
+        Rennes.</p>
+    </div>
 
-    <p>Tout litige en relation avec l’utilisation du site https://www.epsi.fr/ est soumis au droit français. En dehors
-      des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de
-      Rennes.</p>
   </div>
-
-</div></template>
+</template>
 
 <script>
 export default {
@@ -88,11 +89,22 @@ export default {
 }
 </script>
 
-<style>p {
+<style>
+.main-container {
+  padding: 10px;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+p {
   margin-bottom: 5px;
 }
 
 .legals-text {
   word-wrap: break-word;
   width: fill-available;
-}</style>
+}
+</style>
