@@ -22,6 +22,7 @@
 					<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)"></ButtonMenu>
 					<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
 					<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
+					<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
 					<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
 				</div>
 			</div>
@@ -49,6 +50,7 @@ export default {
 		PlantKeeper: 'Gardien',
 		Botanist: 'Botaniste',
 		Legals: 'Mentions',
+		Rgpd: 'RGPD',
 		LogOut: 'Deconnexion',
 
 		ImgAboutDisco: 'Logo/about.png',
@@ -60,6 +62,7 @@ export default {
 		ImgPlantKeeper: 'Logo/keeper.png',
 		ImgBotanist: 'Logo/botanist.png',
 		ImgLegals: 'Logo/about.png',
+		ImgRgpd: 'Logo/about.png',
 		ImgLogOut: 'Logo/disconnected.png',
 
 		routeHomeDisco: 'home',
@@ -71,6 +74,7 @@ export default {
 		routePlantKeeper: 'keeper',
 		routeBotanist: 'botanist',
 		routeLegals: 'legals',
+		routeRgpd: 'rgpd',
 		routeLogOut: ''
 	}),
 	methods: {
