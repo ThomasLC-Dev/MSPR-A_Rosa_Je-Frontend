@@ -94,6 +94,14 @@ const routes = [
     }
   },
   {
+    path: '/map',
+    name: 'map',
+    component: () => import('@/views/MapView.vue'),
+    meta: {
+      requiredAuth: true
+    }
+  },
+  {
     path: '/register',
     name: 'register',
     component: () => import('@/views/RegisterView.vue'),
