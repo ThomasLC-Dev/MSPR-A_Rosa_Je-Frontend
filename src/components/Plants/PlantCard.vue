@@ -2,7 +2,7 @@
   <div class="card-plant">
     <div class="row1">
       <p type="text" class="plant-subtitle">Orchidée Phalaenopsis</p>
-      <div class="delete-button">
+      <div class="delete-button" onClick="">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" />
       </div>
     </div>
