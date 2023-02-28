@@ -2,8 +2,8 @@
   <div class="main-content">
     <nav class="main-nav">
       <div class="logo"></div>
-      <Burger :isOpen ="SideBarOpen" @click="toggleBar()"></Burger>
-	  	<Sidebar :isPanelOpen="SideBarOpen || width > 1000"></Sidebar>
+      <Burger :isOpen="SideBarOpen" @click="toggleBar()"></Burger>
+      <Sidebar :isPanelOpen="SideBarOpen || width > 1000"></Sidebar>
     </nav>
     <router-view class="page"></router-view>
   </div>
@@ -21,28 +21,28 @@ export default {
   },
   data() {
     return {
-			SideBarOpen: false,
-			width: window.innerWidth
+      SideBarOpen: false,
+      width: window.innerWidth
     }
   },
   methods: {
     toggleBar() {
       this.SideBarOpen = !this.SideBarOpen
-		}
-	},
-	created() {
-		window.addEventListener("resize", () => { this.width = window.innerWidth })
-	},
-	destroyed() {
-		window.removeEventListener("resize", () => { this.width = window.innerWidth })
-	},
+    }
+  },
+  created() {
+    window.addEventListener("resize", () => { this.width = window.innerWidth })
+  },
+  destroyed() {
+    window.removeEventListener("resize", () => { this.width = window.innerWidth })
+  },
 }
 </script>
 
 <style>
-*{
-	margin: 0;
-	padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .logo {
@@ -56,7 +56,7 @@ ul.sidebar-panel-nav {
   list-style-type: none;
 }
 
-ul.sidebar-panel-nav > li > a {
+ul.sidebar-panel-nav>li>a {
   color: #fff;
   text-decoration: none;
   font-size: 1.5rem;
@@ -64,30 +64,30 @@ ul.sidebar-panel-nav > li > a {
   padding-bottom: 0.5em;
 }
 
-.main-content{
-	display: flex;
-	flex-direction: row;
+.main-content {
+  display: flex;
+  flex-direction: row;
 }
 
-.page{
-	background-color: var(--main-bg-color);
-	width: calc(100% - 300px);
-	height: 100vh;
-	margin-left: 300px;
-	overflow-x: hidden;
+.page {
+  background-color: var(--main-bg-color);
+  width: calc(100% - 300px);
+  height: 100vh;
+  margin-left: 300px;
+  overflow-x: hidden;
   padding: 20px;
 }
 
-.background-plant{
-	background-image: url("@/assets/Plante/background-plant.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
+.background-plant {
+  background-image: url("@/assets/Plante/background-plant.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@media(max-width: 1000px){
-  .page{
-		width: 100%;
-		margin-left: 0px;
-	}
+@media(max-width: 1000px) {
+  .page {
+    width: 100%;
+    margin-left: 0px;
+  }
 }
 </style>

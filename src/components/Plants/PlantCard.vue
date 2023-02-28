@@ -2,7 +2,7 @@
   <div class="card-plant">
     <div class="row1">
       <p type="text" class="plant-subtitle">Orchidée Phalaenopsis</p>
-      <div class="delete-button">
+      <div class="delete-button" onClick="">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" />
       </div>
     </div>
@@ -12,13 +12,6 @@
       </div>
 
       <div class="info-part">
-        <!-- <div class="row1">
-          <p type="text" class="plant-subtitle">Orchidée Phalaenopsis</p>
-          <div class="delete-button">
-            <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" />
-          </div>
-        </div> -->
-
         <div class="row2">
           <div class="row2-1">
             <div class="logo-field">
@@ -35,7 +28,7 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/quantite-eau.png">
               </div>
-              <input type="text" class="waterQuantity logo-field-plant" disabled />
+              <input type="text" v-model="wateringQuantity" class="waterQuantity logo-field-plant" disabled />
             </div>
           </div>
           <div class="row2-2">
@@ -43,28 +36,28 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureBasse.png">
               </div>
-              <input type="text" class="minTemp logo-field-plant" disabled />
+              <input type="text" v-model="lowerTemp" class="minTemp logo-field-plant" disabled />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureHaute.png">
               </div>
-              <input type="text" class="maxTemp logo-field-plant" disabled />
+              <input type="text" v-model="higherTemp" class="maxTemp logo-field-plant" disabled />
             </div>
           </div>
 
           <div class="row2-3">
             <div class="logo-field">
               <div class="logo-img-plant">
-                <img src="@/assets/Logo/quantite-eau.png">
+                <img src="@/assets/Logo/watering-frequency.png">
               </div>
-              <input type="text" class="waterFrequency logo-field-plant" disabled />
+              <input type="text" v-model="wateringFrequency" class="waterFrequency logo-field-plant" disabled />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/arrosage.png">
               </div>
-              <input type="text" class="waterType logo-field-plant" disabled />
+              <input type="text" v-model="wateringContainer" class="waterType logo-field-plant" disabled />
             </div>
           </div>
         </div>
@@ -119,7 +112,7 @@ export default {
 
 <style scoped>
 .card-plant {
-  display: fex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -226,7 +219,7 @@ export default {
 
 @media (max-width: 1000px) {
   .card-plant {
-    display: fex;
+    display: flex;
     flex-direction: column;
   }
 
@@ -235,17 +228,14 @@ export default {
   }
 
   .row1 {
-    width: 100%;
+    width: 80%;
+    display: inline-flex;
+    margin-left: 20px;
   }
 
   .plant-subtitle {
     font-size: x-large;
     margin-bottom: 0px;
-    width: 90%;
-  }
-
-  .delete-button {
-    width: 10%;
   }
 
   .delete-button>img {
@@ -260,17 +250,43 @@ export default {
     width: 100%;
   }
 
-  .row2,
+  .row2 {
+    flex-direction: column;
+  }
+
   .row3 {
     flex-direction: column;
+    justify-content: center;
+    width: 90%;
+  }
+
+  .logo-field {
+    margin-top: 5px;
+    width: 80%;
   }
 
   .row2-1,
   .row2-2,
   .row2-3 {
     flex-direction: column;
-    margin: 1px 3px 1px 3px;
-    gap: 5px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .logo-field-plant {
+    width: 90%
+  }
+
+  .maintenanceInstructions,
+  .botanistAdvice {
+    width: 100%;
   }
 
 }
