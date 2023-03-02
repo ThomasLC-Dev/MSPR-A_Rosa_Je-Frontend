@@ -124,16 +124,6 @@ export default {
   data() {
     return {
 
-<<<<<<< HEAD
-=======
-      plant: {
-        advises: "string",
-        description: "string",
-        name: "string",
-        userId: 6,
-      },
-
->>>>>>> 093c0e4ce4392b1cce8a1f0d980f53c7d9ab312b
       attachementFile: {
         id: 6,
         type: "plant",
@@ -158,18 +148,11 @@ export default {
       this.$router.push({ name: path });
     },
     newPlant() {
-<<<<<<< HEAD
       fetch(config.apiBase + config.endpoints.plantsPath, {
         method: 'POST',
         headers: {
           Authorization: "Bearer " + getToken(),
           "Content-Type": "application/json"
-=======
-      fetch("https://a-rosa-je.herokuapp.com/api/plants/", {
-        method: "POST",
-        header: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
->>>>>>> 093c0e4ce4392b1cce8a1f0d980f53c7d9ab312b
         },
         body: JSON.stringify({
             advises: this.botanistAdvice,
@@ -178,12 +161,7 @@ export default {
             userId: 1
         })
       })
-<<<<<<< HEAD
         .then(res => this.goToView("plants"));
-=======
-        .then((res) => res.json())
-        .then((data) => console.log(data))
->>>>>>> 093c0e4ce4392b1cce8a1f0d980f53c7d9ab312b
     },
   },
 }
