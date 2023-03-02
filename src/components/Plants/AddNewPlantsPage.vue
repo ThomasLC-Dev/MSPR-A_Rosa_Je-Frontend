@@ -5,7 +5,11 @@
     <form id="formAddPlant">
       <div class="form-field">
         <label for="plantName">Nom de plante : </label>
-        <input v-model="latinOrVerna" type="text" placeholder="Nom vernaculaire ou latin" />
+        <input
+          v-model="latinOrVerna"
+          type="text"
+          placeholder="Nom vernaculaire ou latin"
+        />
       </div>
 
       <div class="form-field">
@@ -20,17 +24,31 @@
 
       <div class="form-field">
         <label for="plantMinTemp">T°C minimale : </label>
-        <input v-model="lowerTemp" type="number" id="minTemp" placeholder="Valeur" />
+        <input
+          v-model="lowerTemp"
+          type="number"
+          id="minTemp"
+          placeholder="Valeur"
+        />
       </div>
 
       <div class="form-field">
         <label for="plantMaxTemp">T°C maximale : </label>
-        <input v-model="higherTemp" type="number" id="maxTemp" placeholder="Valeur" />
+        <input
+          v-model="higherTemp"
+          type="number"
+          id="maxTemp"
+          placeholder="Valeur"
+        />
       </div>
 
       <div class="form-field">
         <label for="plantWaterQuantity">Quantité d'eau : </label>
-        <input v-model="wateringQuantity" type="number" placeholder="Volume d'eau à verser" />
+        <input
+          v-model="wateringQuantity"
+          type="number"
+          placeholder="Volume d'eau à verser"
+        />
       </div>
 
       <div class="form-field">
@@ -42,12 +60,18 @@
 
       <div class="form-field">
         <label for="plantWateringType">Type arrosage : </label>
-        <input v-model="wateringContainer" type="text" placeholder="Contenant à utiliser" />
+        <input
+          v-model="wateringContainer"
+          type="text"
+          placeholder="Contenant à utiliser"
+        />
       </div>
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
+        <button class="addPlant" @click="goToView(routePhotoPage)">
+          Prendre une photo
+        </button>
         <div class="addPhotos">
           <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
@@ -73,7 +97,12 @@
 
       <div class="form-field">
         <label for="plantLight">Consignes d'entretien : </label>
-        <textarea v-model="customerAdvice" type="text" id="maintenanceInstructions"> </textarea>
+        <textarea
+          v-model="customerAdvice"
+          type="text"
+          id="maintenanceInstructions"
+        >
+        </textarea>
       </div>
 
       <div>
@@ -89,28 +118,37 @@
 
 <script>
 export default {
-  name: 'AddNewPlantsPage',
+  name: "AddNewPlantsPage",
   data() {
     return {
-      latinOrVerna: '',
-      sunLight: '',
-      lowerTemp: '',
-      higherTemp: '',
-      wateringQuantity: '',
-      wateringFrequency: '',
-      wateringContainer: '',
-      customerAdvice: '',
+      latinOrVerna: "",
+      sunLight: "",
+      lowerTemp: "",
+      higherTemp: "",
+      wateringQuantity: "",
+      wateringFrequency: "",
+      wateringContainer: "",
+      customerAdvice: "",
       botanistAdvice: null,
       plantsPhoto: [],
-      routePhotoPage: 'camera'
-    }
+      routePhotoPage: "camera",
+    };
+  },
+  mounted() {
+    fetch("https://a-rosa-je.herokuapp.com/api/users/" + this.id, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => (this.user = data));
   },
   methods: {
     goToView(path) {
-      this.$router.push({ name: path })
-    }
-  }
-}
+      this.$router.push({ name: path });
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -195,7 +233,6 @@ input[type="image"] {
 }
 
 @media screen and (min-width: 1000px) {
-
   .main-container {
     align-items: center;
   }
