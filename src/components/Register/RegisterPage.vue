@@ -88,13 +88,15 @@
 
       <div class="button-group">
         <input class="btn-reset" type="reset" value="Annuler" />
-        <input class="btn-validate" type="submit" value="S'inscrire" />
+        <input class="btn-validate" type="submit" value="S'inscrire" @click="onSubmit" />
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import router from '@/router'
+import { config, saveToken } from '../../../api.config'
 export default {
   name: 'RegisterPage',
   data() {
@@ -113,41 +115,44 @@ export default {
       passwordConfirmation: '',
       userRoles: []
     }
-  }
-  // methods: {
-  //    onSubmit() {
-  //        let userRegister = {
-  //             firstname: this.firstname,
-  //             lastname: this.lastname,
-  //             phone: this.phone,
-  //             email: this.email,
-  //             roadNumber: this.roadNumber,
-  //             roadType: this.roadType,
-  //             addtionalAddress: this.addtionalAddress,
-  //             road: this.road,
-  //             postalCode: this.postalCode,
-  //             city: this.city,
-  //             password: this.password,
-  //             passwordConfirmation: this.passwordConfirmation,
-  //             userRoles: this.userRoles
-  //         }
-  //         this.$emit('register-submitted', userRegister)
+  },
+  methods: {
+    onSubmit() {
 
-  //         this.firstname,
-  //             this.lastname  = ''
-  //             this.phone = ''
-  //             this.email = ''
-  //             this.roadNumber = ''
-  //             this.roadType = ''
-  //             this.addtionalAddress = ''
-  //             this.road = ''
-  //             this.postalCode = ''
-  //             this.city = ''
-  //             this.password = ''
-  //             this.passwordConfirmation = ''
-  //             this.userRoles = ''
-  //     }
+      let userRegister = {
+        "additionalAddress": this.addtionalAddress,
+        "city": this.city,
+        "email": this.email,
+        "firstName": this.firstname,
+        "lastName": this.lastname,
+        "password": this.password,
+        "passwordConfirmation": this.passwordConfirmation,
+        "phone": this.phone,
+        "postalCode": this.postalCode,
+        "road": this.road,
+        "roadNumber": this.roadNumber,
+        "roadType": this.roadType,
+        "status": this.status,
+        "userRoles": 1
+      }
+
+      console.log(userRegister);
+
+      fetch(config.apiBase + config.endpoints.registerPath, { method: 'POST', body: JSON.stringify(userRegister) }).then(response => {
+        return response.json()
+      })
+        .then(data => {
+          console.log(data);
+          this.$router.push('/connection');
+        })
+
+
+
+
+    }
+  }
 }
+
 </script>
 
 <style scoped>
