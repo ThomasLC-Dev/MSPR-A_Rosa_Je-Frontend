@@ -87,7 +87,7 @@ export default {
 		routeRgpd: 'rgpd',
 		routeLogOut: '',
 
-		connected: false
+		connected: isConnected
 	}),
 	methods: {
 		closeOpenSidebarPanel() {

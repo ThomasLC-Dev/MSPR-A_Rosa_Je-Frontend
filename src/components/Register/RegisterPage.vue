@@ -136,7 +136,6 @@ export default {
         "userRoles": this.userRoles.map((value) => +value)
       }
 
-      console.log(userRegister);
 
       fetch(config.apiBase + config.endpoints.registerPath, { method: 'POST', 
         headers: { "Content-Type": "application/json"}
