@@ -2,7 +2,7 @@
   <div class="main-container">
     <h1>Ajouter une plante</h1>
 
-    <form id="formAddPlant">
+    <form id="formAddPlant" @submit.prevent="newPlant">
       <div class="form-field">
         <label for="plantName">Nom de plante : </label>
         <input
@@ -106,7 +106,7 @@
       </div>
 
       <div>
-        <button class="btn-validate" @click="getNewPlant()">Enregistrer</button>
+        <button class="btn-validate">Enregistrer</button>
       </div>
 
       <div>
@@ -121,6 +121,20 @@ export default {
   name: "AddNewPlantsPage",
   data() {
     return {
+
+      plant: {
+        advises: "string",
+        description: "string",
+        name: "string",
+        userId: 0,
+      },
+
+      attachementFile: {
+        id: 6,
+        type: "string",
+        role: "string",
+      },
+
       latinOrVerna: "",
       sunLight: "",
       lowerTemp: "",
@@ -138,16 +152,26 @@ export default {
     goToView(path) {
       this.$router.push({ name: path });
     },
-    getNewPlant() {
-      console.log(
-        fetch("https://a-rosa-je.herokuapp.com/api/plants/" + this.latinOrVerna + this.sunLight + this.lowerTemp + this.higherTemp + this.wateringQuantity + this.wateringFrequency + this.wateringContainer + this.customerAdvice + this.plantsPhoto, {
-          headers: {
-            Authorization: "Bearer " + getToken(),
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => (this.user = data))
-      );
+    newPlant() {
+      fetch("https://a-rosa-je.herokuapp.com/api/plants/", {
+        method: "POST",
+        header: {
+          Authorization: "Bearer " + getToken(),
+        },
+        body: JSON.stringify({
+          name: this.latinOrVerna,
+          sunLight: this.sunLight,
+          lowerTemp: this.lowerTemp,
+          higherTemp: this.higherTemp,
+          wateringQuantity: this.wateringQuantity,
+          wateringFrequency: this.wateringFrequency,
+          wateringContainer: this.wateringContainer,
+          description: this.customerAdvice,
+          plantsPhoto: this.plantsPhoto,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
     },
   },
 };
