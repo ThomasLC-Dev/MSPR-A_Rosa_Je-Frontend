@@ -20,9 +20,9 @@
 						<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)">
 						</ButtonMenu>
 						<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
+						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
-						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
 					</div>
 					<div class="disconnected" v-else>
 						<ButtonMenu :name="AboutDisco" :imgLink="ImgAboutDisco" @click="goToView(routeHomeDisco)">

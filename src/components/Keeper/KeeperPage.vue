@@ -9,9 +9,13 @@
         <h1 id="lastname">{{ firstname }}</h1>
         <h1 id="firstname">{{ lastname }}</h1>
       </div>
+      <div class="button">
+        <img src="../../assets/Logo/Map.png" alt="" srcset="" class="imgButton">
+      </div>
     </div>
-    <div class="modifButton" label="ShowMapButton">
-      <input class="btn-validate" type="submit" value="Carte" @click="ShowMap">
+    <div class="map">
+      <img src="../../assets/Logo/Capture_decran_2023-03-02_a_23.07.48.png" alt="" srcset="" class="imgMap">
+      
     </div>
   </div>
 </template>
@@ -42,10 +46,23 @@ export default {
   width: 100vh;
   align-items: center;
   padding-bottom: 2%;
+
+}
+.map{
+  width: 80%;
 }
 
+.imgMap{
+  width: 100%;
+}
 
-
+.button{
+  top: 0%;
+  right: 0%;
+  width: 150px;
+  margin-right: 0%;
+  margin-left: 300px;
+}
 .imgProfilContainer {
   width: 150px;
 }
@@ -53,6 +70,9 @@ export default {
 .imgProfil {
   width: 100%;
   border-radius: 50%;
+}
+.imgButton{
+  width: 100%;
 }
 
 .nameProfil {
@@ -62,5 +82,29 @@ export default {
   gap: 10px;
   border-bottom: 5px solid var(--main-text);
 
+}
+
+@media(max-width: 1000px) {
+  .header {
+  flex-direction: column;
+}
+
+
+.button{
+  margin-top: 10%;
+  margin-left: 0%;
+}
+.nameProfil {
+  margin-left: 0%; 
+
+}
+
+.map{
+  width: 110%;
+}
+
+.imgMap{
+  width: 100%;
+}
 }
 </style>
