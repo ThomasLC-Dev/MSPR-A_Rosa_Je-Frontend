@@ -3,7 +3,7 @@
     <nav class="main-nav">
       <div class="logo"></div>
       <Burger :isOpen="SideBarOpen" @click="toggleBar()"></Burger>
-      <Sidebar :isPanelOpen="SideBarOpen || width > 1000"></Sidebar>
+      <Sidebar :key="$route.fullPath" :isPanelOpen="SideBarOpen || width > 1000"></Sidebar>
     </nav>
     <router-view class="page"></router-view>
   </div>

@@ -41,7 +41,6 @@
 <script>
 import ButtonMenu from './ButtonMenu.vue'
 import { isConnected } from '../../../api.config'
-import { CONNECTING } from 'ws';
 export default {
 	name: 'SidebarMenu',
 	components: {
@@ -92,14 +91,13 @@ export default {
 	methods: {
 		closeOpenSidebarPanel() {
 			this.isPanelOpen = !this.isPanelOpen
-			console.log(isConnected);
 		},
 		goToView(path) {
 			this.$router.push({ name: path })
 		}
 	},
-	beforeMount() {
-		//this.connected = isConnected(); 
+	created() {
+		this.connected = isConnected()
 	}
 
 }
