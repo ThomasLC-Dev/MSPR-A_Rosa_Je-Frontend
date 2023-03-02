@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import { config, getToken } from '../../../api.config'
+import { config, getToken, getCurrentUserId } from '../../../api.config'
 export default {
     name: "ProfilPage",
     data() {
@@ -177,7 +177,7 @@ export default {
             this.modificationAllowed = 1
         },
         GetUser() {
-            fetch("https://a-rosa-je.herokuapp.com/api/users/" + this.id, {
+            fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
                 headers: {
                     Authorization: 'Bearer ' + getToken(),
                 }
