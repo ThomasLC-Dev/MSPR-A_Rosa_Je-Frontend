@@ -2,10 +2,14 @@
   <div class="main-container">
     <h1>Ajouter une plante</h1>
 
-    <form id="formAddPlant">
+    <form id="formAddPlant" @submit.prevent="newPlant">
       <div class="form-field">
         <label for="plantName">Nom de plante : </label>
-        <input v-model="latinOrVerna" type="text" placeholder="Nom vernaculaire ou latin" />
+        <input
+          v-model="latinOrVerna"
+          type="text"
+          placeholder="Nom vernaculaire ou latin"
+        />
       </div>
 
       <div class="form-field">
@@ -20,17 +24,31 @@
 
       <div class="form-field">
         <label for="plantMinTemp">T°C minimale : </label>
-        <input v-model="lowerTemp" type="number" id="minTemp" placeholder="Valeur" />
+        <input
+          v-model="lowerTemp"
+          type="number"
+          id="minTemp"
+          placeholder="Valeur"
+        />
       </div>
 
       <div class="form-field">
         <label for="plantMaxTemp">T°C maximale : </label>
-        <input v-model="higherTemp" type="number" id="maxTemp" placeholder="Valeur" />
+        <input
+          v-model="higherTemp"
+          type="number"
+          id="maxTemp"
+          placeholder="Valeur"
+        />
       </div>
 
       <div class="form-field">
         <label for="plantWaterQuantity">Quantité d'eau : </label>
-        <input v-model="wateringQuantity" type="number" placeholder="Volume d'eau à verser" />
+        <input
+          v-model="wateringQuantity"
+          type="number"
+          placeholder="Volume d'eau à verser"
+        />
       </div>
 
       <div class="form-field">
@@ -42,12 +60,18 @@
 
       <div class="form-field">
         <label for="plantWateringType">Type arrosage : </label>
-        <input v-model="wateringContainer" type="text" placeholder="Contenant à utiliser" />
+        <input
+          v-model="wateringContainer"
+          type="text"
+          placeholder="Contenant à utiliser"
+        />
       </div>
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <button class="addPlant" @click="goToView(routePhotoPage)">Prendre une photo</button>
+        <button class="addPlant" @click="goToView(routePhotoPage)">
+          Prendre une photo
+        </button>
         <div class="addPhotos">
           <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
@@ -73,7 +97,12 @@
 
       <div class="form-field">
         <label for="plantLight">Consignes d'entretien : </label>
-        <textarea v-model="customerAdvice" type="text" id="maintenanceInstructions"> </textarea>
+        <textarea
+          v-model="customerAdvice"
+          type="text"
+          id="maintenanceInstructions"
+        >
+        </textarea>
       </div>
 
       <div>
@@ -88,28 +117,53 @@
 </template>
 
 <script>
+import { getToken, config } from '../../../api.config';
+
 export default {
-  name: 'AddNewPlantsPage',
+  name: "AddNewPlantsPage",
   data() {
     return {
-      latinOrVerna: '',
-      sunLight: '',
-      lowerTemp: '',
-      higherTemp: '',
-      wateringQuantity: '',
-      wateringFrequency: '',
-      wateringContainer: '',
-      customerAdvice: '',
-      botanistAdvice: null,
+
+      attachementFile: {
+        id: 6,
+        type: "plant",
+        role: "Customer",
+      },
+
+      latinOrVerna: "",
+      sunLight: "",
+      lowerTemp: "",
+      higherTemp: "",
+      wateringQuantity: "",
+      wateringFrequency: "",
+      wateringContainer: "",
+      customerAdvice: "",
+      botanistAdvice: "",
       plantsPhoto: [],
-      routePhotoPage: 'camera'
-    }
+      routePhotoPage: "camera",
+    };
   },
   methods: {
     goToView(path) {
-      this.$router.push({ name: path })
-    }
-  }
+      this.$router.push({ name: path });
+    },
+    newPlant() {
+      fetch(config.apiBase + config.endpoints.plantsPath, {
+        method: 'POST',
+        headers: {
+          Authorization: "Bearer " + getToken(),
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            advises: this.botanistAdvice,
+            description: this.customerAdvice,
+            name: this.latinOrVerna,
+            userId: 1
+        })
+      })
+        .then(res => this.goToView("plants"));
+    },
+  },
 }
 </script>
 
@@ -195,7 +249,6 @@ input[type="image"] {
 }
 
 @media screen and (min-width: 1000px) {
-
   .main-container {
     align-items: center;
   }
