@@ -96,7 +96,7 @@
 
 <script>
 import router from '@/router'
-import { config, saveToken } from '../../../api.config'
+import { config } from '../../../api.config'
 export default {
   name: 'RegisterPage',
   data() {
@@ -132,17 +132,18 @@ export default {
         "road": this.road,
         "roadNumber": this.roadNumber,
         "roadType": this.roadType,
-        "status": this.status,
-        "userRoles": 1
+        "status": false,
+        "userRoles": this.userRoles.map((value) => +value)
       }
 
       console.log(userRegister);
 
-      fetch(config.apiBase + config.endpoints.registerPath, { method: 'POST', body: JSON.stringify(userRegister) }).then(response => {
+      fetch(config.apiBase + config.endpoints.registerPath, { method: 'POST', 
+        headers: { "Content-Type": "application/json"}
+        , body: JSON.stringify(userRegister) }).then(response => {
         return response.json()
       })
         .then(data => {
-          console.log(data);
           this.$router.push('/connection');
         })
 
