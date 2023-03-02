@@ -53,5 +53,5 @@ Inventaire des informations liées aux plantes dont l'utilisateur s'occupe.
 
 ### RGPD
 
-### Mentions lég
-### RGPDales
+### Mentions légales
+### RGPD
