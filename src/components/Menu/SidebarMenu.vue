@@ -22,7 +22,7 @@
 						<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
-						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
+						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="disconnect()"></ButtonMenu>
 					</div>
 					<div class="disconnected" v-else>
 						<ButtonMenu :name="AboutDisco" :imgLink="ImgAboutDisco" @click="goToView(routeHomeDisco)">
@@ -40,7 +40,7 @@
 
 <script>
 import ButtonMenu from './ButtonMenu.vue'
-import { isConnected } from '../../../api.config'
+import { isConnected, removeToken } from '../../../api.config'
 export default {
 	name: 'SidebarMenu',
 	components: {
@@ -94,7 +94,12 @@ export default {
 		},
 		goToView(path) {
 			this.$router.push({ name: path })
-		}
+		},
+        disconnect(){
+            removeToken();
+            this.connected = false;
+            this.goToView(this.routeConnection);
+        }
 	},
 	created() {
 		this.connected = isConnected()
