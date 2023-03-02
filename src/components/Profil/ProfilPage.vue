@@ -104,7 +104,6 @@
                     <input class="btn-validate" type="submit" value="Terminer" @click="ModificationFinish"
                         v-show="modificationAllowed == 0">
                 </div>
-
             </div>
         </div>
     </div>
@@ -112,6 +111,7 @@
 
 <script>
 import { config, getToken, getCurrentUserId } from '../../../api.config'
+
 export default {
     name: "ProfilPage",
     data() {
@@ -228,13 +228,12 @@ export default {
     margin-left: 30px;
     gap: 10px;
     border-bottom: 5px solid var(--main-text);
-    width: 60vh;
 
 }
 
 .contentProfil {
     width: 150vh;
-    height: 90vh;
+    height: 105vh;
     border: 2px solid var(--main-text);
     border-radius: 10px;
     margin-top: 0px;
@@ -405,13 +404,14 @@ button {
 
     .contentProfil {
         width: 40vh;
-        height: 120vh;
+        height: 140vh;
     }
 
     .contentPresentation {
         flex-direction: column;
-        width: 20vh;
+        width: 100%;
         gap: 10px;
+        margin-left: 0%;
     }
 
     .secondPartAddress {

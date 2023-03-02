@@ -20,6 +20,7 @@
 						<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)">
 						</ButtonMenu>
 						<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
+						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
 						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="disconnect()"></ButtonMenu>
@@ -32,7 +33,6 @@
 						<ButtonMenu :name="Register" :imgLink="ImgRegister" @click="goToView(routeRegister)"></ButtonMenu>
 					</div>
 				</div>
-
 			</div>
 		</transition>
 	</div>
@@ -41,6 +41,7 @@
 <script>
 import ButtonMenu from './ButtonMenu.vue'
 import { isConnected, removeToken } from '../../../api.config'
+
 export default {
 	name: 'SidebarMenu',
 	components: {
@@ -86,7 +87,7 @@ export default {
 		routeRgpd: 'rgpd',
 		routeLogOut: '',
 
-		connected: false
+		connected: isConnected
 	}),
 	methods: {
 		closeOpenSidebarPanel() {
