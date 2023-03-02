@@ -140,7 +140,7 @@ export default {
     },
     getNewPlant() {
       console.log(
-        fetch("https://a-rosa-je.herokuapp.com/api/plants/", {
+        fetch("https://a-rosa-je.herokuapp.com/api/plants/" + this.latinOrVerna + this.sunLight + this.lowerTemp + this.higherTemp + this.wateringQuantity + this.wateringFrequency + this.wateringContainer + this.customerAdvice + this.plantsPhoto, {
           headers: {
             Authorization: "Bearer " + getToken(),
           },
