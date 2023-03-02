@@ -148,16 +148,11 @@ export default {
       this.$router.push({ name: path });
     },
     newPlant() {
-        console.log(JSON.stringify({
-            advises: this.botanistAdvice,
-            description: this.customerAdvice,
-            name: this.latinOrVerna,
-            userId: 1
-        }));
       fetch(config.apiBase + config.endpoints.plantsPath, {
         method: 'POST',
-        header: {
+        headers: {
           Authorization: "Bearer " + getToken(),
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
             advises: this.botanistAdvice,
@@ -166,8 +161,7 @@ export default {
             userId: 1
         })
       })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then(res => this.goToView("plants"));
     },
   },
 }
