@@ -20,7 +20,6 @@
 						<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)">
 						</ButtonMenu>
 						<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
-						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
 						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="disconnect()"></ButtonMenu>
@@ -96,11 +95,11 @@ export default {
 		goToView(path) {
 			this.$router.push({ name: path })
 		},
-        disconnect(){
-            removeToken();
-            this.connected = false;
-            this.goToView(this.routeConnection);
-        }
+		disconnect() {
+			removeToken();
+			this.connected = false;
+			this.goToView(this.routeConnection);
+		}
 	},
 	created() {
 		this.connected = isConnected()
