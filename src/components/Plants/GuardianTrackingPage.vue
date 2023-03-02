@@ -43,7 +43,7 @@ export default {
     };
   },
   mounted() {
-    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user="+getCurrentUserId()+,
+    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user="+getCurrentUserId(),
     {
       headers: {
         Authorization: "Bearer " + getToken(),
