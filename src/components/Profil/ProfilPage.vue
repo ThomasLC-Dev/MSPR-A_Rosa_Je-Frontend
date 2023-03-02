@@ -1,13 +1,14 @@
 <template>
     <div class="main-container">
+
         <div class="header">
             <div class="imgProfilContainer">
                 <img :src="require(`@/assets/` + imgPath)" class="imgProfil" alt="">
             </div>
 
             <div class="nameProfil" label="Name Profil">
-                <h1 id="lastname">{{ firstname }}</h1>
-                <h1 id="firstname">{{ lastname }}</h1>
+                <h1 id="lastname">{{ user.firstName }}</h1>
+                <h1 id="firstname">{{ user.lastName }}</h1>
             </div>
         </div>
         <div class="contentProfil" label="Content Profil">
@@ -22,7 +23,7 @@
                                 <p>Nom :</p>
                             </div>
                             <div class="InputPresentation" label=" Input Presentation">
-                                <input type="text" :disabled="modificationAllowed == 1" v-model="lastname" />
+                                <input type="text" :disabled="modificationAllowed == 1" v-model="user.lastName" />
                             </div>
                         </div>
                         <div class="textPresName" label="FirstName Text Presentation">
@@ -30,7 +31,7 @@
                                 <p>Prénom :</p>
                             </div>
                             <div class="InputPresentation" label=" Input Presentation">
-                                <input type="text" :disabled="modificationAllowed == 1" v-model="firstname" />
+                                <input type="text" :disabled="modificationAllowed == 1" v-model="user.firstName" />
                             </div>
                         </div>
                     </div>
@@ -54,26 +55,26 @@
                         <p>Adresse :</p>
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="number" :disabled="modificationAllowed == 1" v-model="roadNumber" />
+                        <input type="number" :disabled="modificationAllowed == 1" v-model="user.address.roadNumber" />
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="roadType" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.roadType" />
 
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="road" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.road" />
                     </div>
                 </div>
 
                 <div class="secondPartAddress">
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="addtionalAddress" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.addtionalAddress" />
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="postalCode" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.postalCode" />
                     </div>
                     <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="city" />
+                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.city" />
 
                     </div>
                 </div>
@@ -84,7 +85,7 @@
                             <p>E-mail : </p>
                         </div>
                         <div class="InputAddress" label="Input Address">
-                            <input type="text" :disabled="modificationAllowed == 1" v-model="email" />
+                            <input type="text" :disabled="modificationAllowed == 1" v-model="user.email" />
                         </div>
                     </div>
 
@@ -93,7 +94,7 @@
                             <p>Numéro : </p>
                         </div>
                         <div class="InputAddress" label="Input Address">
-                            <input type="text" :disabled="modificationAllowed == 1" v-model="phone" />
+                            <input type="text" :disabled="modificationAllowed == 1" v-model="user.phone" />
                         </div>
                     </div>
                 </div>
@@ -110,22 +111,47 @@
 </template>
 
 <script>
+import { config, getToken } from '../../../api.config'
 export default {
     name: "ProfilPage",
     data() {
         return {
+
             imgPath: "PeopleTalking/profile.jpg",
-            firstname: 'Jane',
-            lastname: 'Doe',
-            phone: '06.19.79.56.48',
-            email: 'JaneDoe@epsi.fr',
-            roadNumber: '10',
-            roadType: 'Rue',
-            addtionalAddress: 'Pas de complément d\'adresse',
-            road: 'Fernand Robert',
-            postalCode: '35000',
-            city: 'Rennes',
-            modificationAllowed: 1
+
+            user: {
+                "address": {
+                    "additionalAddress": "string",
+                    "city": "string",
+                    "id": 0,
+                    "latitude": 0,
+                    "longitude": 0,
+                    "postalCode": "string",
+                    "road": "string",
+                    "roadNumber": 0,
+                    "roadType": "string"
+                },
+                "email": "string",
+                "firstName": "string",
+                "id": 0,
+                "imageUrl": "string",
+                "lastName": "string",
+                "phone": "string",
+                "status": true,
+                "userRoles": [
+                    {
+                        "id": 0,
+                        "role": {
+                            "id": 0,
+                            "name": "string"
+                        }
+                    }
+                ]
+            },
+
+            modificationAllowed: 1,
+            id: 6,
+            info: null
         }
     },
     methods: {
@@ -149,8 +175,24 @@ export default {
         },
         ModificationFinish() {
             this.modificationAllowed = 1
+        },
+        GetUser() {
+            fetch("https://a-rosa-je.herokuapp.com/api/users/" + this.id, {
+                headers: {
+                    Authorization: 'Bearer ' + getToken(),
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => (this.user = data))
+
+
         }
     },
+    beforeMount() {
+        this.GetUser();
+
+
+    }
 
 };
 
