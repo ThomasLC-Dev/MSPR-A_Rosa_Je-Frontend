@@ -7,7 +7,7 @@
 						<img src="../../assets/Logo/LOGOAPP.png" alt="" class="imgSideBar" />
 					</div>
 					<div class="titreLogo">
-						<h1>A'rosa'ge</h1>
+						<h1>A'rosa'je</h1>
 					</div>
 				</div>
 				<div class="ButtonsMenu">
