@@ -3,12 +3,12 @@ export const config = {
   endpoints: {
     loginPath: 'login',
     registerPath: 'auth/register',
-    addressesPath: 'addresses',
-    attachmentFilesPath: 'attachment-files',
-    plantsPath: 'plants',
-    slotsPath: 'slots',
-    usersPath: 'users',
-    userRolesPath: 'user-roles'
+    addressesPath: 'api/addresses',
+    attachmentFilesPath: 'api/attachment-files',
+    plantsPath: 'api/plants',
+    slotsPath: 'api/slots',
+    usersPath: 'api/users',
+    userRolesPath: 'api/user-roles'
   }
 }
 

@@ -12,19 +12,27 @@
 				</div>
 				<div class="ButtonsMenu">
 					<!-- Disconnected Buttons -->
-					<ButtonMenu :name="AboutDisco" :imgLink="ImgAboutDisco" @click="goToView(routeHomeDisco)"></ButtonMenu>
-					<ButtonMenu :name="Connection" :imgLink="ImgConnection" @click="goToView(routeConnection)"></ButtonMenu>
-					<ButtonMenu :name="Register" :imgLink="ImgRegister" @click="goToView(routeRegister)"></ButtonMenu>
-					<!-- Connected Buttons -->
-					<ButtonMenu :name="AboutCo" :imgLink="ImgAboutCo" @click="goToView(routeHomeCo)"></ButtonMenu>
-					<ButtonMenu :name="Profile" :imgLink="ImgProfile" @click="goToView(routeProfil)"></ButtonMenu>
-					<ButtonMenu :name="MyPlants" :imgLink="ImgMyPlants" @click="goToView(routeMyPlants)"></ButtonMenu>
-					<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)"></ButtonMenu>
-					<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
-					<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
-					<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
-					<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
+					<div class="connected" v-if="connected">
+						<!-- Connected Buttons -->
+						<ButtonMenu :name="AboutCo" :imgLink="ImgAboutCo" @click="goToView(routeHomeCo)"></ButtonMenu>
+						<ButtonMenu :name="Profile" :imgLink="ImgProfile" @click="goToView(routeProfil)"></ButtonMenu>
+						<ButtonMenu :name="MyPlants" :imgLink="ImgMyPlants" @click="goToView(routeMyPlants)"></ButtonMenu>
+						<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)">
+						</ButtonMenu>
+						<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
+						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
+						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
+						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
+					</div>
+					<div class="disconnected" v-else>
+						<ButtonMenu :name="AboutDisco" :imgLink="ImgAboutDisco" @click="goToView(routeHomeDisco)">
+						</ButtonMenu>
+						<ButtonMenu :name="Connection" :imgLink="ImgConnection" @click="goToView(routeConnection)">
+						</ButtonMenu>
+						<ButtonMenu :name="Register" :imgLink="ImgRegister" @click="goToView(routeRegister)"></ButtonMenu>
+					</div>
 				</div>
+
 			</div>
 		</transition>
 	</div>
@@ -32,6 +40,8 @@
 
 <script>
 import ButtonMenu from './ButtonMenu.vue'
+import { isConnected } from '../../../api.config'
+import { CONNECTING } from 'ws';
 export default {
 	name: 'SidebarMenu',
 	components: {
@@ -75,16 +85,23 @@ export default {
 		routeBotanist: 'botanist',
 		routeLegals: 'legals',
 		routeRgpd: 'rgpd',
-		routeLogOut: ''
+		routeLogOut: '',
+
+		connected: false
 	}),
 	methods: {
 		closeOpenSidebarPanel() {
 			this.isPanelOpen = !this.isPanelOpen
+			console.log(isConnected);
 		},
 		goToView(path) {
 			this.$router.push({ name: path })
 		}
+	},
+	beforeMount() {
+		//this.connected = isConnected(); 
 	}
+
 }
 </script>
 
