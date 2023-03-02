@@ -126,7 +126,7 @@ export default {
         advises: "string",
         description: "string",
         name: "string",
-        userId: 0,
+        userId: 6,
       },
 
       attachementFile: {
@@ -156,7 +156,7 @@ export default {
       fetch("https://a-rosa-je.herokuapp.com/api/plants/", {
         method: "POST",
         header: {
-          Authorization: "Bearer " + getToken(),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
         body: JSON.stringify({
           name: this.latinOrVerna,
@@ -171,7 +171,7 @@ export default {
         }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => console.log(data))
     },
   },
 };
