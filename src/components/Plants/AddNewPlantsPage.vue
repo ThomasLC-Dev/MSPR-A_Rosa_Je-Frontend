@@ -117,22 +117,17 @@
 </template>
 
 <script>
+import { getToken, config } from '../../../api.config';
+
 export default {
   name: "AddNewPlantsPage",
   data() {
     return {
 
-      plant: {
-        advises: "string",
-        description: "string",
-        name: "string",
-        userId: 0,
-      },
-
       attachementFile: {
         id: 6,
-        type: "string",
-        role: "string",
+        type: "plant",
+        role: "Customer",
       },
 
       latinOrVerna: "",
@@ -143,7 +138,7 @@ export default {
       wateringFrequency: "",
       wateringContainer: "",
       customerAdvice: "",
-      botanistAdvice: null,
+      botanistAdvice: "",
       plantsPhoto: [],
       routePhotoPage: "camera",
     };
@@ -153,28 +148,29 @@ export default {
       this.$router.push({ name: path });
     },
     newPlant() {
-      fetch("https://a-rosa-je.herokuapp.com/api/plants/", {
-        method: "POST",
+        console.log(JSON.stringify({
+            advises: this.botanistAdvice,
+            description: this.customerAdvice,
+            name: this.latinOrVerna,
+            userId: 1
+        }));
+      fetch(config.apiBase + config.endpoints.plantsPath, {
+        method: 'POST',
         header: {
           Authorization: "Bearer " + getToken(),
         },
         body: JSON.stringify({
-          name: this.latinOrVerna,
-          sunLight: this.sunLight,
-          lowerTemp: this.lowerTemp,
-          higherTemp: this.higherTemp,
-          wateringQuantity: this.wateringQuantity,
-          wateringFrequency: this.wateringFrequency,
-          wateringContainer: this.wateringContainer,
-          description: this.customerAdvice,
-          plantsPhoto: this.plantsPhoto,
-        }),
+            advises: this.botanistAdvice,
+            description: this.customerAdvice,
+            name: this.latinOrVerna,
+            userId: 1
+        })
       })
         .then((res) => res.json())
         .then((data) => console.log(data));
     },
   },
-};
+}
 </script>
 
 <style scoped>

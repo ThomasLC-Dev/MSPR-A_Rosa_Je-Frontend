@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { getToken } from '../../../api.config'
 export default {
   name: "GuardianTrackingPage",
   props: ["id"],
@@ -42,10 +43,10 @@ export default {
     };
   },
   mounted() {
-    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user=",
+    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user=6",
     {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + getToken(),
       },
     })
       .then((res) => res.json())
