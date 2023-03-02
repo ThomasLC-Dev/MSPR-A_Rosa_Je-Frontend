@@ -177,6 +177,7 @@ export default {
 @media(max-width: 1000px) {
 	.sidebar-panel {
 		display: none;
+		width: 235px;
 	}
 }
 </style>
