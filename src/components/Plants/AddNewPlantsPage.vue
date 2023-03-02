@@ -106,7 +106,7 @@
       </div>
 
       <div>
-        <button class="btn-validate">Enregistrer</button>
+        <button class="btn-validate" @click="getNewPlant()">Enregistrer</button>
       </div>
 
       <div>
