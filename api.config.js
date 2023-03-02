@@ -1,3 +1,5 @@
+import VueJwtDecode from 'vue-jwt-decode'
+
 export const config = {
   apiBase: 'https://a-rosa-je.herokuapp.com/',
   endpoints: {
@@ -26,4 +28,8 @@ export const removeToken = () => {
 
 export const isConnected = () => {
 	return localStorage.getItem('token') != null
+}
+
+export const getCurrentUserId = () => {
+    return VueJwtDecode.decode(getToken()).userId
 }

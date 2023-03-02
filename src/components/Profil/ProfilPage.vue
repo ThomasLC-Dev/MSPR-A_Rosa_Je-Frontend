@@ -104,14 +104,14 @@
                     <input class="btn-validate" type="submit" value="Terminer" @click="ModificationFinish"
                         v-show="modificationAllowed == 0">
                 </div>
-
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { getToken } from '../../../api.config'
+import { config, getToken, getCurrentUserId } from '../../../api.config'
+
 export default {
     name: "ProfilPage",
     data() {
@@ -177,7 +177,7 @@ export default {
             this.modificationAllowed = 1
         },
         GetUser() {
-            fetch("https://a-rosa-je.herokuapp.com/api/users/" + this.id, {
+            fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
                 headers: {
                     Authorization: 'Bearer ' + getToken(),
                 }

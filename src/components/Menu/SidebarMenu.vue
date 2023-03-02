@@ -23,6 +23,7 @@
 						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="goToView(routeHomeDisco)"></ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
+						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="disconnect()"></ButtonMenu>
 					</div>
 					<div class="disconnected" v-else>
 						<ButtonMenu :name="AboutDisco" :imgLink="ImgAboutDisco" @click="goToView(routeHomeDisco)">
@@ -32,7 +33,6 @@
 						<ButtonMenu :name="Register" :imgLink="ImgRegister" @click="goToView(routeRegister)"></ButtonMenu>
 					</div>
 				</div>
-
 			</div>
 		</transition>
 	</div>
@@ -40,8 +40,8 @@
 
 <script>
 import ButtonMenu from './ButtonMenu.vue'
-import { isConnected } from '../../../api.config'
-import { CONNECTING } from 'ws';
+import { isConnected, removeToken } from '../../../api.config'
+
 export default {
 	name: 'SidebarMenu',
 	components: {
@@ -92,14 +92,18 @@ export default {
 	methods: {
 		closeOpenSidebarPanel() {
 			this.isPanelOpen = !this.isPanelOpen
-			console.log(isConnected);
 		},
 		goToView(path) {
 			this.$router.push({ name: path })
-		}
+		},
+        disconnect(){
+            removeToken();
+            this.connected = false;
+            this.goToView(this.routeConnection);
+        }
 	},
-	beforeMount() {
-		//this.connected = isConnected(); 
+	created() {
+		this.connected = isConnected()
 	}
 
 }

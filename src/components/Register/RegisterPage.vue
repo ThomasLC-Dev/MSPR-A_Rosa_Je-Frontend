@@ -139,16 +139,13 @@ export default {
 
       fetch(config.apiBase + config.endpoints.registerPath, { method: 'POST', 
         headers: { "Content-Type": "application/json"}
-        , body: JSON.stringify(userRegister) }).then(response => {
-        return response.json()
-      })
+        , body: JSON.stringify(userRegister) })
+        .then(response => {
+            return response.json()
+        })
         .then(data => {
           this.$router.push('/connection');
         })
-
-
-
-
     }
   }
 }

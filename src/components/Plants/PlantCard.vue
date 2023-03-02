@@ -1,7 +1,7 @@
 <template>
   <div class="card-plant">
     <div class="row1">
-      <p type="text" class="plant-subtitle">Orchidée Phalaenopsis</p>
+      <p type="text" class="plant-subtitle">{{ plantName }}</p>
       <div class="delete-button" onClick="">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" />
       </div>
@@ -89,7 +89,16 @@ export default {
   components: {
     CarousselPlant
   },
+  props: {
+    plantNameProp: String,
+    customerAdviceProp: String,
+    botanistAdviceProp: String,
+    slidesProp: []
+  },
   data: () => ({
+    plantName: '',
+    customerAdvice: '',
+    botanistAdvice: '',
     latinOrVerna: '',
     sunlight: '',
     lowerTemp: '',
@@ -97,16 +106,14 @@ export default {
     wateringQuantity: '',
     wateringFrequency: '',
     wateringContainer: '',
-    customerAdvice: '',
-    botanistAdvice: '',
-    slides: [
-      "https://picsum.photos/id/1032/400/500",
-      "https://picsum.photos/id/1033/400/500",
-      "https://picsum.photos/id/1037/400/500",
-      "https://picsum.photos/id/1035/400/500",
-      "https://picsum.photos/id/1036/400/500",
-    ],
+    slides: [],
   }),
+  created(){
+    this.plantName = this.plantNameProp;
+    this.customerAdvice = this.customerAdviceProp;
+    this.botanistAdvice = this.botanistAdviceProp;
+    this.slides = this.slidesProp;
+  }
 }
 </script>
 

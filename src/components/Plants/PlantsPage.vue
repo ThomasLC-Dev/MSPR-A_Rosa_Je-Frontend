@@ -23,8 +23,8 @@
       <EmptyPlant />
     </div>
 
-    <div v-else class="plant-card">
-      <PlantCard />
+    <div v-else>
+      <PlantCard class="plant-card" v-for="plant in plants" :plant-name-prop="plant.name" :customer-advice-prop="plant.description" :botanist-advice-prop="plant.advises" :slides-prop="plant.imagesUrl.map((image)=>image.imageUrl)" />
     </div>
   </div>
 </template>
@@ -32,6 +32,7 @@
 <script>
 import EmptyPlant from '@/components/Plants/EmptyPlant.vue';
 import PlantCard from '@/components/Plants/PlantCard.vue';
+import { config, getCurrentUserId, getToken } from '../../../api.config';
 
 export default {
   name: 'PlantsPage',
@@ -44,8 +45,16 @@ export default {
     routeRequestGuardSlot: 'requestguardslot',
     routeGuardianTracking: 'addnewguardiantracking',
     routeAddNewPlant: 'addnewplants',
-
+    plants: []
   }),
+  created(){
+    fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + getCurrentUserId(), {
+        method: "GET",
+        headers: {Authorization: 'Bearer ' + getToken()}
+    })
+    .then(res => res.json())
+    .then(data => this.plants = data)
+  },
   methods: {
     goToView(path) {
       this.$router.push({ name: path })
