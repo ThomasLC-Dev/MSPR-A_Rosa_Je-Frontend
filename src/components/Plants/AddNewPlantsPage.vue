@@ -134,18 +134,20 @@ export default {
       routePhotoPage: "camera",
     };
   },
-  mounted() {
-    fetch("https://a-rosa-je.herokuapp.com/api/users/" + this.id, {
-      headers: {
-        Authorization: "Bearer " + getToken(),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => (this.user = data));
-  },
   methods: {
     goToView(path) {
       this.$router.push({ name: path });
+    },
+    getNewPlant() {
+      console.log(
+        fetch("https://a-rosa-je.herokuapp.com/api/plants/", {
+          headers: {
+            Authorization: "Bearer " + getToken(),
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => (this.user = data))
+      );
     },
   },
 };
