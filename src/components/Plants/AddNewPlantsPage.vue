@@ -117,7 +117,7 @@
 </template>
 
 <script>
-import { getToken, config } from '../../../api.config';
+import { getToken, config, getCurrentUserId } from '../../../api.config';
 
 export default {
   name: "AddNewPlantsPage",
@@ -158,7 +158,7 @@ export default {
             advises: this.botanistAdvice,
             description: this.customerAdvice,
             name: this.latinOrVerna,
-            userId: 1
+            userId: getCurrentUserId()
         })
       })
         .then(res => this.goToView("plants"));

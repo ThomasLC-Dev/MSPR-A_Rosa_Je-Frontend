@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { getToken } from '../../../api.config'
+import { getToken, getCurrentUserId } from '../../../api.config'
 export default {
   name: "GuardianTrackingPage",
   props: ["id"],
@@ -43,7 +43,7 @@ export default {
     };
   },
   mounted() {
-    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user=6",
+    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user="+getCurrentUserId()+,
     {
       headers: {
         Authorization: "Bearer " + getToken(),
