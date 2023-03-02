@@ -5,11 +5,12 @@
         <h1>MA LISTE DE PLANTES</h1>
       </div>
       <div class="group-button-menu">
-        <div class="keeper-button">
-          <img src="@/assets/Logo/keeper.png" v-if="!show" @click="goToView(routeFollowing)" alt="Réaliser le suivi" />
+        <div class="guardian-tracking-button">
+          <img src="@/assets/Logo/keeper.png" v-if="!show" @click="goToView(routeGuardianTracking)"
+            alt="Réaliser le suivi" />
         </div>
-        <div class="follow-button">
-          <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeKeepering)"
+        <div class="request-guard-slot-button">
+          <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeRequestGuardSlot)"
             alt="Proposer un créneau de gardiennage" />
         </div>
         <div class="add-button">
@@ -40,8 +41,8 @@ export default {
   },
   data: () => ({
     show: false,
-    routeFollowing: 'addnewfollowing',
-    routeKeepering: 'addnewkeepering',
+    routeRequestGuardSlot: 'requestguardslot',
+    routeGuardianTracking: 'addnewguardiantracking',
     routeAddNewPlant: 'addnewplants',
 
   }),
@@ -80,11 +81,12 @@ export default {
   align-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 10px;
 }
 
 .add-button>img,
-.follow-button>img,
-.keeper-button>img {
+.request-guard-slot-button>img,
+.guardian-tracking-button>img {
   width: auto;
   height: 50px;
   cursor: pointer;
@@ -127,13 +129,21 @@ export default {
   }
 
   .add-button>img,
-  .follow-button>img,
-  .keeper-button>img {
+  .request-guard-slot-button>img,
+  .guardian-tracking-button>img {
     width: auto;
     height: 35px;
     cursor: pointer;
     border: 1px solid var(--main-container-border);
     box-shadow: 5px 5px 5px -1px var(--main-container-border);
+  }
+
+  .plant-card {
+    border: 2px solid var(--main-container-border);
+    padding: 20px 5px 10px 5px;
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
   }
 }
 </style>

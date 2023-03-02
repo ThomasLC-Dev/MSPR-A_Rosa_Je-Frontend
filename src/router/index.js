@@ -94,7 +94,7 @@ const routes = [
     }
   },
   {
-    path: '/map',
+    path: '/keeper/map',
     name: 'map',
     component: () => import('@/views/MapView.vue'),
     meta: {

@@ -4,26 +4,27 @@
       <h1>CONNEXION</h1>
       <hr>
     </div>
-    
+
     <form id="formConnection" @submit.prevent="submit">
       <div class="form-field">
         <label for="mailAddress">Adresse mail : </label>
         <input type="text" id="mailAddress" placeholder="Entrez votre adresse mail" v-model="email">
       </div>
-      
+
       <div class="form-field">
         <label for="password">Mot de passe : </label>
         <input type="password" id="password" placeholder="Entrez votre mot de passe" v-model="password">
       </div>
 
       <a href="mailto:admin@arosaje.fr" id="forgotPassword">Mot de passe oublié</a>
-      
+
       <div>
         <button class="btn-validate" id="submit">Connexion</button>
       </div>
-      
+
       <div>
-        <a class="notRegistered" href="" id="notYetRegistered" @click="goToView(routeRegister)">Pas encore membre ? Inscris-toi !</a>
+        <a class="notRegistered" href="" id="notYetRegistered" @click="goToView(routeRegister)">Pas encore membre ?
+          Inscris-toi !</a>
       </div>
     </form>
   </div>
@@ -34,7 +35,7 @@ import { config, saveToken } from '../../../api.config'
 import router from '@/router'
 
 export default {
-	name: 'ConnectionView',
+  name: 'ConnectionView',
   data() {
     return {
       routeRegister: 'register',
@@ -45,7 +46,7 @@ export default {
   },
   methods: {
     goToView(path) {
-      router.push({name: path})
+      router.push({ name: path })
     },
     submit() {
       let userLogin = {
@@ -53,40 +54,44 @@ export default {
         password: this.password
       }
 
-			fetch(config.apiBase + config.endpoints.loginPath, {method: 'POST', body: JSON.stringify(userLogin)}).then(response => {
-				return response.json()
-			})
-			.then(data => {
-				saveToken(data.token)
-				this.goToView(this.routeAbout)
-			})
+      fetch(config.apiBase + config.endpoints.loginPath, { method: 'POST', body: JSON.stringify(userLogin) }).then(response => {
+        return response.json()
+      })
+        .then(data => {
+          saveToken(data.token)
+          this.goToView(this.routeAbout)
+        })
     }
   }
 }
 
 </script>
+
 <style>
+.main-container {
+  justify-content: center;
+}
 
-  .notRegistered {
-    margin-bottom: 10px;
-    font-size: large;
-  }
+.notRegistered {
+  margin-bottom: 10px;
+  font-size: large;
+}
 
-  input {
-    width: 300px;
-  }
+input {
+  width: 300px;
+}
 
-  #formConnection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-  }
+#formConnection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
 
-  #forgotPassword {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-    font-size: large;
-  }
+#forgotPassword {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  font-size: large;
+}
 </style>

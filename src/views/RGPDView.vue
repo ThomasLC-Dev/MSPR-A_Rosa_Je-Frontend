@@ -1,11 +1,14 @@
 <template>
-  <div>
-
+  <div class="background-plant">
+    <RGPDPage />
   </div>
 </template>
 <script>
+import RGPDPage from '@/components/RGPD/RGPDPage.vue';
+
 export default {
-  name: 'RGPDView'
+  name: "RGPDView",
+  components: { RGPDPage }
 }
 
 </script>
