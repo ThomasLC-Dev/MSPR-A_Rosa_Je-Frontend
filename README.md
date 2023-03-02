@@ -52,3 +52,6 @@ Description des plantes de l'utilisateur connecté (Nom, humidité, température
 Inventaire des informations liées aux plantes dont l'utilisateur s'occupe.
 
 ### RGPD
+
+### Mentions lég
+### RGPDales
