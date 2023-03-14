@@ -13,10 +13,7 @@
         <img src="../../assets/Logo/Map.png" alt="" srcset="" class="imgButton">
       </div>
     </div>
-    <div class="map">
-      <img src="../../assets/Logo/Capture_decran_2023-03-02_a_23.07.48.png" alt="" srcset="" class="imgMap">
-      
-    </div>
+    <div class="ListPlants">
   </div>
 </template>
 
