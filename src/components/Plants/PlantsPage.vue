@@ -13,6 +13,10 @@
           <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeRequestGuardSlot)"
             alt="Proposer un créneau de gardiennage" />
         </div>
+        <div class="see-user-slots-button">
+          <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeUserSlots)"
+            alt="Consulter les créneaux de gardiennage" />
+        </div>
         <div class="add-button">
           <img src="@/assets/Logo/add-button.png" @click="goToView(routeAddNewPlant)" alt="Ajouter une plante" />
         </div>
@@ -45,6 +49,7 @@ export default {
     routeRequestGuardSlot: 'requestguardslot',
     routeGuardianTracking: 'addnewguardiantracking',
     routeAddNewPlant: 'addnewplants',
+    routeUserSlots: 'userslots',
     plants: []
   }),
   created(){
@@ -95,7 +100,9 @@ export default {
 
 .add-button>img,
 .request-guard-slot-button>img,
-.guardian-tracking-button>img {
+.guardian-tracking-button>img,
+
+.see-user-slots-button>img{
   width: auto;
   height: 50px;
   cursor: pointer;
