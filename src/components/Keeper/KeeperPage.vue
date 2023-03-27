@@ -13,8 +13,17 @@
         <img src="../../assets/Logo/Map.png" alt="" srcset="" class="imgButton">
       </div>
     </div>
+
     <div class="ListPlants">
-      <h2>Propositions de gardes</h2>
+      <div class="group-checkbox">
+        <input type="radio" id="one" value="true" v-model="picked" @click="filterList()">
+        <label for="one">Plante Gardées</label>
+        <br>
+        <input type="radio" id="two" value="false" v-model="picked" @click="filterList()">
+        <label for="two">Demande de gardiennage</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+      </div>
       <table>
         <thead>
           <tr>
@@ -25,12 +34,23 @@
         </thead>
         <tbody>
           <tr v-if="items.length === 0">
-            <td>No data</td>
+            <td>Vide</td>
+            <td>Vide</td>
+            <td>Vide</td>
+            <td>Vide</td>
+            <td>
+              <div class="buttonsList">
+                <img src="../../assets/Logo/EyesOK.png" alt="Voir" class="SeeImg">
+                <img src="../../assets/Logo/OK.png" alt="Accepter" class="OKImg">
+                <img src="../../assets/Logo/No.png" alt="Refuser" class="NoImg">
+              </div>
+            </td>
+
           </tr>
           <tr v-else v-for="item in items">
 
-            <td>{{ item.name }}</td>
-            <td>{{ item.city }}</td>
+            <td>{{ item.user.firstName }}</td>
+            <td>{{ item.user.address.city }}</td>
             <td>{{ item.startDate }}</td>
             <td>{{ item.endDate }}</td>
             <td>
@@ -44,13 +64,11 @@
         </tbody>
       </table>
     </div>
-    <div class="ButtonPlanteGardee">
-      <input class="btn-validate" type="submit" value="Plantes gardées" @click="KeepPlant" />
-    </div>
   </div>
 </template>
 
 <script>
+import { getToken, } from '../../../api.config'
 export default {
   name: 'KeeperPage',
   data() {
@@ -61,20 +79,58 @@ export default {
       headers: [
         "Nom Client", "Ville Client", 'Date début', 'Date fin'
       ],
-      items: [{ name: 'Jack', city: 'Rennes', startDate: '12/03/2023', endDate: '30/04/2023' },
-      { name: 'Mathis', city: 'Challans', startDate: '15/07/2023', endDate: '30/07/2023' },
-      { name: 'Clément', city: 'Lyon', startDate: '20/02/2023', endDate: '30/05/2023' }]
+      items: [],
+      slots: [],
+      showkeepedPlants: false,
+      showPlantsToKeep: true, 
+      picked : "default" 
 
     }
   },
   methods: {
-    ShowMap() {
-      this.$router.push('/map');
-    },
     KeepPlant() {
       this.$router.push('/keeper/PlantsKeep');
+    },
+    GetUsers() {
+      fetch("https://a-rosa-je.herokuapp.com/api/slots/", {
+        headers: {
+          Authorization: 'Bearer ' + getToken(),
+        }
+      })
+        .then((res) => res.json())
+        .then(
+          (data) => (this.items = data,
+            this.filterList())
+        )
+
+    },
+    filterList() {
+      if (this.picked = "true") {
+
+        this.items = this.items.filter(Element => {
+          return Element.keeper === null;
+        });
+        console.log(this.items)
+      }
+      else if (this.picked ="false") {
+
+        this.items = this.items.filter(Element => {
+          return Element.keeper === this.user;
+        });
+        console.log(this.items)
+      }
     }
   },
+
+  filterListKeepedPlants() {
+
+
+  },
+  beforeMount() {
+    this.GetUsers()
+
+  },
+
 
 }
 </script>
@@ -90,21 +146,6 @@ export default {
 
 
 
-}
-
-h2 {
-  margin: 10px;
-  margin-bottom: 20px;
-  color: var(--main-text);
-  text-decoration: underline;
-}
-
-.map {
-  width: 80%;
-}
-
-.imgMap {
-  width: 100%;
 }
 
 .button {
@@ -155,24 +196,8 @@ td {
 
 }
 
-.keepPlant {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 10px;
-}
-
 .ListPlants {
   width: 100%;
-}
-
-.ButtonPlanteGardee {
-  width: max-content
-}
-
-
-.btn-validate {
-  width: fit-content;
 }
 
 .buttonsList {
@@ -204,6 +229,31 @@ td {
   padding: 0%;
 }
 
+.form-checkbox {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  align-items: center;
+}
+
+.checkbox-position {
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  position: relative;
+  top: -1px;
+}
+
+.register-checkbox {
+  margin-left: 10px;
+}
+
+.group-checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 @media(max-width: 1000px) {
   .header {
     flex-direction: column;
@@ -229,4 +279,5 @@ td {
   }
 
 
-}</style>
+}
+</style>

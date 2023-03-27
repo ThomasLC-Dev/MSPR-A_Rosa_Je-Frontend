@@ -103,7 +103,7 @@ const routes = [
   },
   {
     path: '/keeper/PlantsKeep',
-    name: 'map',
+    name: 'PlantsKeep',
     component: () => import('@/views/PlantsKeep.vue'),
     meta: {
       requiredAuth: true
