@@ -103,6 +103,14 @@ const routes = [
     },
   },
   {
+    path: '/keeper/PlantsKeep',
+    name: 'PlantsKeep',
+    component: () => import('@/views/PlantsKeep.vue'),
+    meta: {
+      requiredAuth: true
+    }
+  },
+  {
     path: "/keeper/map",
     name: "map",
     component: () => import("@/views/MapView.vue"),
