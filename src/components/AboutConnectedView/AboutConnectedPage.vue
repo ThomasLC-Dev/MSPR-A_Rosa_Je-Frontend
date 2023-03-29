@@ -27,10 +27,10 @@
 
 				<div class="talkingPeople">
 					<ul class="speechContent">
-						<peopleRight :text="speechRight_1"/>
-						<peopleLeft :text="speechLeft_1" :speech-link="speechImg_Big"/>
-						<peopleRight :text="speechRight_2"/>
-						<peopleLeft :text="speechLeft_2" :speech-link="speechImg_Bigger"/>
+						<peopleRight :text="speechRight_1" />
+						<peopleLeft :text="speechLeft_1" :speech-link="speechImg_Big" />
+						<peopleRight :text="speechRight_2" />
+						<peopleLeft :text="speechLeft_2" :speech-link="speechImg_Bigger" />
 
 					</ul>
 				</div>
@@ -51,7 +51,7 @@ export default {
 	components: {
 		TextAndImg,
 		TextAndImgReverse,
-		TextImgColumn, 
+		TextImgColumn,
 		peopleLeft,
 		peopleRight
 
@@ -74,24 +74,20 @@ export default {
 		lingImg_4: "Plante/Plante_2.jpg",
 		titreimg_4: "Deviens un gardien !",
 		textimg_4: "Tu souhaites aider en retour ? C’est tout à fait possible ! Va dans la section “Gardien” et proposes ton aide en fonction de tes disponibilités ! ",
-		
-		speechRight_1:"Bonjour ! Excusez-moi, je viens d’arriver ici...Je me demandais comment ça se passe ? ",
-		speechLeft_1:"Bienvenue chez nous  ! Bien sûr. Pour commencer, vous devez d’abord vous inscrire ! Cliquez sur le bouton inscription, et renseignez les informations demandées ! ",
-		speechRight_2:"C’est fait, merci ! Et maintenant ? ",
-		speechLeft_2:"Bien joué, merci à toi de ton inscription ! Maintenant tu as accès au site complet ! Si tu es un gardien, tu peux regarder quelles plantes sont à garder dans la section “Gardien”. Sinon, n’hésite pa s à y inscrire tes propres plantes dans la section “Mes plantes” , afin qu’elles puissent trouver un ou une Plant’sitter ! ",
-	
-		speechImg_Small:"PeopleTalking/Speech-Bubble-Left.png",
-		speechImg_Big:"PeopleTalking/Speech-Bubble-Big.png",
-		speechImg_Bigger:"PeopleTalking/Speech-Bubble-Bigger.png"
+
+		speechRight_1: "Bonjour ! Excusez-moi, je viens d’arriver ici...Je me demandais comment ça se passe ? ",
+		speechLeft_1: "Bienvenue chez nous  ! Bien sûr. Pour commencer, vous devez d’abord vous inscrire ! Cliquez sur le bouton inscription, et renseignez les informations demandées ! ",
+		speechRight_2: "C’est fait, merci ! Et maintenant ? ",
+		speechLeft_2: "Bien joué, merci à toi de ton inscription ! Maintenant tu as accès au site complet ! Si tu es un gardien, tu peux regarder quelles plantes sont à garder dans la section “Gardien”. Sinon, n’hésite pa s à y inscrire tes propres plantes dans la section “Mes plantes” , afin qu’elles puissent trouver un ou une Plant’sitter ! ",
+
+		speechImg_Small: "PeopleTalking/Speech-Bubble-Left.png",
+		speechImg_Big: "PeopleTalking/Speech-Bubble-Big.png",
+		speechImg_Bigger: "PeopleTalking/Speech-Bubble-Bigger.png"
 	}),
 }
 </script>
 
 <style>
-.main-container {
-	display: flex;
-}
-
 .header {
 	display: flex;
 	flex-direction: row;
@@ -161,81 +157,82 @@ export default {
 	background-color: aliceblue;
 }
 
-.speechContent{
+.speechContent {
 	margin-top: 15%;
 }
+
 @media (max-width : 1000px) {
 	.main-container {
-	display: flex;
-	flex-direction: column;
-}
+		display: flex;
+		flex-direction: column;
+	}
 
-.header {
-	display: flex;
-	flex-direction: row;
-	gap: 150px;
-	flex-direction: column;
+	.header {
+		display: flex;
+		flex-direction: row;
+		gap: 150px;
+		flex-direction: column;
 
-}
+	}
 
-.contentPage {
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-	flex: 1;
-	align-self: stretch;
-	flex-direction: column;
+	.contentPage {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		flex: 1;
+		align-self: stretch;
+		flex-direction: column;
 
-}
+	}
 
-.headerContent {
-	display: flex;
-	flex-direction: column;
-	flex-direction: column;
-}
+	.headerContent {
+		display: flex;
+		flex-direction: column;
+		flex-direction: column;
+	}
 
-.right {
-	flex: 2;
-	display: flex;
-	flex-direction: column;
-	margin-top: 0%;
-	align-items: self-end;
-}
+	.right {
+		flex: 2;
+		display: flex;
+		flex-direction: column;
+		margin-top: 0%;
+		align-items: self-end;
+	}
 
-.list-articles {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	flex: 1;
-}
+	.list-articles {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		flex: 1;
+	}
 
-.left {
-	flex: 1;
-	margin-top: 5%;
-	flex-direction: column;
-}
+	.left {
+		flex: 1;
+		margin-top: 5%;
+		flex-direction: column;
+	}
 
-.firstSection {
-	display: flex;
-	flex-direction: column;
-}
+	.firstSection {
+		display: flex;
+		flex-direction: column;
+	}
 
-.imgLogo {
-	width: 60px;
-}
+	.imgLogo {
+		width: 60px;
+	}
 
-.talkingPeople {
-	width: 100%;
-	height: 100%;
-	border-radius: 20px;
-	border: 2px solid green;
-	background-color: aliceblue;
-	margin-left: 100%;
-	margin-right: 0%;
-}
+	.talkingPeople {
+		width: 100%;
+		height: 100%;
+		border-radius: 20px;
+		border: 2px solid green;
+		background-color: aliceblue;
+		margin-left: 100%;
+		margin-right: 0%;
+	}
 
-.speechContent{
-	margin-top: 15%;
-}
+	.speechContent {
+		margin-top: 15%;
+	}
 }
 </style>
