@@ -1,20 +1,19 @@
 <template>
     <div class="main-container">
-
         <div class="header">
             <div class="imgProfilContainer">
                 <img :src="require(`@/assets/` + imgPath)" class="imgProfil" alt="">
             </div>
 
             <div class="nameProfil" label="Name Profil">
-                <h1 id="lastname">{{ user.firstName }}</h1>
-                <h1 id="firstname">{{ user.lastName }}</h1>
+                <h2 id="lastname">{{ user.firstName }}</h2>
+                <h2 id="firstname">{{ user.lastName }}</h2>
             </div>
         </div>
         <div class="contentProfil" label="Content Profil">
             <div class="Presentation" label="Presentation">
                 <div class="titlePresentation" label="Title Presentation">
-                    <h1>Qui suis-je ?</h1>
+                    <h2>Qui suis-je ?</h2>
                 </div>
                 <div class="contentPresentation" label="Content Presentation">
                     <div class="namePresentation" label=" Name Presentation">
@@ -34,14 +33,6 @@
                                 <input type="text" :disabled="modificationAllowed == 1" v-model="user.firstName" />
                             </div>
                         </div>
-                    </div>
-                    <div class="photoPresentation" label="Photo presentation">
-                        <div class="litteTextPhoto" label="Libelle photo">
-                            <p>Modifier la photo :</p>
-                        </div>
-                        <!-- <button class="buttonPhoto" label="Button Photo"  @click="onPickFile"> Choisissez un fichier...</button> -->
-                        <input class="buttonPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked"
-                            :disabled="modificationAllowed == 1" />
                     </div>
                 </div>
             </div>
@@ -104,19 +95,18 @@
                     <input class="btn-validate" type="submit" value="Terminer" @click="ModificationFinish"
                         v-show="modificationAllowed == 0">
                 </div>
-
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { getToken,  } from '../../../api.config'
+import { config, getToken, getCurrentUserId } from '../../../api.config'
+
 export default {
     name: "ProfilPage",
     data() {
         return {
-
             imgPath: "PeopleTalking/profile.jpg",
 
             user: {
@@ -155,6 +145,8 @@ export default {
         }
     },
     methods: {
+
+        //Ouvrir explorateur de fichier pour choisir une image
         onPickFile() {
             this.$refs.fileInput.click()
         },
@@ -168,15 +160,48 @@ export default {
             fileReader.readAsDataURL(files[0])
             this.image = files[0]
         },
+        //Fin
         ModificationAllowed() {
             this.modificationAllowed = 0
 
         },
         ModificationFinish() {
             this.modificationAllowed = 1
+            let userData = {
+                "email": this.user.email,
+                "phone": this.user.phone,
+                "firstName": this.user.firstName,
+                "lastName": this.user.lastName
+            }
+            let addressData = {
+                "additionalAddress": this.user.address.additionalAddress,
+                "city": this.user.address.city,
+                "postalCode": this.user.address.postalCode,
+                "road": this.user.address.road,
+                "roadNumber": this.user.address.roadNumber,
+                "roadType": this.user.address.roadType
+            }
+
+            fetch(config.apiBase + config.endpoints.usersPath + '/' + getCurrentUserId(), {
+                method: 'PUT',
+                headers: {
+                    Authorization: 'Bearer ' + getToken(),
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+
+            fetch(config.apiBase + config.endpoints.addressesPath + '/' + this.user.address.id, {
+                method: 'PUT',
+                headers: {
+                    Authorization: 'Bearer ' + getToken(),
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(addressData)
+            })
         },
         GetUser() {
-            fetch("https://a-rosa-je.herokuapp.com/api/users/" + getus, {
+            fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
                 headers: {
                     Authorization: 'Bearer ' + getToken(),
                 }
@@ -205,11 +230,6 @@ export default {
     width: 100vh;
     align-items: center;
     padding-bottom: 2%;
-}
-
-.main-container {
-    margin-left: 5%;
-    border: none;
 }
 
 .imgProfilContainer {
