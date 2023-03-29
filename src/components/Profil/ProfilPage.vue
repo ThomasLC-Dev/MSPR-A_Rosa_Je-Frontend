@@ -1,20 +1,19 @@
 <template>
     <div class="main-container">
-
         <div class="header">
             <div class="imgProfilContainer">
                 <img :src="require(`@/assets/` + imgPath)" class="imgProfil" alt="">
             </div>
 
             <div class="nameProfil" label="Name Profil">
-                <h1 id="lastname">{{ user.firstName }}</h1>
-                <h1 id="firstname">{{ user.lastName }}</h1>
+                <h2 id="lastname">{{ user.firstName }}</h2>
+                <h2 id="firstname">{{ user.lastName }}</h2>
             </div>
         </div>
         <div class="contentProfil" label="Content Profil">
             <div class="Presentation" label="Presentation">
                 <div class="titlePresentation" label="Title Presentation">
-                    <h1>Qui suis-je ?</h1>
+                    <h2>Qui suis-je ?</h2>
                 </div>
                 <div class="contentPresentation" label="Content Presentation">
                     <div class="namePresentation" label=" Name Presentation">
@@ -230,11 +229,6 @@ export default {
     width: 100vh;
     align-items: center;
     padding-bottom: 2%;
-}
-
-.main-container {
-    margin-left: 5%;
-    border: none;
 }
 
 .imgProfilContainer {
