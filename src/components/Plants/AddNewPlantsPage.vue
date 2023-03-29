@@ -110,7 +110,7 @@
       </div>
 
       <div>
-        <button class="btn-validate">Enregistrer</button>
+        <button @submit="onSubmit" class="btn-validate">Enregistrer</button>
       </div>
 
       <div>
@@ -167,24 +167,20 @@ export default {
       })
         .then(res => this.goToView("plants"));
     },
-    // onSubmit(e) {
-    //   const file = this.$refs.file.files[0];
-      
-    //   if (!file) {
-    //     e.preventDefault();
-    //     alert('No file chosen');
-    //     return;
-    //   }
-      
-    //   if (file.size > 1024 * 1024) {
-    //     e.preventDefault();
-    //     alert('File too big (> 1MB)');
-    //     return;
-    //   }
-      
-    //   alert('File OK');
-    // },
-
+    onSubmit(e) {
+      const file = this.$refs.file.files[0];
+      if (!file) {
+        e.preventDefault();
+        alert('Aucun fichier choisi');
+        return;
+      }
+      if (file.size > 1024 * 1024) {
+        e.preventDefault();
+        alert('Fichier trop volumineux (>1 Mo)');
+        return;
+      }
+      alert('Fichiers OK');
+    },
     onPickFile() {
       this.$refs.fileInput.click()
     },
