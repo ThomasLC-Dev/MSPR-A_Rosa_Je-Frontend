@@ -6,7 +6,7 @@
 					<div class="ImgLogo">
 						<img src="../../assets/Logo/LOGOAPP.png" alt="" class="imgSideBar" />
 					</div>
-					<div class="titreLogo">
+					<div class="titleLogo">
 						<h1>A'rosa'je</h1>
 					</div>
 				</div>
@@ -117,7 +117,7 @@ export default {
 	top: 0;
 	height: 100vh;
 	z-index: 999;
-	width: 300px;
+	width: 250px;
 	display: flex;
 	flex-direction: column;
 	padding: 0%;
@@ -131,19 +131,22 @@ export default {
 	margin: 0;
 	padding-top: 5%;
 	padding-left: 5%;
-	padding-bottom: 10%;
+	padding-bottom: 5%;
 	background-color: var(--menu-logo-background);
 }
 
 .imgSideBar {
-	max-width: 80%;
+	max-width: 60%;
 	height: auto;
 }
 
-.titreLogo {
-	color: white;
+.titleLogo {
 	text-align: center;
-	padding-right: 20%;
+	padding-right: 10%;
+}
+
+.titleLogo>h1 {
+	color: var(--main-bg-color);
 }
 
 .ButtonsMenu {

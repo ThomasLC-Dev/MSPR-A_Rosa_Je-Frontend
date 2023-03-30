@@ -1,6 +1,6 @@
 <template>
-  <a href="#" type = "button" class="ButtonMenuClass">
-    
+  <a href="#" type="button" class="ButtonMenuClass">
+
     <div class="imgClass">
       <img :src="require(`@/assets/` + imgLink)" class="imgButton" alt="">
     </div>
@@ -10,7 +10,6 @@
     </div>
 
   </a>
-
 </template>
 <script>
 export default {
@@ -29,12 +28,14 @@ export default {
 .ButtonMenuClass {
   flex: 1;
   display: flex;
+  height: 75px;
+  width: 250px;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
   background-color: var(--menu-button-selected-title);
   gap: 50px;
-  border: 0ch;
+  border: 1px solid var(--main-title-underline);
   text-decoration: none;
 }
 
@@ -66,5 +67,4 @@ export default {
   border-right: 3px solid;
   border-color: var(--menu-button-pipe);
 }
-
 </style>

@@ -71,9 +71,9 @@ ul.sidebar-panel-nav>li>a {
 
 .page {
   background-color: var(--main-bg-color);
-  width: calc(100% - 300px);
+  width: calc(100% - 250px);
   height: 100vh;
-  margin-left: 300px;
+  margin-left: 250px;
   overflow-x: hidden;
   padding: 20px;
 }
