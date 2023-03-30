@@ -49,7 +49,7 @@
           <div class="address-zip">
             <div class="form-field field-3">
               <label for="postalCode">Code postal :</label>
-              <input type="text" id="postalCode" placeholder="COde postal" v-model="postalCode" />
+              <input type="text" id="postalCode" placeholder="Code postal" v-model="postalCode" />
             </div>
             <div class="form-field field-7">
               <label for="city">Nom de ville :</label>
@@ -137,11 +137,13 @@ export default {
       }
 
 
-      fetch(config.apiBase + config.endpoints.registerPath, { method: 'POST', 
-        headers: { "Content-Type": "application/json"}
-        , body: JSON.stringify(userRegister) })
+      fetch(config.apiBase + config.endpoints.registerPath, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" }
+        , body: JSON.stringify(userRegister)
+      })
         .then(response => {
-            return response.json()
+          return response.json()
         })
         .then(data => {
           this.$router.push('/connection');
@@ -178,7 +180,6 @@ export default {
   flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
-  /* flex-direction: column; pour la version mobile */
 }
 
 .form-field-direction-gp {

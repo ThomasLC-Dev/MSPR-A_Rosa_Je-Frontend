@@ -17,20 +17,15 @@
                 </div>
                 <div class="contentPresentation" label="Content Presentation">
                     <div class="namePresentation" label=" Name Presentation">
-                        <div class="textPresName" label="Name Text Presentation">
-                            <div class="litteTextPres" label="Libelle">
-                                <p>Nom :</p>
+
+                        <div class="form-field-direction">
+                            <div class="form-field">
+                                <label for="lastname">Nom :</label>
+                                <input id="lastname" :disabled="modificationAllowed == 1" v-model="user.lastName" />
                             </div>
-                            <div class="InputPresentation" label=" Input Presentation">
-                                <input type="text" :disabled="modificationAllowed == 1" v-model="user.lastName" />
-                            </div>
-                        </div>
-                        <div class="textPresName" label="FirstName Text Presentation">
-                            <div class="litteTextPres" label="Libelle">
-                                <p>Prénom :</p>
-                            </div>
-                            <div class="InputPresentation" label=" Input Presentation">
-                                <input type="text" :disabled="modificationAllowed == 1" v-model="user.firstName" />
+                            <div class="form-field">
+                                <label for="firstname">Prénom :</label>
+                                <input id="firstname" :disabled="modificationAllowed == 1" v-model="user.firstName" />
                             </div>
                         </div>
                     </div>
@@ -39,61 +34,60 @@
 
             <div class="contact" label="Contact">
                 <div class="titleContact" label="Title contact">
-                    <h1>Me contacter ?</h1>
+                    <h2>Me contacter ?</h2>
                 </div>
-                <div class="address" label="Address">
-                    <div class="textaddress" label="Text Address">
-                        <p>Adresse :</p>
-                    </div>
-                    <div class="InputAddress" label="Input Address">
-                        <input type="number" :disabled="modificationAllowed == 1" v-model="user.address.roadNumber" />
-                    </div>
-                    <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.roadType" />
-
-                    </div>
-                    <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.road" />
-                    </div>
-                </div>
-
-                <div class="secondPartAddress">
-                    <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.addtionalAddress" />
-                    </div>
-                    <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.postalCode" />
-                    </div>
-                    <div class="InputAddress" label="Input Address">
-                        <input type="text" :disabled="modificationAllowed == 1" v-model="user.address.city" />
-
-                    </div>
-                </div>
-
-                <div class="internetContact" label="Internet Contact">
-                    <div class="email" label="email">
-                        <div class="textemail" label="Text E-mail">
-                            <p>E-mail : </p>
+                <div class="profil-info">
+                    <div class="form-field-direction">
+                        <div class="form-field">
+                            <label for="roadNumber">Nº de rue :</label>
+                            <input type="text" id="roadNumber" :disabled="modificationAllowed == 1"
+                                v-model="user.address.roadNumber" />
                         </div>
-                        <div class="InputAddress" label="Input Address">
-                            <input type="text" :disabled="modificationAllowed == 1" v-model="user.email" />
+                        <div class="form-field field-2">
+                            <label for="roadType">Type de voie :</label>
+                            <input type="text" id="roadType" :disabled="modificationAllowed == 1"
+                                v-model="user.address.roadType" />
+                        </div>
+                        <div class="form-field field-6">
+                            <label for="road">Nom de rue :</label>
+                            <input type="text" id="road" :disabled="modificationAllowed == 1" v-model="user.address.road" />
                         </div>
                     </div>
 
-                    <div class="numeroTel" label="Numero Tel">
-                        <div class="textNum" label="Text Number">
-                            <p>Numéro : </p>
+                    <div class="form-field-direction">
+                        <div class="form-field">
+                            <label for="addtionalAddress">Adresse complémentaire :</label>
+                            <input type="text" id="addtionalAddress" :disabled="modificationAllowed == 1"
+                                v-model="user.address.addtionalAddress" />
                         </div>
-                        <div class="InputAddress" label="Input Address">
-                            <input type="text" :disabled="modificationAllowed == 1" v-model="user.phone" />
+                        <div class="form-field field-2">
+                            <label for="postalCode">Code postal :</label>
+                            <input type="text" id="postalCode" :disabled="modificationAllowed == 1"
+                                v-model="user.address.postalCode" />
+                        </div>
+                        <div class="form-field field-7">
+                            <label for="city">Nom de ville :</label>
+                            <input type="text" id="city" :disabled="modificationAllowed == 1" v-model="user.address.city" />
+                        </div>
+                    </div>
+
+                    <div class="form-field-direction">
+                        <div class="form-field field-7">
+                            <label for="email">Email :</label>
+                            <input type="text" id="email" :disabled="modificationAllowed == 1" v-model="user.email" />
+                        </div>
+                        <div class="form-field field-3">
+                            <label for="phone">Nº de mobile :</label>
+                            <input type="text" id="phone" :disabled="modificationAllowed == 1" v-model="user.phone" />
                         </div>
                     </div>
                 </div>
-                <div class="modifButton" label="Modification Button">
+                <div class="button-group">
+                    <input class="btn-reset" type="reset" value="Annuler" v-show="modificationAllowed == 0" />
                     <input class="btn-validate" type="submit" value="Modifier" @click="ModificationAllowed"
-                        v-show="modificationAllowed == 1">
-                    <input class="btn-validate" type="submit" value="Terminer" @click="ModificationFinish"
-                        v-show="modificationAllowed == 0">
+                        v-show="modificationAllowed == 1" />
+                    <input class="btn-validate" type="submit" value="Enregistrer" @click="ModificationFinish"
+                        v-show="modificationAllowed == 0" />
                 </div>
             </div>
         </div>
@@ -208,26 +202,23 @@ export default {
             })
                 .then((res) => res.json())
                 .then((data) => (this.user = data))
-
-
         }
     },
     beforeMount() {
         this.GetUser();
-
-
     }
-
 };
 
 </script>
 
-<style>
+<style scoped>
+.main-container {
+    border: none;
+}
+
 .header {
-    margin-top: 30px;
     display: flex;
     flex-direction: row;
-    width: 100vh;
     align-items: center;
     padding-bottom: 2%;
 }
@@ -247,16 +238,13 @@ export default {
     margin-left: 30px;
     gap: 10px;
     border-bottom: 5px solid var(--main-text);
-
 }
 
 .contentProfil {
-    width: 150vh;
-    height: 105vh;
     border: 2px solid var(--main-text);
     border-radius: 10px;
     margin-top: 0px;
-    margin-bottom: 20px;
+    padding: 5px;
     background-color: var(--menu-button-diselected-background);
 }
 
@@ -271,7 +259,6 @@ export default {
     align-content: center;
     flex-wrap: nowrap;
     margin-left: 180px;
-
 }
 
 .titlePresentation {
@@ -288,43 +275,21 @@ export default {
 
 }
 
-.textPresName {
+.form-field-direction {
     display: flex;
     flex-direction: row;
-    margin: 5%;
-    justify-content: space-around;
-    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.litteTextPres {
-    margin-right: 5%;
-}
-
-input {
-    padding: 5%;
-    width: fit-content;
-}
-
-.photoPresentation {
+.profil-info {
     display: flex;
-    flex-direction: row;
-    margin: 5%;
-    margin-right: 5%;
-    color: var(--main-text);
-}
-
-.litteTextPhoto {
-    margin-left: 5%;
-}
-
-.buttonPhoto {
-    margin-left: 5%;
-    border: none;
-    padding: 0%;
+    flex-direction: column;
+    margin: 5px;
 }
 
 .contact {
-    margin-top: 5%;
+    margin-top: 2%;
     flex-direction: column;
     flex-wrap: nowrap;
 }
@@ -335,90 +300,25 @@ input {
     text-decoration-thickness: 3px;
 }
 
-.address {
-    padding-left: 12px;
-    margin-top: 2%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: var(--main-text);
-    justify-content: space-around;
-    align-content: stretch;
+.field-2 {
+    flex: 2;
 }
 
-.secondPartAddress {
-    padding-left: 15px;
-    margin-top: 2%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: var(--main-text);
-    justify-content: space-around;
-    margin-left: 15%;
-
+.field-3 {
+    flex: 3;
 }
 
-.textaddress {
-    flex-wrap: nowrap;
-    color: var(--main-text);
-    margin-right: 2%;
-
+.field-6 {
+    flex: 6;
 }
 
-.internetContact {
-    display: flex;
-    flex-direction: column;
-    margin: 2%;
-    gap: 10px;
-    justify-content: flex-start;
-
-}
-
-.email {
-    display: flex;
-    flex-direction: row;
-    color: var(--main-text);
-    align-items: center;
-}
-
-.textemail {
-    margin-right: 14%;
-}
-
-.textNum {
-    margin-right: 13%;
-}
-
-.numeroTel {
-    display: flex;
-    flex-direction: row;
-    color: var(--main-text);
-    align-items: center;
-}
-
-.modifButton {
-    width: 50px;
-    margin: auto;
-    padding: auto;
-    margin-left: 40%;
-}
-
-
-
-button {
-    border: none;
+.field-7 {
+    flex: 7;
 }
 
 @media(max-width: 1000px) {
     .header {
         width: 40vh;
-    }
-
-    input {
-        display: block;
-        padding: 5%;
-        width: 90%;
-        flex-wrap: wrap;
     }
 
     .contentProfil {
@@ -432,46 +332,5 @@ button {
         gap: 10px;
         margin-left: 0%;
     }
-
-    .secondPartAddress {
-        flex-direction: column;
-        margin-left: 0%;
-    }
-
-    .framedText {
-        padding: 0px;
-        margin-left: 5%;
-    }
-
-    .framedTextAddress {
-        margin-top: 5%;
-    }
-
-    .photoPresentation {
-        flex-direction: column;
-        margin-top: 5%;
-
-    }
-
-    .address {
-        flex-direction: column;
-    }
-
-    .email {
-        flex-direction: column;
-    }
-
-    .numeroTel {
-        flex-direction: column;
-    }
-
-    .modifButton {
-        width: 50px;
-        margin: auto;
-        padding: auto;
-        margin-left: 10%;
-    }
-
-
 }
 </style>
