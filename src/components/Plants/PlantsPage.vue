@@ -28,7 +28,9 @@
     </div>
 
     <div v-else>
-      <PlantCard class="plant-card" v-for="plant in plants" :plant-name-prop="plant.name" :customer-advice-prop="plant.description" :botanist-advice-prop="plant.advises" :slides-prop="plant.imagesUrl.map((image)=>image.imageUrl)" />
+      <PlantCard class="plant-card" v-for="plant in plants" v-bind:key="plant" :plant-name-prop="plant.name"
+        :customer-advice-prop="plant.description" :botanist-advice-prop="plant.advises"
+        :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" />
     </div>
   </div>
 </template>
@@ -52,13 +54,13 @@ export default {
     routeUserSlots: 'userslots',
     plants: []
   }),
-  created(){
+  created() {
     fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + getCurrentUserId(), {
-        method: "GET",
-        headers: {Authorization: 'Bearer ' + getToken()}
+      method: "GET",
+      headers: { Authorization: 'Bearer ' + getToken() }
     })
-    .then(res => res.json())
-    .then(data => this.plants = data)
+      .then(res => res.json())
+      .then(data => this.plants = data)
   },
   methods: {
     goToView(path) {
@@ -102,7 +104,7 @@ export default {
 .request-guard-slot-button>img,
 .guardian-tracking-button>img,
 
-.see-user-slots-button>img{
+.see-user-slots-button>img {
   width: auto;
   height: 50px;
   cursor: pointer;
