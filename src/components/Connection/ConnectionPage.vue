@@ -1,32 +1,35 @@
 <template>
   <div class="main-container">
-    <div>
-      <h1>CONNEXION</h1>
-      <hr>
+    <div class="connexionContent">
+      <div class="title">
+        <h1>CONNEXION</h1>
+        <hr>
+      </div>
+      <form id="formConnection" @submit.prevent="submit">
+        <div class="form-field">
+          <label for="mailAddress">Adresse mail : </label>
+          <input type="text" placeholder="Entrez votre adresse mail" v-model="email">
+        </div>
+
+        <div class="form-field">
+          <label for="password">Mot de passe : </label>
+          <input type="password" placeholder="Entrez votre mot de passe" v-model="password">
+        </div>
+
+        <div>
+          <button class="btn-validate">Connexion</button>
+        </div>
+
+        <div class="forgottenPassword">
+          <a href="mailto:admin@arosaje.fr">Mot de passe oublié ?</a>
+        </div>
+
+        <div>
+          <a class="notRegistered" href="" @click="goToView(routeRegister)">Pas encore membre ?
+            Inscris-toi !</a>
+        </div>
+      </form>
     </div>
-
-    <form id="formConnection" @submit.prevent="submit">
-      <div class="form-field">
-        <label for="mailAddress">Adresse mail : </label>
-        <input type="text" id="mailAddress" placeholder="Entrez votre adresse mail" v-model="email">
-      </div>
-
-      <div class="form-field">
-        <label for="password">Mot de passe : </label>
-        <input type="password" id="password" placeholder="Entrez votre mot de passe" v-model="password">
-      </div>
-
-      <a href="mailto:admin@arosaje.fr" id="forgotPassword">Mot de passe oublié</a>
-
-      <div>
-        <button class="btn-validate" id="submit">Connexion</button>
-      </div>
-
-      <div>
-        <a class="notRegistered" href="" id="notYetRegistered" @click="goToView(routeRegister)">Pas encore membre ?
-          Inscris-toi !</a>
-      </div>
-    </form>
   </div>
 </template>
 
@@ -67,31 +70,32 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .main-container {
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  height: auto;
+}
+
+.title {
+  align-content: center;
+  margin-bottom: 30px;
+}
+
+.connexionContent {
+  display: inline-block;
   justify-content: center;
-}
-
-.notRegistered {
-  margin-bottom: 10px;
-  font-size: large;
-}
-
-input {
-  width: 300px;
-}
-
-#formConnection {
-  display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 10px;
+  width: 50%;
+  height: auto;
+
 }
 
-#forgotPassword {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25px;
+.notRegistered,
+.forgottenPassword {
+  margin-bottom: 10px;
   font-size: large;
 }
 </style>

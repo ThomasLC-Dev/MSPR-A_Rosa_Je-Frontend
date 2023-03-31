@@ -5,7 +5,7 @@
 
 			<section class="section">
 				<div class="leftImage">
-					<img src="@/assets/Plante/Plante_8.webp" alt="" class="imgPlantExplanation">
+					<img src="@/assets/Plante/Plante_8.jpg" alt="" class="imgPlantExplanation">
 				</div>
 
 				<p class="sectionContent">
@@ -109,8 +109,8 @@ section {
 
 .imgPlantExplanation {
 	display: block;
-	width: 200px;
-	height: 200px;
+	width: 250px;
+	height: auto;
 	padding: 10px;
 	margin: 10px;
 	top: 0px;
@@ -122,6 +122,7 @@ section {
 
 .imgPlantExplanation_2 {
 	width: 250px;
+	height: auto;
 	align-self: center;
 	margin: 10px;
 }
@@ -137,7 +138,7 @@ section {
 
 .imgPlantExplanation_3 {
 	display: flex;
-	width: 400px;
+	width: 600px;
 }
 
 .stepList {
