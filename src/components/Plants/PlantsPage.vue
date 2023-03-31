@@ -10,7 +10,7 @@
             alt="Réaliser le suivi" title="Réaliser le suivi" />
         </div>
         <div class="request-guard-slot-button">
-          <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeRequestGuardSlot)"
+          <img src="@/assets/Logo/creer-creneau.png" v-if="!show" @click="goToView(routeRequestGuardSlot)"
             alt="Proposer un créneau de gardiennage" title="Créer un créneau" />
         </div>
         <div class="see-user-slots-button">
@@ -29,7 +29,7 @@
     </div>
 
     <div v-else>
-      <PlantCard class="plant-card" v-for="plant in plants" :plant-name-prop="plant.name"
+      <PlantCard class="plant-card" v-for="plant in plants" :key="plant.id" :plant-name-prop="plant.name"
         :customer-advice-prop="plant.description" :botanist-advice-prop="plant.advises"
         :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" />
     </div>

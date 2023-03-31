@@ -11,11 +11,11 @@
 			<tr v-for="slot in slots" :key="slot.id">
 				<td>{{ slot.startDate }}</td>
 				<td>{{ slot.endDate }}</td>
-				<td>{{ (slot.keeper==null) ? "" : slot.keeper.lastName + " " + slot.keeper.firstName }}</td>
+				<td>{{ (slot.keeper == null) ? "" : slot.keeper.lastName + " " + slot.keeper.firstName }}</td>
 				<td><button class="delete-btn" @click="deleteSlot(slot.id)">Supprimer</button></td>
 			</tr>
 		</table>
-		
+
 	</div>
 </template>
 
@@ -36,38 +36,40 @@ export default {
 		goToView(path) {
 			this.$router.push({ name: path });
 		},
-		loadData(){
+		loadData() {
 			fetch(config.apiBase + config.endpoints.slotsPath + '?user=' + getCurrentUserId(), {
 				method: "GET",
 				headers: { Authorization: 'Bearer ' + getToken() }
 			})
-			.then(res => res.json())
-			.then(data => this.slots = data)
+				.then(res => res.json())
+				.then(data => this.slots = data)
 		},
-		deleteSlot(slotId){
+		deleteSlot(slotId) {
 			fetch(config.apiBase + config.endpoints.slotsPath + '/' + slotId, {
 				method: "DELETE",
 				headers: { Authorization: 'Bearer ' + getToken() }
 			})
-			.then(() => this.loadData())
+				.then(() => this.loadData())
 		}
 	},
 };
 </script>
 
 <style scoped>
-.slots{
+.slots {
 	border-collapse: collapse;
 	margin-bottom: 50px;
 }
-.slots td, .slots th{
+
+.slots td,
+.slots th {
 	border: 1px solid #000;
 	min-width: 200px;
 	text-align: center;
 	padding: 10px;
 }
 
-.delete-btn{
+.delete-btn {
 	padding: 5px 10px;
 	background-color: var(--main-container-border);
 	color: #FFF;

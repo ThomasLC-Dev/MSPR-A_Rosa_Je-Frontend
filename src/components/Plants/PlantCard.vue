@@ -3,7 +3,7 @@
     <!-- PARTIE TITRE PLANTE -->
     <div class="row1">
       <p type="text" class="plant-subtitle">{{ plantName }}</p>
-      <div class="delete-button" onClick="">
+      <div class="delete-button" @click="deletePlant(plant.id)">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
     </div>
@@ -107,6 +107,7 @@
 
 <script>
 import CarousselPlant from './Carousel/CarousselPlant.vue';
+import { config, getToken, getCurrentPlantId } from '../../../api.config'
 
 export default {
   name: 'PlantCard',
@@ -165,6 +166,13 @@ export default {
         body: JSON.stringify(plantData)
       })
     },
+    deletePlant(plantId) {
+      fetch(config.apiBase + config.endpoints.plantsPath + '/' + plantId, {
+        method: "DELETE",
+        headers: { Authorization: 'Bearer ' + getToken() }
+      })
+        .then(() => this.loadData())
+    }
   }
 }
 </script>
