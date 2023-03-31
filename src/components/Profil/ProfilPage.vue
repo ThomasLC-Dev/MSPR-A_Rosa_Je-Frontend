@@ -243,8 +243,8 @@ export default {
 .contentProfil {
     border: 2px solid var(--main-text);
     border-radius: 10px;
-    margin-top: 0px;
-    padding: 5px;
+    margin: 0px;
+    padding: 40px;
     background-color: var(--menu-button-diselected-background);
 }
 
