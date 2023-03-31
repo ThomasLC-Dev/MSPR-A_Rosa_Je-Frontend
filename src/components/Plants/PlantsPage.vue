@@ -28,7 +28,7 @@
     </div>
 
     <div v-else>
-      <PlantCard class="plant-card" v-for="plant in plants" v-bind:key="plant" :plant-name-prop="plant.name"
+      <PlantCard class="plant-card" v-for="plant in plants" :plant-name-prop="plant.name"
         :customer-advice-prop="plant.description" :botanist-advice-prop="plant.advises"
         :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" />
     </div>
@@ -80,6 +80,7 @@ export default {
   flex-direction: row;
 }
 
+
 .main-title {
   display: flex;
   flex-direction: row;
@@ -88,6 +89,25 @@ export default {
   align-items: center;
   text-align: center;
 }
+
+.emptyPosition {
+  display: inline-block;
+  margin-top: 100px;
+}
+
+.plant-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--main-bg-color);
+  border-radius: 10px;
+  border: 2px solid var(--main-container-border);
+  padding: 50px 20px 30px 20px;
+  margin-top: 40px;
+  height: 80%;
+}
+
+
 
 .group-button-menu {
   display: flex;
@@ -112,28 +132,7 @@ export default {
   box-shadow: 5px 5px 6px 1px var(--main-container-border);
 }
 
-.main-container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
-.emptyPosition {
-  display: inline-block;
-  margin-top: 100px;
-}
-
-.plant-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--main-bg-color);
-  border-radius: 10px;
-  border: 2px solid var(--main-container-border);
-  padding: 50px 20px 30px 20px;
-  margin-top: 40px;
-  height: 80%;
-}
 
 @media (max-width: 1000px) {
   .main-title {
@@ -143,7 +142,7 @@ export default {
 
   .group-button-menu {
     flex: 1;
-    gap: 2px;
+    gap: 5px;
   }
 
   .add-button>img,

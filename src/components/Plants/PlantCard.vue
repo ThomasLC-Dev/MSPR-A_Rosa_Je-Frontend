@@ -26,8 +26,7 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/Ombre.png">
               </div>
-              <select class="logo-field-plant" id="lightSelect" v-model="plant.sunlight"
-                :disabled="modificationAllowed == 1">
+              <select class="logo-field-plant" id="lightSelect" :disabled="modificationAllowed == 1" v-model="sunlight">
                 <option value="fullShadow">Ombre</option>
                 <option value="sun">Soleil</option>
                 <option value="midShadow">Mi-Ombre</option>
@@ -37,8 +36,8 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/quantite-eau.png">
               </div>
-              <input type="text" v-model="plant.wateringQuantity" class="waterQuantity logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="waterQuantity logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="wateringQuantity" />
             </div>
           </div>
           <div class="row2-2">
@@ -46,15 +45,15 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureBasse.png">
               </div>
-              <input type="text" v-model="plant.lowerTemp" class="minTemp logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="minTemp logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="lowerTemp" />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureHaute.png">
               </div>
-              <input type="text" v-model="higherTemp" class="maxTemp logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="maxTemp logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="higherTemp" />
             </div>
           </div>
 
@@ -63,15 +62,15 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/watering-frequency.png">
               </div>
-              <input type="text" v-model="plant.wateringFrequency" class="waterFrequency logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="waterFrequency logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="wateringFrequency" />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/arrosage.png">
               </div>
-              <input type="text" v-model="plant.wateringContainer" class="waterType logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="waterType logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="wateringContainer" />
             </div>
           </div>
         </div>
@@ -85,20 +84,23 @@
     <div class="advices-part">
       <div class="form-field">
         <p type="text" class="plant-advice-subtitle">Consignes d'entretien : </p>
-        <input type="text" class="maintenanceInstructions" v-model="plant.customerAdvice"
-          :disabled="modificationAllowed == 1" />
+        <input type="text" class="maintenanceInstructions" :disabled="modificationAllowed == 1"
+          v-model="customerAdvice" />
       </div>
       <div class="form-field">
         <p type="text" class="plant-advice-subtitle">Conseil d'un Botaniste :</p>
-        <input type="text" class="botanistAdvice" v-model="plant.botanistAdvice" :disabled="modificationAllowed == 1" />
+        <input type="text" class="botanistAdvice" :disabled="modificationAllowed == 1" v-model="botanistAdvice" />
       </div>
     </div>
     <!-- FIN PARTIE CONSEILS -->
 
     <div class="button-group">
+      <!-- Bouton qui s'affichent -->
       <input class="btn-reset" type="reset" value="Annuler" />
       <input class="btn-validate" type="submit" value="Modifier" />
-      <input class="btn-reset" type="reset" value="Annuler" v-show="modificationAllowed == 0" />
+      <!-- Bouton qui ne s'affichent pas -->
+      <input class="btn-reset" type="reset" value="Annuler" @click="ModificationReset"
+        v-show="modificationAllowed == 0" />
       <input class="btn-validate" type="submit" value="Modifier" @click="ModificationAllowed"
         v-show="modificationAllowed == 1" />
       <input class="btn-validate" type="submit" value="Enregistrer" @click="ModificationFinish"
@@ -122,7 +124,6 @@ export default {
     slidesProp: []
   },
   data: () => ({
-
     plantName: '',
     customerAdvice: '',
     botanistAdvice: '',
@@ -133,7 +134,7 @@ export default {
     wateringQuantity: '',
     wateringFrequency: '',
     wateringContainer: '',
-    slides: [],
+    slides: []
   }),
   created() {
     this.plantName = this.plantNameProp;
@@ -189,14 +190,11 @@ export default {
   font-weight: bold;
 }
 
-.photo-part {
-  width: 35%;
-}
+/* .photo-part {} */
 
 .info-part {
   display: flex;
   flex-direction: column;
-  width: 65%;
 }
 
 .row1 {

@@ -83,7 +83,8 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <input class="btn-reset" type="reset" value="Annuler" v-show="modificationAllowed == 0" />
+                    <input class="btn-reset" type="reset" value="Annuler" @click="ModificationReset"
+                        v-show="modificationAllowed == 0" />
                     <input class="btn-validate" type="submit" value="Modifier" @click="ModificationAllowed"
                         v-show="modificationAllowed == 1" />
                     <input class="btn-validate" type="submit" value="Enregistrer" @click="ModificationFinish"
@@ -159,6 +160,10 @@ export default {
             this.modificationAllowed = 0
 
         },
+        ModificationReset() {
+            this.modificationAllowed = 1
+        },
+
         ModificationFinish() {
             this.modificationAllowed = 1
             let userData = {
