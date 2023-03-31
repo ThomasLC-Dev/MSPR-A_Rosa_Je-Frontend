@@ -73,22 +73,26 @@
           Prendre une photo
         </button>
         <div class="addPhotos">
-          <input v-model="plantsPhoto" type="image" />
+          <!-- <input v-model="plantsPhoto" type="image" /> -->
+          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input v-model="plantsPhoto" type="image" />
+          <!-- <input v-model="plantsPhoto" type="image" /> -->
+          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input v-model="plantsPhoto" type="image" />
+          <!-- <input v-model="plantsPhoto" type="image" /> -->
+          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <input v-model="plantsPhoto" type="image" />
+          <!-- <input v-model="plantsPhoto" type="image" /> -->
+          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
@@ -106,7 +110,7 @@
       </div>
 
       <div>
-        <button class="btn-validate">Enregistrer</button>
+        <button @submit="onSubmit" class="btn-validate">Enregistrer</button>
       </div>
 
       <div>
@@ -162,6 +166,33 @@ export default {
         })
       })
         .then(res => this.goToView("plants"));
+    },
+    onSubmit(e) {
+      const file = this.$refs.file.files[0];
+      if (!file) {
+        e.preventDefault();
+        alert('Aucun fichier choisi');
+        return;
+      }
+      if (file.size > 1024 * 1024) {
+        e.preventDefault();
+        alert('Fichier trop volumineux (>1 Mo)');
+        return;
+      }
+      alert('Fichiers OK');
+    },
+    onPickFile() {
+      this.$refs.fileInput.click()
+    },
+    onFilePicked(event) {
+      const files = event.target.files
+      let filename = files[0].name
+      const fileReader = new FileReader()
+      fileReader.addEventListener('load', () => {
+        this.imageUrl = fileReader.result
+      })
+      fileReader.readAsDataURL(files[0])
+      this.image = files[0]
     },
   },
 }
