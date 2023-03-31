@@ -2,52 +2,46 @@
   <div class="main-container">
     <h1>Page pour demander un creneau de gardiennage</h1>
     <form @submit.prevent="createSlot">
-        <div class="form-field">
-            <label for="startDate">Date de début : </label>
-            <input
-              v-model="startDate"
-              type="date"
-              placeholder="Date de début"
-            />
-          </div>
-        <div class="form-field">
-            <label for="endDate">Date de fin : </label>
-            <input
-                v-model="endDate"
-                type="date"
-                placeholder="Date de fin"
-            />
-            </div>
-        <button class="btn-validate">Enregistrer</button>
+      <div class="form-field">
+        <label for="startDate">Date de début : </label>
+        <input v-model="startDate" type="date" placeholder="Date de début" />
+      </div>
+      <div class="form-field">
+        <label for="endDate">Date de fin : </label>
+        <input v-model="endDate" type="date" placeholder="Date de fin" />
+      </div>
+      <input class="btn-reset" type="reset" value="Annuler" />
+      <input class="btn-validate" type="submit" value="Enregistrer" />
+      <button class="btn-validate">Enregistrer</button>
     </form>
   </div>
 </template>
 
 <script>
-import {config, getToken, getCurrentUserId} from '../../../api.config'
+import { config, getToken, getCurrentUserId } from '../../../api.config'
 
 export default {
   name: 'RequestGuardSlotPage',
-  data(){
+  data() {
     return {
-        startDate: "",
-        endDate: ""
+      startDate: "",
+      endDate: ""
     }
   },
   methods: {
-    createSlot(){
-        fetch(config.apiBase + config.endpoints.slotsPath, {
-            method: 'POST',
-            headers: {
-                Authorization: "Bearer " + getToken(),
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                startDate: this.startDate,
-                endDate: this.endDate,
-                userId: getCurrentUserId()
-            })
+    createSlot() {
+      fetch(config.apiBase + config.endpoints.slotsPath, {
+        method: 'POST',
+        headers: {
+          Authorization: "Bearer " + getToken(),
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          startDate: this.startDate,
+          endDate: this.endDate,
+          userId: getCurrentUserId()
         })
+      })
     }
   }
 

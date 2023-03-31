@@ -70,8 +70,8 @@ export default {
 		ImgMyPlants: 'Plante/Plante_7.png',
 		ImgPlantKeeper: 'Logo/keeper.png',
 		ImgBotanist: 'Logo/botanist.png',
-		ImgLegals: 'Logo/about.png',
-		ImgRgpd: 'Logo/about.png',
+		ImgLegals: 'Logo/mentions-legales.png',
+		ImgRgpd: 'Logo/rgpd.png',
 		ImgLogOut: 'Logo/disconnected.png',
 
 		routeHomeDisco: 'home',
