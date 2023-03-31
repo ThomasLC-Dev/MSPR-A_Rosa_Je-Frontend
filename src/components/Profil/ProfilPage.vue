@@ -38,7 +38,7 @@
                 </div>
                 <div class="profil-info">
                     <div class="form-field-direction">
-                        <div class="form-field">
+                        <div class="form-field field-2">
                             <label for="roadNumber">Nº de rue :</label>
                             <input type="text" id="roadNumber" :disabled="modificationAllowed == 1"
                                 v-model="user.address.roadNumber" />
@@ -55,17 +55,17 @@
                     </div>
 
                     <div class="form-field-direction">
-                        <div class="form-field">
+                        <div class="form-field field-5">
                             <label for="addtionalAddress">Adresse complémentaire :</label>
                             <input type="text" id="addtionalAddress" :disabled="modificationAllowed == 1"
                                 v-model="user.address.addtionalAddress" />
                         </div>
-                        <div class="form-field field-2">
+                        <div class="form-field field-1">
                             <label for="postalCode">Code postal :</label>
                             <input type="text" id="postalCode" :disabled="modificationAllowed == 1"
                                 v-model="user.address.postalCode" />
                         </div>
-                        <div class="form-field field-7">
+                        <div class="form-field field-4">
                             <label for="city">Nom de ville :</label>
                             <input type="text" id="city" :disabled="modificationAllowed == 1" v-model="user.address.city" />
                         </div>
@@ -311,6 +311,10 @@ export default {
 
 .field-3 {
     flex: 3;
+}
+
+.field-5 {
+    flex: 5;
 }
 
 .field-6 {

@@ -134,7 +134,6 @@ export default {
 }
 
 .title {
-
 	text-decoration: underline;
 	text-decoration-color: green;
 	display: flex;
