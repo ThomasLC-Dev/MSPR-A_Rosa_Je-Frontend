@@ -73,7 +73,7 @@ export default {
 <style scoped>
 .main-container {
   text-align: center;
-  margin-top: 25%;
+  margin-top: 15%;
   margin-left: 25%;
   width: 50%;
   height: auto;

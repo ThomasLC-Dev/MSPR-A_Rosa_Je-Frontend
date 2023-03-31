@@ -22,6 +22,7 @@
 						<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
+						<ButtonMenu :name="Admin" :imgLink="ImgAdmin" @click="goToView(routeAdmin)"></ButtonMenu>
 						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="disconnect()"></ButtonMenu>
 					</div>
 					<div class="disconnected" v-else>
@@ -60,6 +61,7 @@ export default {
 		Botanist: 'Botaniste',
 		Legals: 'Mentions',
 		Rgpd: 'RGPD',
+		Admin: 'Admin',
 		LogOut: 'Deconnexion',
 
 		ImgAboutDisco: 'Logo/about.png',
@@ -72,6 +74,7 @@ export default {
 		ImgBotanist: 'Logo/botanist.png',
 		ImgLegals: 'Logo/mentions-legales.png',
 		ImgRgpd: 'Logo/rgpd.png',
+		ImgAdmin: 'Logo/admin.png',
 		ImgLogOut: 'Logo/disconnected.png',
 
 		routeHomeDisco: 'home',
@@ -84,6 +87,7 @@ export default {
 		routeBotanist: 'botanist',
 		routeLegals: 'legals',
 		routeRgpd: 'rgpd',
+		routeAdmin: 'admin',
 		routeLogOut: '',
 
 		connected: isConnected
