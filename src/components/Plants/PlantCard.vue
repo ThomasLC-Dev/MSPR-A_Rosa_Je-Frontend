@@ -4,7 +4,7 @@
     <div class="row1">
       <p type="text" class="plant-subtitle">{{ plantName }}</p>
       <div class="delete-button" onClick="">
-        <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" />
+        <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
     </div>
     <!-- FIN PARTIE TITRE PLANTE -->
@@ -95,10 +95,6 @@
     <!-- FIN PARTIE CONSEILS -->
 
     <div class="button-group">
-      <!-- Bouton qui s'affichent -->
-      <input class="btn-reset" type="reset" value="Annuler" />
-      <input class="btn-validate" type="submit" value="Modifier" />
-      <!-- Bouton qui ne s'affichent pas -->
       <input class="btn-reset" type="reset" value="Annuler" @click="ModificationReset"
         v-show="modificationAllowed == 0" />
       <input class="btn-validate" type="submit" value="Modifier" @click="ModificationAllowed"
@@ -134,7 +130,8 @@ export default {
     wateringQuantity: '',
     wateringFrequency: '',
     wateringContainer: '',
-    slides: []
+    slides: [],
+    modificationAllowed: 1,
   }),
   created() {
     this.plantName = this.plantNameProp;
@@ -145,7 +142,9 @@ export default {
   methods: {
     ModificationAllowed() {
       this.modificationAllowed = 0
-
+    },
+    ModificationReset() {
+      this.modificationAllowed = 1
     },
     ModificationFinish() {
       this.modificationAllowed = 1
@@ -178,8 +177,10 @@ export default {
 .group-plant {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
+  margin: 20px;
 }
 
 .plant-subtitle {
@@ -195,12 +196,15 @@ export default {
 .info-part {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .row1 {
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
+  align-items: center;
+  width: 100%;
 }
 
 .row1>.delete-button {
@@ -211,9 +215,10 @@ export default {
   display: flex;
   right: 0px;
   position: relative;
-  width: 50px;
+  width: 30px;
   height: auto;
   right: 0px;
+  cursor: pointer;
 }
 
 .row2 {
@@ -227,21 +232,24 @@ export default {
 .row2-3 {
   display: flex;
   flex-direction: row;
-  margin: 2px 5px 2px 5px;
-  gap: 10px;
+  margin: 5px 8px 5px 8px;
+  gap: 20px;
 }
 
 .logo-field {
   display: flex;
   flex-direction: row;
   width: 50%;
-  gap: 5px;
+  height: 60px;
+  gap: 10px;
 }
 
 .logo-img-plant {
-  text-align: center;
-  height: 55px;
-  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 90px;
   border: 1px solid var(--btn-reset-border-color);
 }
 
@@ -253,19 +261,30 @@ export default {
   width: 80%
 }
 
+.logo-field>input {
+  margin-bottom: 0px;
+}
+
 .advices-part {
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  align-content: space-between;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  margin: 20px;
+}
+
+.form-field {
+  align-items: center;
 }
 
 .plant-advice-subtitle {
+  align-items: center;
   color: var(--main-title-h2);
   left: 0px;
-  width: 90%;
   font-size: x-large;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .maintenanceInstructions,

@@ -11,14 +11,15 @@ export default {
 
 <style scoped>
 .carousel-control {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
+  border-radius: 20px;
+  color: var(--btn-validate-text-color);
+  border: 2px solid var(--btn-validate-border-color);
+  background-color: var(--btn-validate-color);
   display: inline-block;
   position: absolute;
   height: 50px;
   width: 70px;
   top: calc(50% - 25px);
-  color: #f3f3f3;
   cursor: pointer;
 }
 

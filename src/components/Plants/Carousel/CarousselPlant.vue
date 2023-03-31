@@ -104,5 +104,8 @@ export default {
   width: 350px;
   height: 500px;
   overflow: hidden;
+  border-radius: 20px;
+  color: var(--btn-validate-text-color);
+  border: 2px solid var(--btn-validate-border-color);
 }
 </style>
