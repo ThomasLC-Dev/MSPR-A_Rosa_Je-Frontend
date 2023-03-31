@@ -110,11 +110,11 @@
       </div>
 
       <div>
-        <button @submit="onSubmit" class="btn-validate">Enregistrer</button>
+        <button @submit="onSubmit" class="btn-validate" type="submit">Enregistrer</button>
       </div>
 
       <div>
-        <button class="btn-reset">Annuler</button>
+        <button class="btn-reset" type="reset">Annuler</button>
       </div>
     </form>
   </div>
