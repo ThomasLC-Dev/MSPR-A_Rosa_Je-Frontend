@@ -120,6 +120,7 @@ export default {
     slidesProp: []
   },
   data: () => ({
+    id: '',
     plantName: '',
     customerAdvice: '',
     botanistAdvice: '',
