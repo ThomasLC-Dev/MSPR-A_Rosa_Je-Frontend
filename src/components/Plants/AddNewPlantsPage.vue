@@ -228,6 +228,7 @@ input[type="image"] {
 }
 
 .main-container {
+  height: auto;
   align-items: start;
 }
 
@@ -275,6 +276,7 @@ input[type="image"] {
 
 @media screen and (min-width: 1000px) {
   .main-container {
+    height: auto;
     align-items: center;
   }
 
