@@ -234,9 +234,9 @@ input[type="image"] {
 .addPlant {
   display: flex;
   position: relative;
-  left: 72%;
-  bottom: 22px;
-  width: 80px;
+  left: 75%;
+  bottom: 25px;
+  width: 30px;
 }
 
 .addPhotos {
@@ -250,7 +250,7 @@ input[type="image"] {
 .delete-button {
   display: flex;
   position: relative;
-  height: 24px;
+  height: 15px;
   top: 90px;
 }
 
