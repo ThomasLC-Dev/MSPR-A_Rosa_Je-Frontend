@@ -263,7 +263,7 @@ input[type="image"] {
 
 #minTemp,
 #maxTemp {
-  width: 40px;
+  width: 30px;
 }
 
 #maintenanceInstructions {
@@ -301,7 +301,8 @@ input[type="image"] {
     display: flex;
     left: -25px;
     top: 0px;
-    height: 40px;
+    height: 30px;
+    width: 30px;
   }
 }
 </style>
