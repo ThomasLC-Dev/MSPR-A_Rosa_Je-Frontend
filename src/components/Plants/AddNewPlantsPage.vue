@@ -264,7 +264,7 @@ input[type="image"] {
 
 #minTemp,
 #maxTemp {
-  width: 30px;
+  width: 70px;
 }
 
 #maintenanceInstructions {
