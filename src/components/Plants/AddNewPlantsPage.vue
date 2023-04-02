@@ -69,26 +69,26 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <img class="addPlant" href="./../../assets/Logo/add-button.png" @click="goToView(routePhotoPage)">
+        <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo" @click="goToView(routePhotoPage)">
         <div class="addPhotos">
           <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
-            <i class="material-icons">delete</i>
+            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
           </div>
 
           <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
-            <i class="material-icons">delete</i>
+            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
           </div>
 
           <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
-            <i class="material-icons">delete</i>
+            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
           </div>
 
           <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
-            <i class="material-icons">delete</i>
+            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
           </div>
         </div>
       </div>
