@@ -269,7 +269,7 @@ input[type="image"] {
 #maintenanceInstructions {
   text-align: left;
   padding: 0.4em;
-  padding-bottom: 190px;
+  padding-bottom: 95px;
   width: 250px;
 }
 
