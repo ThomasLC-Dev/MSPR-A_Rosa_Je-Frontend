@@ -69,30 +69,24 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <button class="addPlant" @click="goToView(routePhotoPage)">
-          Prendre une photo
-        </button>
+        <img class="addPlant" href="./../../assets/Logo/add-button.png" @click="goToView(routePhotoPage)">
         <div class="addPhotos">
-          <!-- <input v-model="plantsPhoto" type="image" /> -->
-          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <!-- <input v-model="plantsPhoto" type="image" /> -->
-          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <!-- <input v-model="plantsPhoto" type="image" /> -->
-          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
 
-          <!-- <input v-model="plantsPhoto" type="image" /> -->
-          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
             <i class="material-icons">delete</i>
           </div>
