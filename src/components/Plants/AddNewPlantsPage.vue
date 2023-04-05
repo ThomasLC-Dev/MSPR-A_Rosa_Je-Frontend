@@ -5,11 +5,7 @@
     <form id="formAddPlant" @submit.prevent="newPlant">
       <div class="form-field">
         <label for="plantName">Nom de plante : </label>
-        <input
-          v-model="latinOrVerna"
-          type="text"
-          placeholder="Nom vernaculaire ou latin"
-        />
+        <input v-model="latinOrVerna" type="text" placeholder="Nom vernaculaire ou latin" />
       </div>
 
       <div class="form-field">
@@ -24,97 +20,77 @@
 
       <div class="form-field">
         <label for="plantMinTemp">T°C minimale : </label>
-        <input
-          v-model="lowerTemp"
-          type="number"
-          id="minTemp"
-          placeholder="Valeur"
-        />
+        <input v-model="lowerTemp" type="number" id="minTemp" placeholder="Valeur" />
       </div>
 
       <div class="form-field">
         <label for="plantMaxTemp">T°C maximale : </label>
-        <input
-          v-model="higherTemp"
-          type="number"
-          id="maxTemp"
-          placeholder="Valeur"
-        />
+        <input v-model="higherTemp" type="number" id="maxTemp" placeholder="Valeur" />
       </div>
 
       <div class="form-field">
         <label for="plantWaterQuantity">Quantité d'eau : </label>
-        <input
-          v-model="wateringQuantity"
-          type="number"
-          placeholder="Volume d'eau à verser"
-        />
+        <input v-model="wateringQuantity" type="number" placeholder="Volume d'eau à verser" />
       </div>
 
       <div class="form-field">
         <label for="plantWateringFrequency">Fréquence arrosage : </label>
         <select v-model="wateringFrequency" id="wateringSelect">
           <option value="">Nombre</option>
+          <option value="">1 fois/jour</option>
+          <option value="">1 fois/semaine</option>
         </select>
       </div>
 
       <div class="form-field">
         <label for="plantWateringType">Type arrosage : </label>
-        <input
-          v-model="wateringContainer"
-          type="text"
-          placeholder="Contenant à utiliser"
-        />
+        <input v-model="wateringContainer" type="text" placeholder="Contenant à utiliser" />
       </div>
+
+      <!-- Difficultés : 
+        - Ajouter des photos,
+        - Afficher les miniatures des photos quand un.e utilisateur.trice ajoute une photo,
+        - Supprimer les photos avec les boutons,
+        - Enregister les infos de la plante quand le.la utilisateur.trice clique sur le bouton "Enregistrer".
+      -->
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
-        <button class="addPlant" @click="goToView(routePhotoPage)">
-          Prendre une photo
-        </button>
+        <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo" @click="goToView(routePhotoPage)">
         <div class="addPhotos">
-          <!-- <input v-model="plantsPhoto" type="image" /> -->
-          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
-            <i class="material-icons">delete</i>
+            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
           </div>
 
-          <!-- <input v-model="plantsPhoto" type="image" /> -->
-          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
-            <i class="material-icons">delete</i>
+            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
           </div>
 
-          <!-- <input v-model="plantsPhoto" type="image" /> -->
-          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
-            <i class="material-icons">delete</i>
+            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
           </div>
 
-          <!-- <input v-model="plantsPhoto" type="image" /> -->
-          <input class="plantsPhoto" type="file" ref="fileInput" accept="image/*" @change="onFilePicked" />
+          <input v-model="plantsPhoto" type="image" />
           <div class="delete-button">
-            <i class="material-icons">delete</i>
+            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
           </div>
         </div>
       </div>
 
       <div class="form-field">
         <label for="plantLight">Consignes d'entretien : </label>
-        <textarea
-          v-model="customerAdvice"
-          type="text"
-          id="maintenanceInstructions"
-        >
-        </textarea>
+        <textarea v-model="customerAdvice" type="text" id="maintenanceInstructions"></textarea>
       </div>
 
       <div>
-        <button @submit="onSubmit" class="btn-validate">Enregistrer</button>
+        <button @submit="onSubmit" class="btn-validate" type="submit">Enregistrer</button>
       </div>
 
       <div>
-        <button class="btn-reset">Annuler</button>
+        <button class="btn-reset" type="reset">Annuler</button>
       </div>
     </form>
   </div>
@@ -159,10 +135,10 @@ export default {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            advises: this.botanistAdvice,
-            description: this.customerAdvice,
-            name: this.latinOrVerna,
-            userId: getCurrentUserId()
+          advises: this.botanistAdvice,
+          description: this.customerAdvice,
+          name: this.latinOrVerna,
+          userId: getCurrentUserId()
         })
       })
         .then(res => this.goToView("plants"));
@@ -234,15 +210,16 @@ input[type="image"] {
 }
 
 .main-container {
+  height: auto;
   align-items: start;
 }
 
 .addPlant {
   display: flex;
   position: relative;
-  left: 72%;
-  bottom: 22px;
-  width: 80px;
+  left: 75%;
+  bottom: 25px;
+  width: 30px;
 }
 
 .addPhotos {
@@ -256,7 +233,7 @@ input[type="image"] {
 .delete-button {
   display: flex;
   position: relative;
-  height: 24px;
+  height: 15px;
   top: 90px;
 }
 
@@ -269,18 +246,19 @@ input[type="image"] {
 
 #minTemp,
 #maxTemp {
-  width: 40px;
+  width: 70px;
 }
 
 #maintenanceInstructions {
   text-align: left;
   padding: 0.4em;
-  padding-bottom: 190px;
+  padding-bottom: 95px;
   width: 250px;
 }
 
 @media screen and (min-width: 1000px) {
   .main-container {
+    height: auto;
     align-items: center;
   }
 
@@ -307,19 +285,8 @@ input[type="image"] {
     display: flex;
     left: -25px;
     top: 0px;
-    height: 40px;
-  }
-}
-
-@media screen and (min-width: 1000px) and (max-width: 1200px) {
-  .addPhotos {
-    right: 100px;
-  }
-
-  .addPlant {
-    display: flex;
-    left: 350px;
-    top: 15px;
+    height: 30px;
+    width: 30px;
   }
 }
 </style>
