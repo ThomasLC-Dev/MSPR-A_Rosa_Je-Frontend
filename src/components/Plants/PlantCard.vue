@@ -1,24 +1,17 @@
 <template>
   <div class="card-plant">
-    <!-- PARTIE TITRE PLANTE -->
     <div class="row1">
       <p type="text" class="plant-subtitle">{{ plantName }}</p>
       <div class="delete-button" @click="deletePlant(plant.id)">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
     </div>
-    <!-- FIN PARTIE TITRE PLANTE -->
 
-    <!-- PARTIE PHOTO + CARACTERISTIQUES -->
     <div class="group-plant">
-      <!-- PARTIE PHOTO SLIDE -->
       <div class="photo-part">
         <CarousselPlant :slides="slides" :interval="6000" controls indicators />
       </div>
-      <!-- FIN PARTIE PHOTO SLIDE -->
 
-
-      <!-- PARTIE INFO TECHNIQUE -->
       <div class="info-part">
         <div class="row2">
           <div class="row2-1">
@@ -75,12 +68,8 @@
           </div>
         </div>
       </div>
-      <!--FIN PARTIE INFO TECHNIQUE -->
-
     </div>
-    <!-- FIN PARTIE PHOTO + CARACTERISTIQUES -->
 
-    <!-- PARTIE CONSEILS -->
     <div class="advices-part">
       <div class="form-field">
         <p type="text" class="plant-advice-subtitle">Consignes d'entretien : </p>
@@ -92,7 +81,6 @@
         <input type="text" class="botanistAdvice" :disabled="modificationAllowed == 1" v-model="botanistAdvice" />
       </div>
     </div>
-    <!-- FIN PARTIE CONSEILS -->
 
     <div class="button-group">
       <input class="btn-reset" type="reset" value="Annuler" @click="ModificationReset"
@@ -373,6 +361,5 @@ export default {
   .botanistAdvice {
     width: 100%;
   }
-
 }
 </style>
