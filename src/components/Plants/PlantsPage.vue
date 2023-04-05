@@ -56,17 +56,20 @@ export default {
     plants: []
   }),
   created() {
-    fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + getCurrentUserId(), {
-      method: "GET",
-      headers: { Authorization: 'Bearer ' + getToken() }
-    })
-      .then(res => res.json())
-      .then(data => this.plants = data)
+    this.loadData()
   },
   methods: {
     goToView(path) {
       this.$router.push({ name: path })
-    }
+    },
+    loadData() {
+      fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + getCurrentUserId(), {
+        method: "GET",
+        headers: { Authorization: 'Bearer ' + getToken() }
+      })
+        .then(res => res.json())
+        .then(data => this.plants = data)
+    },
   }
 }
 </script>

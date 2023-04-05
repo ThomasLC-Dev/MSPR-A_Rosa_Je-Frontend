@@ -2,7 +2,7 @@
   <div class="card-plant">
     <div class="row1">
       <p type="text" class="plant-subtitle">{{ plantName }}</p>
-      <div class="delete-button" @click="deletePlant(plant.id)">
+      <div class="delete-btn" @click="deletePlant(plant.id)">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
     </div>
@@ -204,11 +204,11 @@ export default {
   width: 100%;
 }
 
-.row1>.delete-button {
+.row1>.delete-btn {
   width: 10%;
 }
 
-.delete-button>img {
+.delete-btn>img {
   display: flex;
   right: 0px;
   position: relative;
