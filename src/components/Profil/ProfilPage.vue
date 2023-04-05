@@ -38,7 +38,7 @@
                 </div>
                 <div class="profil-info">
                     <div class="form-field-direction">
-                        <div class="form-field">
+                        <div class="form-field field-2">
                             <label for="roadNumber">Nº de rue :</label>
                             <input type="text" id="roadNumber" :disabled="modificationAllowed == 1"
                                 v-model="user.address.roadNumber" />
@@ -55,17 +55,17 @@
                     </div>
 
                     <div class="form-field-direction">
-                        <div class="form-field">
+                        <div class="form-field field-5">
                             <label for="addtionalAddress">Adresse complémentaire :</label>
                             <input type="text" id="addtionalAddress" :disabled="modificationAllowed == 1"
                                 v-model="user.address.addtionalAddress" />
                         </div>
-                        <div class="form-field field-2">
+                        <div class="form-field field-1">
                             <label for="postalCode">Code postal :</label>
                             <input type="text" id="postalCode" :disabled="modificationAllowed == 1"
                                 v-model="user.address.postalCode" />
                         </div>
-                        <div class="form-field field-7">
+                        <div class="form-field field-4">
                             <label for="city">Nom de ville :</label>
                             <input type="text" id="city" :disabled="modificationAllowed == 1" v-model="user.address.city" />
                         </div>
@@ -83,7 +83,8 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <input class="btn-reset" type="reset" value="Annuler" v-show="modificationAllowed == 0" />
+                    <input class="btn-reset" type="reset" value="Annuler" @click="ModificationReset"
+                        v-show="modificationAllowed == 0" />
                     <input class="btn-validate" type="submit" value="Modifier" @click="ModificationAllowed"
                         v-show="modificationAllowed == 1" />
                     <input class="btn-validate" type="submit" value="Enregistrer" @click="ModificationFinish"
@@ -159,6 +160,10 @@ export default {
             this.modificationAllowed = 0
 
         },
+        ModificationReset() {
+            this.modificationAllowed = 1
+        },
+
         ModificationFinish() {
             this.modificationAllowed = 1
             let userData = {
@@ -306,6 +311,10 @@ export default {
 
 .field-3 {
     flex: 3;
+}
+
+.field-5 {
+    flex: 5;
 }
 
 .field-6 {

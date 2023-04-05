@@ -13,11 +13,9 @@
 				<ul class="list-articles">
 					<li class="headerContent">
 						<TextImgColumn :img-link="lingImg_3" :titre="titreimg_3" :text="textimg_3" />
-
 					</li>
 					<li class="headerContent">
 						<TextImgColumn :img-link="lingImg_4" :titre="titreimg_4" :text="textimg_4" />
-
 					</li>
 				</ul>
 			</div>
@@ -31,11 +29,9 @@
 						<peopleLeft :text="speechLeft_1" :speech-link="speechImg_Big" />
 						<peopleRight :text="speechRight_2" />
 						<peopleLeft :text="speechLeft_2" :speech-link="speechImg_Bigger" />
-
 					</ul>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </template>
@@ -87,7 +83,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .header {
 	display: flex;
 	flex-direction: row;
@@ -101,7 +97,6 @@ export default {
 	gap: 1rem;
 	flex: 1;
 	align-self: stretch;
-
 }
 
 .headerContent {
@@ -139,13 +134,11 @@ export default {
 }
 
 .title {
-
 	text-decoration: underline;
 	text-decoration-color: green;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 }
 
 .talkingPeople {
@@ -172,7 +165,6 @@ export default {
 		flex-direction: row;
 		gap: 150px;
 		flex-direction: column;
-
 	}
 
 	.contentPage {
@@ -182,7 +174,6 @@ export default {
 		flex: 1;
 		align-self: stretch;
 		flex-direction: column;
-
 	}
 
 	.headerContent {

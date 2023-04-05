@@ -2,7 +2,7 @@
 	<div class="container-reverse">
 		<div class="textReverse">
 			<div class="titleReverse">
-				<h1>{{ titre }}</h1>
+				<h2>{{ titre }}</h2>
 			</div>
 			<div class="textInsideReverse">
 				{{ text }}
@@ -22,9 +22,7 @@ export default {
 		imgLink: String,
 		text: String,
 		titre: String
-	},
-	data: () => ({}),
-
+	}
 }
 </script>
 
@@ -34,7 +32,6 @@ export default {
 	flex-direction: row;
 	align-items: center;
 	flex: 1;
-
 }
 
 .imgReverse {
@@ -44,7 +41,11 @@ export default {
 .textReverse {
 	margin-right: 10px;
 	flex: 1;
+}
 
+.textInsideReverse {
+	text-align: justify;
+	font-size: large;
 }
 
 @media (max-width : 1000px) {

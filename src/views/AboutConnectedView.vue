@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AboutConnectedPage from '@/components/AboutConnectedView/AboutConnectedPage.vue'
+import AboutConnectedPage from '@/components/AboutConnected/AboutConnectedPage.vue'
 
 export default {
   name: 'AboutConnectedView',

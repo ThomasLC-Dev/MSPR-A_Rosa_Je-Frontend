@@ -7,18 +7,19 @@
       <div class="group-button-menu">
         <div class="guardian-tracking-button">
           <img src="@/assets/Logo/keeper.png" v-if="!show" @click="goToView(routeGuardianTracking)"
-            alt="Réaliser le suivi" />
+            alt="Réaliser le suivi" title="Réaliser le suivi" />
         </div>
         <div class="request-guard-slot-button">
-          <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeRequestGuardSlot)"
-            alt="Proposer un créneau de gardiennage" />
+          <img src="@/assets/Logo/creer-creneau.png" v-if="!show" @click="goToView(routeRequestGuardSlot)"
+            alt="Proposer un créneau de gardiennage" title="Créer un créneau" />
         </div>
         <div class="see-user-slots-button">
           <img src="@/assets/Logo/following-plant.png" v-if="!show" @click="goToView(routeUserSlots)"
-            alt="Consulter les créneaux de gardiennage" />
+            alt="Consulter les créneaux de gardiennage" title="Mes créneaux" />
         </div>
         <div class="add-button">
-          <img src="@/assets/Logo/add-button.png" @click="goToView(routeAddNewPlant)" alt="Ajouter une plante" />
+          <img src="@/assets/Logo/add-button.png" @click="goToView(routeAddNewPlant)" alt="Ajouter une plante"
+            title="Ajouter une plante" />
         </div>
       </div>
     </div>
@@ -28,7 +29,7 @@
     </div>
 
     <div v-else>
-      <PlantCard class="plant-card" v-for="plant in plants" v-bind:key="plant" :plant-name-prop="plant.name"
+      <PlantCard class="plant-card" v-for="plant in plants" :key="plant.id" :plant-name-prop="plant.name"
         :customer-advice-prop="plant.description" :botanist-advice-prop="plant.advises"
         :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" />
     </div>
@@ -80,6 +81,7 @@ export default {
   flex-direction: row;
 }
 
+
 .main-title {
   display: flex;
   flex-direction: row;
@@ -87,35 +89,6 @@ export default {
   align-content: center;
   align-items: center;
   text-align: center;
-}
-
-.group-button-menu {
-  display: flex;
-  flex-direction: row;
-  flex: 2;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.add-button>img,
-.request-guard-slot-button>img,
-.guardian-tracking-button>img,
-
-.see-user-slots-button>img {
-  width: auto;
-  height: 50px;
-  cursor: pointer;
-  border: 1px solid var(--main-container-border);
-  box-shadow: 5px 5px 6px 1px var(--main-container-border);
-}
-
-.main-container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
 }
 
 .emptyPosition {
@@ -135,6 +108,33 @@ export default {
   height: 80%;
 }
 
+
+
+.group-button-menu {
+  display: flex;
+  flex-direction: row;
+  flex: 2;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.add-button>img,
+.request-guard-slot-button>img,
+.guardian-tracking-button>img,
+.see-user-slots-button>img {
+  width: auto;
+  height: 50px;
+  cursor: pointer;
+  border: 1px solid var(--main-container-border);
+  box-shadow: 5px 5px 6px 1px var(--main-container-border);
+}
+
+
+
 @media (max-width: 1000px) {
   .main-title {
     flex: 9;
@@ -143,17 +143,14 @@ export default {
 
   .group-button-menu {
     flex: 1;
-    gap: 2px;
+    gap: 5px;
   }
 
   .add-button>img,
   .request-guard-slot-button>img,
-  .guardian-tracking-button>img {
-    width: auto;
+  .guardian-tracking-button>img,
+  .see-user-slots-button>img {
     height: 35px;
-    cursor: pointer;
-    border: 1px solid var(--main-container-border);
-    box-shadow: 5px 5px 5px -1px var(--main-container-border);
   }
 
   .plant-card {

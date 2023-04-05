@@ -3,9 +3,9 @@
 		<img :src="require(`@/assets/` + imgLink)" alt="" class="img-column">
 		<div class="explanation-column">
 			<div class="title-column">
-				<h1>{{ titre }}</h1>
+				<h2>{{ titre }}</h2>
 			</div>
-			<div class="textInside-column">
+			<div class="textInsideColumn">
 				{{ text }}
 			</div>
 		</div>
@@ -33,13 +33,20 @@ export default {
 	flex: 1;
 	margin-top: -60%;
 }
-.explanation-column{
+
+.explanation-column {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 }
-.img-column{
+
+.textInsideColumn {
+	text-align: justify;
+	font-size: large;
+}
+
+.img-column {
 	width: 15rem;
-    margin: 5%;
+	margin: 5%;
 }
 </style>

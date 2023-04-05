@@ -3,8 +3,8 @@
     <!-- PARTIE TITRE PLANTE -->
     <div class="row1">
       <p type="text" class="plant-subtitle">{{ plantName }}</p>
-      <div class="delete-button" onClick="">
-        <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" />
+      <div class="delete-button" @click="deletePlant(plant.id)">
+        <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
     </div>
     <!-- FIN PARTIE TITRE PLANTE -->
@@ -26,8 +26,7 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/Ombre.png">
               </div>
-              <select class="logo-field-plant" id="lightSelect" v-model="plant.sunlight"
-                :disabled="modificationAllowed == 1">
+              <select class="logo-field-plant" id="lightSelect" :disabled="modificationAllowed == 1" v-model="sunlight">
                 <option value="fullShadow">Ombre</option>
                 <option value="sun">Soleil</option>
                 <option value="midShadow">Mi-Ombre</option>
@@ -37,8 +36,8 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/quantite-eau.png">
               </div>
-              <input type="text" v-model="plant.wateringQuantity" class="waterQuantity logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="waterQuantity logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="wateringQuantity" />
             </div>
           </div>
           <div class="row2-2">
@@ -46,15 +45,15 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureBasse.png">
               </div>
-              <input type="text" v-model="plant.lowerTemp" class="minTemp logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="minTemp logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="lowerTemp" />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureHaute.png">
               </div>
-              <input type="text" v-model="higherTemp" class="maxTemp logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="maxTemp logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="higherTemp" />
             </div>
           </div>
 
@@ -63,15 +62,15 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/watering-frequency.png">
               </div>
-              <input type="text" v-model="plant.wateringFrequency" class="waterFrequency logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="waterFrequency logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="wateringFrequency" />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/arrosage.png">
               </div>
-              <input type="text" v-model="plant.wateringContainer" class="waterType logo-field-plant"
-                :disabled="modificationAllowed == 1" />
+              <input type="text" class="waterType logo-field-plant" :disabled="modificationAllowed == 1"
+                v-model="wateringContainer" />
             </div>
           </div>
         </div>
@@ -85,20 +84,19 @@
     <div class="advices-part">
       <div class="form-field">
         <p type="text" class="plant-advice-subtitle">Consignes d'entretien : </p>
-        <input type="text" class="maintenanceInstructions" v-model="plant.customerAdvice"
-          :disabled="modificationAllowed == 1" />
+        <input type="text" class="maintenanceInstructions" :disabled="modificationAllowed == 1"
+          v-model="customerAdvice" />
       </div>
       <div class="form-field">
         <p type="text" class="plant-advice-subtitle">Conseil d'un Botaniste :</p>
-        <input type="text" class="botanistAdvice" v-model="plant.botanistAdvice" :disabled="modificationAllowed == 1" />
+        <input type="text" class="botanistAdvice" :disabled="modificationAllowed == 1" v-model="botanistAdvice" />
       </div>
     </div>
     <!-- FIN PARTIE CONSEILS -->
 
     <div class="button-group">
-      <input class="btn-reset" type="reset" value="Annuler" />
-      <input class="btn-validate" type="submit" value="Modifier" />
-      <input class="btn-reset" type="reset" value="Annuler" v-show="modificationAllowed == 0" />
+      <input class="btn-reset" type="reset" value="Annuler" @click="ModificationReset"
+        v-show="modificationAllowed == 0" />
       <input class="btn-validate" type="submit" value="Modifier" @click="ModificationAllowed"
         v-show="modificationAllowed == 1" />
       <input class="btn-validate" type="submit" value="Enregistrer" @click="ModificationFinish"
@@ -109,6 +107,7 @@
 
 <script>
 import CarousselPlant from './Carousel/CarousselPlant.vue';
+import { config, getToken, getCurrentPlantId } from '../../../api.config'
 
 export default {
   name: 'PlantCard',
@@ -122,7 +121,7 @@ export default {
     slidesProp: []
   },
   data: () => ({
-
+    id: '',
     plantName: '',
     customerAdvice: '',
     botanistAdvice: '',
@@ -134,6 +133,7 @@ export default {
     wateringFrequency: '',
     wateringContainer: '',
     slides: [],
+    modificationAllowed: 1,
   }),
   created() {
     this.plantName = this.plantNameProp;
@@ -144,7 +144,9 @@ export default {
   methods: {
     ModificationAllowed() {
       this.modificationAllowed = 0
-
+    },
+    ModificationReset() {
+      this.modificationAllowed = 1
     },
     ModificationFinish() {
       this.modificationAllowed = 1
@@ -164,6 +166,13 @@ export default {
         body: JSON.stringify(plantData)
       })
     },
+    deletePlant(plantId) {
+      fetch(config.apiBase + config.endpoints.plantsPath + '/' + plantId, {
+        method: "DELETE",
+        headers: { Authorization: 'Bearer ' + getToken() }
+      })
+        .then(() => this.loadData())
+    }
   }
 }
 </script>
@@ -177,8 +186,10 @@ export default {
 .group-plant {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
+  margin: 20px;
 }
 
 .plant-subtitle {
@@ -189,20 +200,20 @@ export default {
   font-weight: bold;
 }
 
-.photo-part {
-  width: 35%;
-}
+/* .photo-part {} */
 
 .info-part {
   display: flex;
   flex-direction: column;
-  width: 65%;
+  justify-content: center;
 }
 
 .row1 {
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
+  align-items: center;
+  width: 100%;
 }
 
 .row1>.delete-button {
@@ -213,9 +224,10 @@ export default {
   display: flex;
   right: 0px;
   position: relative;
-  width: 50px;
+  width: 30px;
   height: auto;
   right: 0px;
+  cursor: pointer;
 }
 
 .row2 {
@@ -229,21 +241,24 @@ export default {
 .row2-3 {
   display: flex;
   flex-direction: row;
-  margin: 2px 5px 2px 5px;
-  gap: 10px;
+  margin: 5px 8px 5px 8px;
+  gap: 20px;
 }
 
 .logo-field {
   display: flex;
   flex-direction: row;
   width: 50%;
-  gap: 5px;
+  height: 60px;
+  gap: 10px;
 }
 
 .logo-img-plant {
-  text-align: center;
-  height: 55px;
-  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 90px;
   border: 1px solid var(--btn-reset-border-color);
 }
 
@@ -255,19 +270,30 @@ export default {
   width: 80%
 }
 
+.logo-field>input {
+  margin-bottom: 0px;
+}
+
 .advices-part {
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  align-content: space-between;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  margin: 20px;
+}
+
+.form-field {
+  align-items: center;
 }
 
 .plant-advice-subtitle {
+  align-items: center;
   color: var(--main-title-h2);
   left: 0px;
-  width: 90%;
   font-size: x-large;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .maintenanceInstructions,

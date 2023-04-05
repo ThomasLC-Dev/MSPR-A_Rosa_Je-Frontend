@@ -3,7 +3,7 @@
 		<img :src="require(`@/assets/` + imgLink)" alt="" class="img">
 		<div class="explanation">
 			<div class="title">
-				<h1>{{ titre }}</h1>
+				<h2>{{ titre }}</h2>
 			</div>
 			<div class="textInside">
 				{{ text }}
@@ -15,7 +15,6 @@
 <script>
 export default {
 	name: "TextAndImg",
-	data: () => ({}),
 	props: {
 		imgLink: String,
 		text: String,
@@ -32,18 +31,30 @@ export default {
 	word-wrap: break-word;
 	flex: 1;
 }
-.explanation{
+
+h2 {
+	color: var(--main-title-h1);
+}
+
+.explanation {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 }
+
+.textInside {
+	text-align: justify;
+	font-size: large;
+}
+
 .img {
 	width: 10rem;
 }
+
 @media (max-width : 1000px) {
 	.container {
-	display: flex;
-	flex-direction: column;
-}
+		display: flex;
+		flex-direction: column;
+	}
 }
 </style>
