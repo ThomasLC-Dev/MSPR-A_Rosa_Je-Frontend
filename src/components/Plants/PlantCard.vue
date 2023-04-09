@@ -2,7 +2,7 @@
   <div class="card-plant">
     <div class="row1">
       <p type="text" class="plant-subtitle">{{ plantName }}</p>
-      <div class="delete-btn" @click="deletePlant(plant.id)">
+      <div class="delete-btn" @click="deletePlant(plantId)">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
     </div>
@@ -103,6 +103,7 @@ export default {
     CarousselPlant
   },
   props: {
+    plantIdProp: String,
     plantNameProp: String,
     customerAdviceProp: String,
     botanistAdviceProp: String,

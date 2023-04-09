@@ -29,8 +29,8 @@
     </div>
 
     <div v-else>
-      <PlantCard class="plant-card" v-for="plant in plants" :key="plant.id" :plant-name-prop="plant.name"
-        :customer-advice-prop="plant.description" :botanist-advice-prop="plant.advises"
+      <PlantCard class="plant-card" v-for="(plant, id) in plants" :key="id" :plant-id-prop="plant.id"
+        :plant-name-prop="plant.name" :customer-advice-prop="plant.description" :botanist-advice-prop="plant.advises"
         :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" />
     </div>
   </div>
@@ -69,7 +69,7 @@ export default {
       })
         .then(res => res.json())
         .then(data => this.plants = data)
-    },
+    }
   }
 }
 </script>
