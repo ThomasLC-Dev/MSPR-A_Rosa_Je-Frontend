@@ -30,10 +30,6 @@ export default {
   },
   methods: {
     createSlot() {
-        console.log({
-                startDate: this.startDate,
-                endDate: this.endDate,
-                userId: getCurrentUserId()});
       fetch(config.apiBase + config.endpoints.slotsPath, {
         method: 'POST',
         headers: {
