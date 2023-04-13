@@ -2,7 +2,7 @@
   <div class="card-plant">
     <div class="row1">
       <p type="text" class="plant-subtitle">{{ plantName }}</p>
-      <div class="delete-btn" @click="deletePlant(plantId)">
+      <div class="delete-btn" @click="deletePlant()">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
     </div>
@@ -70,15 +70,15 @@
       </div>
     </div>
 
-    <div class="advices-part">
+    <div class="advises-part">
       <div class="form-field">
-        <p type="text" class="plant-advice-subtitle">Consignes d'entretien : </p>
+        <p type="text" class="plant-advise-subtitle">Consignes d'entretien : </p>
         <input type="text" class="maintenanceInstructions" :disabled="modificationAllowed == 1"
-          v-model="customerAdvice" />
+          v-model="customerAdvise" />
       </div>
       <div class="form-field">
-        <p type="text" class="plant-advice-subtitle">Conseil d'un Botaniste :</p>
-        <input type="text" class="botanistAdvice" :disabled="modificationAllowed == 1" v-model="botanistAdvice" />
+        <p type="text" class="plant-advise-subtitle">Conseil d'un Botaniste :</p>
+        <input type="text" class="botanistAdvise" :disabled="modificationAllowed == 1" v-model="botanistAdvise" />
       </div>
     </div>
 
@@ -95,7 +95,7 @@
 
 <script>
 import CarousselPlant from './Carousel/CarousselPlant.vue';
-import { config, getToken, getCurrentPlantId } from '../../../api.config'
+import { config, getToken } from '../../../api.config'
 
 export default {
   name: 'PlantCard',
@@ -105,15 +105,15 @@ export default {
   props: {
     plantIdProp: String,
     plantNameProp: String,
-    customerAdviceProp: String,
-    botanistAdviceProp: String,
+    customerAdviseProp: String,
+    botanistAdviseProp: String,
     slidesProp: []
   },
   data: () => ({
-    id: '',
+    plantId: '',
     plantName: '',
-    customerAdvice: '',
-    botanistAdvice: '',
+    customerAdvise: '',
+    botanistAdvise: '',
     latinOrVerna: '',
     sunlight: '',
     lowerTemp: '',
@@ -125,9 +125,10 @@ export default {
     modificationAllowed: 1,
   }),
   created() {
+    this.plantId = this.plantIdProp;
     this.plantName = this.plantNameProp;
-    this.customerAdvice = this.customerAdviceProp;
-    this.botanistAdvice = this.botanistAdviceProp;
+    this.customerAdvise = this.customerAdviseProp;
+    this.botanistAdvise = this.botanistAdviseProp;
     this.slides = this.slidesProp;
   },
   methods: {
@@ -140,13 +141,12 @@ export default {
     ModificationFinish() {
       this.modificationAllowed = 1
       let plantData = {
-        "plantName": this.plantNameProp,
-        "customerAdvice": this.customerAdviceProp,
-        "botanistAdvice": this.botanistAdviceProp,
-        "slides": this.slidesProp
+        "plantName": this.plantName,
+        "description": this.customerAdvise,
+        "advises": this.botanistAdvise
       }
 
-      fetch(config.apiBase + config.endpoints.plantsPath + '/' + getCurrentPlantId(), {
+      fetch(config.apiBase + config.endpoints.plantsPath + '/' + this.plantId, {
         method: 'PUT',
         headers: {
           Authorization: 'Bearer ' + getToken(),
@@ -154,13 +154,14 @@ export default {
         },
         body: JSON.stringify(plantData)
       })
+        .then(() => this.$emit('onUpdatePlant'))
     },
-    deletePlant(plantId) {
-      fetch(config.apiBase + config.endpoints.plantsPath + '/' + plantId, {
+    deletePlant() {
+      fetch(config.apiBase + config.endpoints.plantsPath + '/' + this.plantId, {
         method: "DELETE",
         headers: { Authorization: 'Bearer ' + getToken() }
       })
-        .then(() => this.loadData())
+        .then(() => this.$emit('onDeletePlant'))
     }
   }
 }
@@ -263,7 +264,7 @@ export default {
   margin-bottom: 0px;
 }
 
-.advices-part {
+.advises-part {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -276,7 +277,7 @@ export default {
   align-items: center;
 }
 
-.plant-advice-subtitle {
+.plant-advise-subtitle {
   align-items: center;
   color: var(--main-title-h2);
   left: 0px;
@@ -286,7 +287,7 @@ export default {
 }
 
 .maintenanceInstructions,
-.botanistAdvice {
+.botanistAdvise {
   width: 450px;
   height: 300px;
 }
@@ -328,7 +329,7 @@ export default {
     flex-direction: column;
   }
 
-  .advices-part {
+  .advises-part {
     flex-direction: column;
     justify-content: center;
     width: 90%;
@@ -359,7 +360,7 @@ export default {
   }
 
   .maintenanceInstructions,
-  .botanistAdvice {
+  .botanistAdvise {
     width: 100%;
   }
 }

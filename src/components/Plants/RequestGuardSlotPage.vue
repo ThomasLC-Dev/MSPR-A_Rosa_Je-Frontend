@@ -11,7 +11,7 @@
         <input v-model="endDate" type="date" placeholder="Date de fin" />
       </div>
       <input class="btn-reset" type="reset" value="Annuler" />
-      <input class="btn-validate" type="submit" value="Enregistrer" @click="goToView(routeMyPlants)" />
+      <input class="btn-validate" type="submit" value="Enregistrer" />
     </form>
   </div>
 </template>
@@ -30,6 +30,10 @@ export default {
   },
   methods: {
     createSlot() {
+        console.log({
+                startDate: this.startDate,
+                endDate: this.endDate,
+                userId: getCurrentUserId()});
       fetch(config.apiBase + config.endpoints.slotsPath, {
         method: 'POST',
         headers: {
@@ -42,9 +46,10 @@ export default {
           userId: getCurrentUserId()
         })
       })
+        .then(() => this.goToView('plants'));
     },
     goToView(path) {
-      this.$router.push('/plants')
+      this.$router.push({name: path})
     },
   }
 
