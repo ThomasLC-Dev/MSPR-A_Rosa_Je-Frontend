@@ -2,7 +2,7 @@
   <div class="camera">
     <div class="main-container">
 
-      <button @click="goToView(routePhotoPage)" class="btn-reset">x</button>
+      <button @click="goToView(routeAddPlant)" class="btn-reset">x</button>
       <button class="btn-validate" @click="toggleCamera()">
         <span v-if="!isCameraOpen">Open Camera</span>
         <span v-else>Close Camera</span>
