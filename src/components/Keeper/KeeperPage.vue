@@ -16,13 +16,12 @@
 
     <div class="ListPlants">
       <div class="group-checkbox">
-        <input type="radio" id="one" value="true" v-model="picked" @click="filterList()">
-        <label for="one">Plante Gardées</label>
+        <input type="radio" name="PlantKeep" value="KeepPlant" id="PlantKeep" @change="filterListKeepedPlants()" v-model="picked"/>
+        <label for="PlantKeep">Plante gardée</label>
         <br>
-        <input type="radio" id="two" value="false" v-model="picked" @click="filterList()">
-        <label for="two">Demande de gardiennage</label>
+        <input type="radio" name="PlantAskKeep" value="AskKeepPlant" id="AskKeepPlant" @change="filterList()" v-model="picked"/>
+        <label for="AskKeepPlant">Demande de Gardiennage</label>
         <br>
-        <span>Picked: {{ picked }}</span>
       </div>
       <table>
         <thead>
@@ -33,21 +32,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-if="items.length === 0">
+          <tr v-if="tempItems.length === 0">
             <td>Vide</td>
             <td>Vide</td>
             <td>Vide</td>
             <td>Vide</td>
             <td>
               <div class="buttonsList">
-                <img src="../../assets/Logo/EyesOK.png" alt="Voir" class="SeeImg">
-                <img src="../../assets/Logo/OK.png" alt="Accepter" class="OKImg">
+                <img src="../../assets/Logo/Message.png" alt="Voir" class="SeeImg">
                 <img src="../../assets/Logo/No.png" alt="Refuser" class="NoImg">
               </div>
             </td>
 
           </tr>
-          <tr v-else v-for="item in items">
+          <tr v-else v-for="(item, index) in tempItems">
 
             <td>{{ item.user.firstName }}</td>
             <td>{{ item.user.address.city }}</td>
@@ -55,9 +53,9 @@
             <td>{{ item.endDate }}</td>
             <td>
               <div class="buttonsList">
-                <img src="../../assets/Logo/EyesOK.png" alt="Voir" class="SeeImg">
-                <img src="../../assets/Logo/OK.png" alt="Accepter" class="OKImg">
-                <img src="../../assets/Logo/No.png" alt="Refuser" class="NoImg">
+                <img src="../../assets/Logo/Message.png" alt="Voir" class="SeeImg">
+                <img src="../../assets/Logo/OK.png" alt="Accepter" class="OKImg" @click="AddPlantToKeep(index)" v-show="ShowAddPlant">
+                <img src="../../assets/Logo/No.png" alt="Refuser" class="NoImg" @click="RemovePlantToKeep(index)" v-show="!ShowAddPlant">
               </div>
             </td>
           </tr>
@@ -68,7 +66,8 @@
 </template>
 
 <script>
-import { getToken, } from '../../../api.config'
+import { vShow } from 'vue';
+import { getToken, getCurrentUserId, config } from '../../../api.config'
 export default {
   name: 'KeeperPage',
   data() {
@@ -80,10 +79,54 @@ export default {
         "Nom Client", "Ville Client", 'Date début', 'Date fin'
       ],
       items: [],
+      tempItems: [],
       slots: [],
       showkeepedPlants: false,
-      showPlantsToKeep: true, 
-      picked : "default" 
+      showPlantsToKeep: true,
+      picked: "KeepPlant",
+
+      user: {
+        "address": {
+          "additionalAddress": "string",
+          "city": "string",
+          "id": 0,
+          "latitude": 0,
+          "longitude": 0,
+          "postalCode": "string",
+          "road": "string",
+          "roadNumber": 0,
+          "roadType": "string"
+        },
+        "email": "string",
+        "firstName": "string",
+        "id": 0,
+        "imageUrl": "string",
+        "lastName": "string",
+        "phone": "string",
+        "status": true,
+        "userRoles": [
+          {
+            "id": 0,
+            "role": {
+              "id": 0,
+              "name": "string"
+            }
+          }
+        ]
+      },
+
+      slot: [
+        {
+          "endDate": "2023-04-21",
+          "keeperId": 0,
+          "startDate": "2023-04-21",
+          "userId": 0
+        }
+      ],
+
+      index: 0,
+      ShowAddPlant : false
+
 
     }
   },
@@ -91,7 +134,7 @@ export default {
     KeepPlant() {
       this.$router.push('/keeper/PlantsKeep');
     },
-    GetUsers() {
+    GetSlots() {
       fetch("https://a-rosa-je.herokuapp.com/api/slots/", {
         headers: {
           Authorization: 'Bearer ' + getToken(),
@@ -99,39 +142,92 @@ export default {
       })
         .then((res) => res.json())
         .then(
-          (data) => (this.items = data,
-            this.filterList())
+          (data) => {
+            this.items = data;
+            if(this.picked=="AskKeepPlant"){
+              this.filterList();
+            }
+            else{
+              this.filterListKeepedPlants()
+            }
+          }
         )
 
     },
     filterList() {
-      if (this.picked = "true") {
+      this.ShowAddPlant = true; 
+      this.tempItems = this.items.filter(Element => {
+        return Element.keeper === null;
+      });
 
-        this.items = this.items.filter(Element => {
-          return Element.keeper === null;
-        });
-        console.log(this.items)
-      }
-      else if (this.picked ="false") {
+    },
 
-        this.items = this.items.filter(Element => {
-          return Element.keeper === this.user;
-        });
-        console.log(this.items)
-      }
+    filterListKeepedPlants() {
+      this.ShowAddPlant = false;
+      this.tempItems = this.items.filter(Element => {
+        if (Element.keeper != null) {
+          return Element.keeper.id === this.user.id;
+        }
+      });
+
+    },
+
+    GetUser() {
+      fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
+        headers: {
+          Authorization: 'Bearer ' + getToken(),
+        }
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          this.user = data;
+          this.GetSlots();
+        })
+
+
+    },
+
+    AddPlantToKeep(index) {
+
+      let keeperObject = {
+        keeperId: this.user.id
+      };
+
+      fetch(config.apiBase + config.endpoints.slotsPath + '/' + this.tempItems[index].id, {
+        method: 'PUT',
+        headers: {
+          Authorization: 'Bearer ' + getToken(),
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(keeperObject)
+      })
+      .then(() => this.GetSlots());
+
+    },
+    RemovePlantToKeep(index) {
+
+
+      let keeperObject = {
+        keeperId: null
+      };
+
+      fetch(config.apiBase + config.endpoints.slotsPath + '/' + this.tempItems[index].id, {
+        method: 'PUT',
+        headers: {
+          Authorization: 'Bearer ' + getToken(),
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(keeperObject)
+      })
+      .then(() => this.GetSlots());
+
+
     }
-  },
-
-  filterListKeepedPlants() {
-
 
   },
   beforeMount() {
-    this.GetUsers()
-
+    this.GetUser();
   },
-
-
 }
 </script>
 
@@ -159,6 +255,7 @@ export default {
 
 td {
   padding: 20px;
+  width: 20%;
 }
 
 table {
@@ -209,13 +306,13 @@ td {
 }
 
 .SeeImg {
-  width: 20%;
+  width: 30%;
   margin: 0%;
   padding: 0%;
 }
 
 .OKImg {
-  width: 15%;
+  width: 35%;
   height: 10%;
   margin: 0%;
   padding: 0%;
@@ -223,7 +320,7 @@ td {
 }
 
 .NoImg {
-  width: 15%;
+  width: 30%;
   height: 10%;
   margin: 0%;
   padding: 0%;
