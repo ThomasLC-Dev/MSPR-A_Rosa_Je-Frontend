@@ -201,10 +201,6 @@ textarea {
 
 input[type="file"] {
   display: flex;
-  /* padding: 0; */
-  /* width: 50px; */
-  /* height: 90px; */
-  /* margin-left: 10px; */
   border-radius: 30px;
 }
 
@@ -216,7 +212,7 @@ input[type="file"] {
 .addPlant {
   display: flex;
   position: relative;
-  left: 75%;
+  left: 80%;
   bottom: 25px;
   width: 30px;
 }
@@ -232,7 +228,9 @@ input[type="file"] {
 .delete-button img {
   display: flex;
   position: relative;
+  padding-left: 10px;
   height: 15px;
+  bottom: 5px;
 }
 
 #formAddPlant {
@@ -281,8 +279,8 @@ input[type="file"] {
 
   .addPlant {
     display: flex;
-    left: -25px;
-    top: 0px;
+    left: -160px;
+    top: 20px;
     height: 30px;
     width: 30px;
   }
