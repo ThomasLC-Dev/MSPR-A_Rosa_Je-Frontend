@@ -49,7 +49,7 @@
 
       <!-- Difficultés : 
         - Ajouter des photos,
-        - Supprimer les photos avec les boutons,
+        - Supprimer les photos (séparement) avec les boutons,
         - Enregister les infos de la plante quand le.la utilisateur.trice clique sur le bouton "Enregistrer".
       -->
 
@@ -57,24 +57,24 @@
         <label for="plantPhoto">Ajouter une photo (max 4) : </label>
         <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo" @click="goToView(routePhotoPage)">
         <div class="addPhotos">
-          <input type="file" />
-          <div class="delete-button">
-            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
+          <input ref="fileupload" type="file"/>
+          <div>
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhoto">
           </div>
 
-          <input type="file" />
-          <div class="delete-button">
-            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
+          <input ref="fileupload1" type="file"/>
+          <div>
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhoto">
           </div>
 
-          <input type="file" />
-          <div class="delete-button">
-            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
+          <input ref="fileupload2" type="file"/>
+          <div>
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhoto">
           </div>
 
-          <input type="file" />
-          <div class="delete-button">
-            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
+          <input ref="fileupload3" type="file"/>
+          <div>
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhoto">
           </div>
         </div>
       </div>
@@ -169,6 +169,9 @@ export default {
       fileReader.readAsDataURL(files[0])
       this.image = files[0]
     },
+    deletePhoto() {
+      this.$refs.fileupload.value = null;
+    },
   },
 }
 </script>
@@ -225,7 +228,7 @@ input[type="file"] {
   flex-direction: column;
 }
 
-.delete-button img {
+.delete-button {
   display: flex;
   position: relative;
   padding-left: 10px;
