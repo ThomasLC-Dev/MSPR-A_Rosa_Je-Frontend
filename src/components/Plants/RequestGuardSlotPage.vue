@@ -11,7 +11,7 @@
         <input v-model="endDate" type="date" placeholder="Date de fin" />
       </div>
       <input class="btn-reset" type="reset" value="Annuler" />
-      <input class="btn-validate" type="submit" value="Enregistrer" @click="goToView(routeMyPlants)" />
+      <input class="btn-validate" type="submit" value="Enregistrer" />
     </form>
   </div>
 </template>
@@ -42,9 +42,10 @@ export default {
           userId: getCurrentUserId()
         })
       })
+        .then(() => this.goToView('plants'));
     },
     goToView(path) {
-      this.$router.push('/plants')
+      this.$router.push({name: path})
     },
   }
 
