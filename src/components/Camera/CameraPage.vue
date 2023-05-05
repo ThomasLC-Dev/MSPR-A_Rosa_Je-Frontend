@@ -2,8 +2,8 @@
   <div class="camera">
     <div class="main-container">
 
-      <button @click="this.$parent.showCamera = false" class="btn-reset">x</button>
-       <button class="btn-validate" @click="toggleCamera()">
+      <button @click="goToView(routeAddPlant)" class="btn-reset">x</button>
+      <button class="btn-validate" @click="toggleCamera()">
         <span v-if="!isCameraOpen">Open Camera</span>
         <span v-else>Close Camera</span>
       </button>
@@ -33,10 +33,14 @@ export default {
   data() {
     return {
       isCameraOpen: false,
-      isPhotoTaken: false
+      isPhotoTaken: false,
+      routeAddPlant: "addnewplants"
     }
   },
   methods: {
+    goToView(path) {
+      this.$router.push({ name: path });
+    },
     createCameraElement () {
       const constraints = (window.constraints = {
         audio: false,

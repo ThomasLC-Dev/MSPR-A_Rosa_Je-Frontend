@@ -49,33 +49,32 @@
 
       <!-- Difficultés : 
         - Ajouter des photos,
-        - Afficher les miniatures des photos quand un.e utilisateur.trice ajoute une photo,
-        - Supprimer les photos avec les boutons,
+        - Supprimer les photos (séparement) avec les boutons,
         - Enregister les infos de la plante quand le.la utilisateur.trice clique sur le bouton "Enregistrer".
       -->
 
       <div class="form-field">
-        <label for="plantPhoto">Ajouter une photo (maxi 4) : </label>
+        <label for="plantPhoto">Ajouter une photo (max 4) : </label>
         <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo" @click="goToView(routePhotoPage)">
         <div class="addPhotos">
-          <input v-model="plantsPhoto" type="image" />
-          <div class="delete-button">
-            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
+          <input ref="fileupload" type="file"/>
+          <div>
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhoto">
           </div>
 
-          <input v-model="plantsPhoto" type="image" />
-          <div class="delete-button">
-            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
+          <input ref="fileupload1" type="file"/>
+          <div>
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhoto">
           </div>
 
-          <input v-model="plantsPhoto" type="image" />
-          <div class="delete-button">
-            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
+          <input ref="fileupload2" type="file"/>
+          <div>
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhoto">
           </div>
 
-          <input v-model="plantsPhoto" type="image" />
-          <div class="delete-button">
-            <img src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image">
+          <input ref="fileupload3" type="file"/>
+          <div>
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhoto">
           </div>
         </div>
       </div>
@@ -170,6 +169,9 @@ export default {
       fileReader.readAsDataURL(files[0])
       this.image = files[0]
     },
+    deletePhoto() {
+      this.$refs.fileupload.value = null;
+    },
   },
 }
 </script>
@@ -200,12 +202,8 @@ textarea {
   font-size: large;
 }
 
-input[type="image"] {
+input[type="file"] {
   display: flex;
-  padding: 0;
-  width: 50px;
-  height: 90px;
-  margin-left: 10px;
   border-radius: 30px;
 }
 
@@ -217,7 +215,7 @@ input[type="image"] {
 .addPlant {
   display: flex;
   position: relative;
-  left: 75%;
+  left: 80%;
   bottom: 25px;
   width: 30px;
 }
@@ -227,14 +225,15 @@ input[type="image"] {
   position: relative;
   bottom: 10px;
   right: 7px;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .delete-button {
   display: flex;
   position: relative;
+  padding-left: 10px;
   height: 15px;
-  top: 90px;
+  bottom: 5px;
 }
 
 #formAddPlant {
@@ -283,8 +282,8 @@ input[type="image"] {
 
   .addPlant {
     display: flex;
-    left: -25px;
-    top: 0px;
+    left: -160px;
+    top: 20px;
     height: 30px;
     width: 30px;
   }
