@@ -10,15 +10,77 @@
 </template>
 <script>
 import L from 'leaflet'
+import { config, getToken, getCurrentUserId } from '../../../api.config'
 
 export default {
     name: 'MapPage',
     data() {
    return{
-     center: [37,7749, -122,4194]
+     center: [37,7749, -122,4194],
+	 user: {
+                "address": {
+                    "additionalAddress": "string",
+                    "city": "string",
+                    "id": 0,
+                    "latitude": 0,
+                    "longitude": 0,
+                    "postalCode": "string",
+                    "road": "string",
+                    "roadNumber": 0,
+                    "roadType": "string"
+                },
+                "email": "string",
+                "firstName": "string",
+                "id": 0,
+                "imageUrl": "string",
+                "lastName": "string",
+                "phone": "string",
+                "status": true,
+                "userRoles": [
+                    {
+                        "id": 0,
+                        "role": {
+                            "id": 0,
+                            "name": "string"
+                        }
+                    }
+                ]
+            },
+			latitude : 0, 
+			longitude : 0
    }}, 
+   methods:{
+
+	GetUser() {
+      fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
+        headers: {
+          Authorization: 'Bearer ' + getToken(),
+        }
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          this.user = data;
+		  console.log(this.user);
+		  this.SetValues();
+        })
+
+
+    },
+
+	SetValues(){
+		this.latitude = this.user.address.latitude;
+		this.longitude = this.user.address.longitude;
+
+	}
+
+   },
+   beforeMount(){
+	this.GetUser();
+   },
    mounted(){
-    const map = L.map('map').setView([48.117266, -1.6777926], 10);
+
+	console.log(this.latitude, this.longitude); 
+	const map = L.map('map').setView([48.117266, -1.6777926], 10);
 
 	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
@@ -64,6 +126,9 @@ export default {
 
 </script>
 <style scoped>
+.main-container{
+	width: 100%;
+}
 #mapContainer {
  width: 80vw;
  height: 100vh;
@@ -78,5 +143,6 @@ export default {
     border-radius: 20%;
     width: 100vh;
     height: 90vh;
+	margin: auto;
 }
 </style>
