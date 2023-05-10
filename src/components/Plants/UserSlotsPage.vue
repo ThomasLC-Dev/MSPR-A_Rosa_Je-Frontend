@@ -15,7 +15,9 @@
 				<td><button class="delete-btn" @click="deleteSlot(slot.id)">Supprimer</button></td>
 			</tr>
 		</table>
-
+		<div class="ButtonReturn">
+			<input class="btn-validate" type="submit" value="Retour" @click="ReturnToPlantsPage">
+		</div>
 	</div>
 </template>
 
@@ -50,6 +52,9 @@ export default {
 				headers: { Authorization: 'Bearer ' + getToken() }
 			})
 				.then(() => this.loadData())
+		},
+		ReturnToPlantsPage() {
+			this.$router.push({ name: "plants" })
 		}
 	},
 };
