@@ -58,28 +58,28 @@
         <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo"
           @click="goToView(routePhotoPage)">
         <div class="addPhotos">
-          <input ref="fileupload1" type="file" />
+          <input ref="fileupload" type="file" />
           <div>
             <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhotoFirst">
+              @click="deletePhoto">
           </div>
 
-          <input ref="fileupload2" type="file" />
+          <input ref="fileupload" type="file" />
           <div>
             <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhotoSecond">
+              @click="deletePhoto">
           </div>
 
-          <input ref="fileupload3" type="file" />
+          <input ref="fileupload" type="file" />
           <div>
             <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhotoThird">
+              @click="deletePhoto">
           </div>
 
-          <input ref="fileupload4" type="file" />
+          <input ref="fileupload" type="file" />
           <div>
             <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhotoFourth">
+              @click="deletePhoto">
           </div>
         </div>
       </div>
@@ -175,18 +175,18 @@ export default {
       fileReader.readAsDataURL(files[0])
       this.image = files[0]
     },
-    deletePhotoFirst() {
-      this.$refs.fileupload1.value = null;
+    deletePhoto() {
+      this.$refs.fileupload.value = null;
     },
-    deletePhotoSecond() {
-      this.$refs.fileupload2.value = null;
-    },
-    deletePhotoThird() {
-      this.$refs.fileupload3.value = null;
-    },
-    deletePhotoFourth() {
-      this.$refs.fileupload4.value = null;
-    },
+    // deletePhotoSecond() {
+    //   this.$refs.fileupload2.value = null;
+    // },
+    // deletePhotoThird() {
+    //   this.$refs.fileupload3.value = null;
+    // },
+    // deletePhotoFourth() {
+    //   this.$refs.fileupload4.value = null;
+    // },
     backPage() {
       this.goToView('plants')
     }
