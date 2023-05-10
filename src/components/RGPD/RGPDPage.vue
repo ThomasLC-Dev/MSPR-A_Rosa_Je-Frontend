@@ -2,11 +2,9 @@
   <div class="main-container">
     <div>
       <h1>Politique de confidentialité</h1>
-      <br>
-      <h2>A’Rosa’Je</h2>
-      <br>
     </div>
-    <div class="legals-text">
+
+    <div class="legals-text scroller">
       <p><strong>ARTICLE 1 : PRÉAMBULE</strong></p>
       <br>
       <p>La présente politique de confidentialité a pour but d’informer les utilisateurs de l’application :</p>
