@@ -45,10 +45,8 @@
                 <img src="../../assets/Logo/No.png" alt="Refuser" class="NoImg">
               </div>
             </td>
-
           </tr>
           <tr v-else v-for="(item, index) in tempItems">
-
             <td>{{ item.user.firstName }}</td>
             <td>{{ item.user.address.city }}</td>
             <td>{{ item.startDate }}</td>
@@ -88,7 +86,6 @@ export default {
       showkeepedPlants: false,
       showPlantsToKeep: true,
       picked: "KeepPlant",
-
       user: {
         "address": {
           "additionalAddress": "string",
@@ -118,7 +115,6 @@ export default {
           }
         ]
       },
-
       slot: [
         {
           "endDate": "2023-04-21",
@@ -127,11 +123,8 @@ export default {
           "userId": 0
         }
       ],
-
       index: 0,
       ShowAddPlant: false
-
-
     }
   },
   methods: {
@@ -156,16 +149,13 @@ export default {
             }
           }
         )
-
     },
     filterList() {
       this.ShowAddPlant = true;
       this.tempItems = this.items.filter(Element => {
         return Element.keeper === null;
       });
-
     },
-
     filterListKeepedPlants() {
       this.ShowAddPlant = false;
       this.tempItems = this.items.filter(Element => {
@@ -173,9 +163,7 @@ export default {
           return Element.keeper.id === this.user.id;
         }
       });
-
     },
-
     GetUser() {
       fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
         headers: {
@@ -189,16 +177,11 @@ export default {
           this.lastname = this.user.lastName;
           this.GetSlots();
         })
-
-
     },
-
     AddPlantToKeep(index) {
-
       let keeperObject = {
         keeperId: this.user.id
       };
-
       fetch(config.apiBase + config.endpoints.slotsPath + '/' + this.tempItems[index].id, {
         method: 'PUT',
         headers: {
@@ -208,15 +191,11 @@ export default {
         body: JSON.stringify(keeperObject)
       })
         .then(() => this.GetSlots());
-
     },
     RemovePlantToKeep(index) {
-
-
       let keeperObject = {
         keeperId: null
       };
-
       fetch(config.apiBase + config.endpoints.slotsPath + '/' + this.tempItems[index].id, {
         method: 'PUT',
         headers: {
@@ -226,10 +205,7 @@ export default {
         body: JSON.stringify(keeperObject)
       })
         .then(() => this.GetSlots());
-
-
     },
-
     GoToMap() {
       this.$router.push({ name: "map" })
     }
@@ -241,10 +217,11 @@ export default {
 </script>
 
 <style scoped>
-.main-container{
+.main-container {
   width: 100%;
   height: 100vh;
 }
+
 .header {
   margin-top: 30px;
   display: flex;
@@ -252,9 +229,6 @@ export default {
   width: 100vh;
   align-items: center;
   padding-bottom: 2%;
-
-
-
 }
 
 .button {
@@ -303,7 +277,6 @@ td {
   margin-left: 30px;
   gap: 10px;
   border-bottom: 5px solid var(--main-text);
-
 }
 
 .ListPlants {
@@ -369,7 +342,6 @@ td {
     flex-direction: column;
   }
 
-
   .button {
     margin-top: 10%;
     margin-left: 0%;
@@ -377,7 +349,6 @@ td {
 
   .nameProfil {
     margin-left: 0%;
-
   }
 
   .map {
@@ -387,7 +358,5 @@ td {
   .imgMap {
     width: 100%;
   }
-
-
 }
 </style>

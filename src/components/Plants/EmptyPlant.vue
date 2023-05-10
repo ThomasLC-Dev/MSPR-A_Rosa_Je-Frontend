@@ -19,9 +19,9 @@ h2 {
 }
 
 .noPlants {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   text-align: center;
-  vertical-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--main-container-border);
 }
 </style>
