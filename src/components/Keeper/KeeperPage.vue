@@ -10,16 +10,18 @@
         <h1 id="firstname">{{ lastname }}</h1>
       </div>
       <div class="button">
-        <img src="../../assets/Logo/Map.png" alt="" srcset="" class="imgButton">
+        <img src="../../assets/Logo/Map.png" alt="" srcset="" class="imgButton" @click="GoToMap">
       </div>
     </div>
 
     <div class="ListPlants">
       <div class="group-checkbox">
-        <input type="radio" name="PlantKeep" value="KeepPlant" id="PlantKeep" @change="filterListKeepedPlants()" v-model="picked"/>
+        <input type="radio" name="PlantKeep" value="KeepPlant" id="PlantKeep" @change="filterListKeepedPlants()"
+          v-model="picked" />
         <label for="PlantKeep">Plante gardée</label>
         <br>
-        <input type="radio" name="PlantAskKeep" value="AskKeepPlant" id="AskKeepPlant" @change="filterList()" v-model="picked"/>
+        <input type="radio" name="PlantAskKeep" value="AskKeepPlant" id="AskKeepPlant" @change="filterList()"
+          v-model="picked" />
         <label for="AskKeepPlant">Demande de Gardiennage</label>
         <br>
       </div>
@@ -54,8 +56,10 @@
             <td>
               <div class="buttonsList">
                 <img src="../../assets/Logo/Message.png" alt="Voir" class="SeeImg">
-                <img src="../../assets/Logo/OK.png" alt="Accepter" class="OKImg" @click="AddPlantToKeep(index)" v-show="ShowAddPlant">
-                <img src="../../assets/Logo/No.png" alt="Refuser" class="NoImg" @click="RemovePlantToKeep(index)" v-show="!ShowAddPlant">
+                <img src="../../assets/Logo/OK.png" alt="Accepter" class="OKImg" @click="AddPlantToKeep(index)"
+                  v-show="ShowAddPlant">
+                <img src="../../assets/Logo/No.png" alt="Refuser" class="NoImg" @click="RemovePlantToKeep(index)"
+                  v-show="!ShowAddPlant">
               </div>
             </td>
           </tr>
@@ -125,7 +129,7 @@ export default {
       ],
 
       index: 0,
-      ShowAddPlant : false
+      ShowAddPlant: false
 
 
     }
@@ -144,10 +148,10 @@ export default {
         .then(
           (data) => {
             this.items = data;
-            if(this.picked=="AskKeepPlant"){
+            if (this.picked == "AskKeepPlant") {
               this.filterList();
             }
-            else{
+            else {
               this.filterListKeepedPlants()
             }
           }
@@ -155,7 +159,7 @@ export default {
 
     },
     filterList() {
-      this.ShowAddPlant = true; 
+      this.ShowAddPlant = true;
       this.tempItems = this.items.filter(Element => {
         return Element.keeper === null;
       });
@@ -181,6 +185,8 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           this.user = data;
+          this.firstname = this.user.firstName;
+          this.lastname = this.user.lastName;
           this.GetSlots();
         })
 
@@ -201,7 +207,7 @@ export default {
         },
         body: JSON.stringify(keeperObject)
       })
-      .then(() => this.GetSlots());
+        .then(() => this.GetSlots());
 
     },
     RemovePlantToKeep(index) {
@@ -219,11 +225,14 @@ export default {
         },
         body: JSON.stringify(keeperObject)
       })
-      .then(() => this.GetSlots());
+        .then(() => this.GetSlots());
 
 
+    },
+
+    GoToMap() {
+      this.$router.push({ name: "map" })
     }
-
   },
   beforeMount() {
     this.GetUser();
@@ -232,6 +241,10 @@ export default {
 </script>
 
 <style scoped>
+.main-container{
+  width: 100%;
+  height: 100vh;
+}
 .header {
   margin-top: 30px;
   display: flex;
