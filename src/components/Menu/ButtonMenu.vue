@@ -28,7 +28,8 @@ export default {
 .ButtonMenuClass {
   flex: 1;
   display: flex;
-  height: 75px;
+  height: auto;
+
   width: 250px;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -63,7 +64,7 @@ export default {
 .imgButton {
   width: 40px;
   height: auto;
-  padding: 20px;
+  padding: 10px;
   border-right: 3px solid;
   border-color: var(--menu-button-pipe);
 }

@@ -164,6 +164,7 @@ export default {
 .ButtonReturn {
     left: 300px;
     position: fixed;
+    cursor: pointer;
 }
 
 #map {

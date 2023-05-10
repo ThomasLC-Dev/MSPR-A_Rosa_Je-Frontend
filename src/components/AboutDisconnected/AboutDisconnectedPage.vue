@@ -71,7 +71,6 @@ export default {
 	height: fit-content;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 }
 
 .Title {

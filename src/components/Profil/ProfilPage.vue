@@ -219,6 +219,7 @@ export default {
 <style scoped>
 .main-container {
     border: none;
+    height: 100vh;
 }
 
 .header {
@@ -249,8 +250,9 @@ export default {
     border: 2px solid var(--main-text);
     border-radius: 10px;
     margin: 0px;
-    padding: 40px;
+    padding: 15px;
     background-color: var(--menu-button-diselected-background);
+    height: 100vh;
 }
 
 .contentPresentation {
