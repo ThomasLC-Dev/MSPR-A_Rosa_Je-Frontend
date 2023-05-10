@@ -3,7 +3,7 @@
     <div>
       <h1>Politique de confidentialité</h1>
       <br>
-      <h2>A’Rosa’Ge</h2>
+      <h2>A’Rosa’Je</h2>
       <br>
     </div>
     <div class="legals-text">
