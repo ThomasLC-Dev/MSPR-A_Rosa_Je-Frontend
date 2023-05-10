@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <h1>Page pour demander un creneau de gardiennage</h1>
-    <form @submit.prevent="createSlot">
+    <form @submit.prevent="createSlot" @reset.prevent="backPage">
       <div class="form-field">
         <label for="startDate">Date de début : </label>
         <input v-model="startDate" type="date" placeholder="Date de début" />
@@ -45,8 +45,11 @@ export default {
         .then(() => this.goToView('plants'));
     },
     goToView(path) {
-      this.$router.push({name: path})
+      this.$router.push({ name: path })
     },
+    backPage() {
+      this.goToView('plants')
+    }
   }
 
 }
