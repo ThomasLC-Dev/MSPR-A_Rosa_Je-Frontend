@@ -2,7 +2,7 @@
   <div class="main-container">
     <h1>Ajouter une plante</h1>
 
-    <form id="formAddPlant" @submit.prevent="newPlant">
+    <form id="formAddPlant" @submit.prevent="newPlant" @reset.prevent="backPage">
       <div class="form-field">
         <label for="plantName">Nom de plante : </label>
         <input v-model="latinOrVerna" type="text" placeholder="Nom vernaculaire ou latin" />
@@ -55,26 +55,31 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (max 4) : </label>
-        <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo" @click="goToView(routePhotoPage)">
+        <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo"
+          @click="goToView(routePhotoPage)">
         <div class="addPhotos">
-          <input ref="fileupload1" type="file"/>
+          <input ref="fileupload1" type="file" />
           <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhotoFirst">
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
+              @click="deletePhotoFirst">
           </div>
 
-          <input ref="fileupload2" type="file"/>
+          <input ref="fileupload2" type="file" />
           <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhotoSecond">
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
+              @click="deletePhotoSecond">
           </div>
 
-          <input ref="fileupload3" type="file"/>
+          <input ref="fileupload3" type="file" />
           <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhotoThird">
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
+              @click="deletePhotoThird">
           </div>
 
-          <input ref="fileupload4" type="file"/>
+          <input ref="fileupload4" type="file" />
           <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image" @click="deletePhotoFourth">
+            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
+              @click="deletePhotoFourth">
           </div>
         </div>
       </div>
@@ -84,12 +89,13 @@
         <textarea v-model="customerAdvice" type="text" id="maintenanceInstructions"></textarea>
       </div>
 
-      <div>
-        <button @submit="onSubmit" class="btn-validate" type="submit">Enregistrer</button>
-      </div>
-
-      <div>
-        <button class="btn-reset" type="reset">Annuler</button>
+      <div class="button-group">
+        <div>
+          <button class="btn-reset" type="reset">Annuler</button>
+        </div>
+        <div>
+          <button @submit="onSubmit" class="btn-validate" type="submit">Enregistrer</button>
+        </div>
       </div>
     </form>
   </div>
@@ -181,6 +187,9 @@ export default {
     deletePhotoFourth() {
       this.$refs.fileupload4.value = null;
     },
+    backPage() {
+      this.goToView('plants')
+    }
   },
 }
 </script>
@@ -281,13 +290,6 @@ input[type="file"] {
     text-align: left;
   }
 
-  .btn-validate,
-  .btn-reset {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    left: 75%;
-  }
 
   .addPlant {
     display: flex;
