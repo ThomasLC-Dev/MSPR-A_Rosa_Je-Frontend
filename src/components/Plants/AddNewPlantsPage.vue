@@ -114,9 +114,13 @@
 
 <script>
 import { getToken, config, getCurrentUserId } from '../../../api.config';
+import CardPhoto from './Photos/CardPhoto.vue';
 
 export default {
   name: "AddNewPlantsPage",
+  components: {
+    CardPhoto,
+  },
   data() {
     return {
 
