@@ -24,14 +24,15 @@
       </div>
     </div>
 
-    <div v-if="show" class="emptyPosition">
+    <div v-if="plants.length === 0" class="emptyPosition">
       <EmptyPlant />
     </div>
 
     <div v-else>
       <PlantCard class="plant-card" v-for="(plant, id) in plants" :key="id" :plant-id-prop="plant.id"
         :plant-name-prop="plant.name" :customer-advise-prop="plant.description" :botanist-advise-prop="plant.advises"
-        :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" @onUpdatePlant="loadData" @onDeletePlant="loadData" />
+        :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" @onUpdatePlant="loadData"
+        @onDeletePlant="loadData" />
     </div>
   </div>
 </template>
@@ -48,7 +49,7 @@ export default {
     PlantCard,
   },
   data: () => ({
-    show: false,
+    // show: false,
     routeRequestGuardSlot: 'requestguardslot',
     routeGuardianTracking: 'addnewguardiantracking',
     routeAddNewPlant: 'addnewplants',
@@ -95,8 +96,12 @@ export default {
 }
 
 .emptyPosition {
-  display: inline-block;
-  margin-top: 100px;
+  display: flex;
+  margin-top: 200px;
+  position: center;
+  align-items: center;
+  width: 800px;
+  height: 300px;
 }
 
 .plant-card {
