@@ -55,6 +55,17 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (max 4) : </label>
+
+        <!-- 
+          Ici on pourrait creer un composant AddNewPhoto.vue 
+          On aurait un bouton ADD (+) qui serait actif uniquement si on a moins de 4 photos 
+          suivi des vignettes (avec l'onglet delete) 
+          (pas de photo = pas de vignette)
+          et si on a au moins une photo on affiche le composant en bouclant sur la photo qui s'affiche.
+          comme ca on recupere les attributs liees a l'id
+          et le delete pourra s'effectuer sur le plantsPhoto.id
+
+        -->
         <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo"
           @click="goToView(routePhotoPage)">
         <div class="addPhotos">
