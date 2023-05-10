@@ -82,6 +82,14 @@ input {
   cursor: pointer;
 }
 
+.scroller {
+  width: 300px;
+  height: auto;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
 @media (max-width: 1000px) {
   h1 {
     font-size: x-large;
