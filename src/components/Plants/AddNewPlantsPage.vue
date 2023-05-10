@@ -5,12 +5,12 @@
     <form id="formAddPlant" @submit.prevent="newPlant" @reset.prevent="backPage">
       <div class="form-field">
         <label for="plantName">Nom de plante : </label>
-        <input v-model="latinOrVerna" type="text" placeholder="Nom vernaculaire ou latin" />
+        <input v-model="latinOrVerna" type="text" class="inputField" placeholder="Nom vernaculaire ou latin" />
       </div>
 
       <div class="form-field">
         <label for="plantLight">Ensoleillement : </label>
-        <select v-model="sunLight" id="lightSelect">
+        <select v-model="sunLight" id="lightSelect" class="inputField">
           <option value="">Choix</option>
           <option value="sun">Soleil</option>
           <option value="midShadow">Mi-Ombre</option>
@@ -20,31 +20,33 @@
 
       <div class="form-field">
         <label for="plantMinTemp">T°C minimale : </label>
-        <input v-model="lowerTemp" type="number" id="minTemp" placeholder="Valeur" />
+        <input v-model="lowerTemp" type="number" id="minTemp" class="inputField" placeholder="Valeur" />
       </div>
 
       <div class="form-field">
         <label for="plantMaxTemp">T°C maximale : </label>
-        <input v-model="higherTemp" type="number" id="maxTemp" placeholder="Valeur" />
+        <input v-model="higherTemp" type="number" id="maxTemp" class="inputField" placeholder="Valeur" />
       </div>
 
       <div class="form-field">
-        <label for="plantWaterQuantity">Quantité d'eau : </label>
-        <input v-model="wateringQuantity" type="number" placeholder="Volume d'eau à verser" />
+        <label for="plantWaterQuantity">Quantité d'eau (mL) : </label>
+        <input v-model="wateringQuantity" type="number" step="0.1" class="inputField"
+          placeholder="Volume d'eau à verser" />
       </div>
 
       <div class="form-field">
-        <label for="plantWateringFrequency">Fréquence arrosage : </label>
-        <select v-model="wateringFrequency" id="wateringSelect">
-          <option value="">Nombre</option>
+        <label for="plantWateringFrequency">Fréquence d'arrosage : </label>
+        <select v-model="wateringFrequency" id="wateringSelect" class="inputField">
+          <option value="">Choix</option>
           <option value="">1 fois/jour</option>
           <option value="">1 fois/semaine</option>
+          <option value="">2 fois/semaine</option>
         </select>
       </div>
 
       <div class="form-field">
         <label for="plantWateringType">Type arrosage : </label>
-        <input v-model="wateringContainer" type="text" placeholder="Contenant à utiliser" />
+        <input v-model="wateringContainer" type="text" class="inputField" placeholder="Contenant à utiliser" />
       </div>
 
       <!-- Difficultés : 
@@ -93,6 +95,12 @@
               @click="deletePhoto">
           </div>
         </div>
+      </div>
+      <div class="cardList">
+        <CardPhoto />
+        <CardPhoto />
+        <CardPhoto />
+        <CardPhoto />
       </div>
 
       <div class="form-field">
@@ -222,6 +230,10 @@ label[for="plantMinTemp"] {
   margin-top: 10px;
 }
 
+.inputField {
+  width: 200px;
+}
+
 input,
 input::placeholder {
   font-size: small;
@@ -288,6 +300,15 @@ input[type="file"] {
   width: 250px;
 }
 
+.cardList {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+  flex: auto;
+}
+
 @media screen and (min-width: 1000px) {
   .main-container {
     height: auto;
@@ -304,7 +325,6 @@ input[type="file"] {
     width: 200px;
     text-align: left;
   }
-
 
   .addPlant {
     display: flex;
