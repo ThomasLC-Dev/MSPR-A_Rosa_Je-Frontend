@@ -135,7 +135,7 @@ export default {
 
 
     },
-    
+
     beforeMount() {
         this.GetSlots()
     }

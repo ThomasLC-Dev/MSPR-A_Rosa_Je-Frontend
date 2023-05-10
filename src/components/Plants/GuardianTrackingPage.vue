@@ -21,13 +21,16 @@
       <h1 id="day">Jour 1 :</h1>
 
       <div v-for="plant in plants" :key="plant.id">
-        <label for="" >Plante : {{ plant.name }}</label>
+        <label for="">Plante : {{ plant.name }}</label>
         <div class="add-button">
           <label class="takePicture">Prendre une photo : </label>
           <img src="@/assets/Logo/add-button.png" @click="goToView(routePhotoPage)" alt="Ajouter une plante" />
         </div>
       </div>
     </form>
+    <div class="ButtonReturn">
+      <input class="btn-validate" type="submit" value="Retour" @click="ReturnToPlantsPage">
+    </div>
   </div>
 </template>
 
@@ -43,12 +46,12 @@ export default {
     };
   },
   mounted() {
-    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user="+getCurrentUserId(),
-    {
-      headers: {
-        Authorization: "Bearer " + getToken(),
-      },
-    })
+    fetch("https://a-rosa-je.herokuapp.com:443/api/plants?user=" + getCurrentUserId(),
+      {
+        headers: {
+          Authorization: "Bearer " + getToken(),
+        },
+      })
       .then((res) => res.json())
       .then((data) => (this.plants = data));
   },
@@ -56,6 +59,9 @@ export default {
     goToView(path) {
       this.$router.push({ name: path });
     },
+    ReturnToPlantsPage() {
+      this.$router.push({ name: "plants" })
+    }
   },
 };
 </script>
