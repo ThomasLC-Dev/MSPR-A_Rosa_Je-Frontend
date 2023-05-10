@@ -153,8 +153,9 @@ export default {
 	color: var(--main-bg-color);
 }
 
-.ButtonsMenu {
-	overflow-y: auto;
+.ButtonsMenu {	
+	overflow-y: hidden;
+	overflow-x: hidden;
 	gap: 5px;
 	display: flex;
 	flex: 1;
