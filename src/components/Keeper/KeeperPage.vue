@@ -258,6 +258,7 @@ export default {
 }
 
 .button {
+  cursor: pointer;
   top: 0%;
   right: 0%;
   width: 150px;

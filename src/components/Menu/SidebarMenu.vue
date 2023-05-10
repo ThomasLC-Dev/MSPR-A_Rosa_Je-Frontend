@@ -154,7 +154,8 @@ export default {
 }
 
 .ButtonsMenu {
-	overflow-y: auto;
+	overflow-y: hidden;
+	overflow-x: hidden;
 	gap: 5px;
 	display: flex;
 	flex: 1;

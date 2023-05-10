@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<img :src="require(`@/assets/` + imgLink)" alt="" class="img">
+		<img :src="require(`@/assets/` + imgLink)" alt="" class="imgWithText">
 		<div class="explanation">
 			<div class="title">
 				<h2>{{ titre }}</h2>
@@ -47,7 +47,7 @@ h2 {
 	font-size: large;
 }
 
-.img {
+.imgWithText {
 	width: 10rem;
 }
 

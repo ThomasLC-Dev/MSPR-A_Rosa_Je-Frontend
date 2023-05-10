@@ -154,7 +154,7 @@ export default {
 	margin-top: 15%;
 }
 
-@media (max-width : 1000px) {
+/* @media (max-width : 1000px) {
 	.main-container {
 		display: flex;
 		flex-direction: column;
@@ -224,6 +224,6 @@ export default {
 
 	.speechContent {
 		margin-top: 15%;
-	}
-}
+	} 
+}*/
 </style>
