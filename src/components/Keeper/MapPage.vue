@@ -65,6 +65,9 @@ export default {
                     Authorization: 'Bearer ' + getToken(),
                 }
             });
+        }, 
+        ReturnToKeeperPage(){
+            this.$router.push({ name: "keeper"})
         }
 
     },
@@ -159,7 +162,7 @@ export default {
 }
 
 .ButtonReturn {
-    left: 250px;
+    left: 300px;
     position: fixed;
 }
 
