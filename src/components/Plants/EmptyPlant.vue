@@ -20,6 +20,7 @@ h2 {
 
 .noPlants {
   margin: 0 auto;
+  padding: 20px;
   text-align: center;
   border-radius: 10px;
   border: 2px solid var(--main-container-border);
