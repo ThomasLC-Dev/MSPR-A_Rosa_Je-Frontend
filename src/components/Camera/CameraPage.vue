@@ -2,7 +2,6 @@
   <div class="camera">
     <div class="main-container">
 
-      <button @click="goToView(routeAddPlant)" class="btn-reset">x</button>
       <button class="btn-validate" @click="toggleCamera()">
         <span v-if="!isCameraOpen">Open Camera</span>
         <span v-else>Close Camera</span>
@@ -81,10 +80,12 @@ export default {
       context.drawImage(photoFromVideo, 0, 0, 330, 330)
     },
     downloadImage() {
-    const download = document.getElementById("downloadPhoto");
-    const canvas = document.getElementById("photoTaken").toDataURL("image/jpeg")
-      .replace("image/jpeg", "image/octet-stream");
-    download.setAttribute("href", canvas);
+      const download = document.getElementById("downloadPhoto");
+      const canvas = document.getElementById("photoTaken").toDataURL("image/jpeg")
+        .replace("image/jpeg", "image/octet-stream");
+      download.setAttribute("href", canvas);
+      const base64Img = btoa(canvas);
+      console.log(base64Img);
     }
   }
 }

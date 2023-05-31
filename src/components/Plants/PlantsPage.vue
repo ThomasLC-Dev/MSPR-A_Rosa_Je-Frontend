@@ -30,7 +30,7 @@
 
     <div v-else>
       <PlantCard class="plant-card" v-for="(plant, id) in plants" :key="id" :plant-id-prop="plant.id"
-        :plant-name-prop="plant.name" :customer-advise-prop="plant.description" :botanist-advise-prop="plant.advises"
+        :plant-name-prop="plant.latinOrVerna" :customer-advise-prop="plant.customerAdvice" :botanist-advise-prop="plant.botanistAdvice"
         :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" @onUpdatePlant="loadData"
         @onDeletePlant="loadData" />
     </div>

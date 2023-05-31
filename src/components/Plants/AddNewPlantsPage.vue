@@ -69,7 +69,7 @@
 
         -->
         <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo"
-          @click="goToView(routePhotoPage)">
+          @click="openPhotoPage">
         <div class="addPhotos">
           <input ref="fileupload" type="file" />
           <div>
@@ -152,8 +152,8 @@ export default {
     };
   },
   methods: {
-    goToView(path) {
-      this.$router.push({ name: path });
+    openPhotoPage() {
+      window.open("http://localhost:8080/camera", "");
     },
     newPlant() {
       fetch(config.apiBase + config.endpoints.plantsPath, {
@@ -163,9 +163,9 @@ export default {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          advises: this.botanistAdvice,
-          description: this.customerAdvice,
-          name: this.latinOrVerna,
+          botanistAdvice: this.botanistAdvice,
+          customerAdvice: this.customerAdvice,
+          latinOrVerna: this.latinOrVerna,
           userId: getCurrentUserId()
         })
       })
