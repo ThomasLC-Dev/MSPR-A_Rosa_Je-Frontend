@@ -18,7 +18,7 @@
 
       <button v-show="isPhotoTaken && isCameraOpen" class="btn-validate">
         <a id="downloadPhoto" download="VueRocksPhoto.jpg" class="button" role="button" @click="downloadImage">
-          Download
+          Ajouter
         </a>
       </button>
 
@@ -80,12 +80,9 @@ export default {
       context.drawImage(photoFromVideo, 0, 0, 330, 330)
     },
     downloadImage() {
-      const download = document.getElementById("downloadPhoto");
-      const canvas = document.getElementById("photoTaken").toDataURL("image/jpeg")
-        .replace("image/jpeg", "image/octet-stream");
-      download.setAttribute("href", canvas);
-      const base64Img = btoa(canvas);
-      console.log(base64Img);
+      const imageData = document.getElementById("photoTaken").toDataURL("image/jpeg");
+      window.opener.postMessage({image: imageData});
+      self.close();
     }
   }
 }

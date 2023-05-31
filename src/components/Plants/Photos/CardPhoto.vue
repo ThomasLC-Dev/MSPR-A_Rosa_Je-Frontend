@@ -3,15 +3,21 @@
     <h1>photo</h1>
     <img class="delete-button" src="../../../assets/Logo/delete-button.png" alt="Suppression de l'image"
       @click="deletePhoto">
+      
+    <img :src="imageSrc" />
   </div>
 </template>
 
 <script>
 export default {
   name: "CardPhoto",
+  props: {
+    photoIndex: Number,
+    imageSrc: String
+  },
   methods: {
     deletePhoto() {
-      this.$refs.fileupload.value = null;
+      this.$emit('delete-photo', {photoIndex: this.photoIndex});
     },
   }
 }

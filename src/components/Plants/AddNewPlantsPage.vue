@@ -69,38 +69,11 @@
 
         -->
         <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo"
-          @click="openPhotoPage">
-        <div class="addPhotos">
-          <input ref="fileupload" type="file" />
-          <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhoto">
-          </div>
-
-          <input ref="fileupload" type="file" />
-          <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhoto">
-          </div>
-
-          <input ref="fileupload" type="file" />
-          <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhoto">
-          </div>
-
-          <input ref="fileupload" type="file" />
-          <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhoto">
-          </div>
-        </div>
+          @click="openPhotoPage" v-if="plantsPhoto.length < 4">
       </div>
+    
       <div class="cardList">
-        <CardPhoto />
-        <CardPhoto />
-        <CardPhoto />
-        <CardPhoto />
+        <CardPhoto v-for="(photo, index) in plantsPhoto" :key="index" :imageSrc="photo" :photoIndex="index" @delete-photo="deletePhoto"/>
       </div>
 
       <div class="form-field">
@@ -152,8 +125,17 @@ export default {
     };
   },
   methods: {
+    addPhotoToArray(event){
+        if (event.data.image) {
+            this.plantsPhoto.push(event.data.image);
+
+            window.removeEventListener('message', this.addPhotoToArray);
+        }
+    },
     openPhotoPage() {
-      window.open("http://localhost:8080/camera", "");
+      let photoWindow = window.open("http://localhost:8080/camera", "", "popup");
+
+      window.addEventListener('message', this.addPhotoToArray);
     },
     newPlant() {
       fetch(config.apiBase + config.endpoints.plantsPath, {
@@ -185,31 +167,9 @@ export default {
       }
       alert('Fichiers OK');
     },
-    onPickFile() {
-      this.$refs.fileInput.click()
+    deletePhoto(payload) {
+      this.plantsPhoto.splice(payload.photoIndex, 1);
     },
-    onFilePicked(event) {
-      const files = event.target.files
-      let filename = files[0].name
-      const fileReader = new FileReader()
-      fileReader.addEventListener('load', () => {
-        this.imageUrl = fileReader.result
-      })
-      fileReader.readAsDataURL(files[0])
-      this.image = files[0]
-    },
-    deletePhoto() {
-      this.$refs.fileupload.value = null;
-    },
-    // deletePhotoSecond() {
-    //   this.$refs.fileupload2.value = null;
-    // },
-    // deletePhotoThird() {
-    //   this.$refs.fileupload3.value = null;
-    // },
-    // deletePhotoFourth() {
-    //   this.$refs.fileupload4.value = null;
-    // },
     backPage() {
       this.goToView('plants')
     }
