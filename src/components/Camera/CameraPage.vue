@@ -3,16 +3,18 @@
     <div class="main-container">
 
       <button class="btn-validate" @click="toggleCamera()">
-        <span v-if="!isCameraOpen">Open Camera</span>
-        <span v-else>Close Camera</span>
+        <span v-if="!isCameraOpen">Ouvrir la Caméra</span>
+        <span v-else>Fermer la Caméra</span>
       </button>
 
       <div class="video-container">
-        <video v-show="isCameraOpen" class="camera-video" ref="camera" :width="330" :height="330" autoplay playsinline ></video>
-        <canvas id="photoTaken" v-show="isPhotoTaken" class="canvas-photo" ref="canvas" :width="330" :height="330"></canvas>
+        <video v-show="isCameraOpen" class="camera-video" ref="camera" :width="330" :height="330" autoplay
+          playsinline></video>
+        <canvas id="photoTaken" v-show="isPhotoTaken" class="canvas-photo" ref="canvas" :width="330"
+          :height="330"></canvas>
       </div>
 
-       <button v-if="!isPhotoTaken && isCameraOpen" class="btn-validate" @click="takePhoto">
+      <button v-if="!isPhotoTaken && isCameraOpen" class="btn-validate" @click="takePhoto">
         <span>Snap!</span>
       </button>
 
@@ -40,7 +42,7 @@ export default {
     goToView(path) {
       this.$router.push({ name: path });
     },
-    createCameraElement () {
+    createCameraElement() {
       const constraints = (window.constraints = {
         audio: false,
         video: true
@@ -54,14 +56,14 @@ export default {
           alert(error, "May the browser didn't support or there is some errors.")
         })
     },
-    stopCameraStream () {
+    stopCameraStream() {
       const tracks = this.$refs.camera.srcObject.getTracks()
       tracks.forEach(track => {
         track.stop()
       })
       console.log('CameraClosed')
     },
-    toggleCamera () {
+    toggleCamera() {
       if (this.isCameraOpen) {
         this.isCameraOpen = false
         this.isPhotoTaken = false
@@ -73,7 +75,7 @@ export default {
         console.log('open');
       }
     },
-    takePhoto () {
+    takePhoto() {
       this.isPhotoTaken = !this.isPhotoTaken
       const context = this.$refs.canvas.getContext('2d')
       const photoFromVideo = this.$refs.camera
@@ -81,7 +83,7 @@ export default {
     },
     downloadImage() {
       const imageData = document.getElementById("photoTaken").toDataURL("image/jpeg");
-      window.opener.postMessage({image: imageData});
+      window.opener.postMessage({ image: imageData });
       self.close();
     }
   }
@@ -89,38 +91,12 @@ export default {
 </script>
 
 <style>
-
-/* .main-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* .wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  height: 90%;
-  background-color: white;
-  border: solid 2px rgb(223, 114, 250);
-} */
-
 .btn-reset {
   position: absolute;
   box-sizing: content-box;
   line-height: 35px;
   top: 25px;
-  right: 325px; /*50px pour ordis*/
+  right: 325px;
   width: 35px;
   height: 35px;
 }

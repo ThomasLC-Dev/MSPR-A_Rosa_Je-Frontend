@@ -1,10 +1,8 @@
 <template>
   <div class="card">
-    <h1>photo</h1>
+    <img :src="imageSrc" class="card-photo" />
     <img class="delete-button" src="../../../assets/Logo/delete-button.png" alt="Suppression de l'image"
       @click="deletePhoto">
-      
-    <img :src="imageSrc" />
   </div>
 </template>
 
@@ -17,7 +15,7 @@ export default {
   },
   methods: {
     deletePhoto() {
-      this.$emit('delete-photo', {photoIndex: this.photoIndex});
+      this.$emit('delete-photo', { photoIndex: this.photoIndex });
     },
   }
 }
@@ -28,13 +26,21 @@ export default {
 .card {
   overflow-y: hidden;
   display: flex;
-  height: 200px;
+  height: 201px;
   width: auto;
   align-items: center;
   background-color: var(--main-bg-color);
-  border-radius: 20px;
+  border-radius: 10px;
   border: 2px solid var(--main-container-border);
   margin: 5px;
+  z-index: 1;
+}
+
+.card-photo {
+  height: 200px;
+  width: 100px;
+  border-radius: 10px;
+  z-index: 5;
 }
 
 .delete-button {
@@ -42,7 +48,9 @@ export default {
   position: relative;
   padding-left: 10px;
   height: 15px;
+  width: 15px;
   right: 5px;
   bottom: 5px;
+  z-index: 10;
 }
 </style>
