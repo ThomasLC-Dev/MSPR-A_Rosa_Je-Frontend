@@ -1,7 +1,9 @@
-<template></template>
+<template>
+  <BotanistPage />
+</template>
 
 <script>
-import BotanistPage from '@/components/Botanist/BotanistPage.vue'
+import BotanistPage from '../components/Botanist/BotanistPage.vue'
 
 export default {
   name: 'BotanistView',
