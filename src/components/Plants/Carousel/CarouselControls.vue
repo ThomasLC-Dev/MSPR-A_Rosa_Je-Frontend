@@ -25,9 +25,11 @@ export default {
 
 .left {
   left: 0;
+  top: 350px;
 }
 
 .right {
   right: 0;
+  top: 350px;
 }
 </style>
