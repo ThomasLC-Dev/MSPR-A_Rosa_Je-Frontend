@@ -12,9 +12,9 @@
         <label for="plantLight">Ensoleillement : </label>
         <select v-model="sunLight" id="lightSelect" class="inputField">
           <option value="">Choix</option>
-          <option value="sun">Soleil</option>
-          <option value="midShadow">Mi-Ombre</option>
-          <option value="fullShadow">Ombre</option>
+          <option value="1">Soleil</option>
+          <option value="2">Mi-Ombre</option>
+          <option value="3">Ombre</option>
         </select>
       </div>
 
@@ -38,9 +38,9 @@
         <label for="plantWateringFrequency">Fréquence d'arrosage : </label>
         <select v-model="wateringFrequency" id="wateringSelect" class="inputField">
           <option value="">Choix</option>
-          <option value="">1 fois/jour</option>
-          <option value="">1 fois/semaine</option>
-          <option value="">2 fois/semaine</option>
+          <option value="1">1 fois/jour</option>
+          <option value="2">1 fois/semaine</option>
+          <option value="3">2 fois/semaine</option>
         </select>
       </div>
 
@@ -104,20 +104,13 @@ export default {
   },
   data() {
     return {
-
-      attachementFile: {
-        id: 6,
-        type: "plant",
-        role: "Customer",
-      },
-
       latinOrVerna: "",
       sunLight: "",
-      lowerTemp: "",
-      higherTemp: "",
-      wateringQuantity: "",
+      lowerTemp: null,
+      higherTemp: null,
+      wateringQuantity: null,
       wateringFrequency: "",
-      wateringContainer: "",
+      wateringContainer: null,
       customerAdvice: "",
       botanistAdvice: "",
       plantsPhoto: [],
@@ -138,6 +131,7 @@ export default {
       window.addEventListener('message', this.addPhotoToArray);
     },
     newPlant() {
+			
       fetch(config.apiBase + config.endpoints.plantsPath, {
         method: 'POST',
         headers: {
@@ -145,14 +139,49 @@ export default {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          botanistAdvice: this.botanistAdvice,
-          customerAdvice: this.customerAdvice,
-          latinOrVerna: this.latinOrVerna,
+        	name: this.latinOrVerna,
+          advises: this.botanistAdvice,
+          description: this.customerAdvice,
+					higherTemp: this.higherTemp,
+					lowerTemp: this.lowerTemp,
+					sunLight: this.sunLight,
+					wateringContainer: this.wateringContainer,
+					wateringFrequency: this.wateringFrequency,
+					wateringQuantity: this.wateringQuantity,
           userId: getCurrentUserId()
         })
       })
-        .then(res => this.goToView("plants"));
+        .then(res => res.json())
+				.then(data => {
+					this.uploadImages(data.id);
+				});
     },
+		async uploadImages(plantId){
+			let tempPhotos = this.plantsPhoto.map((value) => value);
+			for(let plantImage of tempPhotos){
+				const formData = new FormData();
+				const file = this.dataURLtoFile(plantImage, "image.jpeg");
+				formData.append('file', file);
+				await fetch(config.apiBase + config.endpoints.attachmentFilesPath + "/upload?type=plant&role=Customer&id=" + plantId, {
+					method: 'POST',
+					headers: {
+						Authorization: "Bearer " + getToken()
+					},
+					body: formData
+				});
+			}
+		},
+		dataURLtoFile(dataurl, filename) {
+			var arr = dataurl.split(','),
+				mime = arr[0].match(/:(.*?);/)[1],
+				bstr = atob(arr[arr.length - 1]), 
+				n = bstr.length, 
+				u8arr = new Uint8Array(n);
+				while(n--){
+					u8arr[n] = bstr.charCodeAt(n);
+				}
+			return new File([u8arr], filename, {type:mime});
+		},
     onSubmit(e) {
       const file = this.$refs.file.files[0];
       if (!file) {
