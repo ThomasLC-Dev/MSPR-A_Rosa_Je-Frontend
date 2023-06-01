@@ -5,12 +5,12 @@
     <form id="formAddPlant" @submit.prevent="newPlant" @reset.prevent="backPage">
       <div class="form-field">
         <label for="plantName">Nom de plante : </label>
-        <input v-model="latinOrVerna" type="text" placeholder="Nom vernaculaire ou latin" />
+        <input v-model="latinOrVerna" type="text" class="inputField" placeholder="Nom vernaculaire ou latin" />
       </div>
 
       <div class="form-field">
         <label for="plantLight">Ensoleillement : </label>
-        <select v-model="sunLight" id="lightSelect">
+        <select v-model="sunLight" id="lightSelect" class="inputField">
           <option value="">Choix</option>
           <option value="sun">Soleil</option>
           <option value="midShadow">Mi-Ombre</option>
@@ -20,31 +20,33 @@
 
       <div class="form-field">
         <label for="plantMinTemp">T°C minimale : </label>
-        <input v-model="lowerTemp" type="number" id="minTemp" placeholder="Valeur" />
+        <input v-model="lowerTemp" type="number" id="minTemp" class="inputField" placeholder="Valeur" />
       </div>
 
       <div class="form-field">
         <label for="plantMaxTemp">T°C maximale : </label>
-        <input v-model="higherTemp" type="number" id="maxTemp" placeholder="Valeur" />
+        <input v-model="higherTemp" type="number" id="maxTemp" class="inputField" placeholder="Valeur" />
       </div>
 
       <div class="form-field">
-        <label for="plantWaterQuantity">Quantité d'eau : </label>
-        <input v-model="wateringQuantity" type="number" placeholder="Volume d'eau à verser" />
+        <label for="plantWaterQuantity">Quantité d'eau (mL) : </label>
+        <input v-model="wateringQuantity" type="number" step="0.1" class="inputField"
+          placeholder="Volume d'eau à verser" />
       </div>
 
       <div class="form-field">
-        <label for="plantWateringFrequency">Fréquence arrosage : </label>
-        <select v-model="wateringFrequency" id="wateringSelect">
-          <option value="">Nombre</option>
+        <label for="plantWateringFrequency">Fréquence d'arrosage : </label>
+        <select v-model="wateringFrequency" id="wateringSelect" class="inputField">
+          <option value="">Choix</option>
           <option value="">1 fois/jour</option>
           <option value="">1 fois/semaine</option>
+          <option value="">2 fois/semaine</option>
         </select>
       </div>
 
       <div class="form-field">
         <label for="plantWateringType">Type arrosage : </label>
-        <input v-model="wateringContainer" type="text" placeholder="Contenant à utiliser" />
+        <input v-model="wateringContainer" type="text" class="inputField" placeholder="Contenant à utiliser" />
       </div>
 
       <!-- Difficultés : 
@@ -55,33 +57,23 @@
 
       <div class="form-field">
         <label for="plantPhoto">Ajouter une photo (max 4) : </label>
+
+        <!-- 
+          Ici on pourrait creer un composant AddNewPhoto.vue 
+          On aurait un bouton ADD (+) qui serait actif uniquement si on a moins de 4 photos 
+          suivi des vignettes (avec l'onglet delete) 
+          (pas de photo = pas de vignette)
+          et si on a au moins une photo on affiche le composant en bouclant sur la photo qui s'affiche.
+          comme ca on recupere les attributs liees a l'id
+          et le delete pourra s'effectuer sur le plantsPhoto.id
+
+        -->
         <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo"
-          @click="goToView(routePhotoPage)">
-        <div class="addPhotos">
-          <input ref="fileupload1" type="file" />
-          <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhotoFirst">
-          </div>
-
-          <input ref="fileupload2" type="file" />
-          <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhotoSecond">
-          </div>
-
-          <input ref="fileupload3" type="file" />
-          <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhotoThird">
-          </div>
-
-          <input ref="fileupload4" type="file" />
-          <div>
-            <img class="delete-button" src="./../../assets/Logo/delete-button.png" alt="Suppression de l'image"
-              @click="deletePhotoFourth">
-          </div>
-        </div>
+          @click="openPhotoPage" v-if="plantsPhoto.length < 4">
+      </div>
+    
+      <div class="cardList">
+        <CardPhoto v-for="(photo, index) in plantsPhoto" :key="index" :imageSrc="photo" :photoIndex="index" @delete-photo="deletePhoto"/>
       </div>
 
       <div class="form-field">
@@ -103,9 +95,13 @@
 
 <script>
 import { getToken, config, getCurrentUserId } from '../../../api.config';
+import CardPhoto from './Photos/CardPhoto.vue';
 
 export default {
   name: "AddNewPlantsPage",
+  components: {
+    CardPhoto,
+  },
   data() {
     return {
 
@@ -129,8 +125,17 @@ export default {
     };
   },
   methods: {
-    goToView(path) {
-      this.$router.push({ name: path });
+    addPhotoToArray(event){
+        if (event.data.image) {
+            this.plantsPhoto.push(event.data.image);
+
+            window.removeEventListener('message', this.addPhotoToArray);
+        }
+    },
+    openPhotoPage() {
+      let photoWindow = window.open("http://localhost:8080/camera", "", "popup");
+
+      window.addEventListener('message', this.addPhotoToArray);
     },
     newPlant() {
       fetch(config.apiBase + config.endpoints.plantsPath, {
@@ -140,9 +145,9 @@ export default {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          advises: this.botanistAdvice,
-          description: this.customerAdvice,
-          name: this.latinOrVerna,
+          botanistAdvice: this.botanistAdvice,
+          customerAdvice: this.customerAdvice,
+          latinOrVerna: this.latinOrVerna,
           userId: getCurrentUserId()
         })
       })
@@ -162,30 +167,8 @@ export default {
       }
       alert('Fichiers OK');
     },
-    onPickFile() {
-      this.$refs.fileInput.click()
-    },
-    onFilePicked(event) {
-      const files = event.target.files
-      let filename = files[0].name
-      const fileReader = new FileReader()
-      fileReader.addEventListener('load', () => {
-        this.imageUrl = fileReader.result
-      })
-      fileReader.readAsDataURL(files[0])
-      this.image = files[0]
-    },
-    deletePhotoFirst() {
-      this.$refs.fileupload1.value = null;
-    },
-    deletePhotoSecond() {
-      this.$refs.fileupload2.value = null;
-    },
-    deletePhotoThird() {
-      this.$refs.fileupload3.value = null;
-    },
-    deletePhotoFourth() {
-      this.$refs.fileupload4.value = null;
+    deletePhoto(payload) {
+      this.plantsPhoto.splice(payload.photoIndex, 1);
     },
     backPage() {
       this.goToView('plants')
@@ -205,6 +188,10 @@ label {
 label[for="plantWateringType"],
 label[for="plantMinTemp"] {
   margin-top: 10px;
+}
+
+.inputField {
+  width: 200px;
 }
 
 input,
@@ -273,6 +260,15 @@ input[type="file"] {
   width: 250px;
 }
 
+.cardList {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+  flex: auto;
+}
+
 @media screen and (min-width: 1000px) {
   .main-container {
     height: auto;
@@ -289,7 +285,6 @@ input[type="file"] {
     width: 200px;
     text-align: left;
   }
-
 
   .addPlant {
     display: flex;
