@@ -96,5 +96,11 @@ export default {
 .forgottenPassword {
   margin-bottom: 10px;
   font-size: large;
+  cursor: pointer;
+}
+
+.notRegistered:hover {
+  font-weight: bold;
+  font-style: italic;
 }
 </style>
