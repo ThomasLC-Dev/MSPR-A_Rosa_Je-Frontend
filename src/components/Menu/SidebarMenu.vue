@@ -110,8 +110,6 @@ export default {
 			this.goToView(this.routeConnection);
 		},
 		getRoles() {
-			console.log("ROLES");
-
 			if (this.connected) {
 				fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
 					headers: {
@@ -121,13 +119,9 @@ export default {
 					.then((res) => res.json())
 					.then((data) => {
 						this.roles = data.userRoles.map((userRole) => userRole.role.name);
-						
 						if (this.roles.includes("Botanist")) this.botanist = true;
 						if (this.roles.includes("Keeper")) this.guardian = true;
-						
-						
 					})
-
 			}
 		}
 	},
