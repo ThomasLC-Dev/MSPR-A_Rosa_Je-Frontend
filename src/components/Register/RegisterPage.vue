@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <h1>INSCRIPTION</h1>
-    <form class="form-register" @submit.prevent="onSubmit">
+    <form class="form-register" @submit.prevent="onSubmit" @reset.prevent="backPage">
       <div class="form-fields">
         <div class="form-field-direction">
           <div class="form-field">
@@ -84,11 +84,13 @@
           <input type="checkbox" class="checkbox-position" id="botanist" value="3" v-model="userRoles" />
           <label for="botanist" class="register-checkbox">Souhaitez-vous apporter des conseils spécialisés ?</label>
         </div>
+        <br>
+        <h3>Roles : {{ userRoles }}</h3>
       </div>
 
       <div class="button-group">
         <input class="btn-reset" type="reset" value="Annuler" />
-        <input class="btn-validate" type="submit" value="S'inscrire" @click="onSubmit" />
+        <input class="btn-validate" type="submit" value="S'inscrire" />
       </div>
     </form>
   </div>
@@ -113,12 +115,13 @@ export default {
       city: '',
       password: '',
       passwordConfirmation: '',
-      userRoles: []
+      userRoles: [],
+      routeConnection: 'connection',
+      routeHome: 'home',
     }
   },
   methods: {
     onSubmit() {
-
       let userRegister = {
         "additionalAddress": this.addtionalAddress,
         "city": this.city,
@@ -136,19 +139,21 @@ export default {
         "userRoles": this.userRoles.map((value) => +value)
       }
 
-
       fetch(config.apiBase + config.endpoints.registerPath, {
         method: 'POST',
-        headers: { "Content-Type": "application/json" }
-        , body: JSON.stringify(userRegister)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userRegister)
       })
-        .then(response => {
-          return response.json()
+        .then(() => {
+          this.goToView(this.routeConnection)
         })
-        .then(data => {
-          this.$router.push('/connection');
-        })
-    }
+    },
+    goToView(path) {
+      router.push({ name: path })
+    },
+    backPage() {
+      this.goToView('home')
+    },
   }
 }
 
