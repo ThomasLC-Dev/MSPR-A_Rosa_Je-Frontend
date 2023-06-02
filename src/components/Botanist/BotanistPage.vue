@@ -6,8 +6,8 @@
       </div>
 
       <div class="nameProfil" label="Name Profil">
-        <h1 id="lastname">{{ firstname }}</h1>
-        <h1 id="firstname">{{ lastname }}</h1>
+        <h1 id="firstname">{{ user.firstName }}</h1>
+        <h1 id="lastname">{{ user.lastName }}</h1>
       </div>
     </div>
 
@@ -114,8 +114,6 @@ export default {
 
       index: 0,
       ShowAddPlant: false
-
-
     }
   },
   methods: {
@@ -131,44 +129,38 @@ export default {
         .then((res) => res.json())
         .then(
           (data) => {
-            let listData = [...data]; 
+            let listData = [...data];
+
             listData.map(plante => {
-             let count =  this.items.filter(item => item.id == plante.id).length;
-             
-             if(count == 0) this.items.push({ ...plante, startDate });
+              let count = this.items.filter(item => item.id == plante.id).length;
+
+              if (count == 0) this.items.push({ ...plante, startDate });
             });
+
             console.log("ITEMS =>");
             console.log(this.items);
-            
-            
 
-            if(this.picked=="AskKeepPlant"){
+            if (this.picked == "AskKeepPlant") {
               this.filterList();
             }
-            else{
+            else {
               this.filterListKeepedPlants()
             }
           }
-          
         )
-
     },
     filterList() {
       this.ShowAddPlant = true;
       this.tempItems = this.items.filter(Element => {
         return Element.advises === "";
       });
-
     },
-
     filterListKeepedPlants() {
       this.ShowAddPlant = false;
       this.tempItems = this.items.filter(Element => {
         return Element.advises != "";
       });
-
     },
-
     GetUser() {
       fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
         headers: {
@@ -178,15 +170,11 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           this.user = data;
-
         })
-
-
     },
     GetKeeperID() {
       console.log(tempItems[1].user.id)
       return this.tempItems[1].user.id;
-
     },
     GetSlots() {
       fetch("https://a-rosa-je.herokuapp.com/api/slots/", {
@@ -198,21 +186,19 @@ export default {
         .then(
           (data) => {
             this.itemsSlots = data;
-
+            
             console.log(this.itemsSlots);
 
             this.itemsSlots.forEach((item, index) => {
               console.log(item);
               this.GetPlants(item.user.id, item.startDate);
-
             })
-
+            new Date(Math.max.apply(null, this.itemsSlots.map(function (e) {
+              return new Date(e.MeasureDate);
+            })));
             console.log(this.itemsSlots);
           })
-
     }
-
-
   },
   beforeMount() {
     this.GetUser();
@@ -229,20 +215,7 @@ export default {
   width: 100vh;
   align-items: center;
   padding-bottom: 2%;
-
-
-
 }
-
-.button {
-  top: 0%;
-  right: 0%;
-  width: 150px;
-  margin-right: 0%;
-  margin-left: 300px;
-  cursor: pointer;
-}
-
 
 td {
   padding: 20px;
@@ -258,7 +231,6 @@ th,
 td {
   border: 1px solid black;
   border-collapse: collapse;
-
   background-color: white;
 }
 
@@ -271,17 +243,12 @@ td {
   border-radius: 50%;
 }
 
-.imgButton {
-  width: 100%;
-}
-
 .nameProfil {
   display: flex;
   flex-direction: row;
   margin-left: 30px;
   gap: 10px;
   border-bottom: 5px solid var(--main-text);
-
 }
 
 .ListPlants {
@@ -302,38 +269,11 @@ td {
   padding: 0%;
 }
 
-.OKImg {
-  width: 35%;
-  height: 10%;
-  margin: 0%;
-  padding: 0%;
-
-}
-
 .NoImg {
   width: 30%;
   height: 10%;
   margin: 0%;
   padding: 0%;
-}
-
-.form-checkbox {
-  display: flex;
-  flex-direction: row;
-  padding-top: 10px;
-  align-items: center;
-}
-
-.checkbox-position {
-  padding: 0;
-  margin: 0;
-  vertical-align: baseline;
-  position: relative;
-  top: -1px;
-}
-
-.register-checkbox {
-  margin-left: 10px;
 }
 
 .group-checkbox {
@@ -347,25 +287,8 @@ td {
     flex-direction: column;
   }
 
-
-  .button {
-    margin-top: 10%;
-    margin-left: 0%;
-  }
-
   .nameProfil {
     margin-left: 0%;
-
   }
-
-  .map {
-    width: 110%;
-  }
-
-  .imgMap {
-    width: 100%;
-  }
-
-
 }
 </style>
