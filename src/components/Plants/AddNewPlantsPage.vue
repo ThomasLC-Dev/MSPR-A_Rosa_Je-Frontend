@@ -50,10 +50,10 @@
       </div>
 
       <div class="form-field">
-        <label for="plantPhoto">Ajouter une photo (max 4) : </label>
+        <label for="plantPhoto">Ajouter une photo : </label>
 
         <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo" @click="openPhotoPage"
-          v-if="plantsPhoto.length < 4">
+          v-if="plantsPhoto.length < 4" />
       </div>
 
       <div class="cardList">
@@ -209,6 +209,10 @@ label[for="plantMinTemp"] {
   margin-top: 10px;
 }
 
+.form-field {
+  margin: 5px;
+}
+
 .inputField {
   width: 200px;
 }
@@ -239,6 +243,8 @@ input[type="file"] {
 .addPlant {
   display: flex;
   position: relative;
+  margin-top: 5px;
+  margin-bottom: 5px;
   left: 80%;
   bottom: 25px;
   width: 30px;

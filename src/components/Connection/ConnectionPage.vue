@@ -25,8 +25,7 @@
         </div>
 
         <div>
-          <a class="notRegistered" href="" @click="goToView(routeRegister)">Pas encore membre ?
-            Inscris-toi !</a>
+          <a class="notRegistered" @click="goToView(routeRegister)">Pas encore membre ? Inscris-toi !</a>
         </div>
       </form>
     </div>
@@ -91,7 +90,6 @@ export default {
   margin: 10px;
   width: 50%;
   height: auto;
-
 }
 
 .notRegistered,

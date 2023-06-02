@@ -18,7 +18,7 @@ export default {
   display: inline-block;
   position: absolute;
   height: 50px;
-  width: 70px;
+  width: 65px;
   top: calc(50% - 25px);
   cursor: pointer;
 }
