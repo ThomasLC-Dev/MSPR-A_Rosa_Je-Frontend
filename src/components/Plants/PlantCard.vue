@@ -2,7 +2,7 @@
   <div class="card-plant">
     <div class="row1">
       <p type="text" class="plant-subtitle">{{ plant.name }}</p>
-      <div class="delete-btn" @click="deletePlant()">
+      <div class="delete-btn" @click="deletePlant">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
     </div>

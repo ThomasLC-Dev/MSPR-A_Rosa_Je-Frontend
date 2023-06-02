@@ -29,7 +29,7 @@
     </div>
 
     <div v-else>
-      <PlantCard class="plant-card" v-for="(plant, id) in plants" :key="id" :plant-prop="plant"
+      <PlantCard class="plant-card" v-for="(plant, id) in plants" :key="plant.id" :plant-prop="plant"
         :slides-prop="plant.imagesUrl.map((image) => image.imageUrl)" @onUpdatePlant="loadData"
         @onDeletePlant="loadData" />
     </div>
@@ -68,7 +68,11 @@ export default {
         headers: { Authorization: 'Bearer ' + getToken() }
       })
         .then(res => res.json())
-        .then(data => this.plants = data);
+        .then(data => {
+          this.plants = data;
+          console.log("data");
+          console.log(data);
+        });
     }
   }
 }

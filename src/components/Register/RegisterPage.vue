@@ -85,7 +85,6 @@
           <label for="botanist" class="register-checkbox">Souhaitez-vous apporter des conseils spécialisés ?</label>
         </div>
         <br>
-        <h3>Roles : {{ userRoles }}</h3>
       </div>
 
       <div class="button-group">

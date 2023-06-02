@@ -16,13 +16,13 @@
 						<!-- Connected Buttons -->
 						<ButtonMenu :name="AboutCo" :imgLink="ImgAboutCo" @click="goToView(routeHomeCo)"></ButtonMenu>
 						<ButtonMenu :name="Profile" :imgLink="ImgProfile" @click="goToView(routeProfil)"></ButtonMenu>
-						<ButtonMenu :name="MyPlants" :imgLink="ImgMyPlants" @click="goToView(routeMyPlants)"></ButtonMenu>
-						<ButtonMenu :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)">
+						<ButtonMenu v-if="guardian || user"  :name="MyPlants" :imgLink="ImgMyPlants" @click="goToView(routeMyPlants)"></ButtonMenu>
+						<ButtonMenu v-if="guardian" :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)">
 						</ButtonMenu>
-						<ButtonMenu :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
+						<ButtonMenu  v-if="botanist" :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
-						<ButtonMenu :name="Admin" :imgLink="ImgAdmin" @click="goToView(routeAdmin)"></ButtonMenu>
+						<ButtonMenu v-if="admin" :name="Admin" :imgLink="ImgAdmin" @click="goToView(routeAdmin)"></ButtonMenu>
 						<ButtonMenu :name="LogOut" :imgLink="ImgLogOut" @click="disconnect()"></ButtonMenu>
 					</div>
 					<div class="disconnected" v-else>
@@ -40,7 +40,7 @@
 
 <script>
 import ButtonMenu from './ButtonMenu.vue'
-import { isConnected, removeToken } from '../../../api.config'
+import { getCurrentUserId, isConnected, removeToken, getToken } from '../../../api.config'
 
 export default {
 	name: 'SidebarMenu',
@@ -89,6 +89,11 @@ export default {
 		routeRgpd: 'rgpd',
 		routeAdmin: 'admin',
 		routeLogOut: '',
+		roles: [],
+		botanist : false, 
+		guardian : false,
+		admin : false,
+		user : true,
 
 		connected: isConnected
 	}),
@@ -103,12 +108,27 @@ export default {
 			removeToken();
 			this.connected = false;
 			this.goToView(this.routeConnection);
+		},
+		getRoles() {
+			if (this.connected) {
+				fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
+					headers: {
+						Authorization: 'Bearer ' + getToken(),
+					}
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						this.roles = data.userRoles.map((userRole) => userRole.role.name);
+						if (this.roles.includes("Botanist")) this.botanist = true;
+						if (this.roles.includes("Keeper")) this.guardian = true;
+					})
+			}
 		}
 	},
 	created() {
-		this.connected = isConnected()
-	}
-
+		this.connected = isConnected();
+		this.getRoles();
+	},
 }
 </script>
 
@@ -153,7 +173,7 @@ export default {
 	color: var(--main-bg-color);
 }
 
-.ButtonsMenu {	
+.ButtonsMenu {
 	overflow-y: hidden;
 	overflow-x: hidden;
 	gap: 5px;
