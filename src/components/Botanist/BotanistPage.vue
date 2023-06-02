@@ -157,9 +157,6 @@ export default {
               }
             });
 
-            console.log("ITEMS =>");
-            console.log(this.items);
-
             if (this.picked == "AskKeepPlant") {
               this.filterList();
             }

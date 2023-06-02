@@ -77,7 +77,6 @@ export default {
 						.then(
 							(plantData) => {
 								this.plants = plantData,
-									console.log(this.plants);
 								this.user = userData;
 
 								let latitude = this.user.address.latitude;
@@ -98,7 +97,6 @@ export default {
 									if (this.plants[index].user.id != this.user.id) {
 
 										let strName = "Plante de : " + this.plants[index].user.firstName;
-										console.log(this.plants[index].user);
 										const marker = L.marker([this.plants[index].user.address.latitude, this.plants[index].user.address.longitude]).addTo(map)
 											.bindPopup(strName);
 
