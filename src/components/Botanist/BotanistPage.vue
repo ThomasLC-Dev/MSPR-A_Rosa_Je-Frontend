@@ -132,9 +132,29 @@ export default {
             let listData = [...data];
 
             listData.map(plante => {
-              let count = this.items.filter(item => item.id == plante.id).length;
+              let findItem = this.items.filter(item => item.id == plante.id);
 
-              if (count == 0) this.items.push({ ...plante, startDate });
+              if (findItem.length == 0) {
+                this.items.push({ ...plante, startDate });
+              }
+              else {
+                let findPlant = findItem[0];
+                
+                if (Date.parse(findPlant.startDate) < Date.parse(startDate)) {
+                  if (Date.parse(findPlant.startDate) < Date.now()) {
+                    let indexFindPlant = this.items.indexOf(findPlant);
+                    this.items.splice(indexFindPlant, 1);
+                    this.items.push({ ...plante, startDate });
+                  }
+                }
+                else {
+                  if (Date.parse(startDate) > Date.now()) {
+                    let indexFindPlant = this.items.indexOf(findPlant);
+                    this.items.splice(indexFindPlant, 1);
+                    this.items.push({ ...plante, startDate });
+                  }
+                }
+              }
             });
 
             console.log("ITEMS =>");
@@ -186,17 +206,9 @@ export default {
         .then(
           (data) => {
             this.itemsSlots = data;
-            
-            console.log(this.itemsSlots);
-
             this.itemsSlots.forEach((item, index) => {
-              console.log(item);
               this.GetPlants(item.user.id, item.startDate);
             })
-            new Date(Math.max.apply(null, this.itemsSlots.map(function (e) {
-              return new Date(e.MeasureDate);
-            })));
-            console.log(this.itemsSlots);
           })
     }
   },
