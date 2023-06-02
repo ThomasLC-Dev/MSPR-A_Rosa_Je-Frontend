@@ -12,9 +12,9 @@
         <label for="plantLight">Ensoleillement : </label>
         <select v-model="sunLight" id="lightSelect" class="inputField">
           <option value="">Choix</option>
-          <option value="sun">Soleil</option>
-          <option value="midShadow">Mi-Ombre</option>
-          <option value="fullShadow">Ombre</option>
+          <option value="1">Soleil</option>
+          <option value="2">Mi-Ombre</option>
+          <option value="3">Ombre</option>
         </select>
       </div>
 
@@ -38,9 +38,9 @@
         <label for="plantWateringFrequency">Fréquence d'arrosage : </label>
         <select v-model="wateringFrequency" id="wateringSelect" class="inputField">
           <option value="">Choix</option>
-          <option value="">1 fois/jour</option>
-          <option value="">1 fois/semaine</option>
-          <option value="">2 fois/semaine</option>
+          <option value="1">1 fois/jour</option>
+          <option value="2">1 fois/semaine</option>
+          <option value="3">2 fois/semaine</option>
         </select>
       </div>
 
@@ -49,31 +49,16 @@
         <input v-model="wateringContainer" type="text" class="inputField" placeholder="Contenant à utiliser" />
       </div>
 
-      <!-- Difficultés : 
-        - Ajouter des photos,
-        - Supprimer les photos (séparement) avec les boutons,
-        - Enregister les infos de la plante quand le.la utilisateur.trice clique sur le bouton "Enregistrer".
-      -->
-
       <div class="form-field">
-        <label for="plantPhoto">Ajouter une photo (max 4) : </label>
+        <label for="plantPhoto">Ajouter une photo : </label>
 
-        <!-- 
-          Ici on pourrait creer un composant AddNewPhoto.vue 
-          On aurait un bouton ADD (+) qui serait actif uniquement si on a moins de 4 photos 
-          suivi des vignettes (avec l'onglet delete) 
-          (pas de photo = pas de vignette)
-          et si on a au moins une photo on affiche le composant en bouclant sur la photo qui s'affiche.
-          comme ca on recupere les attributs liees a l'id
-          et le delete pourra s'effectuer sur le plantsPhoto.id
-
-        -->
-        <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo"
-          @click="openPhotoPage" v-if="plantsPhoto.length < 4">
+        <img class="addPlant" src="./../../assets/Logo/add-button.png" alt="Ajout d'une photo" @click="openPhotoPage"
+          v-if="plantsPhoto.length < 4" />
       </div>
-    
+
       <div class="cardList">
-        <CardPhoto v-for="(photo, index) in plantsPhoto" :key="index" :imageSrc="photo" :photoIndex="index" @delete-photo="deletePhoto"/>
+        <CardPhoto v-for="(photo, index) in plantsPhoto" :key="index" :imageSrc="photo" :photoIndex="index"
+          @delete-photo="deletePhoto" />
       </div>
 
       <div class="form-field">
@@ -104,33 +89,27 @@ export default {
   },
   data() {
     return {
-
-      attachementFile: {
-        id: 6,
-        type: "plant",
-        role: "Customer",
-      },
-
       latinOrVerna: "",
       sunLight: "",
-      lowerTemp: "",
-      higherTemp: "",
-      wateringQuantity: "",
+      lowerTemp: null,
+      higherTemp: null,
+      wateringQuantity: null,
       wateringFrequency: "",
-      wateringContainer: "",
+      wateringContainer: null,
       customerAdvice: "",
       botanistAdvice: "",
       plantsPhoto: [],
       routePhotoPage: "camera",
+      routeMyPlants: 'plants',
     };
   },
   methods: {
-    addPhotoToArray(event){
-        if (event.data.image) {
-            this.plantsPhoto.push(event.data.image);
+    addPhotoToArray(event) {
+      if (event.data.image) {
+        this.plantsPhoto.push(event.data.image);
 
-            window.removeEventListener('message', this.addPhotoToArray);
-        }
+        window.removeEventListener('message', this.addPhotoToArray);
+      }
     },
     openPhotoPage() {
       let photoWindow = window.open("http://localhost:8080/camera", "", "popup");
@@ -138,6 +117,7 @@ export default {
       window.addEventListener('message', this.addPhotoToArray);
     },
     newPlant() {
+
       fetch(config.apiBase + config.endpoints.plantsPath, {
         method: 'POST',
         headers: {
@@ -145,13 +125,49 @@ export default {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          botanistAdvice: this.botanistAdvice,
-          customerAdvice: this.customerAdvice,
-          latinOrVerna: this.latinOrVerna,
+          name: this.latinOrVerna,
+          advises: this.botanistAdvice,
+          description: this.customerAdvice,
+          higherTemp: this.higherTemp,
+          lowerTemp: this.lowerTemp,
+          sunLight: this.sunLight,
+          wateringContainer: this.wateringContainer,
+          wateringFrequency: this.wateringFrequency,
+          wateringQuantity: this.wateringQuantity,
           userId: getCurrentUserId()
         })
       })
-        .then(res => this.goToView("plants"));
+        .then(res => res.json())
+        .then(data => {
+          this.uploadImages(data.id);
+        })
+        .then(() => this.goToView('plants'));
+    },
+    async uploadImages(plantId) {
+      let tempPhotos = this.plantsPhoto.map((value) => value);
+      for (let plantImage of tempPhotos) {
+        const formData = new FormData();
+        const file = this.dataURLtoFile(plantImage, "image.jpeg");
+        formData.append('file', file);
+        await fetch(config.apiBase + config.endpoints.attachmentFilesPath + "/upload?type=plant&role=Customer&id=" + plantId, {
+          method: 'POST',
+          headers: {
+            Authorization: "Bearer " + getToken()
+          },
+          body: formData
+        });
+      }
+    },
+    dataURLtoFile(dataurl, filename) {
+      var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[arr.length - 1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new File([u8arr], filename, { type: mime });
     },
     onSubmit(e) {
       const file = this.$refs.file.files[0];
@@ -172,7 +188,10 @@ export default {
     },
     backPage() {
       this.goToView('plants')
-    }
+    },
+    goToView(path) {
+      this.$router.push({ name: path })
+    },
   },
 }
 </script>
@@ -188,6 +207,10 @@ label {
 label[for="plantWateringType"],
 label[for="plantMinTemp"] {
   margin-top: 10px;
+}
+
+.form-field {
+  margin: 5px;
 }
 
 .inputField {
@@ -220,25 +243,11 @@ input[type="file"] {
 .addPlant {
   display: flex;
   position: relative;
+  margin-top: 5px;
+  margin-bottom: 5px;
   left: 80%;
   bottom: 25px;
   width: 30px;
-}
-
-.addPhotos {
-  display: flex;
-  position: relative;
-  bottom: 10px;
-  right: 7px;
-  flex-direction: column;
-}
-
-.delete-button {
-  display: flex;
-  position: relative;
-  padding-left: 10px;
-  height: 15px;
-  bottom: 5px;
 }
 
 #formAddPlant {

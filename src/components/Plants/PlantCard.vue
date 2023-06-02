@@ -1,7 +1,7 @@
 <template>
   <div class="card-plant">
     <div class="row1">
-      <p type="text" class="plant-subtitle">{{ plantName }}</p>
+      <p type="text" class="plant-subtitle">{{ plant.name }}</p>
       <div class="delete-btn" @click="deletePlant()">
         <img src="@/assets/Logo/delete-button.png" alt="Supprimer une plante" title="Supprimer une plante" />
       </div>
@@ -19,10 +19,10 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/Ombre.png">
               </div>
-              <select class="logo-field-plant" id="lightSelect" :disabled="modificationAllowed == 1" v-model="sunlight">
-                <option value="fullShadow">Ombre</option>
-                <option value="sun">Soleil</option>
-                <option value="midShadow">Mi-Ombre</option>
+              <select class="logo-field-plant" id="lightSelect" :disabled="modificationAllowed == 1" v-model="plant.sunLight">
+                <option value="1">Soleil</option>
+                <option value="2">Mi-Ombre</option>
+                <option value="3">Ombre</option>
               </select>
             </div>
             <div class="logo-field">
@@ -30,7 +30,7 @@
                 <img src="@/assets/Logo/quantite-eau.png">
               </div>
               <input type="text" class="waterQuantity logo-field-plant" :disabled="modificationAllowed == 1"
-                v-model="wateringQuantity" />
+                v-model="plant.wateringQuantity" />
             </div>
           </div>
           <div class="row2-2">
@@ -39,14 +39,14 @@
                 <img src="@/assets/Logo/TemperatureBasse.png">
               </div>
               <input type="text" class="minTemp logo-field-plant" :disabled="modificationAllowed == 1"
-                v-model="lowerTemp" />
+                v-model="plant.lowerTemp" />
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/TemperatureHaute.png">
               </div>
               <input type="text" class="maxTemp logo-field-plant" :disabled="modificationAllowed == 1"
-                v-model="higherTemp" />
+                v-model="plant.higherTemp" />
             </div>
           </div>
 
@@ -55,15 +55,18 @@
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/watering-frequency.png">
               </div>
-              <input type="text" class="waterFrequency logo-field-plant" :disabled="modificationAllowed == 1"
-                v-model="wateringFrequency" />
+              <select class="logo-field-plant" id="wateringSelect" :disabled="modificationAllowed == 1" v-model="plant.wateringFrequency">
+                <option value="1">1 fois/jour</option>
+                <option value="2">1 fois/semaine</option>
+                <option value="3">2 fois/semaine</option>
+              </select>
             </div>
             <div class="logo-field">
               <div class="logo-img-plant">
                 <img src="@/assets/Logo/arrosage.png">
               </div>
               <input type="text" class="waterType logo-field-plant" :disabled="modificationAllowed == 1"
-                v-model="wateringContainer" />
+                v-model="plant.wateringContainer" />
             </div>
           </div>
         </div>
@@ -74,11 +77,11 @@
       <div class="form-field">
         <p type="text" class="plant-advise-subtitle">Consignes d'entretien : </p>
         <input type="text" class="maintenanceInstructions" :disabled="modificationAllowed == 1"
-          v-model="customerAdvise" />
+          v-model="plant.description" />
       </div>
       <div class="form-field">
         <p type="text" class="plant-advise-subtitle">Conseil d'un Botaniste :</p>
-        <input type="text" class="botanistAdvise" :disabled="modificationAllowed == 1" v-model="botanistAdvise" />
+        <input type="text" class="botanistAdvise" :disabled="modificationAllowed == 1" v-model="plant.advises" />
       </div>
     </div>
 
@@ -103,32 +106,16 @@ export default {
     CarousselPlant
   },
   props: {
-    plantIdProp: String,
-    plantNameProp: String,
-    customerAdviseProp: String,
-    botanistAdviseProp: String,
+    plantProp: {},
     slidesProp: []
   },
   data: () => ({
-    plantId: '',
-    plantName: '',
-    customerAdvise: '',
-    botanistAdvise: '',
-    latinOrVerna: '',
-    sunlight: '',
-    lowerTemp: '',
-    higherTemp: '',
-    wateringQuantity: '',
-    wateringFrequency: '',
-    wateringContainer: '',
+    plant: {},
     slides: [],
     modificationAllowed: 1,
   }),
   created() {
-    this.plantId = this.plantIdProp;
-    this.plantName = this.plantNameProp;
-    this.customerAdvise = this.customerAdviseProp;
-    this.botanistAdvise = this.botanistAdviseProp;
+    this.plant = this.plantProp;
     this.slides = this.slidesProp;
   },
   methods: {
@@ -140,13 +127,19 @@ export default {
     },
     ModificationFinish() {
       this.modificationAllowed = 1
-      let plantData = {
-        "plantName": this.plantName,
-        "description": this.customerAdvise,
-        "advises": this.botanistAdvise
-      }
 
-      fetch(config.apiBase + config.endpoints.plantsPath + '/' + this.plantId, {
+			let plantData = {
+					advises: this.plant.advises,
+					description: this.plant.description,
+					higherTemp: this.plant.higherTemp,
+					lowerTemp: this.plant.lowerTemp,
+					sunLight: this.plant.sunLight,
+					wateringContainer: this.plant.wateringContainer,
+					wateringFrequency: this.plant.wateringFrequency,
+					wateringQuantity: this.plant.wateringQuantity
+			}
+
+      fetch(config.apiBase + config.endpoints.plantsPath + '/' + this.plant.id, {
         method: 'PUT',
         headers: {
           Authorization: 'Bearer ' + getToken(),
@@ -157,7 +150,7 @@ export default {
         .then(() => this.$emit('onUpdatePlant'))
     },
     deletePlant() {
-      fetch(config.apiBase + config.endpoints.plantsPath + '/' + this.plantId, {
+      fetch(config.apiBase + config.endpoints.plantsPath + '/' + this.plant.id, {
         method: "DELETE",
         headers: { Authorization: 'Bearer ' + getToken() }
       })

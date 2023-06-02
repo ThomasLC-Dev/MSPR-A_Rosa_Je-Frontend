@@ -22,8 +22,8 @@ export default {
 <style scoped>
 .carousel-item {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
   right: 0;
   bottom: 0;
 }
