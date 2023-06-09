@@ -1,5 +1,5 @@
 <template>
-  <a href="#" type="button" class="ButtonMenuClass">
+  <div type="button" class="ButtonMenuClass">
 
     <div class="imgClass">
       <img :src="require(`@/assets/` + imgLink)" class="imgButton" alt="">
@@ -9,7 +9,7 @@
       <p>{{ name }}</p>
     </div>
 
-  </a>
+  </div>
 </template>
 <script>
 export default {
@@ -29,6 +29,8 @@ export default {
   flex: 1;
   display: flex;
   height: auto;
+
+	cursor: pointer;
 
   width: 250px;
   flex-direction: row;
