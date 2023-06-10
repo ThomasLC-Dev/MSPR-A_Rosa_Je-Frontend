@@ -35,7 +35,6 @@
             <td>Vide</td>
             <td>Vide</td>
             <td>Vide</td>
-            <td>Vide</td>
             <td>
               <div class="buttonsList">
                 <img src="../../assets/Logo/Message.png" alt="Voir" class="SeeImg">
@@ -48,7 +47,6 @@
 
             <td>{{ item.user.firstName }}</td>
             <td>{{ item.user.address.city }}</td>
-            <td>{{ item.name }}</td>
             <td>{{ item.startDate }}</td>
             <td>
               <div class="buttonsList">
@@ -72,12 +70,10 @@ export default {
       firstname: 'Jane',
       lastname: 'Doe',
       headers: [
-        "Client", "Ville", 'Type Plantes', 'Date Début'
+        "Client", "Ville", 'Date Début'
       ],
       items: [],
       tempItems: [],
-      itemsSlots: [],
-      slots: [],
       showkeepedPlants: false,
       showPlantsToKeep: true,
       picked: "KeepPlant",
@@ -120,52 +116,6 @@ export default {
     KeepPlant() {
       this.$router.push('/keeper/PlantsKeep');
     },
-    GetPlants(id, startDate) {
-      fetch("https://a-rosa-je.herokuapp.com/api/plants/?user=" + id, {
-        headers: {
-          Authorization: 'Bearer ' + getToken(),
-        }
-      })
-        .then((res) => res.json())
-        .then(
-          (data) => {
-            let listData = [...data];
-
-            listData.map(plante => {
-              let findItem = this.items.filter(item => item.id == plante.id);
-
-              if (findItem.length == 0) {
-                this.items.push({ ...plante, startDate });
-              }
-              else {
-                let findPlant = findItem[0];
-                
-                if (Date.parse(findPlant.startDate) < Date.parse(startDate)) {
-                  if (Date.parse(findPlant.startDate) < Date.now()) {
-                    let indexFindPlant = this.items.indexOf(findPlant);
-                    this.items.splice(indexFindPlant, 1);
-                    this.items.push({ ...plante, startDate });
-                  }
-                }
-                else {
-                  if (Date.parse(startDate) > Date.now()) {
-                    let indexFindPlant = this.items.indexOf(findPlant);
-                    this.items.splice(indexFindPlant, 1);
-                    this.items.push({ ...plante, startDate });
-                  }
-                }
-              }
-            });
-
-            if (this.picked == "AskKeepPlant") {
-              this.filterList();
-            }
-            else {
-              this.filterListKeepedPlants()
-            }
-          }
-        )
-    },
     filterList() {
       this.ShowAddPlant = true;
       this.tempItems = this.items.filter(Element => {
@@ -189,10 +139,6 @@ export default {
           this.user = data;
         })
     },
-    GetKeeperID() {
-      console.log(tempItems[1].user.id)
-      return this.tempItems[1].user.id;
-    },
     GetSlots() {
       fetch("https://a-rosa-je.herokuapp.com/api/slots/", {
         headers: {
@@ -202,11 +148,40 @@ export default {
         .then((res) => res.json())
         .then(
           (data) => {
-            this.itemsSlots = data;
-            this.itemsSlots.forEach((item, index) => {
-              this.GetPlants(item.user.id, item.startDate);
-            })
-          })
+            let listData = [...data];
+            listData.forEach(slot => {
+              let findItem = this.items.filter(item => item.user.id == slot.user.id);
+              if (findItem.length == 0) {
+                this.items.push(slot);
+              }
+              else {
+                let findSlot = findItem[0];
+                console.log(slot);
+                console.log(findSlot);
+                if (Date.parse(findSlot.startDate) < Date.parse(slot.startDate)) {
+                  if (Date.parse(findSlot.startDate) < Date.now()) {
+                    let indexFindSlot = this.items.indexOf(findSlot);
+                    this.items.splice(indexFindSlot, 1);
+                    this.items.push(slot);
+                  }
+                }
+                else {
+                  if (Date.parse(slot.startDate) > Date.now()) {
+                    let indexFindSlot = this.items.indexOf(findSlot);
+                    this.items.splice(indexFindSlot, 1);
+                    this.items.push(slot);
+                  }
+                }
+              }
+            });
+            if (this.picked == "AskKeepPlant") {
+              this.filterList();
+            }
+            else {
+              this.filterListKeepedPlants()
+            }
+          }
+        )
     }
   },
   beforeMount() {
