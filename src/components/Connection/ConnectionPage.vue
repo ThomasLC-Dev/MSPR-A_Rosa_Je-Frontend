@@ -50,19 +50,23 @@ export default {
     goToView(path) {
       router.push({ name: path })
     },
-    submit() {
-      let userLogin = {
-        email: this.email,
-        password: this.password
-      }
-
-      fetch(config.apiBase + config.endpoints.loginPath, { method: 'POST', body: JSON.stringify(userLogin) }).then(response => {
-        return response.json()
-      })
-        .then(data => {
-          saveToken(data.token)
-          this.goToView(this.routeAbout)
+    async submit() {
+      try {
+        let userLogin = {
+          email: this.email,
+          password: this.password
+        }
+  
+        fetch(config.apiBase + config.endpoints.loginPath, { method: 'POST', body: JSON.stringify(userLogin) }).then(response => {
+          return response.json()
         })
+          .then(data => {
+            saveToken(data.token)
+            this.goToView(this.routeAbout)
+          })
+      } catch (e) {
+        
+      }
     }
   }
 }
