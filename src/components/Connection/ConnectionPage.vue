@@ -5,6 +5,9 @@
         <h1>CONNEXION</h1>
         <hr>
       </div>
+      <div v-if="error" class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
       <form id="formConnection" @submit.prevent="submit">
         <div class="form-field">
           <label for="mailAddress">Adresse mail : </label>
@@ -43,7 +46,8 @@ export default {
       routeRegister: 'register',
       routeAbout: 'about',
       email: '',
-      password: ''
+      password: '',
+      error: ''
     }
   },
   methods: {
@@ -52,7 +56,7 @@ export default {
     },
     async submit() {
       try {
-        let userLogin = {
+        let userLogin = await {
           email: this.email,
           password: this.password
         }
@@ -65,7 +69,7 @@ export default {
             this.goToView(this.routeAbout)
           })
       } catch (e) {
-        
+        this.error = 'Adresse email ou mot de passe invalide.'
       }
     }
   }
