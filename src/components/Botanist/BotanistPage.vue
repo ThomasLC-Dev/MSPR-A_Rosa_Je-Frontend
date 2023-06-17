@@ -13,14 +13,14 @@
 
     <div class="ListPlants">
       <div class="group-checkbox">
-        <input type="radio" name="PlantKeep" value="KeepPlant" id="PlantKeep" @change="filterListKeepedPlants()"
+        <!-- <input type="radio" name="PlantKeep" value="KeepPlant" id="PlantKeep" @change="filterListKeepedPlants()"
           v-model="picked" />
-        <label for="PlantKeep">Plante gardée</label>
+        <label for="PlantKeep">Conseils donnés</label>
         <br>
         <input type="radio" name="PlantAskKeep" value="AskKeepPlant" id="AskKeepPlant" @change="filterList()"
           v-model="picked" />
-        <label for="AskKeepPlant">Demande de Gardiennage</label>
-        <br>
+        <label for="AskKeepPlant">Demande de conseils</label>
+        <br> -->
       </div>
       <table>
         <thead>
@@ -50,7 +50,7 @@
             <td>{{ item.startDate }}</td>
             <td>
               <div class="buttonsList">
-                <img src="../../assets/Logo/Eye_Black.png" alt="Voir" class="SeeImg">
+                <img src="../../assets/Logo/Eye_Black.png" alt="Voir" class="SeeImg" @click="routerPushToPlants(item.user.id)">
               </div>
             </td>
           </tr>
@@ -182,6 +182,13 @@ export default {
             }
           }
         )
+    }, 
+    routerPushToPlants(id) {
+      
+      console.log(id);  
+      this.$router.push({ name: "plants", 
+        params: { data : id }
+      })
     }
   },
   beforeMount() {
