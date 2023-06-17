@@ -12,16 +12,6 @@
     </div>
 
     <div class="ListPlants">
-      <div class="group-checkbox">
-        <!-- <input type="radio" name="PlantKeep" value="KeepPlant" id="PlantKeep" @change="filterListKeepedPlants()"
-          v-model="picked" />
-        <label for="PlantKeep">Conseils donnés</label>
-        <br>
-        <input type="radio" name="PlantAskKeep" value="AskKeepPlant" id="AskKeepPlant" @change="filterList()"
-          v-model="picked" />
-        <label for="AskKeepPlant">Demande de conseils</label>
-        <br> -->
-      </div>
       <table>
         <thead>
           <tr>
@@ -199,6 +189,10 @@ export default {
 </script>
 
 <style scoped>
+.main-container{
+  height : 100vh; 
+  width : 100%;
+}
 .header {
   margin-top: 30px;
   display: flex;
