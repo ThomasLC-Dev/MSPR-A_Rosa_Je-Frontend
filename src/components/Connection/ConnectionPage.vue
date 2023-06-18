@@ -6,6 +6,9 @@
         <hr>
       </div>
       <form id="formConnection" @submit.prevent="submit">
+        <div v-if="error" class="alert-danger" role="alert">
+          {{ error }}
+        </div>
         <div class="form-field">
           <label for="mailAddress">Adresse mail : </label>
           <input type="text" placeholder="Entrez votre adresse mail" v-model="email">
@@ -43,18 +46,19 @@ export default {
       routeRegister: 'register',
       routeAbout: 'about',
       email: '',
-      password: ''
+      password: '',
+      error: ''
     }
   },
   methods: {
     goToView(path) {
       router.push({ name: path })
     },
-    submit() {
+    async submit() {
       let userLogin = {
         email: this.email,
         password: this.password
-      }
+      };
 
       fetch(config.apiBase + config.endpoints.loginPath, { method: 'POST', body: JSON.stringify(userLogin) }).then(response => {
         return response.json()
@@ -63,6 +67,7 @@ export default {
           saveToken(data.token)
           this.goToView(this.routeAbout)
         })
+        .catch (this.error = 'Adresse email ou mot de passe invalide.')
     }
   }
 }
@@ -80,7 +85,12 @@ export default {
 
 .title {
   align-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+.alert-danger {
+  color: red;
+  margin: 10px;
 }
 
 .connexionContent {
@@ -102,5 +112,9 @@ export default {
 .notRegistered:hover {
   font-weight: bold;
   font-style: italic;
+}
+
+h1 {
+  width: auto;
 }
 </style>
