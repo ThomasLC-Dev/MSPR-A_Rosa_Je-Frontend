@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 // import { isConnected } from "../../api.config";
 
 const routes = [
@@ -35,9 +35,10 @@ const routes = [
     },
   },
   {
-    path: "/plants",
+    path: "/plants/:data?",
     name: "plants",
     component: () => import("@/views/PlantsView.vue"),
+    props: true,
     meta: {
       requiredAuth: true,
     },

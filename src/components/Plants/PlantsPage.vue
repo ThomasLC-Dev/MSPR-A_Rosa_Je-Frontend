@@ -47,33 +47,52 @@ export default {
     EmptyPlant,
     PlantCard,
   },
+  props:['items'],
   data: () => ({
     // show: false,
     routeRequestGuardSlot: 'requestguardslot',
     routeGuardianTracking: 'addnewguardiantracking',
     routeAddNewPlant: 'addnewplants',
     routeUserSlots: 'userslots',
-    plants: []
+    plants: [], 
+    id : null
   }),
-  created() {
-    this.loadData()
-  },
   methods: {
     goToView(path) {
       this.$router.push({ name: path })
     },
     loadData() {
-      fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + getCurrentUserId(), {
+      if(this.id == null) {
+        console.log("id == null");
+        fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + getCurrentUserId(), {
+          method: "GET",
+          headers: { Authorization: 'Bearer ' + getToken() }
+        })
+        .then(res => res.json())
+        .then(data => {
+          this.plants = data;
+        });
+      }
+      else {
+        console.log("id != null");
+        fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + this.id, {
         method: "GET",
         headers: { Authorization: 'Bearer ' + getToken() }
       })
         .then(res => res.json())
         .then(data => {
           this.plants = data;
-          console.log("data");
           console.log(data);
         });
-    }
+      }
+    }, 
+
+  },
+  mounted() {
+    let data = this.$route.params;
+    this.id = data.data; 
+
+    this.loadData()
   }
 }
 </script>

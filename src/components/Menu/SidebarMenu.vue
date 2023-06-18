@@ -39,8 +39,8 @@
 </template>
 
 <script>
+import { getCurrentUserId, getToken, isConnected, removeToken } from '../../../api.config'
 import ButtonMenu from './ButtonMenu.vue'
-import { getCurrentUserId, isConnected, removeToken, getToken } from '../../../api.config'
 
 export default {
 	name: 'SidebarMenu',
