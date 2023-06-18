@@ -62,7 +62,7 @@ export default {
       this.$router.push({ name: path })
     },
     loadData() {
-      if(this.id == null) {
+      if(this.id == null || this.id == '') {
         console.log("id == null");
         fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + getCurrentUserId(), {
           method: "GET",

@@ -67,7 +67,9 @@ export default {
           saveToken(data.token)
           this.goToView(this.routeAbout)
         })
-        .catch (this.error = 'Adresse email ou mot de passe invalide.')
+        .catch (() => {
+            this.error = 'Adresse email ou mot de passe invalide.'
+        })
     }
   }
 }
