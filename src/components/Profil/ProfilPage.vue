@@ -187,7 +187,6 @@ export default {
         "lastName": this.user.lastName,
         "userRoles": this.user.userRoles.map((value) => +value)
       }
-      console.log(userRoles);
       let addressData = {
         "additionalAddress": this.user.address.additionalAddress,
         "city": this.user.address.city,
