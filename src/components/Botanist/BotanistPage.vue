@@ -33,7 +33,7 @@
             </td>
 
           </tr>
-          <tr v-else v-for="(item, index) in tempItems">
+          <tr v-else v-for="(item, index) in tempItems" :key="index">
 
             <td>{{ item.user.firstName }}</td>
             <td>{{ item.user.address.city }}</td>
@@ -172,11 +172,11 @@ export default {
             }
           }
         )
-    }, 
+    },
     routerPushToPlants(id) {
-      
-      console.log(id);  
-      this.$router.push({ name: "plants", 
+
+      console.log(id);
+      this.$router.push({ name: "plants",
         params: { data : id }
       })
     }
@@ -190,7 +190,7 @@ export default {
 
 <style scoped>
 .main-container{
-  height : 100vh; 
+  height : 100vh;
   width : 100%;
 }
 .header {

@@ -10,14 +10,20 @@
         <h2 id="lastname">{{ user.lastName }}</h2>
       </div>
     </div>
+
+    <ChatWindow />
   </div>
 </template>
 
 <script>
 import { config, getToken, getCurrentUserId } from '../../../api.config'
+import ChatWindow from "../ChatMessaging/Components/ChatWindow.vue"
 
-export default defineComponent({
+export default {
   name: "ChatMessagingPage",
+  components: {
+		ChatWindow
+	},
   data() {
     return {
       imgPath: "PeopleTalking/profile.jpg",
@@ -66,9 +72,12 @@ export default defineComponent({
       })
         .then((res) => res.json())
         .then((data) => (this.user = data))
-    }
+    },
+    listeId(id) {
+      console.log(id);
+    },
   }
-})
+}
 </script>
 
 <style scoped>
