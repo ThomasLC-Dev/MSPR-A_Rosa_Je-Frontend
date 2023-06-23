@@ -11,55 +11,54 @@
       </div>
     </div>
   </div>
-<template>
+</template>
 
 <script>
+import { config, getToken, getCurrentUserId } from '../../../api.config'
 
-  import { config, getToken, getCurrentUserId } from '../../../api.config'
+export default defineComponent({
+  name: "ChatMessagingPage",
+  data() {
+    return {
+      imgPath: "PeopleTalking/profile.jpg",
 
-  export default defineComponent({
-    name: "MessageriePage",
-    data() {
-      return {
-        imgPath: "PeopleTalking/profile.jpg",
-
-        user: {
-          "address": {
-            "additionalAddress": "string",
-            "city": "string",
-            "id": 0,
-            "latitude": 0,
-            "longitude": 0,
-            "postalCode": "string",
-            "road": "string",
-            "roadNumber": 0,
-            "roadType": "string"
-          },
-          "email": "string",
-          "firstName": "string",
+      user: {
+        "address": {
+          "additionalAddress": "string",
+          "city": "string",
           "id": 0,
-          "imageUrl": "string",
-          "lastName": "string",
-          "phone": "string",
-          "status": true,
-          "userRoles": [
-            {
-              "id": 0,
-              "role": {
-                "id": 0,
-                "name": "string"
-              }
-            }
-          ]
+          "latitude": 0,
+          "longitude": 0,
+          "postalCode": "string",
+          "road": "string",
+          "roadNumber": 0,
+          "roadType": "string"
         },
+        "email": "string",
+        "firstName": "string",
+        "id": 0,
+        "imageUrl": "string",
+        "lastName": "string",
+        "phone": "string",
+        "status": true,
+        "userRoles": [
+          {
+            "id": 0,
+            "role": {
+              "id": 0,
+              "name": "string"
+            }
+          }
+        ]
+      },
 
-        modificationAllowed: 1,
-        id: 6,
-        info: null
-      }
-    },
-    methods: {
-      GetUser() {
+      modificationAllowed: 1,
+      id: 6,
+      info: null
+    }
+  },
+  methods: {
+    GetUser() {
       fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
         headers: {
           Authorization: 'Bearer ' + getToken(),
@@ -68,8 +67,8 @@
         .then((res) => res.json())
         .then((data) => (this.user = data))
     }
-    }
-  })
+  }
+})
 </script>
 
 <style scoped>

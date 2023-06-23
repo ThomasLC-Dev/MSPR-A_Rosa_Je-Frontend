@@ -152,9 +152,9 @@ const routes = [
     },
   },
   {
-    path: "/messagerie",
-    name: "messagerie",
-    component: () => import("@/views/MessagerieView.vue"),
+    path: "/chatMessaging",
+    name: "chatMessaging",
+    component: () => import("@/views/chatMessagingView.vue"),
     meta: {
       requiredAuth: true,
     },
