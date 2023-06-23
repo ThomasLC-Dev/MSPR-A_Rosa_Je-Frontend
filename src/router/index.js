@@ -151,6 +151,14 @@ const routes = [
       requiredAuth: true,
     },
   },
+  {
+    path: "/messagerie",
+    name: "messagerie",
+    component: () => import("@/views/MessagerieView.vue"),
+    meta: {
+      requiredAuth: true,
+    },
+  },
 ];
 
 const router = createRouter({
