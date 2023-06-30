@@ -1,25 +1,18 @@
 <template>
   <div class="chat-window">
-    <div class="chat-form">
-      <input class="text-input" type="text" v-model="message" />
-      <button class="btn-validate" @click="sendMessage()">Envoyer</button>
-    </div>
-    <div class="message">
-      <p v-bind:title="message" v-for="text in feed">
-        {{ text }}
-      </p>
-    </div>
+    <CustomerMessage />
   </div>
 </template>
 
 <script>
 import ChatWindow from "../Components/ChatWindow.vue"
-import UserText from "./CustomerMessage.vue"
+import CustomerMessage from "./CustomerMessage.vue"
 
 export default {
   name: "ChatWindow",
   components: {
-		ChatWindow
+		ChatWindow,
+    CustomerMessage
 	},
   data(){
     return{
