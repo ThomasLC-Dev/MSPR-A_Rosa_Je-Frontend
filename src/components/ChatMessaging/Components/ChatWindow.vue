@@ -1,5 +1,6 @@
 <template>
   <div class="chat-window">
+    <GuardianMessage />
     <CustomerMessage />
   </div>
 </template>
@@ -7,25 +8,15 @@
 <script>
 import ChatWindow from "../Components/ChatWindow.vue"
 import CustomerMessage from "./CustomerMessage.vue"
+import GuardianMessage from "./GuardianMessage.vue"
 
 export default {
   name: "ChatWindow",
   components: {
 		ChatWindow,
-    CustomerMessage
+    CustomerMessage,
+    GuardianMessage
 	},
-  data(){
-    return{
-      message: '',
-      feed:[]
-    }
-  },
-  methods:{
-    sendMessage(){
-      this.feed.push(this.message)
-      this.message = '';
-    }
-  }
 }
 </script>
 
@@ -43,19 +34,6 @@ export default {
   flex-wrap: wrap;
   flex-direction: column-reverse;
   margin-top: 1em;
-}
-
-.chat-form{
-  margin-top:1em;
-}
-
-.text-input{
-  margin-right: 1em;
-  width : 70vh;
-}
-
-.message{
-  text-align: right;
 }
 
 </style>

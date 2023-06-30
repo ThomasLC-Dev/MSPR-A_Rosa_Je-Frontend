@@ -4,7 +4,7 @@
   <button class="btn-validate" @click="sendMessage()">Envoyer</button>
 </div>
 <div v-bind:title="message" v-for="text in feed">
-  <img src="@/assets/PeopleTalking/Speech-Bubble-Right.png" alt="" class="speechBubbleRight">
+  <!-- <img src="@/assets/PeopleTalking/Speech-Bubble-Right.png" alt="" class="speechBubbleRight"> -->
   <p class="message">
     {{ text }}
   </p>
@@ -36,21 +36,6 @@ export default {
 </script>
 
 <style scoped>
-.chat-window {
-  border: 2px solid var(--main-text);
-  border-radius: 10px;
-  margin: 0px;
-  padding: 15px;
-  background-color: var(--menu-button-diselected-background);
-  height: 100vh;
-  margin-bottom: 2em;
-  display: flex;
-  align-content: flex-end;
-  flex-wrap: wrap;
-  flex-direction: column-reverse;
-  margin-top: 1em;
-}
-
 .chat-form{
   margin-top:1em;
 }
@@ -61,6 +46,7 @@ export default {
 }
 
 .message{
+  padding-right: 50px;
   text-align: right;
   font-size: 24px;
   justify-content: space-around;
