@@ -47,50 +47,49 @@ export default {
     EmptyPlant,
     PlantCard,
   },
-  props:['items'],
+  props: ['items'],
   data: () => ({
-    // show: false,
     routeRequestGuardSlot: 'requestguardslot',
     routeGuardianTracking: 'addnewguardiantracking',
     routeAddNewPlant: 'addnewplants',
     routeUserSlots: 'userslots',
-    plants: [], 
-    id : null
+    plants: [],
+    id: null
   }),
   methods: {
     goToView(path) {
       this.$router.push({ name: path })
     },
     loadData() {
-      if(this.id == null || this.id == '') {
+      if (this.id == null || this.id == '') {
         console.log("id == null");
         fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + getCurrentUserId(), {
           method: "GET",
           headers: { Authorization: 'Bearer ' + getToken() }
         })
-        .then(res => res.json())
-        .then(data => {
-          this.plants = data;
-        });
+          .then(res => res.json())
+          .then(data => {
+            this.plants = data;
+          });
       }
       else {
         console.log("id != null");
         fetch(config.apiBase + config.endpoints.plantsPath + "?user=" + this.id, {
-        method: "GET",
-        headers: { Authorization: 'Bearer ' + getToken() }
-      })
-        .then(res => res.json())
-        .then(data => {
-          this.plants = data;
-          console.log(data);
-        });
+          method: "GET",
+          headers: { Authorization: 'Bearer ' + getToken() }
+        })
+          .then(res => res.json())
+          .then(data => {
+            this.plants = data;
+            console.log(data);
+          });
       }
-    }, 
+    },
 
   },
   mounted() {
     let data = this.$route.params;
-    this.id = data.data; 
+    this.id = data.data;
 
     this.loadData()
   }
@@ -106,7 +105,6 @@ export default {
   display: flex;
   flex-direction: row;
 }
-
 
 .main-title {
   display: flex;
@@ -162,8 +160,6 @@ export default {
   border: 1px solid var(--main-container-border);
   box-shadow: 5px 5px 6px 1px var(--main-container-border);
 }
-
-
 
 @media (max-width: 1000px) {
   .main-title {

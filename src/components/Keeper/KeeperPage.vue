@@ -28,7 +28,7 @@
       <table>
         <thead>
           <tr>
-            <th v-for="header in headers">
+            <th v-for="header in headers" :key="header">
               {{ header }}
             </th>
           </tr>
@@ -46,7 +46,7 @@
               </div>
             </td>
           </tr>
-          <tr v-else v-for="(item, index) in tempItems">
+          <tr v-else v-for="(item, index) in tempItems" :key="index">
             <td>{{ item.user.firstName }}</td>
             <td>{{ item.user.address.city }}</td>
             <td>{{ item.startDate }}</td>

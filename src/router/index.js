@@ -151,6 +151,14 @@ const routes = [
       requiredAuth: true,
     },
   },
+  {
+    path: "/chatMessaging",
+    name: "chatMessaging",
+    component: () => import("@/views/ChatMessagingView.vue"),
+    meta: {
+      requiredAuth: true,
+    },
+  },
 ];
 
 const router = createRouter({
