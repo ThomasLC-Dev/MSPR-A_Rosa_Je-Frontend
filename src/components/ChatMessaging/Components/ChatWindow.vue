@@ -1,13 +1,29 @@
 <template>
-  <div class="chat-window">
-    <GuardianMessage />
-    <CustomerMessage />
-    <GuardianMessage />
-    <CustomerMessage />
-    <GuardianMessage />
-    <CustomerMessage />
-    <ChatInputPart />
+  <div class="chat-window scroller">
+    <div class="customerMessages">
+      <CustomerMessage />
+    </div>
+    <div class="guardianMessages">
+      <GuardianMessage />
+    </div>
+    <div class="customerMessages">
+      <CustomerMessage />
+    </div>
+    <div class="guardianMessages">
+      <GuardianMessage />
+    </div>
+    <div class="customerMessages">
+      <CustomerMessage />
+    </div>
+    <div class="guardianMessages">
+      <GuardianMessage />
+    </div>
+    <div class="customerMessages">
+      <CustomerMessage />
+    </div>
   </div>
+
+  <ChatInputPart />
 </template>
 
 <script>
@@ -27,16 +43,24 @@ export default {
 
 <style scoped>
 .chat-window {
-  border: 2px solid var(--main-text);
-  border-radius: 10px;
-  padding: 15px;
-  background-color: var(--menu-button-diselected-background);
-  height: 100vh;
-  width: 80%;
-  margin-bottom: 2em;
   display: flex;
   align-content: flex-end;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  background-color: var(--menu-button-diselected-background);
+  border: 2px solid var(--main-text);
+  border-radius: 10px;
+  height: 100vh;
+  width: 80%;
+  padding: 15px;
+  margin-bottom: 2em;
   margin-top: 1em;
+  z-index: 2;
+}
+
+.scroller {
+  overflow-y: scroll;
+  scrollbar-color: var(--menu-logo-background) green;
+  scrollbar-width: thin;
+  z-index: 4;
 }
 </style>

@@ -83,6 +83,7 @@ export default {
 .main-container {
   border: none;
   height: 100vh;
+  z-index: 1;
 }
 
 .header {

@@ -1,9 +1,11 @@
 <template>
-  <div v-bind:title="answer" v-for="text in feed" :key="text">
-    <p class="guardian-answer">
-      {{ text }}
-      EXEMPLE DE MESSAGE ENVOYÉ PAR LE GARDIEN !
-    </p>
+  <div class="guardian-answer">
+    <div v-bind:title="guardianAnswer" v-for="guardianText in feed" :key="guardianText">
+      <p class="guardian-text">
+        {{ guardianText }}
+        EXEMPLE DE MESSAGE ENVOYÉ PAR LE GARDIEN !
+      </p>
+    </div>
   </div>
 </template>
 
@@ -12,14 +14,14 @@ export default {
   name: "GuardianMessage",
   data() {
     return {
-      answer: '',
+      guardianAnswer: '',
       feed: []
     }
   },
   methods: {
     displayAnswer() {
-      this.feed.push(this.answer)
-      this.answer = 'Lorem ipsum dolor sit amet';
+      this.feed.push(this.guardianAnswer)
+      this.guardianAnswer = 'Lorem ipsum dolor sit amet';
     }
   }
 }
@@ -27,11 +29,14 @@ export default {
 
 <style scoped>
 .guardian-answer {
+  display: flex;
+  align-items: flex-end;
+  width: 80%;
+  height: 50px;
+  background-color: lightblue;
   font-size: 24px;
-  justify-content: space-around;
-  z-index: 9;
-  margin: 10px;
-  margin-left: 10%;
-  margin-top: -12%;
+  z-index: 3;
+  margin: 5px;
+  float: right;
 }
 </style>

@@ -161,8 +161,6 @@ export default {
   box-shadow: 5px 5px 6px 1px var(--main-container-border);
 }
 
-
-
 @media (max-width: 1000px) {
   .main-title {
     flex: 9;

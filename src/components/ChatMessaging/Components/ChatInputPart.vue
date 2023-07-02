@@ -29,25 +29,25 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>
 input {
-  width: 80%;
+  width: 500px;
 }
 
 .chat-form {
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+  justify-content: space-between;
+  z-index: 3;
 }
 
-.input-answer {
-  flex: 3;
-}
-
-.btn-answer {
-  flex: 1;
+@media (max-width: 1000px) {
+  .chat-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+  }
 }
 </style>
