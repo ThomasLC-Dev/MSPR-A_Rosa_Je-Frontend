@@ -2,6 +2,10 @@
   <div class="chat-window">
     <GuardianMessage />
     <CustomerMessage />
+    <GuardianMessage />
+    <CustomerMessage />
+    <GuardianMessage />
+    <CustomerMessage />
   </div>
 </template>
 
@@ -13,10 +17,10 @@ import GuardianMessage from "./GuardianMessage.vue"
 export default {
   name: "ChatWindow",
   components: {
-		ChatWindow,
+    ChatWindow,
     CustomerMessage,
     GuardianMessage
-	},
+  },
 }
 </script>
 
@@ -35,5 +39,4 @@ export default {
   flex-direction: column-reverse;
   margin-top: 1em;
 }
-
 </style>

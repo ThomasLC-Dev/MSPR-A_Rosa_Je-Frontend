@@ -22,8 +22,8 @@ import ChatWindow from "../ChatMessaging/Components/ChatWindow.vue"
 export default {
   name: "ChatMessagingPage",
   components: {
-		ChatWindow
-	},
+    ChatWindow
+  },
   data() {
     return {
       imgPath: "PeopleTalking/profile.jpg",

@@ -50,7 +50,6 @@ export default {
 		}
 	},
 	methods: {
-
 		GetUser() {
 			return fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
 				headers: {
@@ -77,7 +76,7 @@ export default {
 						.then(
 							(plantData) => {
 								this.plants = plantData,
-								this.user = userData;
+									this.user = userData;
 
 								let latitude = this.user.address.latitude;
 								let longitude = this.user.address.longitude;
@@ -99,11 +98,8 @@ export default {
 										let strName = "Plante de : " + this.plants[index].user.firstName;
 										const marker = L.marker([this.plants[index].user.address.latitude, this.plants[index].user.address.longitude]).addTo(map)
 											.bindPopup(strName);
-
 									}
-
 								}
-
 
 								// const circle = L.circle([51.508, -0.11], {
 								// 	color: 'red',
@@ -117,7 +113,6 @@ export default {
 								// 	[51.503, -0.06],
 								// 	[51.51, -0.047]
 								// ]).addTo(map).bindPopup('I am a polygon.');
-
 
 								// const popup = L.popup()
 								// 	.setLatLng([51.513, -0.09])
@@ -135,7 +130,6 @@ export default {
 							}
 						)
 				}
-
 			)
 	}
 }
