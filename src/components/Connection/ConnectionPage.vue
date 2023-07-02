@@ -59,7 +59,6 @@ export default {
         email: this.email,
         password: this.password
       };
-
       fetch(config.apiBase + config.endpoints.loginPath, { method: 'POST', body: JSON.stringify(userLogin) }).then(response => {
         return response.json()
       })
@@ -67,13 +66,12 @@ export default {
           saveToken(data.token)
           this.goToView(this.routeAbout)
         })
-        .catch (() => {
-            this.error = 'Adresse email ou mot de passe invalide.'
+        .catch(() => {
+          this.error = 'Adresse email ou mot de passe invalide.'
         })
     }
   }
 }
-
 </script>
 
 <style scoped>

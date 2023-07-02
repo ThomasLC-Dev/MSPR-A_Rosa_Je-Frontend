@@ -6,20 +6,21 @@
     <CustomerMessage />
     <GuardianMessage />
     <CustomerMessage />
+    <ChatInputPart />
   </div>
 </template>
 
 <script>
-import ChatWindow from "../Components/ChatWindow.vue"
 import CustomerMessage from "./CustomerMessage.vue"
 import GuardianMessage from "./GuardianMessage.vue"
+import ChatInputPart from './ChatInputPart.vue'
 
 export default {
   name: "ChatWindow",
   components: {
-    ChatWindow,
     CustomerMessage,
-    GuardianMessage
+    GuardianMessage,
+    ChatInputPart
   },
 }
 </script>
@@ -28,14 +29,13 @@ export default {
 .chat-window {
   border: 2px solid var(--main-text);
   border-radius: 10px;
-  margin: 0px;
   padding: 15px;
   background-color: var(--menu-button-diselected-background);
   height: 100vh;
+  width: 80%;
   margin-bottom: 2em;
   display: flex;
   align-content: flex-end;
-  flex-wrap: wrap;
   flex-direction: column-reverse;
   margin-top: 1em;
 }

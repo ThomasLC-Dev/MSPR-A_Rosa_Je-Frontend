@@ -1,24 +1,15 @@
 <template>
-  <div class="chat-form">
-    <input class="text-input" type="text" v-model="message" />
-    <button class="btn-validate" @click="sendMessage()">Envoyer</button>
-  </div>
-  <div v-bind:title="message" v-for="text in feed" :key="text">
-    <!-- <img src="@/assets/PeopleTalking/Speech-Bubble-Right.png" alt="" class="speechBubbleRight"> -->
-    <p class="message">
-      {{ text }}
+  <div v-bind:title="message" v-for="customerText in feed" :key="customerText">
+    <p class="customer-text">
+      {{ customerText }}
+      EXEMPLE DE MESSAGE ENVOYÉ PAR LE CLIENT !
     </p>
   </div>
 </template>
 
 <script>
-import CustomerMessage from "../Components/CustomerMessage.vue"
-
 export default {
   name: "CustomerMessage",
-  components: {
-    CustomerMessage
-  },
   data() {
     return {
       message: '',
@@ -44,10 +35,11 @@ export default {
   width: 70vh;
 }
 
-.message {
+.customer-answer {
   padding-right: 50px;
   text-align: right;
   font-size: 24px;
+  width: 90%;
   justify-content: space-around;
   z-index: 9;
   margin: 10px;
@@ -69,7 +61,7 @@ export default {
 
   }
 
-  .message {
+  .customer-answer {
     display: flex;
     justify-content: space-around;
     z-index: 9;

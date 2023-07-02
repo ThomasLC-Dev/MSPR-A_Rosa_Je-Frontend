@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { config, getToken, getCurrentUserId } from '../../../api.config'
+import { getToken, getCurrentUserId } from '../../../api.config'
 import ChatWindow from "../ChatMessaging/Components/ChatWindow.vue"
 
 export default {
@@ -56,11 +56,7 @@ export default {
             }
           }
         ]
-      },
-
-      modificationAllowed: 1,
-      id: 6,
-      info: null
+      }
     }
   },
   methods: {
@@ -76,8 +72,11 @@ export default {
     listeId(id) {
       console.log(id);
     },
+  },
+  beforeMount() {
+    this.GetUser();
   }
-}
+};
 </script>
 
 <style scoped>

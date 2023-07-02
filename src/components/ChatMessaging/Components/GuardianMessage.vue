@@ -1,22 +1,15 @@
 <template>
-  <div class="chat-answer">
-    <button class="btn-validate" @click="displayAnswer()">Voir les réponses</button>
-  </div>
   <div v-bind:title="answer" v-for="text in feed" :key="text">
-    <p class="answer">
+    <p class="guardian-answer">
       {{ text }}
+      EXEMPLE DE MESSAGE ENVOYÉ PAR LE GARDIEN !
     </p>
   </div>
 </template>
 
 <script>
-import GuardianMessage from "../Components/GuardianMessage.vue"
-
 export default {
   name: "GuardianMessage",
-  components: {
-    GuardianMessage
-  },
   data() {
     return {
       answer: '',
@@ -33,11 +26,7 @@ export default {
 </script>
 
 <style scoped>
-.chat-answer {
-  margin-top: 1em;
-}
-
-.answer {
+.guardian-answer {
   font-size: 24px;
   justify-content: space-around;
   z-index: 9;
