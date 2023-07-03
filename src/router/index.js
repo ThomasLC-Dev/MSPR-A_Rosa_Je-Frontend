@@ -152,7 +152,7 @@ const routes = [
     },
   },
   {
-    path: "/chatMessaging",
+    path: "/chatMessaging/:data",
     name: "chatMessaging",
     component: () => import("@/views/ChatMessagingView.vue"),
     meta: {
