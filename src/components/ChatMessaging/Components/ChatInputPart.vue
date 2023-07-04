@@ -14,18 +14,13 @@ export default {
   name: "ChatInputPart",
   data() {
     return {
-      answer: '',
-      feed: []
+      message: ''
     }
   },
   methods: {
-    displayAnswer() {
-      this.feed.push(this.answer)
-      this.answer = 'Lorem ipsum dolor sit amet';
-    },
     sendMessage() {
-      this.feed.push(this.message)
-      this.message = '';
+        this.$emit('send-message', this.message);
+        this.message = '';
     }
   }
 }
@@ -33,13 +28,14 @@ export default {
 
 <style scoped>
 input {
-  width: 500px;
+  width: 800px;
 }
 
 .chat-form {
   display: flex;
   justify-content: space-between;
   z-index: 3;
+  margin-right: 5%;
 }
 
 @media (max-width: 1000px) {

@@ -53,7 +53,7 @@
             <td>{{ item.endDate }}</td>
             <td>
               <div class="buttonsList">
-                <img src="../../assets/Logo/Message.png" alt="Voir" class="SeeImg" @click="routerPushToMessages(item.user.id)">
+                <img src="../../assets/Logo/Message.png" alt="Voir" class="SeeImg" @click="routerPushToMessages()">
                 <img src="../../assets/Logo/OK.png" alt="Accepter" class="OKImg" @click="AddPlantToKeep(index)"
                   v-show="ShowAddPlant">
                 <img src="../../assets/Logo/No.png" alt="Refuser" class="NoImg" @click="RemovePlantToKeep(index)"
@@ -189,7 +189,10 @@ export default {
         },
         body: JSON.stringify(keeperObject)
       })
-        .then(() => this.GetSlots());
+        .then(() => {
+					this.createChat(index);
+					this.GetSlots()
+				});
     },
     RemovePlantToKeep(index) {
       let keeperObject = {
@@ -208,11 +211,23 @@ export default {
     GoToMap() {
       this.$router.push({ name: "map" })
     },
-    routerPushToMessages(id) {
+    createChat(index){
+			fetch(config.apiBase + config.endpoints.chatsPath + '/', {
+				method: 'POST',
+				headers: {
+					Authorization: 'Bearer ' + getToken(),
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					keeperId: getCurrentUserId(),
+					userId: this.tempItems[index].user.id
+				})
+			})
+    },
+    routerPushToMessages() {
 
       this.$router.push({
-        name: "chatMessaging",
-        params: { data: id }
+        name: "chatMessaging"
       })
     }
   },
