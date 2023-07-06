@@ -16,11 +16,14 @@
 						<!-- Connected Buttons -->
 						<ButtonMenu :name="AboutCo" :imgLink="ImgAboutCo" @click="goToView(routeHomeCo)"></ButtonMenu>
 						<ButtonMenu :name="Profile" :imgLink="ImgProfile" @click="goToView(routeProfil)"></ButtonMenu>
-						<ButtonMenu v-if="guardian || user"  :name="MyPlants" :imgLink="ImgMyPlants" @click="goToView(routeMyPlants)"></ButtonMenu>
+						<ButtonMenu v-if="guardian || user" :name="MyPlants" :imgLink="ImgMyPlants" @click="goToView(routeMyPlants)">
+						</ButtonMenu>
 						<ButtonMenu v-if="guardian" :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)">
 						</ButtonMenu>
-						<ButtonMenu  v-if="botanist" :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
-    					<ButtonMenu :name="Discussions" :imgLink="ImgProfile" @click="goToView(routeDiscussions)"></ButtonMenu>
+						<ButtonMenu v-if="botanist" :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)">
+						</ButtonMenu>
+						<ButtonMenu :name="ChatMessaging" :imgLink="ImgChatMessaging" @click="goToView(routeChatMessaging)">
+						</ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
 						<ButtonMenu v-if="admin" :name="Admin" :imgLink="ImgAdmin" @click="goToView(routeAdmin)"></ButtonMenu>
@@ -60,7 +63,7 @@ export default {
 		MyPlants: 'Mes plantes',
 		PlantKeeper: 'Gardien',
 		Botanist: 'Botaniste',
-        Discussions: 'Discussions',
+		ChatMessaging: 'Discussions',
 		Legals: 'Mentions',
 		Rgpd: 'RGPD',
 		Admin: 'Admin',
@@ -74,6 +77,7 @@ export default {
 		ImgMyPlants: 'Plante/Plante_7.png',
 		ImgPlantKeeper: 'Logo/keeper.png',
 		ImgBotanist: 'Logo/botanist.png',
+		ImgChatMessaging: 'Logo/Message.png',
 		ImgLegals: 'Logo/mentions-legales.png',
 		ImgRgpd: 'Logo/rgpd.png',
 		ImgAdmin: 'Logo/admin.png',
@@ -87,16 +91,16 @@ export default {
 		routeMyPlants: 'plants',
 		routePlantKeeper: 'keeper',
 		routeBotanist: 'botanist',
-        routeDiscussions: 'chatMessaging',
+		routeChatMessaging: 'chatMessaging',
 		routeLegals: 'legals',
 		routeRgpd: 'rgpd',
 		routeAdmin: 'admin',
 		routeLogOut: '',
 		roles: [],
-		botanist : false, 
-		guardian : false,
-		admin : false,
-		user : true,
+		botanist: false,
+		guardian: false,
+		admin: false,
+		user: true,
 
 		connected: isConnected
 	}),
@@ -210,5 +214,4 @@ export default {
 		display: none;
 		width: 235px;
 	}
-}
-</style>
+}</style>
