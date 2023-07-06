@@ -19,8 +19,10 @@ export default {
   },
   methods: {
     sendMessage() {
+      if (this.message != ''){ //si l'input n'est pas vide on envoi le message
         this.$emit('send-message', this.message);
         this.message = '';
+      }
     }
   }
 }
