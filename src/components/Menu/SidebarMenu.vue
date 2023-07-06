@@ -20,6 +20,7 @@
 						<ButtonMenu v-if="guardian" :name="PlantKeeper" :imgLink="ImgPlantKeeper" @click="goToView(routePlantKeeper)">
 						</ButtonMenu>
 						<ButtonMenu  v-if="botanist" :name="Botanist" :imgLink="ImgBotanist" @click="goToView(routeBotanist)"></ButtonMenu>
+    					<ButtonMenu :name="Discussions" :imgLink="ImgProfile" @click="goToView(routeDiscussions)"></ButtonMenu>
 						<ButtonMenu :name="Legals" :imgLink="ImgLegals" @click="goToView(routeLegals)"></ButtonMenu>
 						<ButtonMenu :name="Rgpd" :imgLink="ImgRgpd" @click="goToView(routeRgpd)"></ButtonMenu>
 						<ButtonMenu v-if="admin" :name="Admin" :imgLink="ImgAdmin" @click="goToView(routeAdmin)"></ButtonMenu>
@@ -59,6 +60,7 @@ export default {
 		MyPlants: 'Mes plantes',
 		PlantKeeper: 'Gardien',
 		Botanist: 'Botaniste',
+        Discussions: 'Discussions',
 		Legals: 'Mentions',
 		Rgpd: 'RGPD',
 		Admin: 'Admin',
@@ -85,6 +87,7 @@ export default {
 		routeMyPlants: 'plants',
 		routePlantKeeper: 'keeper',
 		routeBotanist: 'botanist',
+        routeDiscussions: 'chatMessaging',
 		routeLegals: 'legals',
 		routeRgpd: 'rgpd',
 		routeAdmin: 'admin',

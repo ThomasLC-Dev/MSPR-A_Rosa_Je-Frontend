@@ -1,23 +1,20 @@
 <template>
   <div class="main-container">
-    <div class="header">
-      <div class="imgProfilContainer">
-        <img :src="require(`@/assets/` + imgPath)" class="imgProfil" alt="">
-      </div>
-
-      <div class="nameProfil" label="Name Profil">
-        <h2 id="firstname">{{ user.firstName }}</h2>
-        <h2 id="lastname">{{ user.lastName }}</h2>
+    <div class="chats-list">
+      <button class="btn-validate btn-refresh" @click="selectChat(selectedChatId)">Recharger</button>
+      <div v-for="chat of chatsList" :key="chat.id" class="chat-item" @click="selectChat(chat.id)">
+        <span class="chatUserName">{{ chat.user.id == currentUserId ? chat.keeper.firstName + " " + chat.keeper.lastName : chat.user.firstName + " " + chat.user.lastName }}</span>
       </div>
     </div>
-
-    <ChatWindow />
+    <div class="chat-content" :style="{visibility: selectedChatId != 0 ? 'visible' : 'hidden'}">
+      <ChatWindow :selectedChat="selectedChatContent" @send-message="selectChat(selectedChatId)" />
+    </div>
   </div>
 </template>
 
 <script>
-import { getToken, getCurrentUserId } from '../../../api.config'
-import ChatWindow from "../ChatMessaging/Components/ChatWindow.vue"
+import { config, getCurrentUserId, getToken } from '../../../api.config';
+import ChatWindow from "../ChatMessaging/Components/ChatWindow.vue";
 
 export default {
   name: "ChatMessagingPage",
@@ -28,53 +25,48 @@ export default {
     return {
       imgPath: "PeopleTalking/profile.jpg",
 
-      user: {
-        "address": {
-          "additionalAddress": "string",
-          "city": "string",
-          "id": 0,
-          "latitude": 0,
-          "longitude": 0,
-          "postalCode": "string",
-          "road": "string",
-          "roadNumber": 0,
-          "roadType": "string"
-        },
-        "email": "string",
-        "firstName": "string",
-        "id": 0,
-        "imageUrl": "string",
-        "lastName": "string",
-        "phone": "string",
-        "status": true,
-        "userRoles": [
-          {
-            "id": 0,
-            "role": {
-              "id": 0,
-              "name": "string"
-            }
-          }
-        ]
-      }
+      chatsList: [],
+      currentUserId: 0,
+      selectedChatId: 0,
+      selectedChatContent: {}
     }
   },
   methods: {
-    GetUser() {
-      fetch("https://a-rosa-je.herokuapp.com/api/users/" + getCurrentUserId(), {
+    getUserChats(){
+      fetch(config.apiBase + config.endpoints.chatsPath + "?user="+getCurrentUserId(), {
         headers: {
           Authorization: 'Bearer ' + getToken(),
         }
       })
         .then((res) => res.json())
-        .then((data) => (this.user = data))
+        .then(
+          (data) => {
+            this.chatsList = data;
+          }
+        )
     },
-    listeId(id) {
-      console.log(id);
+    selectChat(chatId){
+      this.selectedChatId = chatId;
+      this.getChat(chatId);
     },
+    getChat(chatId){
+      fetch(config.apiBase + config.endpoints.chatsPath + "/" + chatId, {
+        headers: {
+          Authorization: 'Bearer ' + getToken(),
+        }
+      })
+        .then((res) => res.json())
+        .then(
+          (data) => {
+            this.selectedChatContent = data;
+            console.log(this.selectedChatContent);
+          }
+        )
+    }
   },
-  beforeMount() {
-    this.GetUser();
+  mounted() {
+    this.currentUserId = getCurrentUserId()
+    this.getUserChats();
   }
 };
 </script>
@@ -82,31 +74,39 @@ export default {
 <style scoped>
 .main-container {
   border: none;
-  height: 100vh;
+  height: 95vh;
   z-index: 1;
-}
-
-.header {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  padding-bottom: 2%;
 }
 
-.imgProfilContainer {
-  width: 150px;
-}
-
-.imgProfil {
-  width: 100%;
-  border-radius: 50%;
-}
-
-.nameProfil {
+.chats-list{
+  flex: 1;
   display: flex;
-  flex-direction: row;
-  margin-left: 30px;
-  gap: 10px;
-  border-bottom: 5px solid var(--main-text);
+  flex-direction: column;
+  margin-right: 10px;
+  border-right: 2px solid var(--main-container-border);
+  height: 100%;
+  position: relative;
 }
+
+.chat-item{
+  border-bottom: 1px solid var(--main-title-underline);
+  padding: 30px 15px;
+  cursor: pointer;
+}
+
+.chat-item:hover{
+  background-color: var(--menu-logo-background);
+  color: #FFF;
+}
+
+.chat-content{
+  flex: 4;
+}
+
+.btn-refresh{
+  margin: 20px auto;
+}
+
 </style>

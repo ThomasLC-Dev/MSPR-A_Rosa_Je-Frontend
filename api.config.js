@@ -10,7 +10,9 @@ export const config = {
     plantsPath: 'api/plants',
     slotsPath: 'api/slots',
     usersPath: 'api/users',
-    userRolesPath: 'api/user-roles'
+    userRolesPath: 'api/user-roles',
+    chatsPath: 'api/chats',
+    messagesPath: 'api/messages'
   }
 }
 
