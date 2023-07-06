@@ -1,7 +1,7 @@
 <template>
   <div class="chat-form">
     <div class="input-answer">
-      <input type="text" v-model="message" placeholder="Votre message..." />
+      <input type="text" v-model="message" @keydown.enter="sendMessage" placeholder="Votre message..." />
     </div>
     <div class="btn-answer">
       <button class="btn-validate" @click="sendMessage()">Envoyer</button>
