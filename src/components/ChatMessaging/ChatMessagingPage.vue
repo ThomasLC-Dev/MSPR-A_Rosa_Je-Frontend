@@ -2,7 +2,7 @@
   <div class="main-container">
     <div class="chats-list">
       <button class="btn-validate btn-refresh" @click="selectChat(selectedChatId)">Recharger</button>
-      <div v-for="chat of chatsList" :key="chat.id" class="chat-item" @click="selectChat(chat.id)">
+      <div v-for="chat of chatsList" :key="chat.id" :class="chat.id === selectedChatId ?'chat-item-selected' : 'chat-item' " @click="selectChat(chat.id)"> <!-- chat.id est égal à selectedChatId on change la classe de l'objet, ici c'est en cliquant sur la div -->
         <span class="chatUserName">{{ chat.user.id == currentUserId ? chat.keeper.firstName + " " + chat.keeper.lastName : chat.user.firstName + " " + chat.user.lastName }}</span>
       </div>
     </div>
@@ -97,6 +97,14 @@ export default {
 }
 
 .chat-item:hover{
+  background-color: var(--menu-logo-background);
+  color: #FFF;
+}
+
+.chat-item-selected{
+  border-bottom: 1px solid var(--main-title-underline);
+  padding: 30px 15px;
+  cursor: pointer;
   background-color: var(--menu-logo-background);
   color: #FFF;
 }
