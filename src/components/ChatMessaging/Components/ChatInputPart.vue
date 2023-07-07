@@ -1,7 +1,7 @@
 <template>
   <div class="chat-form">
     <div class="input-answer">
-      <input type="text" v-model="message" placeholder="Votre message..." />
+      <input type="text" v-model="message" @keydown.enter="sendMessage" placeholder="Votre message... (2 caractères minimum)" />
     </div>
     <div class="btn-answer">
       <button class="btn-validate" @click="sendMessage()">Envoyer</button>
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     sendMessage() {
-      if (this.message != ''){ //si l'input n'est pas vide on envoi le message
+      if (this.message != '' && this.message.length >= 2){ //si l'input n'est pas vide et qu'il est comporte plus de 2 caractères on envoie le message
         this.$emit('send-message', this.message);
         this.message = '';
       }
