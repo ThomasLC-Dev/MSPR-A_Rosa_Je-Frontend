@@ -7,8 +7,7 @@
           <span v-else>Fermer la Caméra</span>
         </button>
         <div v-if="!isCameraOpen" class="ButtonReturn">
-          <!-- QUELLE ROUTE METTRE POUR REVENIR A LA PAGE DE CREATION DUNE PLANTE ????? -->
-          <input class="btn-validate" type="submit" value="Retour" @click="XXXX">
+          <input class="btn-validate" type="submit" value="Retour" @click="goBackToPlantPage">
         </div>
       </div>
 
@@ -89,6 +88,9 @@ export default {
     downloadImage() {
       const imageData = document.getElementById("photoTaken").toDataURL("image/jpeg");
       window.opener.postMessage({ image: imageData });
+      self.close();
+    },
+    goBackToPlantPage() {
       self.close();
     }
   }
