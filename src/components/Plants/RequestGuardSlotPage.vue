@@ -10,8 +10,10 @@
         <label for="endDate">Date de fin : </label>
         <input v-model="endDate" type="date" placeholder="Date de fin" />
       </div>
-      <input class="btn-reset" type="reset" value="Annuler" />
-      <input class="btn-validate" type="submit" value="Enregistrer" />
+      <div class="button-group">
+        <input class="btn-reset" type="reset" value="Annuler" />
+        <input class="btn-validate" type="submit" value="Enregistrer" />
+      </div>
     </form>
   </div>
 </template>

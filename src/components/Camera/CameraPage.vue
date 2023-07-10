@@ -1,11 +1,16 @@
 <template>
   <div class="camera">
     <div class="main-container">
-
-      <button class="btn-validate" @click="toggleCamera()">
-        <span v-if="!isCameraOpen">Ouvrir la Caméra</span>
-        <span v-else>Fermer la Caméra</span>
-      </button>
+      <div class="button-group">
+        <button class="btn-validate" @click="toggleCamera()">
+          <span v-if="!isCameraOpen">Ouvrir la Caméra</span>
+          <span v-else>Fermer la Caméra</span>
+        </button>
+        <div v-if="!isCameraOpen" class="ButtonReturn">
+          <!-- QUELLE ROUTE METTRE POUR REVENIR A LA PAGE DE CREATION DUNE PLANTE ????? -->
+          <input class="btn-validate" type="submit" value="Retour" @click="XXXX">
+        </div>
+      </div>
 
       <div class="video-container">
         <video v-show="isCameraOpen" class="camera-video" ref="camera" :width="330" :height="330" autoplay
@@ -91,6 +96,10 @@ export default {
 </script>
 
 <style>
+.button-group {
+  flex-direction: column;
+}
+
 .btn-reset {
   position: absolute;
   box-sizing: content-box;
