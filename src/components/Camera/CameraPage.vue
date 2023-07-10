@@ -43,9 +43,6 @@ export default {
     }
   },
   methods: {
-    goToView(path) {
-      this.$router.push({ name: path });
-    },
     createCameraElement() {
       const constraints = (window.constraints = {
         audio: false,
