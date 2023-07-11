@@ -6,6 +6,8 @@
           <span v-if="!isCameraOpen">Ouvrir la Caméra</span>
           <span v-else>Fermer la Caméra</span>
         </button>
+        <input type="file" @change="fileChange">
+        <button :disabled="noFiles" class="btn-validate" type="submit">Ajouter</button>
         <div v-if="!isCameraOpen" class="ButtonReturn">
           <input class="btn-validate" type="submit" value="Retour" @click="goBackToPlantPage">
         </div>
@@ -39,7 +41,8 @@ export default {
     return {
       isCameraOpen: false,
       isPhotoTaken: false,
-      routeAddPlant: "addnewplants"
+      routeAddPlant: "addnewplants",
+      noFiles: true
     }
   },
   methods: {
@@ -89,6 +92,9 @@ export default {
     },
     goBackToPlantPage() {
       self.close();
+    },
+    fileChange(event) {
+      this.noFiles = !event.target.files.length;
     }
   }
 }
