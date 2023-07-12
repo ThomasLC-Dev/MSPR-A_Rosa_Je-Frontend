@@ -5,7 +5,7 @@
       <Burger :isOpen="SideBarOpen" @click="toggleBar()"></Burger>
       <Sidebar :key="$route.fullPath" :isPanelOpen="SideBarOpen || width > 1000"></Sidebar>
     </nav>
-    <router-view class="page"></router-view>
+    <router-view class="page" @click="!toggleBar()"></router-view>
   </div>
 </template>
  
