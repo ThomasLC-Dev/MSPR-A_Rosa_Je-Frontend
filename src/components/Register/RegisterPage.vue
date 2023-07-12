@@ -15,11 +15,11 @@
         </div>
 
         <div class="form-field-direction">
-          <div class="form-field field-3">
+          <div class="form-field field-3 mobile">
             <label for="phone">Nº de mobile :</label>
             <input type="text" id="phone" placeholder="Votre numéro" v-model="phone" />
           </div>
-          <div class="form-field field-7">
+          <div class="form-field field-7 mobile">
             <label for="email">Email :</label>
             <input type="text" id="email" placeholder="Votre email" v-model="email" />
           </div>
@@ -220,6 +220,9 @@ export default {
 }
 
 @media (max-width: 1000px) {
+  .main-container {
+    overflow: auto;
+  }
   .form-register {
     width: 90%;
   }
@@ -243,6 +246,15 @@ export default {
   .field-7 {
     flex: 0.3;
     width: 60%;
+  }
+
+  .mobile {
+    flex: 1;
+    width: 100%;
+  }
+
+  label {
+    font-size: medium;
   }
 }
 </style>
