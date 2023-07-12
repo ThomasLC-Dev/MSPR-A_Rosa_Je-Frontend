@@ -6,22 +6,22 @@
         <div class="form-field-direction">
           <div class="form-field">
             <label for="lastname">Nom :</label>
-            <input id="lastname" placeholder="Votre nom" v-model="lastname" />
+            <input id="lastname" placeholder="Votre nom" v-model="lastname" required />
           </div>
           <div class="form-field">
             <label for="firstname">Prénom :</label>
-            <input id="firstname" placeholder="Votre prénom" v-model="firstname" />
+            <input id="firstname" placeholder="Votre prénom" v-model="firstname" required />
           </div>
         </div>
 
         <div class="form-field-direction">
           <div class="form-field field-3 mobile">
             <label for="phone">Nº de mobile :</label>
-            <input type="text" id="phone" placeholder="Votre numéro" v-model="phone" />
+            <input type="text" id="phone" placeholder="Votre numéro" v-model="phone" required />
           </div>
           <div class="form-field field-7 mobile">
             <label for="email">Email :</label>
-            <input type="text" id="email" placeholder="Votre email" v-model="email" />
+            <input type="text" id="email" placeholder="Votre email" v-model="email" required />
           </div>
         </div>
 
@@ -38,7 +38,7 @@
           </div>
           <div class="form-field">
             <label for="road">Nom de rue :</label>
-            <input type="text" id="road" placeholder="Nom de la rue" v-model="road" />
+            <input type="text" id="road" placeholder="Nom de la rue" v-model="road" required />
           </div>
         </div>
         <div class="form-field-direction-gp">
@@ -49,23 +49,23 @@
           <div class="address-zip">
             <div class="form-field field-3">
               <label for="postalCode">Code postal :</label>
-              <input type="text" id="postalCode" placeholder="Code postal" v-model="postalCode" />
+              <input type="text" id="postalCode" placeholder="Code postal" v-model="postalCode" required />
             </div>
             <div class="form-field field-7">
               <label for="city">Nom de ville :</label>
-              <input type="text" id="city" placeholder="Nom de la ville" v-model="city" />
+              <input type="text" id="city" placeholder="Nom de la ville" v-model="city" required />
             </div>
           </div>
         </div>
         <div class="form-field-direction">
           <div class="form-field">
             <label for="password">Mot de passe :</label>
-            <input type="password" id="password" placeholder="Votre mot de passe" v-model="password" />
+            <input type="password" id="password" placeholder="Votre mot de passe" v-model="password" required />
           </div>
           <div class="form-field">
             <label for="passwordConfirmation">Confirmation :</label>
             <input type="password" id="passwordConfirmation" placeholder="Confirmation du mot de passe"
-              v-model="passwordConfirmation" />
+              v-model="passwordConfirmation" required />
           </div>
         </div>
       </div>
@@ -223,6 +223,7 @@ export default {
   .main-container {
     overflow: auto;
   }
+
   .form-register {
     width: 90%;
   }
