@@ -114,7 +114,25 @@ export default {
   font-style: italic;
 }
 
+#formConnection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 h1 {
   width: auto;
+}
+
+@media(max-width: 1000px) {
+  .main-container {
+    width: 100%;
+    margin: auto;
+  }
+
+  .notRegistered, .forgottenPassword {
+    font-size: medium;
+  }
 }
 </style>
